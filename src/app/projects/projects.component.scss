@@ -1,0 +1,39 @@
+.column {
+    position: relative;
+    img {
+        width: 100%;
+        background: grey;
+        display: block;
+    }
+
+}
+.project-holder {
+    position: relative;
+    display: inline-block;
+    width: 95%;
+
+    @media (min-width: 720px) {
+        &::after {
+            content: "";
+            background-color: var(--light-grey);
+            position: absolute;
+            height: 50%;
+            width: 1px;
+            display: block;
+            right: 0;
+            top: 25%;
+        }
+    }
+
+    &::before {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        content: "\F105";
+        position: absolute;
+        right: -20px;
+        top: 49%;
+    }
+}

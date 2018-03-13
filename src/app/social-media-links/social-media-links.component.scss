@@ -1,0 +1,15 @@
+
+#social-links {
+    float: right;
+    margin: 0;
+    
+    li a {
+        font-size: 1.4rem;
+        color: #fff;
+        padding: 3px;
+        transition: color 100ms ease-in-out;
+        &:hover {
+            color: var(--dark-blue);
+        }
+    }
+}

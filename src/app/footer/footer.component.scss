@@ -1,0 +1,25 @@
+.contact-link {
+    &:hover {
+        &:after {
+            animation: open_drawer 300ms ease-in-out;
+            animation-fill-mode: forwards;
+            transform: translateX(0);
+        }
+    }
+}
+
+@keyframes open_drawer {
+    to {
+        transform: translateX(50px);
+    }
+}
+
+.footer-background {
+    background: url("../../assets/ground.svg") center center no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 46vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}

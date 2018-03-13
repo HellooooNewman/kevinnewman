@@ -1,0 +1,239 @@
+.sky-header {
+    background: #fff;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    height: 300px;
+    overflow: hidden;
+
+    .logo {
+        position: absolute;
+        top: 25%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        height: 100px;
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+#skyCanvas {
+    position: absolute;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+#kevin-nav {
+    position: relative;
+    z-index: 2;
+    background: var(--blue);
+    height: 60px;
+    @media (min-width: 720px) {
+        height: 80px;
+    }
+    a {
+        position: absolute;
+        right: 10px;
+        
+        @media (min-width: 720px) {
+            right: auto;
+            position: relative;
+        }
+        color: #fff;
+        &:hover:after {
+            box-shadow: 0px -10px 40px 2px rgb(0, 0, 0);
+        }
+        
+        &:after {
+            transition: box-shadow ease-in-out 0.1s;
+            content: '';
+            box-shadow: 0px -10px 0px 0px rgb(0, 0, 0);
+            width: 100%;
+            position: relative;
+            display: block;
+            z-index: -1;
+        }
+    }
+    
+    h1 {
+        @media screen and (max-width: 720px) {
+            font-size: 1.4rem;
+        }
+    }
+
+    app-social-media-links {
+        display: none;
+        @media (min-width: 720px) {
+            display: block;
+        }
+    }
+    
+    .mountains {
+        position: absolute;
+        height: 60px;
+        width: 100%;
+        background: url('../../assets/mountains.svg');
+        z-index: -1;
+        background-clip: padding-box;
+        top: -38px;
+        pointer-events: none;
+    }
+
+
+    .container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        &:after {
+            display: none;
+        }
+    }
+}
+
+#kevin-nav, .sky-header {
+    transition: height 0.4s;
+}
+
+#main-nav{
+    width: 100%;
+    border-bottom: 1px solid var(--light-grey);
+    // background: #fff;
+    background: url("../../assets/nav-closed-2.svg") no-repeat;
+    background-size: cover;
+    top: 0px;
+    position: relative;
+    z-index: 2;
+    padding: 0.80rem 0;
+
+    .swoop {
+        position: absolute;
+        top: -20px;
+    }
+    
+    #small-logo {
+        height: 40px;
+        padding-right: 20px;
+        border-right: 1px solid var(--light-grey);
+        margin-right: 20px;
+    }
+
+    .container {
+        @media (min-width: 720px) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            &:after {
+                display: none;
+            }
+        }
+    }
+
+    .menu-toggle {
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        right: 16px;
+        top: 13px;
+        font-size: 39px;
+        color: var(--blue);
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out;
+
+        &:hover {
+            opacity: 0.7;
+        }
+        
+        @media (min-width: 720px) {
+            display: none;
+        }
+    }
+
+    h3 {
+        margin: 0;
+        user-select: auto;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 65%;
+    }
+
+    svg, h3 {
+        float: left;
+        line-height: 1.7;
+    }
+
+    @media (min-width: 720px) {
+        height: auto;
+    }
+
+    ul {
+        
+        padding: 0px;
+        display: flex;
+        overflow: hidden;
+        justify-content: center;
+        max-height: 0;        
+        transition: max-height 1s ease-in-out;
+        margin: 0;
+
+        &.opened {
+            max-height: 50px;
+        }
+
+        @media (min-width: 720px) {
+            margin: 1.25rem 0;
+            height: auto;
+            margin: 0;
+            max-height: none;
+            justify-content: flex-end;
+        }
+        
+        li {
+            margin: 1.2rem 0 0 0;
+            display: inline-block;
+
+            @media (min-width: 720px) {
+                margin: 0;
+            }
+
+            &:before {
+                content:"";
+            }
+
+            a {
+                font-weight: bold;
+                position: relative;
+                @media (min-width: 720px) {
+                    margin: 0 8px;
+                }
+                &.active-link {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+
+                &:hover {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+                &::after {
+                    height: 2px;
+                    width: 0;
+                    background: var(--dark-blue);
+                    content: "";
+                    transition: 0.5s all ease;
+                    -webkit-backface-visibility: hidden;
+                    backface-visibility: hidden;
+                    position: absolute;
+                    bottom: -0.25em;
+                    left: 0;
+                }
+            }
+        }
+    }
+}

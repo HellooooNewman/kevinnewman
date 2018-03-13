@@ -1,0 +1,47 @@
+<div class="project-detail-header" [style.background-image]="'url(' + project?.main_img + ')'"></div>
+<div class="container" *ngIf="project != undefined">
+
+  <a href="{{project.project_url}}" *ngIf="project.project_url != ''" class="project-link button button-primary" target="_blank">Project Link</a>
+  <div class="row">
+    <div class="eight column" id="project-summary">
+      <h3>Project Summary</h3>
+      <div style="margin-bottom: 10px;">
+        <span style="font-weight:bold;">Year </span>
+        <span>{{project.start_date}} - {{project.end_date}}</span>
+      </div>
+      <p [innerHtml]="project.body"></p>
+    </div>
+    <div class="four column" *ngIf='project.tasks.length != 0'>
+      <h3>Features</h3>
+      <ul>
+        <li *ngFor="let task of project.tasks">
+          {{task}}
+        </li>
+      </ul>
+    </div>
+    <!-- <a routerLink='/project/{{prevProject.id}}' (click)="project = prevProject" class="project-direction-btns project-prev" [style.background-image]="'url(http:/' + prevProject.main_img + ')'">
+      {{prevProject.title}}
+      Previous Project
+    </a>
+    <a routerLink='/project/{{nextProject.id}}' (click)="changeProject(nextProject)" class="project-direction-btns project-next" [style.background-image]="'url(http:/' + nextProject.main_img + ')'">
+      {{nextProject.title}}
+      Next Project
+    </a> -->
+  </div>
+  <div class="row">
+    <div *ngIf="project.videos.length != 0">
+      <video id="video" preload="auto" controls poster="http:/{{project.main_img}}" preload playsinline controlsList="nodownload">
+        <source *ngFor="let video of project.videos" src="{{video.url}}" type="video/mp4"> Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <swiper [config]="config" *ngIf="project.gallery.length != 0">
+      <div class="swiper-wrapper">
+        <img class="swiper-slide" *ngFor="let image of project.gallery" [src]="image.url" alt="image.alt">
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next swiper-button-white"></div>
+      <div class="swiper-button-prev swiper-button-white"></div>
+    </swiper>
+  </div>
+</div>

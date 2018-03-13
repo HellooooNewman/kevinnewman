@@ -1,0 +1,48 @@
+.project-detail-header {
+    height: 400px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: -20px 0 20px 0;
+    background-color: #ccc;
+    position: relative;
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        width: 100%;
+        height: 77px;
+        background-image: url('../../assets/triangle.svg');
+        background-size: cover;
+        padding: 0;
+        padding-bottom: 10%;
+    }
+}
+
+.project-direction-btns {
+    height: 300px;
+
+    &.project-next {
+        color: red;
+    }
+    
+    &.project-prev {
+        color: red;
+    }    
+}
+
+.project-link {
+    position: absolute;
+    right: 8px;
+    top: -60px;
+}
+
+.container {
+    position: relative;
+}
+
+#project-summary {
+    position: relative;
+}

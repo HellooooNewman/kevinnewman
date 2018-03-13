@@ -1,0 +1,20 @@
+/* Colors */
+
+// https://stackoverflow.com/questions/43715597/how-to-stop-compass-for-converting-rgba-format-to-hex-format
+
+
+:root {
+    // ;
+    --blue: rgb(46, 80, 162);
+    --dark-blue: rgb(32, 61, 130);
+    --light-grey: rgb(204, 204, 204);
+    --dark-grey: #797D7F;
+    --black: #222222;
+    --yellow: #FFD82F;
+}
+
+
+/* Screen Widths */
+
+$media-small: 320px;
+$media-large: 1200px;
