@@ -1,11 +1,17 @@
-# Kevinnewman 2017
+# Kevin Newman Personal Website
 
 `ng serve` to run.
 
-## Things to do
+`npm run build` to build.
 
-# Translation
-ng-translate
+`ng generate * `  to [build](https://github.com/angular/angular-cli/wiki/generate)
 
-# Analytics
-google analytics
+`ng update` to [update](https://github.com/angular/angular-cli/wiki/update)
+
+#### Things to do
+* Game jams section
+* Meta theme colour
+* Grey placeholder content
+* ng-translate
+* Google Analytics
+* Fix older browser support
