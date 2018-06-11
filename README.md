@@ -2,9 +2,11 @@
 
 `ng serve` to run.
 
-`npm run build` to build.
+`ng serve --prod` to test production settings locally
 
-`ng generate * `  to [build](https://github.com/angular/angular-cli/wiki/generate)
+`ng build --prod` to build.
+
+`ng generate *`  to [build](https://github.com/angular/angular-cli/wiki/generate)
 
 `ng update` to [update](https://github.com/angular/angular-cli/wiki/update)
 
@@ -15,3 +17,4 @@
 * ng-translate
 * Google Analytics
 * Fix older browser support
+* Google site audit
