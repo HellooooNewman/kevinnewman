@@ -23,6 +23,7 @@ import { NotFoundComponent } from './errors/400/not-found-component/not-found.co
 import { TruncatePipe } from './pipes/truncate';
 
 import { SwiperModule } from 'angular2-useful-swiper';
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { SwiperModule } from 'angular2-useful-swiper';
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
-    SwiperModule
+    SwiperModule,
+    LazyLoadImagesModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

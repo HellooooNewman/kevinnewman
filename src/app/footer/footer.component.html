@@ -11,4 +11,6 @@
 <p>
   Designed and developed by Kevin Newman
 </p>
-<div class="footer-background" [class.is-contact-page]="isContactPage" ></div>
+<span lazy-load-images>
+  <div class="footer-background" [attr.data-background-src]="footerBg" [class.is-contact-page]="isContactPage" ></div>
+</span>
