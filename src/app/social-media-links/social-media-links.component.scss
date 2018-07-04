@@ -4,12 +4,16 @@
     margin: 0;
     
     li a {
-        font-size: 1.4rem;
-        color: #fff;
-        padding: 3px;
-        transition: color 100ms ease-in-out;
-        &:hover {
-            color: var(--dark-blue);
+        svg {
+            fill: white;
+            transition: fill 100ms ease-in-out;
+            height: 22px;
+            padding: 3px;
+            
+            &:hover {
+                fill: var(--dark-blue);
+            }
         }
+        
     }
 }
