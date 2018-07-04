@@ -10,11 +10,14 @@
 
 `ng update` to [update](https://github.com/angular/angular-cli/wiki/update)
 
+
+#### Done
+* ~~Meta theme colour~~
+* ~~Google Analytics~~
+
 #### Things to do
 * Game jams section
-* Meta theme colour
 * Grey placeholder content
 * ng-translate
-* Google Analytics
 * Fix older browser support
 * Google site audit
