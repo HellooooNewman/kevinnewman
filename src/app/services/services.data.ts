@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Rx';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/Rx';
-import { Project } from './../interfaces/common';
+import { Project, GameJam } from './../interfaces/common';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -18,13 +18,14 @@ export class DataService {
     public project: Observable<Project[]>;
     private _project: BehaviorSubject<Project[]>;
     public dataStore: {
-        projects: Project[]
+        projects: Project[],
+        game_jams: GameJam[],
     };
 
     constructor(private http: HttpClient,
                 private titleService: Title
             ) {
-        this.dataStore = { projects: [] };
+        this.dataStore = { projects: [], game_jams: []};
         this._project = <BehaviorSubject<Project[]>>new BehaviorSubject([]);
         this.project = this._project.asObservable();
         if (environment.production) {
