@@ -1,5 +1,14 @@
 <div class="container">
-<p>
-  Game Jams coming soon. 🕒
-</p>
+
+  <a routerLink="/gameJams/{{gameJam.id}}" class="row" *ngFor="let gameJam of gameJams | async">
+    <div class="gameJams-holder">
+      <div class="four column img-holder">
+        <img src="{{gameJam.cover_url}}" alt="{{gameJam.title}}">
+      </div>
+      <div class="eight column">
+        <h3>{{gameJam.title}}</h3>
+        <p [innerHtml]="(gameJam.short_text.length > 320) ? (gameJam.short_text | slice: 0 : 320) + '...' : (gameJam.short_text)"></p>
+      </div>
+    </div>
+  </a>
 </div>

@@ -10,13 +10,15 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class DataService {
-    protected baseUrl: String = 'http://localhost/kevinnewman/';
+    protected baseUrl: String = 'http://localhost/api/';
     public title: Subject<String> = new Subject();
     public smallNav: Boolean = false;
 
     // Data storage
     public project: Observable<Project[]>;
     private _project: BehaviorSubject<Project[]>;
+    public game_jam: Observable<GameJam[]>;
+    private _game_jam: BehaviorSubject<GameJam[]>;
     public dataStore: {
         projects: Project[],
         game_jams: GameJam[],
@@ -28,8 +30,11 @@ export class DataService {
         this.dataStore = { projects: [], game_jams: []};
         this._project = <BehaviorSubject<Project[]>>new BehaviorSubject([]);
         this.project = this._project.asObservable();
+
+        this._game_jam = <BehaviorSubject<GameJam[]>>new BehaviorSubject([]);
+        this.game_jam = this._game_jam.asObservable();
         if (environment.production) {
-            this.baseUrl = 'https://www.kevinnewman.ca/api/';
+            this.baseUrl = 'http://localhost/api/';
         }
     }
 
@@ -61,6 +66,15 @@ export class DataService {
                 this.dataStore.projects = data;
                 this._project.next(Object.assign({}, this.dataStore).projects);
             }, error => console.log('Could not load projects.'));
+        }
+    }
+    
+    getAllGames = () => {
+        if (this.dataStore.game_jams.length === 0) {
+            this.http.get(`${this.baseUrl}games`).subscribe((data: Array<any>) => {
+                this.dataStore.game_jams = data;
+                this._game_jam.next(Object.assign({}, this.dataStore).game_jams);
+            }, error => console.log('Could not load games.'));
         }
     }
 
