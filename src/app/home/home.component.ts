@@ -28,10 +28,26 @@ export class HomeComponent implements OnInit {
     introduction: "<p>Hi there, I’m Kevin Newman, a developer, designer and hobbyist living in Canada. I like to make responsive websites, captivating videos and 3D models. In my off time, you can usually find me playing/making some video games, working on a side project, or doodling some little drawings. I try to keep up with the current trends in technology by going to developer meetups in the area. </p><p>Currently working on a Unity game couch co-op multiplayer game. More to come soon.</p>",
     work: {
       jobs: [{
+        title: "Full Stack Web Developer",
+        year: "March 2018 - July 2018",
+        employer: "Grassriots",
+        employer_link: "http://www.grassriots.com/",
+        location: "Toronto, CA",
+        points: [
+          "Created documentation/wikis for existing code and processes",
+          "Made application multilingual with ability to add or remove languages easily",
+          "Improved product development and deployment times from over a month to a week and half",
+          "Improve webpack config and processes to decrease development time and increase performance and reliability of app",
+          "Clients: Choice Australia, Human Society International, Cystic Fibrosis Canada, Ecojustice, UNICEF Canada, World Vision"
+        ],
+        technology: "ES6, HTML, SCSS, PHP"
+      },
+      {
         title: "3D Frontend Developer",
         year: "Oct 2017 - Feb 2018",
         employer: "GE",
-        location: "Markham",
+        employer_link: "http://www.gegridsolutions.com/",
+        location: "Markham, CA",
         points: [
           "Create 3D marketing web apps with Babylon for different divisions of GE",
           "Prototype and compare different Frontend frameworks to GE's current software solution",
@@ -43,6 +59,7 @@ export class HomeComponent implements OnInit {
         title: "Front-end Developer",
         year: "Feb 2017 - Oct 2017",
         employer: "Indegene",
+        employer_link: "https://www.indegene.com/",
         location: "Oakville, CA",
         points: [
           "Angular 2 development of components",
@@ -59,6 +76,7 @@ export class HomeComponent implements OnInit {
         title: "Full Stack Web Developer",
         year: "Feb 2015 - Feb 2017",
         employer: "Digital Echidna",
+        employer_link: "http://www.echidna.ca/",
         location: "London, CA",
         points: [
           "Front-end theming of Drupal sites",

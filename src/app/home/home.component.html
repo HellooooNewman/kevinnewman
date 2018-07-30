@@ -10,19 +10,19 @@
     <h3 class="job-title">{{job.title}}</h3>
     <div class="job-information">
       <h4 class="year">{{job.year}}</h4>
-      <h4 class="employer">{{job.employer}}</h4>
+      <h4 class="employer"><a href="{{job.employer_link}}" target="_blank">{{job.employer}}</a></h4>
       <h4 class="location">{{job.location}}</h4>
+      <button (click)="job.showDetails = ! job.showDetails">View More</button>
     </div>
-    <ul>
+    <ul *ngIf="job.showDetails">
       <li *ngFor="let point of job.points">{{point}}</li>
     </ul>
     <br>
-    <p>Babylon, Electron, Haxe, Vue, SVN, LESS</p>
   </div>
-  
 </div>
 
-<div class="container side-projects">
+
+<div class="container side-projects" *ngIf="projects.length != 0">
   <h2><span>Projects</span><span><a routerLink="/projects">View All</a></span><hr></h2>
   <a [attr.href]="'project/' + project.id" [routerLink]="['/project', project.id]" class="six columns" *ngFor="let project of projects | async">
     <div class="project-holder"></div>
