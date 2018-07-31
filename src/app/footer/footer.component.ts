@@ -8,7 +8,7 @@ import { Router, NavigationEnd} from '@angular/router';
 })
 export class FooterComponent implements OnInit {
   public isContactPage: boolean = false;
-  public footerBg = "./ground.svg";
+  public footerBg = "./assets/ground.svg";
   
   constructor(private router: Router) { }
 
