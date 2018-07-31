@@ -45,17 +45,7 @@ a {
     }
   }
 
-  .project-holder{
-    &:before {
-      content: "";
-    }
-  }
-
   &:hover {
-    .project-holder {
-
-    }
-
     .img-holder:after { 
       transform: translate(10px, -10px);
     }
