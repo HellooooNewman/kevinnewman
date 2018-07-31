@@ -34,7 +34,7 @@ export class DataService {
         this._game_jam = <BehaviorSubject<GameJam[]>>new BehaviorSubject([]);
         this.game_jam = this._game_jam.asObservable();
         if (environment.production) {
-            this.baseUrl = 'http://localhost/api/';
+            this.baseUrl = 'https://www.kevinnewman.ca/api/';
         }
     }
 
