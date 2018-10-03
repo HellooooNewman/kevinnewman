@@ -107,9 +107,8 @@
 #main-nav{
     width: 100%;
     border-bottom: 1px solid var(--light-grey);
-    // background: #fff;
-    background: url("../../assets/nav-closed-2.svg") no-repeat;
-    background-size: cover;
+    background: #fff;
+    background-size: cover !important;
     top: 0px;
     position: relative;
     z-index: 2;
@@ -175,6 +174,7 @@
 
     @media (min-width: 720px) {
         height: auto;
+        background: url("../../assets/nav-closed-2.svg") no-repeat;
     }
 
     ul {
@@ -216,9 +216,13 @@
                 position: relative;
                 @media (min-width: 720px) {
                     margin: 0 8px;
+                    &:after {
+                        display: block;
+                    }
                 }
                 &.active-link {
                     &::after {
+                        display: block !important;
                         width: 100%;
                     }
                 }
@@ -229,6 +233,7 @@
                     }
                 }
                 &::after {
+                    display: none;
                     height: 2px;
                     width: 0;
                     background: var(--dark-blue);

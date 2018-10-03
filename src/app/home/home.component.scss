@@ -1,5 +1,22 @@
-@media (min-width: 720px) { 
+@media (max-width: 720px) { 
     .job .six:nth-child(odd) {
         clear: left;
     }
+
+    .job-information {
+        width: 100%;
+        display: inline-block;
+        h4 {
+            display: inline-block;
+            width: 100%;
+            text-align:left;
+            border-right: none;
+        }
+    }
+}
+
+
+
+.job-information {
+    position: relative;
 }

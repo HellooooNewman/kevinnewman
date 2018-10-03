@@ -1,9 +1,13 @@
 <div class="container">
-  <h2><span>Introduction</span><hr></h2>
+  <h2><span>Introduction</span>
+    <hr>
+  </h2>
   <div [innerHtml]="resume.introduction"></div>
 </div>
 <div class="container">
-  <h2><span>Work</span><hr></h2>
+  <h2><span>Work</span>
+    <hr>
+  </h2>
 </div>
 <div class="container job">
   <div class="columns six" *ngFor="let job of resume.work.jobs">
@@ -22,18 +26,22 @@
 </div>
 
 <div class="container side-projects">
-  <h2><span>Projects</span><span><a routerLink="/projects">View All</a></span><hr></h2>
+  <h2><span>Projects</span><span><a routerLink="/projects">View All</a></span>
+    <hr>
+  </h2>
   <a [attr.href]="'project/' + project.id" [routerLink]="['/project', project.id]" class="six columns" *ngFor="let project of projects | async">
     <div class="project-holder"></div>
-      <div class="img-holder">
-        <img src="{{project.thumbnail_img}}" alt="{{project.title}}">
-      </div>
-      <h3>{{project.title}}</h3>
-      <p [innerHtml]="project.body | truncate:[250, '...']"></p>
-    </a>
+    <div class="img-holder">
+      <img src="{{project.thumbnail_img}}" alt="{{project.title}}">
+    </div>
+    <h3>{{project.title}}</h3>
+    <p [innerHtml]="project.body | truncate:[250, '...']"></p>
+  </a>
 </div>
 <div class="container skills">
-  <h2><span>Skills</span><hr></h2>
+  <h2><span>Skills</span>
+    <hr>
+  </h2>
   <div class="four columns" *ngFor="let skill of resume.skills">
     <h3>{{skill.title}}</h3>
     <ul>
@@ -42,7 +50,9 @@
   </div>
 </div>
 <div class="container education">
-  <h2><span>Education</span><hr></h2>
+  <h2><span>Education</span>
+    <hr>
+  </h2>
   <div class="four columns" *ngFor="let school of resume.education">
     <h3>{{school.program}}</h3>
     <p>{{school.year}}</p>
