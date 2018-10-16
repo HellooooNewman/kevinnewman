@@ -104,29 +104,29 @@ export class HomeComponent implements OnInit {
           "Gulp - Webpack - Grunt",
           "NPM - Bower - Yarn"
         ]
-    },
-    {
-      title: "Tools",
-      list: [
-        "PC - Mac",
-        "Photoshop - Illustrator",
-        "Sketch - AdobeXD",
-        "After Effects - Premiere",
-        "3ds Max - 4D Cinema - Blender",
-        "Github - Bitbucket - Gitlab",
-        "Unity"
-      ]
-  },
-  {
-    title: "Design",
-    list: [
-      "Mobile/Web design",
-      "App design",
-      "Modeling - Animating - Rigging",
-      "Motion graphics",
-      "Character concepting"
-    ]
-  }],
+      },
+      {
+        title: "Tools",
+        list: [
+          "PC - Mac",
+          "Photoshop - Illustrator",
+          "Sketch - AdobeXD",
+          "After Effects - Premiere",
+          "3ds Max - 4D Cinema - Blender",
+          "Github - Bitbucket - Gitlab",
+          "Unity"
+        ]
+      },
+      {
+        title: "Design",
+        list: [
+          "Mobile/Web design",
+          "App design",
+          "Modeling - Animating - Rigging",
+          "Motion graphics",
+          "Character concepting"
+        ]
+      }],
     education: [{
       program: "Interactive Media Design",
       year: "Fanshawe - 2011 -2013"
@@ -142,11 +142,15 @@ export class HomeComponent implements OnInit {
   };
 
   constructor(private titleService: Title,
-              private dataService: DataService) { }
+    private dataService: DataService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.dataService.setTitle('Home');
-    this.projects = this.dataService.project.map(project =>
+
+    if (!this.dataService.projectsLoaded) {
+      this.dataService.getAllProjects();
+    }
+    this.projects = await this.dataService.project.map(project =>
       project.filter(item => {
         if (item.promote === 'True') {
           return item;
@@ -154,6 +158,4 @@ export class HomeComponent implements OnInit {
       })
     );
   }
-  
-
 }

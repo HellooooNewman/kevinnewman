@@ -2,6 +2,7 @@ import { Observable } from 'rxjs/Rx';
 import { Project } from './../interfaces/common';
 import { DataService } from './../services/services.data';
 import { Component, OnInit } from '@angular/core';
+import { PlaceholderContent } from './../shared/placeholder-content';
 
 @Component({
   selector: 'app-projects',
@@ -14,11 +15,11 @@ export class ProjectsComponent implements OnInit {
   constructor(private dataService: DataService) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.dataService.setTitle('Projects');
-    this.projects = this.dataService.project;
-  }
-
-  selectProject (project: Project) {
+    if (!this.dataService.projectsLoaded) {
+      this.dataService.getAllProjects();
+    }
+    this.projects = await this.dataService.project;
   }
 }

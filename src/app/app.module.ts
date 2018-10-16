@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule  } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +24,7 @@ import { TruncatePipe } from './pipes/truncate';
 
 import { SwiperModule } from 'angular2-useful-swiper';
 import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
+import { PlaceholderContent } from './shared/placeholder-content';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
     GameJamComponent,
     ProjectDetailComponent,
     SocialMediaLinksComponent,
+    PlaceholderContent,
     NotFoundComponent,
     TruncatePipe,
   ],

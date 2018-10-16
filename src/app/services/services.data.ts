@@ -13,6 +13,7 @@ export class DataService {
     protected baseUrl: String = 'http://localhost/api/';
     public title: Subject<String> = new Subject();
     public smallNav: Boolean = false;
+    public projectsLoaded: Boolean = false;
 
     // Data storage
     public project: Observable<Project[]>;
@@ -25,9 +26,9 @@ export class DataService {
     };
 
     constructor(private http: HttpClient,
-                private titleService: Title
-            ) {
-        this.dataStore = { projects: [], game_jams: []};
+        private titleService: Title
+    ) {
+        this.dataStore = { projects: [], game_jams: [] };
         this._project = <BehaviorSubject<Project[]>>new BehaviorSubject([]);
         this.project = this._project.asObservable();
 
@@ -64,11 +65,12 @@ export class DataService {
         if (this.dataStore.projects.length === 0) {
             this.http.get(`${this.baseUrl}projects`).subscribe((data: Array<any>) => {
                 this.dataStore.projects = data;
+                this.projectsLoaded = true;
                 this._project.next(Object.assign({}, this.dataStore).projects);
             }, error => console.log('Could not load projects.'));
         }
     }
-    
+
     getAllGames = () => {
         if (this.dataStore.game_jams.length === 0) {
             this.http.get(`${this.baseUrl}games`).subscribe((data: Array<any>) => {

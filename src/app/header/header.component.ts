@@ -1,6 +1,6 @@
 import { SocialMediaLinksComponent } from './../social-media-links/social-media-links.component';
 import { DataService } from './../services/services.data';
-import { Component, OnInit, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -105,7 +105,7 @@ export class Line {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements AfterViewInit {
 
   @ViewChild('mainNav') mainNav: ElementRef;
   public position: string;
@@ -136,7 +136,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  // ngOnInit() {
+  ngAfterViewInit() {
     this.ctx = this.canvasRef.nativeElement.getContext('2d');
     this.canvas = this.ctx.canvas;
     this.canvas.width = width;
