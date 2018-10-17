@@ -12,7 +12,7 @@ import { PlaceholderContent } from './../shared/placeholder-content';
 export class ProjectsComponent implements OnInit {
   public projects: Observable<Project[]>;
 
-  constructor(private dataService: DataService) {
+  constructor(public dataService: DataService) {
   }
 
   async ngOnInit() {
