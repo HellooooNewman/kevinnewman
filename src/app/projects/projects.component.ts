@@ -1,25 +1,26 @@
-import { Observable } from 'rxjs/Rx';
-import { Project } from './../interfaces/common';
-import { DataService } from './../services/services.data';
-import { Component, OnInit } from '@angular/core';
-import { PlaceholderContent } from './../shared/placeholder-content';
+import { Observable } from "rxjs/Rx"
+import { Project } from "./../interfaces/common"
+import { DataService } from "./../services/services.data"
+import { Component, OnInit } from "@angular/core"
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+    selector: "app-projects",
+    templateUrl: "./projects.component.html",
+    styleUrls: ["./projects.component.scss"],
 })
 export class ProjectsComponent implements OnInit {
-  public projects: Observable<Project[]>;
+    public projects: Observable<Project[]>
+    loading: boolean = false
 
-  constructor(public dataService: DataService) {
-  }
+    constructor(public dataService: DataService) {}
 
-  async ngOnInit() {
-    this.dataService.setTitle('Projects');
-    if (!this.dataService.projectsLoaded) {
-      this.dataService.getAllProjects();
+    async ngOnInit() {
+        this.loading = true
+        this.dataService.setTitle("Projects")
+        if (!this.dataService.projectsLoaded) {
+            this.loading = false
+            this.dataService.getAllProjects()
+        }
+        this.projects = await this.dataService.project
     }
-    this.projects = await this.dataService.project;
-  }
 }

@@ -1,22 +1,39 @@
-@media (max-width: 720px) { 
-    .job .six:nth-child(odd) {
-        clear: left;
-    }
-
-    .job-information {
-        width: 100%;
-        display: inline-block;
-        h4 {
-            display: inline-block;
-            width: 100%;
-            text-align:left;
-            border-right: none;
+.job-information {
+    position: relative;
+    button {
+        top: 0;
+        position: absolute;
+        margin-top: 2rem;
+        right: 0;
+        @media screen and (max-width: 768px) {
+            float: none;
+            margin: 1rem auto;
+            display: block;
+            position: relative;
         }
     }
 }
 
+.employer__ {
+    &name,
+    &job-title {
+        display: inline-block;
+        margin-bottom: 7px;
+    }
+    &logo {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        transform: translateY(12px);
+    }
+    &year,
+    &location {
+        display: inline-block;
+        padding-right: 15px;
+    }
+}
 
-
-.job-information {
-    position: relative;
+.job ul {
+    float: left;
+    width: 100%;
 }
