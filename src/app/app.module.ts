@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
 import { FormsModule } from "@angular/forms"
 import { CustomFormsModule } from "ng2-validation"
 import { ReactiveFormsModule } from "@angular/forms"
+import { CommonModule } from "@angular/common"
 
 import { HomeComponent } from "./home/home.component"
 import { ContactComponent } from "./contact/contact.component"
@@ -50,6 +51,7 @@ import { SharedModule } from "./shared/shared.module"
         SwiperModule,
         LazyLoadImagesModule,
         SharedModule,
+        CommonModule,
     ],
     providers: [DataService],
     bootstrap: [AppComponent],
