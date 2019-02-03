@@ -31,11 +31,10 @@
                 View More
             </button>
         </div>
-        <div
-            class="details"
-            *ngIf="job.showDetails"
-            [innerHTML]="job.points"
-        ></div>
+        <div *ngIf="job.showDetails">
+            <div class="details" [innerHTML]="job.points"></div>
+            <p>{{ job.technology }}</p>
+        </div>
     </div>
 </div>
 

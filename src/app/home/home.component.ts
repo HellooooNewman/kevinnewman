@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
                     <li>Frontend development of Angular 2+ applications as well as maintance of AngularJs apps</li>
                     <li>Unit test code to ensure quality</li>
                     <li>2 weeks sprints in an agile setting</li>
-                    <li>Manage support requests from users (Writers, Artists, Students, Teachers)</li>
                     </ul>`,
                     technology: "ES6, HTML, SCSS, Angular 2+, ",
                 },
@@ -71,13 +70,12 @@ export class HomeComponent implements OnInit {
                     location: "Toronto, CA",
                     desc: "",
                     points: `<ul>
-                    <li>asdfasdfasdf</li>
-                    <li>asdfasdfasdf</li>
-                    <li>asdfasdfasdf</li>
-                    <li>asdfasdfasdf</li>
-                    <li>asdfasdfasdf</li>
+                    <li>Interim and current website in React</li>
+                    <li>Technical estimates for RFPs</li>
+                    <li>Manage exiting Magento Ecommerce site</li>
+                    <li>Shopify ecommerce bees website</li>
                     </ul>`,
-                    technology: "Magento, PHP, React, ES6, Webpack, Sketch,",
+                    technology: "React, Node, Magento",
                 },
                 {
                     logo: "./assets/company-logos/Grassriots.png",

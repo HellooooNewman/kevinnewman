@@ -15,6 +15,9 @@
 }
 
 .employer__ {
+    &name {
+        margin: 0 10px;
+    }
     &name,
     &job-title {
         display: inline-block;
