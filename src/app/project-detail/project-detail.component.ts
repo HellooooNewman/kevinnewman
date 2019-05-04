@@ -2,6 +2,7 @@ import { DataService } from './../services/services.data';
 import { Project } from './../interfaces/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-project-detail',
@@ -9,12 +10,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./project-detail.component.scss']
 })
 export class ProjectDetailComponent implements OnInit, OnDestroy {
-
-  public project: Project;
-  public nextProject: Project;
-  public prevProject: Project;
+  public project: Observable<Project>
+  // public nextProject: Project;
+  // public prevProject: Project;
   private id: Number;
   private sub: any;
+  loading: boolean = false
 
   config: SwiperOptions = {
     pagination: '.swiper-pagination',
@@ -30,32 +31,41 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService,
               private route: ActivatedRoute) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.sub = this.route.params.subscribe(params => this.id = params['id']);
-    this.dataService.getProject(this.id).subscribe(project => {
-      this.project = project;
-      if (this.project !== undefined) {
-        this.dataService.setTitle(this.project.title);
-        this.getNextPreviousProjects(project);
-      }
-    });
+    this.loading = true
+    if (!this.dataService.projectsLoaded) {
+      this.dataService.getProject(this.id)
+      this.loading = false
+    }
+    this.project = await this.dataService.project.map(_proj => {
+      
+      let proj = _proj.filter(p => p.id === this.id.toString())[0]
+      if(proj !== undefined)
+        this.dataService.setTitle(proj.title);
+      return proj
+    }
+    );
+
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+    // this._project.unsubscribe();
+    // this.project = null;
   }
 
-  getNextPreviousProjects(project) {
-    this.dataService.getNextPreviousProject(project).subscribe(data => {
-      this.prevProject = data[0];
-      this.nextProject = data[1];
-    });
-  }
+  // getNextPreviousProjects(project) {
+  //   this.dataService.getNextPreviousProject(project).subscribe(data => {
+  //     this.prevProject = data[0];
+  //     this.nextProject = data[1];
+  //   });
+  // }
 
-  changeProject(project) {
-    this.id = Number(this.project.id);
-    this.getNextPreviousProjects(project);
-    this.project = project;
-    this.dataService.setTitle(this.project.title);
-  }
+  // changeProject(project) {
+  //   this.id = Number(this.project.id);
+  //   this.getNextPreviousProjects(project);
+  //   this.project = project;
+  //   this.dataService.setTitle(this.project.title);
+  // }
 }

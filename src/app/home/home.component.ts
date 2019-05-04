@@ -202,7 +202,6 @@ export class HomeComponent implements OnInit {
     }
 
     constructor(
-        private titleService: Title,
         private dataService: DataService
     ) {}
 
@@ -213,8 +212,8 @@ export class HomeComponent implements OnInit {
             this.dataService.getFeaturedProjects()
             this.loading = false
         }
-        this.projects = await this.dataService.featured.map(project =>
-            project.filter(item => {
+        this.projects = await this.dataService.project.map(_project =>
+            _project.filter(item => {
                 if (item.promote === "True") {
                     return item
                 }

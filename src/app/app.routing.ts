@@ -15,7 +15,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, data: { state: 'home' }},
   { path: 'contact', component: ContactComponent, data: { state: 'contact' }},
   { path: 'game-jams', component: GameJamComponent, data: { state: 'game-jams' }},
-  { path: 'projects', component: ProjectsComponent, data: { state: 'routerAnimation' }},
+  { path: 'projects', component: ProjectsComponent, data: { state: 'projects' }},
   { path: 'project/:id', component: ProjectDetailComponent, data: { state: 'project' }},
   { path: '404', component: NotFoundComponent, data: { state: '404' }},
   { path: '**', redirectTo: '/404' }

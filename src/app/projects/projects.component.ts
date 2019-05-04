@@ -17,6 +17,7 @@ export class ProjectsComponent implements OnInit {
     async ngOnInit() {
         this.loading = true
         this.dataService.setTitle("Projects")
+        this.dataService.projectsLoaded = false
         if (!this.dataService.projectsLoaded) {
             this.loading = false
             this.dataService.getAllProjects()

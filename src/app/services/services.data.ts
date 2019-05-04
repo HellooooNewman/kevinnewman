@@ -18,29 +18,19 @@ export class DataService {
     public featuredProjectsLoaded: Boolean = false
 
     // Data storage
-    private _project: BehaviorSubject<Project[]> = <BehaviorSubject<Project[]>>(
-        new BehaviorSubject([])
-    )
+    private _project: BehaviorSubject<Project[]> = <BehaviorSubject<Project[]>>(new BehaviorSubject([]))
     public project: Observable<Project[]> = this._project.asObservable()
 
-    private _featured: BehaviorSubject<Project[]> = <
-        BehaviorSubject<Project[]>
-    >new BehaviorSubject([])
-    public featured: Observable<Project[]> = this._featured.asObservable()
-
-    private _game_jam: BehaviorSubject<GameJam[]> = <
-        BehaviorSubject<GameJam[]>
-    >new BehaviorSubject([])
+    private _game_jam: BehaviorSubject<GameJam[]> = <BehaviorSubject<GameJam[]>>new BehaviorSubject([])
     public game_jam: Observable<GameJam[]> = this._game_jam.asObservable()
 
     public dataStore: {
         projects: Project[]
         game_jams: GameJam[]
-        featured: Project[]
     }
 
     constructor(private http: HttpClient, private titleService: Title) {
-        this.dataStore = { projects: [], game_jams: [], featured: [] }
+        this.dataStore = { projects: [], game_jams: [] }
 
         if (environment.production) {
             this.baseUrl = "https://www.kevinnewman.ca/api/"
@@ -62,10 +52,18 @@ export class DataService {
      * @param id Project number
      * @returns Observable project
      */
-    getProject = (id: Number): Observable<Project> => {
-        return this.project.map(
-            data => data.filter(project => project.id === id.toString())[0]
-        )
+    getProject = (id: Number) => {
+        if (this.dataStore.projects.length === 0) {
+            this.http.get(`${this.baseUrl}projects/${id}`).subscribe(
+                (data: Array<Project>) => {
+                    this.dataStore.projects = data
+                    this._project.next(
+                        Object.assign({}, this.dataStore).projects
+                    )
+                },
+                error => console.log("Could not load featured projects.")
+            )
+        }
     }
 
     /**
@@ -90,7 +88,7 @@ export class DataService {
      * @returns returns obersvable array of projects
      */
     getAllProjects = () => {
-        if (this.dataStore.projects.length === 0) {
+        // if (this.dataStore.projects.length === 0) {
             this.http.get(`${this.baseUrl}projects`).subscribe(
                 (data: Array<Project>) => {
                     this.dataStore.projects = data
@@ -101,7 +99,7 @@ export class DataService {
                 },
                 error => console.log("Could not load projects.")
             )
-        }
+        // }
     }
 
     /**
@@ -109,13 +107,13 @@ export class DataService {
      * @returns returns observable array of featured projects
      */
     getFeaturedProjects = () => {
-        if (this.dataStore.featured.length === 0) {
+        if (this.dataStore.projects.length === 0) {
             this.http.get(`${this.baseUrl}projects-featured`).subscribe(
                 (data: Array<Project>) => {
-                    this.dataStore.featured = data
+                    this.dataStore.projects = data
                     this.featuredProjectsLoaded = true
-                    this._featured.next(
-                        Object.assign({}, this.dataStore).featured
+                    this._project.next(
+                        Object.assign({}, this.dataStore).projects
                     )
                 },
                 error => console.log("Could not load featured projects.")

@@ -6,13 +6,13 @@ export interface Project {
   body: string;
   start_date: string;
   end_date: string;
-  gallery: Gallery;
+  gallery: Gallery[];
   project_type: string;
   project_url: string;
   roles: string;
   tasks: Task[];
   promote: string;
-  videos: Video;
+  videos: Video[];
 }
 
 export interface Task {
