@@ -14,7 +14,7 @@
 <div class="container job">
     <div class="columns twelve" *ngFor="let job of resume.work.jobs">
         <div class="job-information">
-            <a href="{{ job.employer_link }}" target="_blank">
+            <a href="{{ job.employer_link }}" rel="noopener" target="_blank">
                 <img
                     class="employer__logo"
                     src="{{ job.logo }}"
