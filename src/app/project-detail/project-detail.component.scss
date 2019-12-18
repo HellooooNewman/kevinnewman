@@ -14,7 +14,7 @@
         bottom: -1px;
         width: 100%;
         height: 77px;
-        background-image: url('../../assets/triangle.svg');
+        background-image: url('../../assets/images/triangle.svg');
         background-size: cover;
         padding: 0;
         padding-bottom: 10%;
@@ -27,10 +27,10 @@
     &.project-next {
         color: red;
     }
-    
+
     &.project-prev {
         color: red;
-    }    
+    }
 }
 
 .project-link {

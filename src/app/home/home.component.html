@@ -23,9 +23,11 @@
                 <h3 class="employer__name">{{ job.employer }}</h3>
             </a>
             <h4 class="employer__job-title">{{ job.title }}</h4>
+            <h5 class="employer__type">{{ job.employment_type }}</h5>
             <div>
                 <h5 class="employer__year">{{ job.year }}</h5>
                 <h5 class="employer__location">{{ job.location }}</h5>
+
             </div>
             <button (click)="job.showDetails = !job.showDetails">
                 View More
@@ -59,7 +61,7 @@
             <img src="{{ project.thumbnail_img }}" alt="{{ project.title }}" />
         </div>
         <h3>{{ project.title }}</h3>
-        <p [innerHtml]="project.body | truncate: [250, '...']"></p>
+        <p [innerHtml]="project.body | truncate: [400, '...']"></p>
     </a>
     <!-- </div> -->
 </div>

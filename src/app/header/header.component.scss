@@ -22,6 +22,10 @@
     }
 }
 
+.github-link {
+  display: none;
+}
+
 #skyCanvas {
     position: absolute;
     -webkit-user-select: none;
@@ -40,7 +44,7 @@
     a {
         position: absolute;
         right: 10px;
-        
+
         @media (min-width: 720px) {
             right: auto;
             position: relative;
@@ -49,7 +53,7 @@
         &:hover:after {
             box-shadow: 0px -10px 40px 2px rgb(0, 0, 0);
         }
-        
+
         &:after {
             transition: box-shadow ease-in-out 0.1s;
             content: '';
@@ -60,7 +64,7 @@
             z-index: -1;
         }
     }
-    
+
     h1 {
         @media screen and (max-width: 720px) {
             font-size: 1.4rem;
@@ -73,12 +77,12 @@
             display: block;
         }
     }
-    
+
     .mountains {
         position: absolute;
         height: 60px;
         width: 100%;
-        background: url('../../assets/mountains.svg');
+        background: url('../../assets/images/mountains.svg');
         z-index: -1;
         background-clip: padding-box;
         top: -38px;
@@ -118,7 +122,7 @@
         position: absolute;
         top: -20px;
     }
-    
+
     #small-logo {
         height: 40px;
         padding-right: 20px;
@@ -131,7 +135,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            
+
             &:after {
                 display: none;
             }
@@ -152,7 +156,7 @@
         &:hover {
             opacity: 0.7;
         }
-        
+
         @media (min-width: 720px) {
             display: none;
         }
@@ -174,16 +178,16 @@
 
     @media (min-width: 720px) {
         height: auto;
-        background: url("../../assets/nav-closed-2.svg") no-repeat;
+        background: url("../../assets/images/nav-closed-2.svg") no-repeat;
     }
 
     ul {
-        
+
         padding: 0px;
         display: flex;
         overflow: hidden;
         justify-content: space-evenly;
-        max-height: 0;        
+        max-height: 0;
         transition: max-height 1s ease-in-out;
         margin: 0;
 
@@ -198,7 +202,7 @@
             max-height: none;
             justify-content: flex-end;
         }
-        
+
         li {
             margin: 1.2rem 0 0 0;
             display: inline-block;

@@ -13,6 +13,7 @@ export interface Project {
   tasks: Task[];
   promote: string;
   videos: Video[];
+  showDetails: boolean;
 }
 
 export interface Task {
