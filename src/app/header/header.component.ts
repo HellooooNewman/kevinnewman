@@ -179,7 +179,7 @@ export class HeaderComponent implements AfterViewInit {
     }
   }
 
-  @HostListener('click', ['$event'])
+  @HostListener('mousemove', ['$event'])
   draw(event) {
     if (event.target !== this.canvas) {
       return;
