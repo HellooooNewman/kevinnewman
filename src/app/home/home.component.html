@@ -16,6 +16,7 @@
         <div class="job-information">
             <a href="{{ job.employer_link }}" rel="noopener" target="_blank">
                 <img
+                    loading="lazy"
                     class="employer__logo"
                     src="{{ job.logo }}"
                     alt="{{ job.employer }}"
@@ -58,7 +59,11 @@
     >
         <div class="project-holder"></div>
         <div class="img-holder">
-            <img src="{{ project.thumbnail_img }}" alt="{{ project.title }}" />
+            <img
+                src="{{ project.thumbnail_img }}"
+                alt="{{ project.title }}"
+                loading="lazy"
+            />
         </div>
         <h3>{{ project.title }}</h3>
         <p [innerHtml]="project.body | truncate: [400, '...']"></p>

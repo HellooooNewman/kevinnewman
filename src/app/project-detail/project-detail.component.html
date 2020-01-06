@@ -1,7 +1,7 @@
 <ng-container *ngIf="project != undefined">
   <div class="project-detail-header" [style.background-image]="'url(' + (project | async)?.main_img + ')'"></div>
   <div class="container">
-  
+
     <a href="{{(project | async).project_url}}" *ngIf="(project | async).project_url != ''" class="project-link button button-primary" target="_blank">Project Link</a>
     <div class="row">
       <div class="eight column" id="project-summary">
@@ -35,10 +35,15 @@
           <source *ngFor="let video of (project | async).videos" src="{{video.url}}" type="video/mp4"> Your browser does not support the video tag.
         </video>
       </div>
-  
+
       <swiper [config]="config" *ngIf="(project | async).gallery.length != 0">
         <div class="swiper-wrapper">
-          <img class="swiper-slide" *ngFor="let image of (project | async).gallery" [src]="image.url" alt="image.alt">
+          <img
+              class="swiper-slide"
+              *ngFor="let image of (project | async).gallery"
+              [src]="image.url" alt="image.alt"
+              loading="lazy"
+              >
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-next swiper-button-white"></div>
