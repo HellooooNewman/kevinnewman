@@ -1,7 +1,7 @@
 import { SocialMediaLinksComponent } from './../social-media-links/social-media-links.component';
 import { DataService } from './../services/services.data';
 import { Component, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation, AfterViewInit } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from "@angular/common";
 import { Router, NavigationEnd } from '@angular/router';
 
 // canvas dimensions

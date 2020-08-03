@@ -1,6 +1,6 @@
 import { DataService } from './services/services.data';
 import { Component, ViewEncapsulation, HostListener, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from "@angular/common";
 import { Router, NavigationEnd } from '@angular/router';
 
 import { routerTransition } from './router.animations';
