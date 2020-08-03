@@ -133,9 +133,7 @@
   },
   "defaultProject": "kevinnewman2017",
   "cli": {
-    "warnings": {
-      "typescriptMismatch": false
-    }
+    "warnings": {}
   },
   "schematics": {
     "@schematics/angular:component": {
