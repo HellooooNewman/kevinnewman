@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "webpack-dev-server --port=4200",
-    "build": "webpack",
+    "start": "ng serve",
+    "build": "ng build --prod",
     "lint": "ng lint",
     "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer dist/stats.json"
   },

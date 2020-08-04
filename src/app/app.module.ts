@@ -13,7 +13,7 @@ import { ContactComponent } from "./contact/contact.component"
 import { AppComponent } from "./app.component"
 import { FooterComponent } from "./footer/footer.component"
 import { HeaderComponent } from "./header/header.component"
-import { routes } from "./app.routing"
+import { routes, AppRoutingModule } from "./app.routing"
 import { ProjectsComponent } from "./projects/projects.component"
 import { GameJamComponent } from "./game-jam/game-jam.component"
 import { ProjectDetailComponent } from "./project-detail/project-detail.component"
@@ -27,33 +27,33 @@ import { LazyLoadImagesModule } from "ngx-lazy-load-images"
 import { SharedModule } from "./shared/shared.module"
 
 @NgModule({
-    declarations: [
-        HomeComponent,
-        ContactComponent,
-        AppComponent,
-        FooterComponent,
-        HeaderComponent,
-        ProjectsComponent,
-        GameJamComponent,
-        ProjectDetailComponent,
-        SocialMediaLinksComponent,
-        NotFoundComponent,
-        TruncatePipe,
-    ],
-    imports: [
-        HttpClientModule,
-        BrowserModule,
-        RouterModule.forRoot(routes),
-        BrowserAnimationsModule,
-        FormsModule,
-        CustomFormsModule,
-        ReactiveFormsModule,
-        SwiperModule,
-        LazyLoadImagesModule,
-        SharedModule,
-        CommonModule,
-    ],
-    providers: [DataService],
-    bootstrap: [AppComponent],
+  declarations: [
+    HomeComponent,
+    ContactComponent,
+    AppComponent,
+    FooterComponent,
+    HeaderComponent,
+    ProjectsComponent,
+    GameJamComponent,
+    ProjectDetailComponent,
+    SocialMediaLinksComponent,
+    NotFoundComponent,
+    TruncatePipe,
+  ],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    CustomFormsModule,
+    ReactiveFormsModule,
+    SwiperModule,
+    LazyLoadImagesModule,
+    SharedModule,
+    CommonModule,
+  ],
+  providers: [DataService],
+  bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

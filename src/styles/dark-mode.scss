@@ -1,18 +1,19 @@
-@media (prefers-color-scheme: dark) {
+// @media (prefers-color-scheme: dark) { // Prefer the brand of my site in white
+.dark-mode {
     body, #main-nav, app-home {
         color: #fff;
         background: #222;
     }
 
-    a, p {
+    a, p, button {
         color: #fff;
     }
 
-    .sky-header, #main-nav, #kevin-nav {
+    .sky-header, #main-nav, #kevin-nav, ::-webkit-scrollbar-track {
         background: #222!important;
     }
 
-    .mountains {
+    .mountains, .timeline-item {
       filter: brightness(0.43) drop-shadow(25px -7px 6px #00000050) saturate(0);
     }
 
@@ -20,7 +21,40 @@
         color: #222;
     }
 
-    .sky-header .logo {
-      fill: #222;
+    .logo path, #small-logo path {
+      fill: #fff;
+    }
+
+    .envelope {
+      background: #333!important;
+    }
+
+    input[type="email"], input[type="number"], input[type="date"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select {
+      border: 1px solid #111;
+      background-color: #222;
+      color: #fff;
+      &::placeholder {
+        color: #aaa;
+      }
+    }
+    placeholder-content {
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    &__btn {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      display: block;
+
+      &--light {
+        background: #fff;
+        color: #222222d1 !important;
+      }
+
+      &--dark {
+        background: #222;
+      }
     }
 }

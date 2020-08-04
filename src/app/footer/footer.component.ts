@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router, NavigationEnd} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -8,8 +8,7 @@ import { Router, NavigationEnd} from '@angular/router';
 })
 export class FooterComponent implements OnInit {
   public isContactPage: boolean = false;
-  public footerBg = "./assets/ground.svg";
-  
+
   constructor(private router: Router) { }
 
   ngOnInit() {

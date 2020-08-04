@@ -6,11 +6,14 @@
   <p>
     Thanks for coming by. <strong>Have a nice day</strong>
   </p>
-  <a *ngIf="!isContactPage" class="button button-primary contact-link" routerLink="/contact">Contact Me</a>
+  <a *ngIf="!isContactPage"
+     class="button button-primary contact-link"
+     routerLink="/contact">Contact Me</a>
 </div>
 <p>
   Designed and developed by Kevin Newman
 </p>
 <span lazy-load-images>
-  <div class="footer-background" [attr.data-background-src]="footerBg" [class.is-contact-page]="isContactPage" ></div>
+  <div class="footer-background"
+       [class.is-contact-page]="isContactPage"></div>
 </span>
