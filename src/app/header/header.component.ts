@@ -1,7 +1,7 @@
 import { SocialMediaLinksComponent } from './../social-media-links/social-media-links.component';
 import { DataService } from './../services/services.data';
-import { Component, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation, AfterViewInit } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { Component, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation, AfterViewInit, Renderer2 } from '@angular/core';
+import { DOCUMENT } from "@angular/common";
 import { Router, NavigationEnd } from '@angular/router';
 
 // canvas dimensions
@@ -117,6 +117,7 @@ export class HeaderComponent implements AfterViewInit {
   private running: boolean;
   openedBool: boolean = false;
   isActive: boolean = false;
+  isDarkMode: boolean = false;
 
   // Particles
   private maxParticles = 50;
@@ -129,11 +130,14 @@ export class HeaderComponent implements AfterViewInit {
 
   constructor(public ngZone: NgZone,
     public dataService: DataService,
+    private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document,
     private router: Router) {
     this.router.events.subscribe(event => {
       this.openedBool = false;
     });
+
+
   }
 
   // ngOnInit() {
@@ -159,6 +163,12 @@ export class HeaderComponent implements AfterViewInit {
 
     this.running = true;
     this.ngZone.runOutsideAngular(() => this.update());
+
+    // Dark mode check
+    this.isDarkMode = localStorage.getItem('dark-mode') == 'true' ? true : false;
+    if (this.isDarkMode) {
+      this.setDarkMode();
+    }
   }
 
   @HostListener('window:scroll', [])
@@ -218,5 +228,15 @@ export class HeaderComponent implements AfterViewInit {
       this.backgroundParticles[i].update();
     }
     requestAnimationFrame(() => this.update());
+  }
+
+  toggleDarkMode() {
+    this.isDarkMode = this.isDarkMode ? false : true;
+    this.setDarkMode();
+  }
+
+  setDarkMode() {
+    localStorage.setItem('dark-mode', this.isDarkMode.toString());
+    this.renderer[this.isDarkMode ? 'addClass' : 'removeClass'](document.documentElement, 'dark-mode');
   }
 }
