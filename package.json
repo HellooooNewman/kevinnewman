@@ -67,7 +67,7 @@
     "typescript": "^3.5.3",
     "url-loader": "^0.5.7",
     "webpack": "^4.44.1",
-    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   }
