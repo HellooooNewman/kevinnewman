@@ -1,94 +1,89 @@
 <div class="container">
-    <h2>
-        <span>Introduction</span>
-        <hr />
-    </h2>
-    <div [innerHtml]="resume.introduction"></div>
+  <h2>
+    <span>Introduction</span>
+    <hr />
+  </h2>
+  <div [innerHtml]="resume.introduction"></div>
 </div>
 <div class="container">
-    <h2>
-        <span>Work</span>
-        <hr />
-    </h2>
+  <h2>
+    <span>Work</span>
+    <hr />
+  </h2>
 </div>
 <div class="container job">
-    <div class="columns twelve" *ngFor="let job of resume.work.jobs">
-        <div class="job-information">
-            <a href="{{ job.employer_link }}" rel="noopener" target="_blank">
-                <img
-                    loading="lazy"
-                    class="employer__logo"
-                    src="{{ job.logo }}"
-                    alt="{{ job.employer }}"
-                />
-                <h3 class="employer__name">{{ job.employer }}</h3>
-            </a>
-            <h4 class="employer__job-title">{{ job.title }}</h4>
-            <h5 class="employer__type">{{ job.employment_type }}</h5>
-            <div>
-                <h5 class="employer__year">{{ job.year }}</h5>
-                <h5 class="employer__location">{{ job.location }}</h5>
+  <div class="columns twelve"
+       *ngFor="let job of resume.work.jobs">
+    <div class="job-information">
+      <a href="{{ job.employer_link }}"
+         rel="noopener"
+         target="_blank">
+        <img loading="lazy"
+             class="employer__logo"
+             src="{{ job.logo }}"
+             alt="{{ job.employer }}" />
+        <h3 class="employer__name">{{ job.employer }}</h3>
+      </a>
+      <h4 class="employer__job-title">{{ job.title }}</h4>
+      <h5 class="employer__type">{{ job.employment_type }}</h5>
+      <div>
+        <h5 class="employer__year">{{ job.year }}</h5>
+        <h5 class="employer__location">{{ job.location }}</h5>
 
-            </div>
-            <button (click)="job.showDetails = !job.showDetails">
-                View More
-            </button>
-        </div>
-        <div *ngIf="job.showDetails">
-            <div class="details" [innerHTML]="job.points"></div>
-            <p>{{ job.technology }}</p>
-        </div>
+      </div>
+      <button (click)="job.showDetails = !job.showDetails">
+        View More
+      </button>
     </div>
+    <div *ngIf="job.showDetails">
+      <div class="details"
+           [innerHTML]="job.points"></div>
+      <p>{{ job.technology }}</p>
+    </div>
+  </div>
 </div>
 
-<div class="container side-projects">
-    <h2>
-        <span>Projects</span><span><a routerLink="/projects">View All</a></span>
-        <hr />
-    </h2>
-    <!-- <div class="project-holder" *ngIf="!dataService.featuredProjectsLoaded">
-        <placeholder-content></placeholder-content>
-        <placeholder-content></placeholder-content>
+<div class="container side-projects"
+     *ngIf="(projects$ | async).length">
+  <h2>
+    <span>Projects</span><span><a routerLink="/projects">View All</a></span>
+    <hr />
+  </h2>
+  <a [attr.href]="'project/' + project.id"
+     [routerLink]="['/project', project.id]"
+     class="six columns"
+     *ngFor="let project of (projects$ | async)">
+    <div class="project-holder"></div>
+    <div class="img-holder">
+      <img src="{{ project.thumbnail_img }}"
+           alt="{{ project.title }}"
+           loading="lazy" />
     </div>
-    <div *ngIf="dataService.featuredProjectsLoaded"> -->
-    <a
-        [attr.href]="'project/' + project.id"
-        [routerLink]="['/project', project.id]"
-        class="six columns"
-        *ngFor="let project of (projects | async)"
-    >
-        <div class="project-holder"></div>
-        <div class="img-holder">
-            <img
-                src="{{ project.thumbnail_img }}"
-                alt="{{ project.title }}"
-                loading="lazy"
-            />
-        </div>
-        <h3>{{ project.title }}</h3>
-        <p [innerHtml]="project.body | truncate: [400, '...']"></p>
-    </a>
-    <!-- </div> -->
+    <h3>{{ project.title }}</h3>
+    <p [innerHtml]="project.body | truncate: [400, '...']"></p>
+  </a>
 </div>
 <div class="container skills">
-    <h2>
-        <span>Skills</span>
-        <hr />
-    </h2>
-    <div class="four columns" *ngFor="let skill of resume.skills">
-        <h3>{{ skill.title }}</h3>
-        <ul>
-            <li *ngFor="let item of skill.list">{{ item }}</li>
-        </ul>
-    </div>
+  <h2>
+    <span>Skills</span>
+    <hr />
+  </h2>
+  <div class="four columns"
+       *ngFor="let skill of resume.skills">
+    <h3>{{ skill.title }}</h3>
+    <ul>
+      <li *ngFor="let item of skill.list">{{ item }}</li>
+    </ul>
+  </div>
 </div>
 <div class="container education">
-    <h2>
-        <span>Education</span>
-        <hr />
-    </h2>
-    <div class="four columns" *ngFor="let school of resume.education">
-        <h3>{{ school.program }}</h3>
-        <p>{{ school.year }}</p>
-    </div>
+  <h2>
+    <span>Education</span>
+    <hr />
+  </h2>
+  <div class="four columns"
+       *ngFor="let school of resume.education">
+    <h3>{{ school.program }}</h3>
+    <p>{{ school.year }}</p>
+  </div>
 </div>

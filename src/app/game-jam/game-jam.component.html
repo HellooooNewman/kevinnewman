@@ -1,48 +1,40 @@
 <div class="container">
-    <div class="project-holder" *ngIf="!dataService.projectsLoaded">
-        <placeholder-content></placeholder-content>
-        <placeholder-content></placeholder-content>
-        <placeholder-content></placeholder-content>
-    </div>
-    <div *ngIf="dataService.projectsLoaded">
-        <h2 style="text-align: center;"><em>What is a Game Jam?</em></h2>
-        <p>
-            A game jam is a hackathon for video games. It is a gathering of
-            people for the purpose of planning, designing, and creating one or
-            more games within a short span of time, usually ranging between 24
-            and 72 hours, and some even longer.
-            <a
-                style="text-decoration:underline"
-                href="https://en.wikipedia.org/wiki/Game_jam"
-                target="_blank"
-                >Wikipedia</a
-            >
-        </p>
-        <a
-            href="{{ gameJam.url }}"
-            target="_blank"
-            class="row"
-            *ngFor="let gameJam of (gameJams | async)"
-        >
-            <div class="gameJams-holder">
-                <div class="four column img-holder">
-                    <img
-                        loading="lazy"
-                        src="{{ gameJam.cover_url }}"
-                        alt="{{ gameJam.title }}"
-                    />
-                </div>
-                <div class="eight column">
-                    <h3>{{ gameJam.title }}</h3>
-                    <p
-                        [innerHtml]="
+  <div class="project-holder"
+       *ngIf="(gameJams | async).length === 0">
+    <placeholder-content></placeholder-content>
+    <placeholder-content></placeholder-content>
+    <placeholder-content></placeholder-content>
+  </div>
+  <div *ngIf="(gameJams | async).length">
+    <h2 style="text-align: center;"><em>What is a Game Jam?</em></h2>
+    <p>
+      A game jam is a hackathon for video games. It is a gathering of
+      people for the purpose of planning, designing, and creating one or
+      more games within a short span of time, usually ranging between 24
+      and 72 hours, and some even longer.
+      <a style="text-decoration:underline"
+         href="https://en.wikipedia.org/wiki/Game_jam"
+         target="_blank">Wikipedia</a>
+    </p>
+    <a href="{{ gameJam.url }}"
+       target="_blank"
+       class="row"
+       *ngFor="let gameJam of (gameJams | async)">
+      <div class="gameJams-holder">
+        <div class="four column img-holder">
+          <img loading="lazy"
+               src="{{ gameJam.cover_url }}"
+               alt="{{ gameJam.title }}" />
+        </div>
+        <div class="eight column">
+          <h3>{{ gameJam.title }}</h3>
+          <p [innerHtml]="
                             gameJam.short_text.length > 320
                                 ? (gameJam.short_text | slice: 0:320) + '...'
                                 : gameJam.short_text
-                        "
-                    ></p>
-                </div>
-            </div>
-        </a>
-    </div>
+                        "></p>
+        </div>
+      </div>
+    </a>
+  </div>
 </div>

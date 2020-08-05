@@ -11,18 +11,15 @@ export class DataService {
   protected baseUrl: String = "https://www.kevinnewman.ca/api/"
   public title: Subject<String> = new Subject()
   public smallNav: Boolean = false
-  public projectsLoaded: Boolean = false
-  public gameJamLoaded: Boolean = false
-  public featuredProjectsLoaded: Boolean = false
 
   // Data storage
-  private _project: BehaviorSubject<Project[]> = <BehaviorSubject<Project[]>>(new BehaviorSubject([]))
+  private _project = <BehaviorSubject<Project[]>>(new BehaviorSubject([]))
   public project: Observable<Project[]> = this._project.asObservable()
 
-  private _game_jam: BehaviorSubject<GameJam[]> = <BehaviorSubject<GameJam[]>>new BehaviorSubject([])
+  private _game_jam = <BehaviorSubject<GameJam[]>>new BehaviorSubject([])
   public game_jam: Observable<GameJam[]> = this._game_jam.asObservable()
 
-  public dataStore: {
+  private dataStore: {
     projects: Project[]
     game_jams: GameJam[]
   }
@@ -45,76 +42,19 @@ export class DataService {
   }
 
   /**
-   * Get project by id
-   * Not used.
-   * @param id Project number
-   * @returns Observable project
-   */
-  getProject = (id: Number) => {
-    if (this.dataStore.projects.length === 0) {
-      this.http.get(`${this.baseUrl}projects/${id}`).subscribe(
-        (data: Array<Project>) => {
-          this.dataStore.projects = data
-          this._project.next(
-            Object.assign({}, this.dataStore).projects
-          )
-        },
-        error => console.log("Could not load featured projects.")
-      )
-    }
-  }
-
-  /**
-   * Get all projects
-   * Not used.
-   * @returns Observable project
-   */
-  getNextPreviousProject = (project): Observable<Project[]> => {
-    return this.project.map(data => {
-      let projects = []
-      if (data) {
-        let index = data.indexOf(project)
-        projects.push(data[1 - index])
-        projects.push(data[1 + index])
-        return projects
-      }
-    })
-  }
-
-  /**
    * Get all projects
    * @returns returns obersvable array of projects
    */
   getAllProjects = () => {
-    // if (this.dataStore.projects.length === 0) {
-    this.http.get(`${this.baseUrl}projects`).subscribe(
-      (data: Array<Project>) => {
-        this.dataStore.projects = data
-        this.projectsLoaded = true
-        this._project.next(
-          Object.assign({}, this.dataStore).projects
-        )
-      },
-      error => console.log("Could not load projects.")
-    )
-    // }
-  }
-
-  /**
-   * Get all projects
-   * @returns returns observable array of featured projects
-   */
-  getFeaturedProjects = () => {
     if (this.dataStore.projects.length === 0) {
-      this.http.get(`${this.baseUrl}projects-featured`).subscribe(
+      this.http.get(`${this.baseUrl}projects`).subscribe(
         (data: Array<Project>) => {
           this.dataStore.projects = data
-          this.featuredProjectsLoaded = true
           this._project.next(
             Object.assign({}, this.dataStore).projects
           )
         },
-        error => console.log("Could not load featured projects.")
+        error => console.log("Could not load projects.")
       )
     }
   }
@@ -128,7 +68,6 @@ export class DataService {
       this.http.get(`${this.baseUrl}games`).subscribe(
         (data: Array<GameJam>) => {
           this.dataStore.game_jams = data
-          this.gameJamLoaded = true
           this._game_jam.next(
             Object.assign({}, this.dataStore).game_jams
           )

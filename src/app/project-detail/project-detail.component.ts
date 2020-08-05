@@ -2,7 +2,8 @@ import { DataService } from './../services/services.data';
 import { Project } from './../interfaces/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-project-detail',
@@ -14,8 +15,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   // public nextProject: Project;
   // public prevProject: Project;
   private id: Number;
-  private sub: any;
-  loading: boolean = false
+  private sub: Subscription;
 
   config: SwiperOptions = {
     pagination: '.swiper-pagination',
@@ -29,30 +29,21 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   };
 
   constructor(private dataService: DataService,
-              private route: ActivatedRoute) { }
+    private route: ActivatedRoute) { }
 
   async ngOnInit() {
-    this.sub = this.route.params.subscribe(params => this.id = params['id']);
-    this.loading = true
-    if (!this.dataService.projectsLoaded) {
-      this.dataService.getProject(this.id)
-      this.loading = false
-    }
-    this.project = await this.dataService.project.map(_proj => {
-      
-      let proj = _proj.filter(p => p.id === this.id.toString())[0]
-      if(proj !== undefined)
-        this.dataService.setTitle(proj.title);
-      return proj
-    }
-    );
+    window.scrollTo(0, 0)
 
+    this.sub = this.route.params.subscribe(params => this.id = params['id'])
+    this.project = this.dataService.project.pipe(
+      map(projects => projects.find(p => p.id === this.id.toString())),
+      tap(project => this.dataService.setTitle(project.title))
+    )
+    this.dataService.getAllProjects()
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
-    // this._project.unsubscribe();
-    // this.project = null;
+    this.sub.unsubscribe()
   }
 
   // getNextPreviousProjects(project) {

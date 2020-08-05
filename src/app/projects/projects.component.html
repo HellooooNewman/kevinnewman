@@ -1,34 +1,29 @@
 <div class="container">
-    <div class="project-holder" *ngIf="!dataService.projectsLoaded">
-        <placeholder-content></placeholder-content>
-        <placeholder-content></placeholder-content>
-        <placeholder-content></placeholder-content>
-    </div>
-    <div *ngIf="dataService.projectsLoaded">
-        <a
-            routerLink="/project/{{ project.id }}"
-            class="row"
-            *ngFor="let project of (projects | async)"
-        >
-            <div class="project-holder">
-                <div class="four column img-holder">
-                    <img
-                        src="{{ project.thumbnail_img }}"
-                        alt="{{ project.title }}"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="eight column">
-                    <h3>{{ project.title }}</h3>
-                    <p
-                        [innerHtml]="
+  <div class="project-holder"
+       *ngIf="(projects | async).length === 0">
+    <placeholder-content></placeholder-content>
+    <placeholder-content></placeholder-content>
+    <placeholder-content></placeholder-content>
+  </div>
+  <div *ngIf="(projects | async).length">
+    <a routerLink="/project/{{ project.id }}"
+       class="row"
+       *ngFor="let project of (projects | async)">
+      <div class="project-holder">
+        <div class="four column img-holder">
+          <img src="{{ project.thumbnail_img }}"
+               alt="{{ project.title }}"
+               loading="lazy" />
+        </div>
+        <div class="eight column">
+          <h3>{{ project.title }}</h3>
+          <p [innerHtml]="
                             project.body.length > 320
                                 ? (project.body | slice: 0:320) + '...'
                                 : project.body
-                        "
-                    ></p>
-                </div>
-            </div>
-        </a>
-    </div>
+                        "></p>
+        </div>
+      </div>
+    </a>
+  </div>
 </div>
