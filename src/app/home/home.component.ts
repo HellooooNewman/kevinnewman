@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
         {
           showDetails: true,
           logo: "./assets/company-logos/xello.svg",
-          title: "Frontend Web Developer",
+          title: "Full Stack Web Developer",
           year: "Jan 2019 - Present",
           employer: "Xello",
           employer_link: "http://xello.world/",
@@ -46,12 +46,14 @@ export class HomeComponent implements OnInit {
                     <li>Localizing the existing product to the UK market with a different school system style</li>
                     <li>Created new stored procedures following existing conventions</li>
                     <li>Performance improvements to existing SQL queries</li>
-                    <li>Created documentation site for product along with a content writer http://help.xello.world/</li>
+                    <li>Created documentation site for product along with a content writer <a href="https://help.xello.world/">help.xello.world</a></li>
                     <li>Agile scrum sprints and demo at the end of sprint</li>
-                    <li>Hackathons one day every day sprint towards self learning</li>
+                    <li>Hackathons one day every sprint towards self learning: <a href="https://www.kevinnewman.ca/lightbox-quote-checker/">Lightbox</a> and <a href="https://github.com/HellooooNewman/helloooonewman-vscode-extension">Chrome Extension</a></li>
                     <li>Adding to and updating existing microservices architecture</li>
+                    <li>Maintaining and scaling storybook components across webcomponents</li>
+                    <li>Working towards making student side application a PWA</li>
                     </ul>`,
-          technology: "ES6, SCSS, Angular, NgRx, Rxjs, .NET, SQL, SlackBot API, Jest, Jenkins, Octopus",
+          technology: "ES6, SCSS, Angular, NgRx, Rxjs, .NET, SQL, SlackBot API, Jest, Jenkins, Octopus, Azure",
         },
         {
           showDetails: true,
@@ -71,10 +73,10 @@ export class HomeComponent implements OnInit {
                     <li>Created trello board system for company to use and manage their workflow</li>
                     <li>Added comic books as a new type of book they offer to kids</li>
                     <li>General performance and design changes around the site</li>
-                    <li>Managed support requests from users, writers, artists, teachers</li>
+                    <li>Managed support requests from users, writers, artists, and teachers</li>
                     </ul>`,
           technology:
-            "Vue, Laravel, Webpack, DigitalOcean, Photoshop Action Scripts, Docker, Git, SCSS",
+            "Vue, Laravel, Webpack, DigitalOcean, Photoshop Action Scripts, Docker, Git, SCSS, DigitalOcean",
         },
         {
           showDetails: false,
@@ -178,27 +180,28 @@ export class HomeComponent implements OnInit {
         title: "Code",
         list: [
           "HTML5 - PHP - ES6 - C# - Bash - Typescript",
-          "CSS3 - SCSS - LESS",
-          "CodeIgniter - Laravel - Wordpress - Drupal 7/8",
-          "Angular 2 - JQuery - Ionic - Vue - React",
+          "CSS3 - SCSS",
+          "CodeIgniter - Laravel - Wordpress - Drupal 7/8 - .NET Core",
+          "Angular - JQuery - Ionic - Vue - React - Electron",
           "Highcharts - Babylon - RXjs",
           "MVC - OOP - Rest API - Redux",
           "Git - SVN",
           "Gulp - Webpack - Grunt - Webhooks",
-          "NPM - Bower - Yarn",
-          "AWS - Digital Ocean",
+
         ],
       },
       {
         title: "Tools",
         list: [
-          "PC - Mac",
+          "Mac - PC",
           "Photoshop - Illustrator",
-          "Sketch - AdobeXD",
+          "Figma - AdobeXD",
           "After Effects - Premiere",
           "3ds Max - Blender",
           "Github - Bitbucket - Gitlab",
           "Unity",
+          "NPM - Bower - Yarn",
+          "AWS - Digital Ocean - Azure",
         ],
       },
       {

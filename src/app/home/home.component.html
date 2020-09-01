@@ -32,7 +32,7 @@
 
       </div>
       <button (click)="job.showDetails = !job.showDetails">
-        View More
+        {{job.showDetails ? 'View Less' : 'View More'}}
       </button>
     </div>
     <div *ngIf="job.showDetails">

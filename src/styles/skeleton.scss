@@ -150,7 +150,7 @@ body {
   // .four:nth-child(3n) {
   //   padding-right: 0;
   // }
-  
+
   .one[class*='column'] {
     width: 8.3333333333%;
   }
@@ -498,7 +498,7 @@ h1 {
   letter-spacing: 0.1rem;
   color: #fff;
 }
-    
+
 
 h2 {
   font-size: 2.8rem;
@@ -564,10 +564,19 @@ p {
 /* Links */
 
 a {
-  color: var(--black);
+  color: var(--blue);
   text-decoration: none;
 }
 
+nav, h2{
+  a {
+    color: var(--black);
+  }
+}
+
+p, h6, h5, h4, h3 {
+  color: var(--black);
+}
 /* Colors */
 
 .text-primary {
