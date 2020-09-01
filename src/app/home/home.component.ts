@@ -1,10 +1,8 @@
-import { TruncatePipe } from "./../pipes/truncate"
 import { Project } from "./../interfaces/common"
 import { Observable } from "rxjs/Rx"
 import "rxjs/add/operator/filter"
 import { DataService } from "./../services/services.data"
-import { Component, OnInit, HostListener } from "@angular/core"
-import { Title } from "@angular/platform-browser"
+import { Component, OnInit } from "@angular/core"
 import { map } from "rxjs/operators"
 
 @Component({
@@ -50,9 +48,9 @@ export class HomeComponent implements OnInit {
                     <li>Agile scrum sprints and demo at the end of sprint</li>
                     <li>Hackathons one day every sprint towards self learning: <a href="https://www.kevinnewman.ca/lightbox-quote-checker/">Lightbox</a> and <a href="https://github.com/HellooooNewman/helloooonewman-vscode-extension">Chrome Extension</a></li>
                     <li>Adding to and updating existing microservices architecture</li>
-                    <li>Maintaining and scaling storybook components across webcomponents</li>
+                    <li>Maintaining and scaling storybook components</li>
                     <li>Working towards making student side application a PWA</li>
-                    </ul>`,
+                  </ul>`,
           technology: "ES6, SCSS, Angular, NgRx, Rxjs, .NET, SQL, SlackBot API, Jest, Jenkins, Octopus, Azure",
         },
         {
@@ -118,14 +116,14 @@ export class HomeComponent implements OnInit {
         {
           showDetails: false,
           logo: "./assets/company-logos/GE.png",
-          title: "3D Frontend Developer",
+          title: "Frontend Developer",
           year: "Oct 2017 - Feb 2018",
           employer: "GE",
           employer_link: "http://www.gegridsolutions.com/",
           employment_type: "Contract",
           location: "Markham, CA",
           points: `<ul>
-                    <li>Create 3D marketing apps with Babylon for different divisions of GE(Healthcare, Energy, Grid Solutions)</li>
+                    <li>Create 3D marketing apps with Babylon.js for different divisions of GE(Healthcare, Energy, Grid Solutions)</li>
                     <li>Prototype and compare different Frontend frameworks to GE's current software solution(Haxe)</li>
                     <li>Convert flash application meant for showing off all their marketing material at conferences to an HTML5 application with Vue.js that publishes to both web and desktop (Electron) and features offline storage</li>
                     </ul>`,
@@ -242,5 +240,8 @@ export class HomeComponent implements OnInit {
     );
     this.dataService.getAllProjects()
 
+    window.onbeforeprint = function (event) {
+
+    };
   }
 }
