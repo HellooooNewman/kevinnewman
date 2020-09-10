@@ -11,7 +11,7 @@ import { map, tap } from 'rxjs/operators';
   styleUrls: ['./project-detail.component.scss']
 })
 export class ProjectDetailComponent implements OnInit, OnDestroy {
-  public project: Observable<Project>
+  public project$: Observable<Project>
   // public nextProject: Project;
   // public prevProject: Project;
   private id: Number;
@@ -35,7 +35,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     window.scrollTo(0, 0)
 
     this.sub = this.route.params.subscribe(params => this.id = params['id'])
-    this.project = this.dataService.project.pipe(
+    this.project$ = this.dataService.project.pipe(
       map(projects => projects.find(p => p.id === this.id.toString())),
       tap(project => this.dataService.setTitle(project.title))
     )

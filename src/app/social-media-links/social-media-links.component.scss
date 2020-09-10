@@ -1,19 +1,22 @@
-
 #social-links {
     float: right;
     margin: 0;
-    
-    li a {
-        svg {
-            fill: white;
-            transition: fill 100ms ease-in-out;
-            height: 22px;
-            padding: 3px;
-            
-            &:hover {
-                fill: var(--dark-blue);
+
+    li {
+        &:before {
+            content: "";
+        }
+        a {
+            svg {
+                fill: white;
+                transition: fill 100ms ease-in-out;
+                height: 22px;
+                padding: 3px;
+
+                &:hover {
+                    fill: var(--dark-blue);
+                }
             }
         }
-        
     }
 }
