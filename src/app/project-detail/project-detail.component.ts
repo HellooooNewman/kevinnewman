@@ -4,6 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-project-detail',
@@ -18,10 +19,14 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
   private sub: Subscription;
 
   config: SwiperOptions = {
-    pagination: '.swiper-pagination',
-    paginationClickable: true,
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
     spaceBetween: 10,
     slidesPerView: 1,
     grabCursor: true,

@@ -23,10 +23,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/swiper/dist/css/swiper.min.css"
-            ],
-            "scripts": [
-              "node_modules/swiper/dist/js/swiper.min.js"
+              "./node_modules/swiper/swiper-bundle.css"
             ]
           },
           "configurations": {
@@ -84,7 +81,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/swiper/dist/css/swiper.min.css"
+              "./node_modules/swiper/swiper-bundle.css"
             ],
             "assets": [
               "src/assets",

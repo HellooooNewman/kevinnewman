@@ -21,10 +21,7 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "../node_modules/swiper/dist/css/swiper.min.css"
-      ],
-      "scripts": [
-        "../node_modules/swiper/dist/js/swiper.min.js"
+        "./node_modules/swiper/swiper-bundle.css"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core"
 import { HttpClientModule } from "@angular/common/http"
-import { RouterModule } from "@angular/router"
 import { BrowserModule } from "@angular/platform-browser"
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
 import { FormsModule } from "@angular/forms"
@@ -13,7 +12,7 @@ import { ContactComponent } from "./contact/contact.component"
 import { AppComponent } from "./app.component"
 import { FooterComponent } from "./footer/footer.component"
 import { HeaderComponent } from "./header/header.component"
-import { routes, AppRoutingModule } from "./app.routing"
+import { AppRoutingModule } from "./app.routing"
 import { ProjectsComponent } from "./projects/projects.component"
 import { GameJamComponent } from "./game-jam/game-jam.component"
 import { ProjectDetailComponent } from "./project-detail/project-detail.component"
@@ -22,9 +21,9 @@ import { SocialMediaLinksComponent } from "./social-media-links/social-media-lin
 import { NotFoundComponent } from "./errors/400/not-found-component/not-found.component"
 import { TruncatePipe } from "./pipes/truncate"
 
-import { SwiperModule } from "angular2-useful-swiper"
 import { LazyLoadImagesModule } from "ngx-lazy-load-images"
 import { SharedModule } from "./shared/shared.module"
+import { NgxUsefulSwiperModule } from "ngx-useful-swiper"
 
 @NgModule({
   declarations: [
@@ -48,7 +47,7 @@ import { SharedModule } from "./shared/shared.module"
     FormsModule,
     CustomFormsModule,
     ReactiveFormsModule,
-    SwiperModule,
+    NgxUsefulSwiperModule,
     LazyLoadImagesModule,
     SharedModule,
     CommonModule,

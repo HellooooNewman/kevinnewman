@@ -13,15 +13,6 @@ import { map } from "rxjs/operators"
 export class HomeComponent implements OnInit {
   public projects$: Observable<Project[]>
   loading: boolean = false
-  config: SwiperOptions = {
-    pagination: ".swiper-pagination",
-    paginationClickable: true,
-    nextButton: ".swiper-button-next",
-    prevButton: ".swiper-button-prev",
-    slidesPerView: 2,
-    spaceBetween: 10,
-    grabCursor: true,
-  }
 
   public resume = {
     introduction:
@@ -30,7 +21,7 @@ export class HomeComponent implements OnInit {
       jobs: [
         {
           showDetails: true,
-          logo: "./assets/company-logos/xello.svg",
+          logo: "./assets/company-logos/sonar.svg",
           title: "Software Developer",
           year: "Dec 2020 - Present",
           employer: "Sonar Software",
