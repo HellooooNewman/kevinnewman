@@ -31,8 +31,28 @@ export class HomeComponent implements OnInit {
         {
           showDetails: true,
           logo: "./assets/company-logos/xello.svg",
+          title: "Software Developer",
+          year: "Dec 2020 - Present",
+          employer: "Sonar Software",
+          employer_link: "http://sonar.software/",
+          employment_type: "Full-time",
+          location: "Remote, Canada",
+          desc: "",
+          points: `<ul>
+                    <li>Continue development of dynamically created graphql query system</li>
+                    <li>Automated BE to FE dynamic enum generation</li>
+                    <li>Managed updates to marketing website, with push to nuxt.js</li>
+                    <li>Moving regular components over to storyboard</li>
+                    <li>Converted regular SCSS variable codebase to use CSS variables</li>
+                    <li>Work with another team to bring on dynamic white labelling service of features</li>
+                  </ul>`,
+          technology: "ES6, SCSS, Vue.js, PHP, Laravel, Graphql, SQL, Azure, CircleCI, Flutter",
+        },
+        {
+          showDetails: true,
+          logo: "./assets/company-logos/xello.svg",
           title: "Full Stack Web Developer",
-          year: "Jan 2019 - Present",
+          year: "Jan 2019 - Dec 2020",
           employer: "Xello",
           employer_link: "http://xello.world/",
           employment_type: "Full-time",
