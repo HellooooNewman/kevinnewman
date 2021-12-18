@@ -1,41 +1,5 @@
 <div class="container">
   <div class="column six">
-    <form novalidate #contactFormElement [formGroup]="contactForm" class="envelope" *ngIf="messageState != 4" (ngSubmit)="submitForm(contactForm.value)">
-      <div class="column six" [class.valid]="contactForm.controls['name'].valid" [class.invalid]="contactForm.controls['name'].invalid && (contactForm.controls['name'].dirty || contactForm.controls['name'].touched)">
-        <label class="required">Your Name</label>
-        <input type="text" placeholder="John Shnow" formControlName="name" required>
-        <div class="message" *ngIf="contactForm.controls['name'].hasError('required') && contactForm.controls['name'].touched">Might want to fill out your name.</div>
-      </div>
-      <div class="column six" [class.valid]="contactForm.controls['email'].valid" [class.invalid]="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)">
-        <label class="required">Email</label>
-        <input type="email" formControlName="email" placeholder="john.shnow@example.com" ngModel>
-        <div class="message" *ngIf="contactForm.controls['email'].hasError('required') && contactForm.controls['email'].touched">...or your email</div>
-        <div class="message" *ngIf="contactForm.controls['email'].hasError('email') && contactForm.controls['email'].value != ''">Somethings wrong with your email 😕</div>
-      </div>
-      <div class="column six" [class.valid]="contactForm.controls['subject'].valid" [class.invalid]="contactForm.controls['subject'].invalid && (contactForm.controls['subject'].dirty || contactForm.controls['subject'].touched)">
-        <label class="required">Subject</label>
-        <input type="text" formControlName="subject" placeholder="Cup of coffee?">
-        <div class="message" *ngIf="contactForm.controls['subject'].hasError('required') && contactForm.controls['subject'].touched">More of a tea guy really.</div>
-      </div>
-      <div class="column six">
-        <label>Telephone</label>
-        <input type="tel" formControlName="telephone" placeholder="555-555-5555">
-        <div class="message" *ngIf="contactForm.controls['telephone'].touched">Phone is optional, but would be helpful.</div>
-      </div>
-      <input type="text" style="display: none;" formControlName="emptyField">
-      <div class="twelve" [class.valid]="contactForm.controls['message'].valid" [class.invalid]="contactForm.controls['message'].invalid && (contactForm.controls['message'].dirty || contactForm.controls['message'].touched)">
-        <label>Message</label>
-        <textarea type="text" rows="10" formControlName="message" ngModel required></textarea>
-        <div class="message" *ngIf="contactForm.controls['message'].hasError('required') && contactForm.controls['message'].touched">Nothing on your mind?</div>
-      </div>
-      <div class="error-message" style="float:left;">{{message}}</div>
-      <div class="form-group" style="float:right;">
-        <button type="submit" class="btn btn-default" [disabled]="!contactForm.valid">Submit</button>
-      </div>
-    </form>
-    <div style="text-align:center" *ngIf="messageState == 4">
-      <h4>Message sent </h4>
-      <p>Thanks for sending me a message. I hope to get back to you as soon as possible.</p>
-    </div>
+    <h1>Contact</h1>
   </div>
 </div>
