@@ -1,18 +1,25 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
+  "compileOnSave": false,
+  "compilerOptions": {
     "downlevelIteration": true,
     "module": "es2020",
-        "outDir": "./dist/out-tsc",
-        "sourceMap": true,
-        "declaration": false,
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "target": "es2015",
-        "typeRoots": ["node_modules/@types"],
-        "lib": ["es2016", "dom"]
-    },
-    "angularCompilerOptions": {
-        "enableIvy": false
-    }
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
+  }
 }

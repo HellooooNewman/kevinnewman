@@ -1,8 +1,6 @@
-import { CustomFormsModule } from 'ng2-validation';
+
 import { DataService } from './../services/services.data';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { FormGroup, FormControl, Validators, FormBuilder, FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
 const enum messageStates {
   pending,

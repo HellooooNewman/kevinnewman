@@ -10,14 +10,9 @@ export interface Project {
   project_type: string;
   project_url: string;
   roles: string;
-  tasks: Task[];
-  promote: string;
+  tasks: string[];
+  promote: boolean;
   videos: Video[];
-  showDetails: boolean;
-}
-
-export interface Task {
-  task: string;
 }
 
 export interface Gallery {
@@ -47,7 +42,6 @@ export interface GameJam {
   type: string;
   url: string;
   views_count: number;
-  earnings: Earning[];
 }
 
 interface Earning {

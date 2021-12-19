@@ -4,7 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { SwiperOptions } from 'swiper';
+import SwiperCore, { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-project-detail',

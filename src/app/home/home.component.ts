@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
           technology: "ES6, SCSS, Angular, NgRx, Rxjs, .NET, SQL, SlackBot API, Jest, Jenkins, Octopus, Azure",
         },
         {
-          showDetails: true,
+          showDetails: false,
           logo: "./assets/company-logos/Wuzzals.svg",
           title: "Full Stack Web Developer",
           year: "Oct 2018 - Present",
@@ -247,12 +247,8 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     this.dataService.setTitle("Home")
     this.projects$ = this.dataService.project.pipe(
-      map(todos => todos.filter(item => item.promote === 'True'))
+      map(todos => todos.filter(item => item.promote === true))
     );
     this.dataService.getAllProjects()
-
-    window.onbeforeprint = function (event) {
-
-    };
   }
 }

@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log('Oh hey....what are you doing here :P');
-    console.log('Try clicking on the stars in the header. ^');
+    console.log('Try putting your mouse on the stars in the header. ^');
   }
 
   public getState(outlet) {
