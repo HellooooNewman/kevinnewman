@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kevinnewman2017": {
+    "kevinnewman": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -62,24 +62,24 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "kevinnewman2017:build"
+            "browserTarget": "kevinnewman:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "kevinnewman2017:build:production"
+              "browserTarget": "kevinnewman:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "kevinnewman2017:build"
+            "browserTarget": "kevinnewman:build"
           }
         }
       }
-    },
+    }
   },
-  "defaultProject": "kevinnewman2017",
+  "defaultProject": "kevinnewman",
   "cli": {
     "warnings": {}
   },

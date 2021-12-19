@@ -8,7 +8,7 @@
     "build": "ng build --configuration production",
     "lint": "ng lint",
     "analyze": "ng build --configuration production --stats-json && webpack-bundle-analyzer dist/stats.json",
-    "deploy": "npm run build --configuration production --base-href=/kevinnewman/ && cp dist/index.html dist/404.html"
+    "deploy": "npm run build --base-href=/kevinnewman/ && cp dist/index.html dist/404.html"
   },
   "private": true,
   "dependencies": {
