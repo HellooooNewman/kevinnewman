@@ -14,7 +14,7 @@
     }
 
     .mountains, .timeline-item {
-      filter: brightness(0.43) drop-shadow(25px -7px 6px #00000050) saturate(0);
+      filter: brightness(0.43) saturate(0);
     }
 
     .logo path, #small-logo path {
