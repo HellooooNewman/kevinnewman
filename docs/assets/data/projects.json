@@ -1,0 +1,342 @@
+[
+  {
+    "title": "Confederation College",
+    "id": "24",
+    "thumbnail_img": "\/api\/sites\/default\/files\/styles\/thumbnail\/public\/image\/project\/confederation-cover.png.jpeg?itok=9skXUUAN",
+    "main_img": "\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/confederation-cover.png.jpeg?itok=uxmu-0cp",
+    "body": "This was a site rebuild of Confederation College\u0027s main site. We used Drupal 7 for the main site.",
+    "project_type": "Web",
+    "project_url": "http:\/\/www.confederationcollege.ca\/",
+    "work_type": "",
+    "promote": false,
+    "start_date": "Jan 2015",
+    "end_date": "Oct 2016",
+    "roles": "",
+    "gallery": [
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/www.confederationcollege.ca_.png.jpeg?itok=22TFaKCD",
+        "alt": "confederation college homepage"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/www.confederationcollege.ca_fort-frances.png.jpeg?itok=U0lNLJL0",
+        "alt": "confederation college campuses"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/www.confederationcollege.ca_program_dental-hygiene.png.jpeg?itok=YqbcrNZq",
+        "alt": "confederation college program"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/www.confederationcollege.ca_programs-courses_full-time-programs_filter-area-group%3Dbusiness%2Ccommunity-services%26filter-credential%3Dconfederation-college-board-of-governor-s-certificate.png.jpeg?itok=Lx2d4DRn",
+        "alt": "confederation college program search"
+      }
+    ],
+    "tasks": [
+      "Drupal 7 Site Build",
+      "Migration",
+      "Oracle Database connection",
+      "Client side searching of programs"
+    ],
+    "videos": []
+  },
+  {
+    "title": "Hammer Fight",
+    "id": "20",
+    "thumbnail_img": "\/api\/sites\/default\/files\/styles\/thumbnail\/public\/image\/project\/14907101_1122689457826766_5304685546434170384_n.jpg.jpeg?itok=hrY8Q67s",
+    "main_img": "\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/14907101_1122689457826766_5304685546434170384_n.jpg.jpeg?itok=hovcSk5U",
+    "body": "Hammer Fight is a couch co op multiplayer that pits 2 - 4 players against each other in a death arena style setting. It\u00a0places you on a foreign world where you are pitted to death against your fellow astronauts. You are tasked with a anti-gravity hammer and some your quick reflexes. You must now survive in this a death arena. Only 1 colour can survive.\u003C\/p\u003E\n\nThis initially started off as a game jam with 2 other friends of mine. We thought it was fun and took it a little further. We ended up showing it at Forest City Comicon in London Ontario.\u00a0\u003C\/p\u003E",
+    "project_type": "3D",
+    "project_url": false,
+    "work_type": "Team",
+    "promote": true,
+    "start_date": "Jun 2016",
+    "end_date": "Jan 2016",
+    "roles": "Lead Developer, Team Lead",
+    "gallery": [],
+    "tasks": [
+      "Game development",
+      "Main Programmer",
+      "Level design",
+      "Conference setup"
+    ],
+    "videos": []
+  },
+  {
+    "title": "Hypoglycemia App",
+    "id": "9",
+    "thumbnail_img": "\/api\/sites\/default\/files\/styles\/thumbnail\/public\/image\/project\/hypo.jpg.jpeg?itok=DTzva7KI",
+    "main_img": "\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/hypo.jpg.jpeg?itok=prpAD6nl",
+    "body": "This was a thesis project for school, I partnered with Digital Echidna to work on the app. They did the initial design. I worked on the back-end API and the app. I used Drupal for the back-end and used AngularJS and Ionic for the front-end then wrapped it up with PhoneGap.\u003C\/p\u003E",
+    "project_type": "Web",
+    "project_url": "http:\/\/kevinnewman.ca\/hypomini\/",
+    "work_type": "School",
+    "promote": false,
+    "start_date": "Jan 2015",
+    "end_date": "Jan 2015",
+    "roles": "Developer",
+    "gallery": [
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/hypo_0.jpg.jpeg?itok=EnjuLpCj",
+        "alt": "Hypoglycemia App"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/hypo0.jpg.jpeg?itok=zhdtoQKd",
+        "alt": "Hypoglycemia App"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/hypo1.jpg.jpeg?itok=4zQ844Vb",
+        "alt": "Hypoglycemia App"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/hypo2.jpg.jpeg?itok=6zKB1F0V",
+        "alt": "Hypoglycemia App"
+      }
+    ],
+    "tasks": [
+      "Drupal backend",
+      "AngularJS, Ionic 1, PhoneGap"
+    ],
+    "videos": []
+  },
+  {
+    "title": "Indegene Omnipresence",
+    "id": "21",
+    "thumbnail_img": "\/api\/sites\/default\/files\/styles\/thumbnail\/public\/image\/project\/indegene.png.jpeg?itok=viSHH91H",
+    "main_img": "\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/indegene.png.jpeg?itok=0rhpkOFV",
+    "body": "This was an Ionic app I worked on with a team. It\u0027s\u00a0a presentation and video sharing app built for Android and\u00a0web. It\u00a0was made to replace an existing flash app Indegene Life Systems Pvt ltd had for mobile and web. I had joined the project about 6 months into development. At this point the bare bones of the app was already set in place with Ionic and Angular 2. I\u00a0worked on\u00a0app scaling, new feature development and general UI implementation.\u003C\/p\u003E",
+    "project_type": "Web",
+    "project_url": "https:\/\/play.google.com\/store\/apps\/details?id=com.indegene.io\u0026hl=en",
+    "work_type": "Work",
+    "promote": false,
+    "start_date": "Feb 2017",
+    "end_date": "Oct 2017",
+    "roles": "Developer",
+    "gallery": [
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/indegene_0.png.jpeg?itok=v7cf_ny4",
+        "alt": "indegene omnipresence heathcare app home screen"
+      }
+    ],
+    "tasks": [
+      "Offline sync",
+      "HTML presentations",
+      "Call center routing",
+      "Web-socket instant messaging"
+    ],
+    "videos": []
+  },
+  {
+    "title": "Lightbox Quote Checker",
+    "id": "53",
+    "thumbnail_img": "\/api\/sites\/default\/files\/styles\/thumbnail\/public\/image\/project\/Screen%20Shot%202019-11-18%20at%208.05.10%20PM.png.jpeg?itok=SWJjVJ80",
+    "main_img": "\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/Screen%20Shot%202019-11-18%20at%208.05.10%20PM.png.jpeg?itok=QoCwOq5-",
+    "body": "Tells you whether the message you want to type will work with the letters and length of the sign. Will also allow for substitutions of characters.\u003C\/p\u003E\n\nThis was a project I made working at Xello as part of their \u0022Successful Futures Day\u0022. I got the slack bot working in the first day and worked towards the react site in the next few days.\u00a0\u003C\/p\u003E\n\nIntegrates into Slack as a bot\u00a0\u003Ca href=\u0022https:\/\/github.com\/HellooooNewman\/Lightbox-Quote-Checker\u0022\u003EHere\u003C\/a\u003E\u003C\/p\u003E\n\n\u003Ch2\u003EFeatures:\u003C\/h2\u003E\n\n\u003Cul\u003E\u003Cli\u003EText alternatives (3 = E)\u003C\/li\u003E\n\t\u003Cli\u003ECharacter limits = (only 3 E\u2019s)\u003C\/li\u003E\n\t\u003Cli\u003ESentence length check (40 characters)\u003C\/li\u003E\n\t\u003Cli\u003EInvalid character check (A-Z, 0-9, #\u0026amp;@)\u003C\/li\u003E\n\t\u003Cli\u003EWord length check(Max 10 letters per word)\u003C\/li\u003E\n\t\u003Cli\u003EToo many line breaks in the sentence(Max 3 line breaks)\u003C\/li\u003E\n\u003C\/ul\u003E",
+    "project_type": "Web",
+    "project_url": "https:\/\/www.kevinnewman.ca\/lightbox-quote-checker\/",
+    "work_type": "Personal",
+    "promote": true,
+    "start_date": "Nov 2019",
+    "end_date": "Nov 2019",
+    "roles": "Designer, Developer",
+    "gallery": [],
+    "tasks": [
+      "Design",
+      "Slackbot",
+      "React Site",
+      "Automated Tests (Jest, Enzyme)",
+      "Node.js Server"
+    ],
+    "videos": [
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/video\/project\/quote.mp4"
+      }
+    ]
+  },
+  {
+    "title": "Metrick System \/ Trailerworks",
+    "id": "52",
+    "thumbnail_img": "\/api\/sites\/default\/files\/styles\/thumbnail\/public\/image\/project\/trailerworks.com_.png.jpeg?itok=K7OfWebm",
+    "main_img": "\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/trailerworks.com_.png.jpeg?itok=viW80Os_",
+    "body": "I worked with the Metrick System to build out two new client facing sites to rebrand both of their businesses. The first was \u003Ca href=\u0022http:\/\/www.metricksystem.com\u0022\u003Emetricksystem.com\u003C\/a\u003E, which was designed to be a simple layout built in React that would highlight unique case studies they had, as well as managing their past case studies.\u00a0\u003C\/p\u003E\n\nThe second site, \u003Ca href=\u0022http:\/\/www.trailerworks.com\u0022\u003Etrailerworks.com\u003C\/a\u003E,\u00a0was built on top of the existing React site but enhanced to feature dynamic layouts of case studies, drawing SVGs, light and dark theme of site as well as new and improved site look.\u003C\/p\u003E\n\nI helped to launch the \u003Ca href=\u0022http:\/\/www.randomactsofmusic.ca\u0022\u003Erandomactsofmusic.ca\u003C\/a\u003E which featured the\u00a0Yamaha: Going Solo Series site, with weekly updates relating to their YouTube channel.\u003C\/p\u003E",
+    "project_type": "Web",
+    "project_url": "http:\/\/www.trailerworks.com",
+    "work_type": "Work",
+    "promote": false,
+    "start_date": "Sep 2019",
+    "end_date": "Dec 2018",
+    "roles": "Lead Developer",
+    "gallery": [
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/trailerworks.com__2.png.jpeg?itok=FrzFsA0z",
+        "alt": "homepage"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/trailerworks.com_case-studies_yamaha.png.jpeg?itok=y1n6sdsD",
+        "alt": "Case study"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/trailerworks.com_case-studies_yamaha%20%282%29.png.jpeg?itok=5XCqUR5n",
+        "alt": "Menu"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/trailerworks.com_case-studies_yamaha%20%281%29.png.jpeg?itok=_00OcNaf",
+        "alt": "Footer"
+      }
+    ],
+    "tasks": [
+      "React site build",
+      "Redux: light\/dark theme, case studies, mailing list",
+      "Dynamically drawn svgs",
+      "Templated case studies section",
+      "Documentation for maintaining site, hosting and code",
+      "Help package 300 jars of honey"
+    ],
+    "videos": []
+  },
+  {
+    "title": "Tesla",
+    "id": "12",
+    "thumbnail_img": "\/api\/sites\/default\/files\/styles\/thumbnail\/public\/image\/project\/tesla.png.jpeg?itok=h28sI2fi",
+    "main_img": "\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/tesla.png.jpeg?itok=uM5wfsQA",
+    "body": "I was partnered with another student to create a new UI for Tesla\u0027s dashboard, user dashboard and smartphone app. The theme we went with was dots and lines. I did the user dashboard and smartphone app.\u003C\/p\u003E",
+    "project_type": "Design",
+    "project_url": "http:\/\/kevinnewman.ca\/tesla\/",
+    "work_type": "School",
+    "promote": false,
+    "start_date": "Jan 2014",
+    "end_date": "Jan 2014",
+    "roles": "Designer",
+    "gallery": [
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/tesla.jpg.jpeg?itok=7r4dUic1",
+        "alt": "tesla"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/tesla0.jpg.jpeg?itok=CANPovTz",
+        "alt": "tesla"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/tesla1.jpg.jpeg?itok=N0z3OU_m",
+        "alt": "tesla"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/tesla2.jpg.jpeg?itok=PsfTLnrw",
+        "alt": "tesla"
+      }
+    ],
+    "tasks": [
+      "app design",
+      "concepting"
+    ],
+    "videos": []
+  },
+  {
+    "title": "TVO Kids",
+    "id": "22",
+    "thumbnail_img": "\/api\/sites\/default\/files\/styles\/thumbnail\/public\/image\/project\/tvokids-cover.png.jpeg?itok=DJCx1kHP",
+    "main_img": "\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/tvokids-cover.png.jpeg?itok=NRP9-9fP",
+    "body": "This was a rebuild of tvokids.com from a flash site to modern HTML5 site. It\u0027s a Drupal 7 site build using a custom built theme with a heavy javascript front-end. I was a part of a team while working on this at Digital Echidna. I mainly worked on the client side search, videos page and detail pages.\u003C\/p\u003E",
+    "project_type": "Web",
+    "project_url": "https:\/\/tvokids.com\/",
+    "work_type": "Work",
+    "promote": false,
+    "start_date": "Jan 2015",
+    "end_date": "Jan 2015",
+    "roles": "Developer",
+    "gallery": [
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/tvokids.com_preschool_1.png.jpeg?itok=Eu8Mi2ri",
+        "alt": "TVO kids pre school"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/tvokids.com_school-age_apps_1.png.jpeg?itok=HCalLYeh",
+        "alt": "tvokids school age apps"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/tvokids.com_school-age_arthur-0_1.png.jpeg?itok=Kbeng8Qh",
+        "alt": "tvokids school age arthur"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/tvokids.com_school-age_games_1.png.jpeg?itok=Rlb3ND-2",
+        "alt": "tvokids games"
+      }
+    ],
+    "tasks": [
+      "Client side filtering",
+      "Fun and vibrant feel",
+      "Responsive website with lots of touch options"
+    ],
+    "videos": []
+  },
+  {
+    "title": "U of T KPE",
+    "id": "23",
+    "thumbnail_img": "\/api\/sites\/default\/files\/styles\/thumbnail\/public\/image\/project\/uoft-kpe-cover.png.jpeg?itok=FaDtrIF-",
+    "main_img": "\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/uoft-kpe-cover.png.jpeg?itok=rOn7QtZH",
+    "body": "This was a rebuild of an existing site that required migration of their old content to there new site. This was a full Drupal 8 site build while Drupal 8 was still in development. This added some complexity because Drupal 8 wasn\u0027t widely used so there was a bit of research that needed to be done into custom modules. We followed a brand guideline placed out by U of T.\u003C\/p\u003E",
+    "project_type": "Web",
+    "project_url": "https:\/\/kpe.utoronto.ca\/",
+    "work_type": "Work",
+    "promote": false,
+    "start_date": "Jun 2015",
+    "end_date": "Dec 2015",
+    "roles": "Team Lead",
+    "gallery": [
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/kpe.utoronto.ca_.png.jpeg?itok=73LuEPmR",
+        "alt": "u of t kpe university of toronto"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/kpe.utoronto.ca_academics-research_bachelor-kinesiology-bkin.png.jpeg?itok=4zQgN2p_",
+        "alt": "u of t kpe bachelor of kinesiology"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/kpe.utoronto.ca_events.png.jpeg?itok=jgDx6YYN",
+        "alt": "u of t kpe event calendar"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/kpe.utoronto.ca_facility-notices.png.jpeg?itok=EkvWxmcQ",
+        "alt": "u of t kpe facility notices"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/kpe.utoronto.ca_sport-and-fitness_baseball-fastpitch-softball.png.jpeg?itok=QpFEpKEx",
+        "alt": "u of t kpe baseball"
+      }
+    ],
+    "tasks": [
+      "Drupal 8 site build",
+      "Module development",
+      "Theming"
+    ],
+    "videos": []
+  },
+  {
+    "title": "Ye Olde Dragon",
+    "id": "19",
+    "thumbnail_img": "\/api\/sites\/default\/files\/styles\/thumbnail\/public\/image\/project\/dragon_0.jpg.jpeg?itok=dZiQbymY",
+    "main_img": "\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/dragon_0.jpg.jpeg?itok=CYGAZA1Y",
+    "body": "This was made for a 3d mini competition for the website www.gameartisans.org. The competition was to make a low poly dragon character that was under 15000 tris with the use of 3 maps: spec, diffuse, and normal map at 2048 texture size.\u003C\/p\u003E",
+    "project_type": "3D, Design",
+    "project_url": "https:\/\/p3d.in\/dgBVe",
+    "work_type": "Personal",
+    "promote": false,
+    "start_date": "Jan 2014",
+    "end_date": "Jan 2014",
+    "roles": "Designer",
+    "gallery": [
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/dragon0.jpg.jpeg?itok=9bTu_1rZ",
+        "alt": "Ye Olde Dragon"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/dragon1.jpg.jpeg?itok=vKWMaX6I",
+        "alt": "Ye Olde Dragon"
+      },
+      {
+        "url": "https:\/\/www.kevinnewman.ca\/api\/sites\/default\/files\/styles\/max_1300x1300\/public\/image\/project\/dragon2.jpg.jpeg?itok=S9W1V2l6",
+        "alt": "Ye Olde Dragon"
+      }
+    ],
+    "tasks": [],
+    "videos": []
+  }
+]
