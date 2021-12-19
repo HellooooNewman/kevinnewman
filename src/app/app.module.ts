@@ -20,7 +20,6 @@ import { TruncatePipe } from "./pipes/truncate"
 import { SharedModule } from "./shared/shared.module"
 
 import { LazyLoadImagesModule } from "ngx-lazy-load-images"
-import { SwiperModule } from "swiper/angular"
 
 @NgModule({
   declarations: [
@@ -41,7 +40,6 @@ import { SwiperModule } from "swiper/angular"
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SwiperModule,
     LazyLoadImagesModule,
     SharedModule,
     CommonModule,

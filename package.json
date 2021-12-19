@@ -26,7 +26,6 @@
     "rxjs-compat": "^6.5.3",
     "skeleton-css": "^2.0.4",
     "ssri": "^8.0.1",
-    "swiper": "^6.8.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },

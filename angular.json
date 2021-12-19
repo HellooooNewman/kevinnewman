@@ -22,8 +22,7 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.scss",
-              "./node_modules/swiper/swiper-bundle.css"
+              "src/styles.scss"
             ],
             "aot": false,
             "vendorChunk": true,

@@ -13,6 +13,7 @@ export interface Project {
   tasks: string[];
   promote: boolean;
   videos: Video[];
+  archived: boolean;
 }
 
 export interface Gallery {

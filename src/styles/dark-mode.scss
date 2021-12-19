@@ -25,6 +25,10 @@
       background: #333!important;
     }
 
+    .project-detail-header:after {
+      background-image: none!important;
+    }
+
     input[type="email"], input[type="number"], input[type="date"], input[type="search"], input[type="text"], input[type="tel"], input[type="url"], input[type="password"], textarea, select {
       border: 1px solid #111;
       background-color: #222;

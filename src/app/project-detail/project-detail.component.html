@@ -58,21 +58,12 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
-
-            <swiper [config]="config" *ngIf="project.gallery.length != 0">
-                <div class="swiper-wrapper">
-                    <img
-                        class="swiper-slide"
-                        *ngFor="let image of project.gallery"
-                        [src]="image.url"
-                        alt="image.alt"
-                        loading="lazy"
-                    />
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next swiper-button-white"></div>
-                <div class="swiper-button-prev swiper-button-white"></div>
-            </swiper>
+                  <img *ngFor="let image of project.gallery"
+                       [src]="image.url"
+                       [style.width]="'100%'"
+                       [style.paddingBottom]="'1rem'"
+                       alt="image.alt"
+                       loading="lazy" />
         </div>
     </div>
 </ng-container>

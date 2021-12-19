@@ -6,21 +6,3 @@
         display: block;
     }
 }
-.project-holder {
-    // position: relative;
-    // display: inline-block;
-    // width: 100%;
-
-    @media (min-width: 720px) {
-        &::after {
-            content: "";
-            background-color: var(--light-grey);
-            position: absolute;
-            height: 50%;
-            width: 1px;
-            display: block;
-            right: 0;
-            top: 25%;
-        }
-    }
-}
