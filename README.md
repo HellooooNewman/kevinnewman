@@ -20,6 +20,5 @@
 #### Things to do
 
 -   Internationalization: FR, SP, EN (maybe Simplified Chinese)
--   Fix older browser support
 -   Google site audit
 -   Rocket section
