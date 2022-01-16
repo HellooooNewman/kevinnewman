@@ -45,15 +45,20 @@
                     id="video"
                     preload="auto"
                     controls
-                    poster="http:/{{ project.main_img }}"
+                    poster="{{ project.main_img }}"
                     preload
                     playsinline
                     controlsList="nodownload"
                 >
                     <source
                         *ngFor="let video of project.videos"
-                        src="{{ video.url }}"
+                        src="{{ video.url }}.mp4"
                         type="video/mp4"
+                    />
+                    <source
+                        *ngFor="let video of project.videos"
+                        src="{{ video.url }}.webm"
+                        type="video/webm"
                     />
                     Your browser does not support the video tag.
                 </video>
