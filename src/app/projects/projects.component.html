@@ -18,9 +18,9 @@
         <div class="eight column">
           <h3>{{ project.title }}</h3>
           <p [innerHtml]="
-                            project.body.length > 320
-                                ? (project.body | slice: 0:320) + '...'
-                                : project.body
+                            project.short_body.length > 320
+                                ? (project.short_body | slice: 0:320) + '...'
+                                : project.short_body
                         "></p>
         </div>
       </div>
