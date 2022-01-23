@@ -3,15 +3,13 @@
   <br>
   <br>
   <br>
-  <p>
-    Thanks for coming by. <strong>Have a nice day</strong>
-  </p>
+  <p [innerHTML]="'thanksForComing' | translate"></p>
   <a *ngIf="!isContactPage"
      class="button button-primary contact-link"
-     routerLink="/contact">Contact Me</a>
+     routerLink="/contact">{{'contactMe'| translate}}</a>
 </div>
 <p>
-  Designed and developed by Kevin Newman.
+  {{'designAndDeveloped'| translate}}
 </p>
 <span lazy-load-images>
   <div class="footer-background"

@@ -1,0 +1,149 @@
+{
+  "home": "D'accueil",
+  "introduction": "Introduction",
+  "work": "Travail",
+  "projects": "Projets",
+  "skills": "Compétences",
+  "education": "Éducation",
+  "contact": "Contact",
+  "thanksForComing": "Merci d'être venu. <strong>Bonne journée</strong>",
+  "designAndDeveloped": "Conçu et développé par Kevin Newman.",
+  "contactMe": "Contactez-moi",
+  "downloadResume": "Télécharger le CV",
+  "gameJams": "Game Jams",
+  "lightMode": "Lumière Sombre 🚣‍♀️🌞",
+  "darkMode": "Thème Sombre ⛺️🌝",
+  "whatIsAGameJam": "Qu'est-ce qu'une Game Jam",
+  "whatIsAGameJamDescription": "Une game jam (game jam est parfois utilisé avec le genre masculin) est un hackathon avec pour thème principal les jeux vidéo, mais pouvant aussi porter sur les jeux au sens large1. Les participants, groupés en équipes, doivent créer un jeu dans un temps limité2, généralement le temps d'un week-end, sur 24 à 72 heures. Wikipedia",
+  "helloWearyTraveller": "Bonjour voyageur fatigué,",
+  "helloWearyTravellerDescription": "<p> Eh bien, vous êtes arrivé jusqu'ici. Faites une pause. Reposez vos doigts et profitez des étoiles qui défilent. En attendant, vous pouvez consulter mon <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> fopour plus de mes événements aléatoires.</p><p>Si vous êtes intéressé à travailler avec moi, envoyez-moi un message par <a href='mailto:knewmanium@gmail.com' target='_blank'>Email</a> / <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> / <a href='https://www.linkedin.com/in/helloooonewman/' target='_blank'>LinkedIn</a>. Toujours à la recherche de nouveaux projets intéressants.</p>",
+  "projectLink": "Site web du projet",
+  "projectSummary": "Résumé du projet",
+  "features": "Fonctionnalités",
+  "noVideoSupport": "Votre navigateur ne prend pas en charge la balise vidéo",
+  "year": "Année",
+  "viewMore": "Voir Plus",
+  "viewLess": "Voir Moins",
+  "viewAll": "View Tout",
+  "errorTitle": "On dirait que vous êtes au mauvais endroit. Besoin d'aide là-bas? 🤔",
+  "clickHere": "Cliquez ici",
+  "errorDescription": " pour revenir à la page d'accueil.",
+  "frButton": "🇫🇷 FR",
+  "enButton": "🇬🇧 EN",
+  "remote": "Travail à domicile",
+  "resume": {
+    "introduction": "<p>Bonjour je suis Kevin Newman, a développeur, designer et amateur vivant au Canada. J'aime créer des sites Web réactifs, des vidéos captivantes et des modèles 3D. Pendant mon temps libre, vous pouvez généralement me trouver en train de jouer / faire des jeux vidéo, de travailler sur un projet parallèle ou de gribouiller quelques petits dessins. J'essaie de suivre les tendances actuelles de la technologie en participant à des rencontres de développeurs dans la région. </p><p> Actuellement sur un jeu multijoueur coopératif sur canapé Unity appelé Hammer Fight.",
+    "work": {
+      "employmentType": {
+        "fullTime": "Plein Temps",
+        "contract": "Contrat"
+      },
+      "title": {
+        "softwareDeveloper": "Développeur de Logiciels",
+        "fullStackWebDeveloper": "Développeur Web Full Stack",
+        "frontendDeveloper": "Développeur Frontend"
+      },
+      "jobs": {
+        "0": {
+          "year": "déc 2020 - Aujourd'hui",
+          "points": "<ul><li>Continuer le développement d'un système de requête graphql créé dynamiquement </li><li>Génération automatique d'enum dynamique BE en FE </li><li> Mises à jour gérées du site Web marketing, avec push vers nuxt.js</li><li>Déplacement de composants réguliers vers le storyboard </li><li>Base de code de variables SCSS régulière convertie pour utiliser des variables CSS</li><li>Travailler avec une autre équipe pour mettre en place un service dynamique de fonctionnalités en marque blanche</li></ul>"
+        },
+        "1": {
+          "year": "janv 2019 - déc 2020",
+          "points": "<ul><li>Maintenez l'application shell micro frontend</li><li>Mise à niveau des composants, des services et des tests unitaires angularjs vers Angular et Jest</li><li>Localisation du produit existant sur le marché britannique avec un style de système scolaire différent </li><li>Création de nouvelles procédures stockées suivant les conventions existantes </li><li>Amélioration des performances des requêtes SQL existantes </li><li>Création d'un site de documentation pour le produit avec un rédacteur de contenu <a href='https://help.xello.world/'>help.xello.world</a></li><li>Agile scrum sprints et démo à la fin de sprint</li><li>Hackathons un jour chaque sprint vers l'auto-apprentissage: <a href='https://www.kevinnewman.ca/lightbox-quote-checker/'>Lightbox</a> et <a href='https://github.com/HellooooNewman/helloooonewman-vscode-extension'>Chrome Extension</a></li><li>Ajout et mise à jour de l'architecture de microservices existantes</li><li>Maintaining and scaling storybook components</li><li>Working towards making student side application a PWA</li></ul>"
+        },
+        "2": {
+          "year": "oct 2018 - déc 2020",
+          "points": "<ul><li>Mettre à jour et maintenir la base de code Laravel et Vue.js existante</li><li>Documentr les nouveaux et anciens processus de documentation </li><li>Créer des scripts Photoshop Action pour automatiser le processus de création de couverture et le redimensionnement dynamique des images </li><li> Améliorer la base de code existante pour rendre les composants plus réutilisables </li><li>Créé système de tableau trello pour que l'entreprise puisse utiliser et gérer son flux de travail </li><li>Les bandes dessinées ajoutées en tant que nouveau type de livre qu'elles proposent aux enfants </li><li> Performances générales et modifications de conception sur le site</li><li>Demanie d'assistance gérée par des utilisateurs, des écrivains, des artistes et des enseignants</li></ul>"
+        },
+        "3": {
+          "year": "août 2018 - janv 2019",
+          "points": "<ul><li>Site Web interne et actuel dans React</li><li>Estimations techniques pour les appels d'offres</li><li>Gestion du site de commerce électronique Magento existant</li><li>Shopify site Web de produits de miel de commerce électronique pour le miel qu'ils fabriquent sur place</li></ul>"
+        },
+        "4": {
+          "year": "mar 2018 - juil 2018",
+          "points": "<ul><li>Création de la documentation/des wikis pour la base de code et les processus existants </li><li> Application multilingue avec la possibilité d'ajouter ou de supprimer facilement des langues </li><li>Améliorer les temps de développement de produits de plus d'un mois à une semaine et demie </li><li>Améliorer la configuration et les processus du webpack pour réduire le temps de développement et augmenter les performances et la fiabilité de l'application</li><li> Modules convertis de prototypes ES5 en classes ES6 avec babel</li><li>Clients: Choice Australia, Human Society International, Cystic Fibrosis Canada, Ecojustice, UNICEF Canada, World Vision</li></ul>"
+        },
+        "5": {
+          "year": "oct 2017 - fév 2018",
+          "points": "<ul><li>Créez des applications de marketing 3D avec Babylon.js pour différentes divisions de GE(Healthcare, Energy, Grid Solutions)</li><li>Prototype et comparez différents frameworks frontaux à la solution logicielle actuelle de GE (Haxe)</li><li>Convertis l'application flash destinée à montrer tout leur matériel marketing lors de conférences à une application HTML5 avec Vue.js qui publie à la fois sur le Web et sur le bureau (Electron) et dispose d'un stockage hors ligne</li></ul>"
+        },
+        "6": {
+          "year": "fév 2017 - oct 2017",
+          "points": "<ul><li> Développement angululaire 2 de composants </li><li> Thème frontal de l'application Web hybride et Android Ionic 3 </li><li>Travailler avec l'équipe Java Spring pour planifier et créer des microservices backend </li><li> Gérer l'état Android hors ligne personnalisé </li><li> Travailler avec l'équipe pour implémenter redux dans l'application existante </li><li>Interviewer et intégrer les nouvelles recrues </li><li>Internalisation de l'application </li><li>Prise en charge des tablettes Android 3.0 </li></ul>"
+        },
+        "7": {
+          "year": "fév 2015 - fév 2017",
+          "points": "<ul><li> Thème frontal des sites Drupal</li><li>Droitage de modules back-end</li><li>Grattage de sitesPython</li><li> Sprints de code Drupal 8 : Ohio et Toronto</li><li>Gestion et mise à jour du site CodeIgniter</li><li>Sur les coopératives/stagiaires/nouvelles recrues</li><li>Régez les normes AODA</li>"
+        }
+      }
+    },
+    "skills": {
+      "code": "Code",
+      "tools": "Outils",
+      "design": "Concevoir"
+    }
+  },
+  "roles": "Roles",
+  "rolesArray": {
+    "leadDeveloper": "Développeur Principal",
+    "teamLead": "Chef d'équipe",
+    "developer": "Développeur",
+    "designer": "Designer"
+  },
+  "workTypeArray": {
+    "personal": "Personnel",
+    "work": "Travail",
+    "school": "École"
+  },
+  "projectTypeArray": {
+    "web": "Web",
+    "3d": "3D",
+    "design": "Concepteur"
+  },
+  "projectsArray": {
+    "1": {
+      "short_body": "Refaire le site Web principal du Collège de la Confédération'.",
+      "body": "Il s'agissait d'une reconstruction du site principal du Collège de la Confédération. Nous avons utilisé Drupal 7 pour le site principal."
+    },
+    "2": {
+      "short_body": "Hammer Fight est un multijoueur coopératif sur canapé qui oppose 2 à 4 joueurs dans un cadre de style arène de la mort. Il vous place dans un monde étranger où vous êtes opposé à mort à vos collègues astronautes.",
+      "body": "Hammer Fight est un multijoueur coopératif sur canapé qui oppose 2 à 4 joueurs dans un cadre de style arène de la mort. Il vous place dans un monde étranger où vous êtes opposé à mort à vos collègues astronautes. Vous êtes chargé d'un marteau anti-gravité et de certains de vos réflexes rapides. Vous devez maintenant survivre dans cette arène de la mort. Seule 1 couleur peut survivre.\n\nCela a d'abord commencé comme une game jam avec 2 autres de mes amis. Nous avons pensé que c'était amusant et sommes allés un peu plus loin. Nous avons fini par le montrer à Forest City Comicon à London, en Ontario."
+    },
+    "3": {
+      "short_body": "Blood Glocuse Tracker pour les personnes souffrant d'hypoglycémie.",
+      "body": "C'était un projet de thèse pour l'école, je me suis associé à Digital Echidna pour travailler sur l'application. Ils ont fait la conception initiale et le prototypage. J'ai travaillé sur l'API back-end et l'application. J'ai utilisé Drupal pour le back-end et j'ai utilisé AngularJS et Ionic pour le front-end, puis je l'ai enveloppé avec PhoneGap."
+    },
+    "4": {
+      "short_body": "Application mobile hybride conçue avec Ionic et Angular ciblant l'industrie de l'assurance-médicaments.",
+      "body": "C'était une application ionique sur laquelle j'ai travaillé avec une équipe. Il s'agit d'une application de présentation et de partage de vidéos conçue pour Android et le Web. Il a été conçu pour remplacer une application flash existante qu'Indegene Life Systems Pvt ltd avait pour mobile et Web. J'avais rejoint le projet environ 6 mois après le début du développement. À ce stade, les os nus de l'application étaient déjà mis en place avec Ionic et Angular 2. J'ai travaillé sur la mise à l'échelle des applications, le développement de nouvelles fonctionnalités et la mise en œuvre générale de l'interface utilisateur."
+    },
+    "5": {
+      "short_body": "Vérifiez si votre message fonctionnera ou non dans les limites de la lightbox.",
+      "body": "Vous indique si le message que vous souhaitez taper fonctionnera avec les lettres et la longueur du signe. Permettra également des substitutions de caractères.nnC'est un projet que j'ai réalisé en travaillant chez Xello dans le cadre de leur Successful Futures Day. J'ai fait fonctionner le slack bot le premier jour et j'ai travaillé sur le site react dans les jours suivants.\n\n S'intègre à Slack en tant que bot <a href='https://github.com/HellooooNewman/Lightbox-Quote-Checker'>Ici</a><br><br><h3>Fonctionnalités:</h3>\n\n<ul><li>Alternatives textuelles (3 = E)</li><li>Limites de caractères = (only 3 E\u2019s)</li><li>Vérification de la longueur de la phrase (40 caractères)</li><li>Vérification des caractères non valides</li><li>Vérification de la longueur des mots (Max 10 lettres par mot)</li><li>Trop de sauts de ligne dans la phrase (Max 3 sauts de ligne)</li></ul>"
+    },
+    "6": {
+      "short_body": "Rebranding de la société de production vidéo Trailer Works et de Metrick System, l'agence de design interne.",
+      "body": "J'ai travaillé avec le système Metrick pour créer deux nouveaux sites destinés aux clients afin de renommer leurs deux entreprises. Le premier était un <a href='http://www.metricksystem.com'>metricksystem.com</a>, qui a été conçu pour être une mise en page simple intégrée à React qui mettrait en évidence les études de cas uniques qu'ils avaient, ainsi que la gestion de leurs études de cas passées.\n\nLe deuxième site, un <a href='http://www.trailerworks.com'>trailerworks.com</a>, a été construit sur le site React existant, mais amélioré pour présenter des mises en page dynamiques d'études de cas, des SVG de dessin, un thème clair et sombre du site ainsi qu'un look de site nouveau et amélioré.nnJ'ai aidé à lancer l'<a href='http://www.randomactsofmusic.ca'>randomactsofmusic.ca/</a> qui mettait en vedette le Yamaha:  Going Solo Series site, avec des mises à jour hebdomadaires relatives à leur chaîne YouTube."
+    },
+    "7": {
+      "short_body": "Refonte de l'application mobile Tesla et de l'interface utilisateur du tableau de bord de la voiture avec des points et des lignes.",
+      "body": "J'ai été associé à un autre étudiant pour créer une nouvelle interface utilisateur pour le tableau de bord, le tableau de bord utilisateur et l'application pour smartphone de Tesla. Le thème avec lequel nous sommes allés était des points et des lignes. J'ai fait le tableau de bord utilisateur et l'application smartphone."
+    },
+    "8": {
+      "short_body": "Il s'agissait d'une reconstruction de tvokids.com d'un site flash à un site réactif moderne.",
+      "body": "Il s'agissait d'une reconstruction de tvokids.com d'un site flash à un site HTML5 moderne. Il s'agit d'une construction de site Drupal 7 utilisant un thème personnalisé avec un front-end javascript lourd. Je faisais partie d'une équipe alors que je travaillais sur ce sujet chez Digital Echidna. J'ai principalement travaillé sur la recherche côté client, la page vidéos et les pages de détails."
+    },
+    "9": {
+      "short_body": "Reconstruction du site Web de l'UdeT KPE.",
+      "body": "Reconstruction d'un site existant qui nécessitait la migration de son ancien contenu vers un nouveau site. Il s'agissait d'une construction complète du site Drupal 8 alors que Drupal 8 était encore en développement. Cela a ajouté une certaine complexité car Drupal 8 n'était pas largement utilisé, il y avait donc un peu de recherche à faire sur les modules personnalisés. Nous avons suivi une ligne directrice de marque publiée par l'Université de Toronto."
+    },
+    "10": {
+      "short_body": "Cela a été fait pour un mini concours 3D pour le site Web www.gameartisans.org.",
+      "body": "Cela a été fait pour un mini concours 3D pour le site Web www.gameartisans.org. La compétition consistait à créer un personnage de dragon poly faible inférieur à 15000 tris avec l'utilisation de 3 cartes: spécifications, carte diffuse et normale à une taille de texture de 2048."
+    }
+  },
+  "gamesArray": {
+    "277320": "Ne laissez pas vos lumières s'éteindre. Trouvez le motif. Détruisez les ennemis. Protégez vos lumières."
+  }
+}

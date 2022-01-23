@@ -2,14 +2,15 @@ import { Title } from "@angular/platform-browser"
 import { Injectable } from "@angular/core"
 import { HttpClient } from "@angular/common/http"
 import { Observable } from "rxjs/Observable"
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Project, GameJam } from "./../interfaces/common"
 import ProjectsJson from "../../assets/data/projects.json"
 import GamesJson from "../../assets/data/games.json"
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class DataService {
-  public title: Subject<String> = new Subject()
+  public title: BehaviorSubject<String> = new BehaviorSubject('home')
   public smallNav: Boolean = false
 
   // Data storage
@@ -24,7 +25,7 @@ export class DataService {
     game_jams: GameJam[]
   }
 
-  constructor(private http: HttpClient, private titleService: Title) {
+  constructor(private http: HttpClient, private titleService: Title, private translate: TranslateService) {
     this.dataStore = { projects: [], game_jams: [] }
   }
 
@@ -32,9 +33,11 @@ export class DataService {
    * Sets title of the page
    * @param title page title
    */
-  setTitle = (title: String) => {
-    this.titleService.setTitle(`${title} - Kevin Newman`)
-    this.title.next(title)
+  setTitle = (title: string) => {
+    this.translate.get(title).subscribe((res: string) => {
+      this.titleService.setTitle(`${res} - Kevin Newman`)
+      this.title.next(title)
+    })
   }
 
   /**

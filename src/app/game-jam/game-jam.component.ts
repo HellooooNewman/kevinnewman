@@ -13,7 +13,7 @@ export class GameJamComponent implements OnInit {
   constructor(public dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.setTitle("Game Jams")
+    this.dataService.setTitle("gameJams")
     this.gameJams = this.dataService.game_jam
     this.dataService.getAllGames()
   }

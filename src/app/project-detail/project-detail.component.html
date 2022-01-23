@@ -9,26 +9,20 @@
             *ngIf="project.project_url != ''"
             class="project-link button button-primary"
             target="_blank"
-            >Project Link</a
+            >{{'projectLink' | translate}}</a
         >
         <div class="row">
             <div class="eight column" id="project-summary">
-                <h3>Project Summary</h3>
+                <h3>{{'projectSummary' | translate}}</h3>
                 <div style="margin-bottom: 10px;">
-                    <span style="font-weight:bold;">Year </span>
-                    <span
-                        >{{ project.start_date }} - {{ project.end_date }}</span
-                    >
+                    <span style="font-weight:bold;">{{'year' | translate}}: </span>
+                    <span>{{ project.start_date }} - {{ project.end_date }}</span>
                 </div>
-                <p [innerHtml]="project.body"></p>
-            </div>
-            <div class="four column" *ngIf="project.tasks.length != 0">
-                <h3>Features</h3>
-                <ul>
-                    <li *ngFor="let task of project.tasks">
-                        {{ task }}
-                    </li>
-                </ul>
+                <div style="margin-bottom: 10px;">
+                    <span style="font-weight:bold;">{{'roles' | translate}}: </span>
+                    <span *ngFor="let role of project.roles; let i = index;">{{'rolesArray.' + role | translate}} <span *ngIf="i != (project.roles.length - 1)"> | </span></span>
+                </div>
+                <p [innerHTML]="('projectsArray.' + project.id + '.body') | translate"></p>
             </div>
             <!-- <a routerLink='/project/{{prev(Project.id}}' (click)="project = prevProject" class="project-direction-btns project-prev" [style.background-image]="'url(http:/' + prev(Project.main_img + ')'">
         {{prev(Project.title}}
@@ -60,7 +54,7 @@
                         src="{{ video.url }}.webm"
                         type="video/webm"
                     />
-                    Your browser does not support the video tag.
+                    {{'noVideoSupport'| translate}}
                 </video>
             </div>
                   <img *ngFor="let image of project.gallery"

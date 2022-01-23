@@ -21,6 +21,6 @@ export class ContactComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.setTitle('Contact');
+    this.dataService.setTitle('contact');
   }
 }

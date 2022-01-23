@@ -5,7 +5,7 @@
           height="300px"></canvas>
   <a routerLink='/'
      aria-label="Home">
-    Home
+    {{'home' | translate}}
     <svg class="logo"
          xmlns="http://www.w3.org/2000/svg"
          viewBox="0 0 153.15 134.9">
@@ -13,12 +13,10 @@
             d="M66.23,23H100L123,50.7V22.86h30.1V0H40.06V29.13H34.52C1.59,29.13-4.09,59.77,0,67.38-.09,75,1.59,105.63,34.52,105.63h5.54V134.9H153.15V112H123L99.9,84.2l.06,27.73H66.23M40,83.75s-.87,0-5.29,0-11,.26-11.39-16.41C23.74,50.71,30.43,51,34.69,51a36.87,36.87,0,0,1,5.29.18V83.75Z" />
     </svg>
   </a>
-  <button class="dark-mode__btn dark-mode__btn--dark"
-          (click)="toggleDarkMode()"
-          *ngIf="!isDarkMode">Dark Mode!⛺️🌝</button>
-  <button class="dark-mode__btn dark-mode__btn--light"
-          (click)="toggleDarkMode()"
-          *ngIf="isDarkMode">Light Mode!🚣‍♀️🌞</button>
+  <button (click)="toggleDarkMode()"
+          [class]="[!isDarkMode ? 'dark-mode__btn--dark' : 'dark-mode__btn--light', 'dark-mode__btn']"
+          >{{(isDarkMode ? 'lightMode' : 'darkMode') | translate}}</button>
+  <translation-toggle></translation-toggle>
 </div>
 
 <nav id="kevin-nav">
@@ -49,7 +47,7 @@
         </g>
       </svg>
 
-      Download Resume
+      {{'downloadResume' | translate}}
     </a>
     <app-social-media-links></app-social-media-links>
   </div>
@@ -68,7 +66,7 @@
                 d="M66.23,23H100L123,50.7V22.86h30.1V0H40.06V29.13H34.52C1.59,29.13-.09,59.77,0,67.38-.09,75,1.59,105.63,34.52,105.63h5.54V134.9H153.15V112H123L99.9,84.2l.06,27.73H66.23M40,83.75s-.87,0-5.29,0-11,.26-11.39-16.41C23.74,50.71,30.43,51,34.69,51a36.87,36.87,0,0,1,5.29.18V83.75Z" />
         </svg>
       </a>
-      <h3>{{ dataService.title | async }}</h3>
+      <h3>{{ dataService.title | async | translate }}</h3>
     </div>
     <div class="menu-toggle"
          (click)="openedBool = !openedBool">
@@ -91,13 +89,13 @@
         [ngClass]="{'opened': openedBool}">
       <li><a routerLink="/"
            routerLinkActive="active-link"
-           [routerLinkActiveOptions]="{exact: true}">Home</a></li>
+           [routerLinkActiveOptions]="{exact: true}">{{'home' | translate}}</a></li>
       <li><a routerLink="/projects"
-           routerLinkActive="active-link">Projects</a></li>
+           routerLinkActive="active-link">{{'projects' | translate}}</a></li>
       <li><a routerLink="/game-jams"
-           routerLinkActive="active-link">Game Jams</a></li>
+           routerLinkActive="active-link">{{'gameJams' | translate}}</a></li>
       <li><a routerLink="/contact"
-           routerLinkActive="active-link">Contact</a></li>
+           routerLinkActive="active-link">{{'contact' | translate}}</a></li>
     </ul>
   </div>
 </nav>

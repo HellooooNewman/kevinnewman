@@ -3,14 +3,12 @@ export interface Project {
   title: string;
   thumbnail_img: string;
   main_img: string;
-  body: string;
   start_date: string;
   end_date: string;
   gallery: Gallery[];
   project_type: string;
   project_url: string;
-  roles: string;
-  tasks: string[];
+  roles: string[];
   promote: boolean;
   videos: Video[];
   archived: boolean;

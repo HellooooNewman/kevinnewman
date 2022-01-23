@@ -4,7 +4,7 @@
 
 `ng serve --prod` to test production settings locally
 
-`ng build --prod` to build.
+`ng build --configuration production` to build.
 
 `ng generate *` to [build](https://github.com/angular/angular-cli/wiki/generate)
 
@@ -12,13 +12,12 @@
 
 #### Done
 
--   ~~Meta theme colour~~
--   ~~Google Analytics~~
--   ~~Game jams section~~
--   ~~Grey placeholder content~~
-
+-   ~~Meta theme colour~~ ✅ 
+-   ~~Google Analytics~~ ✅ 
+-   ~~Game jams section~~ ✅ 
+-   ~~Grey placeholder content~~ ✅ 
+-   ~~Internationalization: FR~~ ✅ 
 #### Things to do
 
--   Internationalization: FR, SP, EN (maybe Simplified Chinese)
 -   Google site audit
--   Rocket section
+-   Rocketship 🚀

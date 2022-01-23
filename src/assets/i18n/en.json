@@ -1,0 +1,149 @@
+{
+  "home": "Home",
+  "introduction": "Introduction",
+  "work": "Work",
+  "projects": "Projects",
+  "skills": "Skills",
+  "education": "Education",
+  "contact": "Contact",
+  "thanksForComing": "Thanks for coming by. <strong>Have a nice day</strong>",
+  "designAndDeveloped": "Designed and developed by Kevin Newman.",
+  "contactMe": "Contact Me",
+  "downloadResume": "Download Resume",
+  "gameJams": "Game Jams",
+  "lightMode": "Light Mode 🚣‍♀️🌞",
+  "darkMode": "Dark Mode ⛺️🌝",
+  "whatIsAGameJam": "What is a Game Jam?",
+  "whatIsAGameJamDescription": "A game jam is a hackathon for video games. It is a gathering of people for the purpose of planning, designing, and creating one or more games within a short span of time, usually ranging between 24 and 72 hours, and some even longer. Wikipedia",
+  "helloWearyTraveller": "Hello weary traveller,",
+  "helloWearyTravellerDescription": "<p> Well you made it this far. Take a break. Rest your fingers and enjoy the stars scrolling by. In the mean time you can check out my <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> for more of my random going ons.</p><p>If you're interested in working with me, shoot me a message either through <a href='mailto:knewmanium@gmail.com' target='_blank'>Email</a> / <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> / <a href='https://www.linkedin.com/in/helloooonewman/' target='_blank'>LinkedIn</a>. Always looking for new interesting projects.</p>",
+  "projectLink": "Project Link",
+  "projectSummary": "Project Summary",
+  "features": "Features",
+  "noVideoSupport": "Your browser does not support the video tag.",
+  "year": "Year",
+  "viewMore": "View More",
+  "viewLess": "View Less",
+  "viewAll": "View All",
+  "errorTitle": "Looks like you're in the wrong spot. Need some help there? 🤔",
+  "clickHere": "Click Here",
+  "errorDescription": " to go back to the homepage.",
+  "frButton": "🇫🇷  FR",
+  "enButton": "🇬🇧  EN",
+  "remote": "Remote",
+  "resume": {
+    "introduction": "<p>Hi there, I'm Kevin Newman, a developer, designer and hobbyist living in Canada. I like to make responsive websites, captivating videos and 3D models. In my off time, you can usually find me playing/making some video games, working on a side project, or doodling some little drawings. I try to keep up with the current trends in technology by going to developer meetups in the area. </p><p>Currently working on a Unity couch co-op multiplayer game called Hammer Fight.",
+    "work": {
+      "employmentType": {
+        "fullTime": "Full-time",
+        "contract": "Contract"
+      },
+      "title": {
+        "softwareDeveloper": "Software Developer",
+        "fullStackWebDeveloper": "Full Stack Web Developer",
+        "frontendDeveloper": "Frontend Developer"
+      },
+      "jobs": {
+        "0": {
+          "year": "Dec 2020 - Present",
+          "points": "<ul><li>Continue development of dynamically created graphql query system</li><li>Automated BE to FE dynamic enum generation</li><li>Managed updates to marketing website, with push to nuxt.js</li><li>Moving regular components over to storyboard</li><li>Converted regular SCSS variable codebase to use CSS variables</li><li>Work with another team to bring on dynamic white labelling service of features</li></ul>"
+        },
+        "1": {
+          "year": "Jan 2019 - Dec 2020",
+          "points": "<ul><li>Maintain micro frontend shell application</li><li>Upgrade angularjs components, services, and unit tests to Angular and Jest</li><li>Localizing the existing product to the UK market with a different school system style</li><li>Created new stored procedures following existing conventions</li><li>Performance improvements to existing SQL queries</li><li>Created documentation site for product along with a content writer <a href='https://help.xello.world/'>help.xello.world</a></li><li>Agile scrum sprints and demo at the end of sprint</li><li>Hackathons one day every sprint towards self learning: <a href='https://www.kevinnewman.ca/lightbox-quote-checker/'>Lightbox</a> and <a href='https://github.com/HellooooNewman/helloooonewman-vscode-extension'>Chrome Extension</a></li><li>Adding to and updating existing microservices architecture</li><li>Maintaining and scaling storybook components</li><li>Working towards making student side application a PWA</li></ul>"
+        },
+        "2": {
+          "year": "Oct 2018 - Present",
+          "points": "<ul><li>Update and maintain existing Laravel and Vue.js codebase</li><li>Document new and old processes for documentation</li><li>Create Photoshop Action scripts for automating cover creation process and dynamic resizing of images</li><li>Improve existing codebase to make components more reusable</li><li>Created trello board system for company to use and manage their workflow</li><li>Added comic books as a new type of book they offer to kids</li><li>General performance and design changes around the site</li><li>Managed support requests from users, writers, artists, and teachers</li></ul>"
+        },
+        "3": {
+          "year": "Aug 2018 - Jan 2019",
+          "points": "<ul><li>Interim and current website in React</li><li>Technical estimates for RFPs</li><li>Manage existing Magento Ecommerce site</li><li>Shopify ecommerce honey product website for honey they make onsite</li></ul>"
+        },
+        "4": {
+          "year": "March 2018 - July 2018",
+          "points": "<ul><li>Created documentation/wikis for existing codebase and processes</li><li>Made application multilingual with ability to add or remove languages easily</li><li>Improved product development times from over a month to a week and half</li><li>Improve webpack config and processes to decrease development time and increase performance and reliability of app</li><li>Converted modules from ES5 prototypes to ES6 classes with babel</li><li>Clients: Choice Australia, Human Society International, Cystic Fibrosis Canada, Ecojustice, UNICEF Canada, World Vision</li></ul>"
+        },
+        "5": {
+          "year": "Oct 2017 - Feb 2018",
+          "points": "<ul><li>Create 3D marketing apps with Babylon.js for different divisions of GE(Healthcare, Energy, Grid Solutions)</li><li>Prototype and compare different Frontend frameworks to GE's current software solution(Haxe)</li><li>Convert flash application meant for showing off all their marketing material at conferences to an HTML5 application with Vue.js that publishes to both web and desktop (Electron) and features offline storage</li></ul>"
+        },
+        "6": {
+          "year": "Feb 2017 - Oct 2017",
+          "points": "<ul><li>Angular 2 development of components</li><li>Front end theming of Ionic 3 hybrid web and android app</li><li>Work with Java Spring team to plan and create backend microservices</li><li>Manage custom offline android state</li><li>Worked with team to implement redux into existing application</li><li>Interviewing and onboarding new hires</li><li>Internalization of app</li><li>Support for Android 3.0 tablets</li></ul>"
+        },
+        "7": {
+          "year": "Feb 2015 - Feb 2017",
+          "points": "<ul><li>Front-end theming of Drupal sites</li><li>Back-end module development</li><li>Python site scraping</li><li>Drupal 8 code sprints : Ohio and Toronto</li><li>Manage and update CodeIgniter site</li><li>On board co-ops/interns/new hires</li><li>Meet AODA standards</li>"
+        }
+      }
+    },
+    "skills": {
+      "code": "Code",
+      "tools": "Tools",
+      "design": "Design"
+    }
+  },
+  "roles": "Roles",
+  "rolesArray": {
+    "leadDeveloper": "Lead Developer",
+    "teamLead": "Team Lead",
+    "developer": "Developer",
+    "designer": "Designer"
+  },
+  "workTypeArray": {
+    "personal": "Personal",
+    "work": "Work",
+    "school": "School"
+  },
+  "projectTypeArray": {
+    "web": "Web",
+    "3d": "3D",
+    "design": "Design"
+  },
+  "projectsArray": {
+    "1": {
+      "short_body": "Rebuilding Confederation College's main website.",
+      "body": "This was a site rebuild of Confederation College's main site. We used Drupal 7 for the main site."
+    },
+    "2": {
+      "short_body": "Hammer Fight is a couch co op multiplayer that pits 2 - 4 players against each other in a death arena style setting. It places you on a foreign world where you are pitted to death against your fellow astronauts.",
+      "body": "Hammer Fight is a couch co op multiplayer that pits 2 - 4 players against each other in a death arena style setting. It places you on a foreign world where you are pitted to death against your fellow astronauts. You are tasked with a anti-gravity hammer and some your quick reflexes. You must now survive in this a death arena. Only 1 colour can survive.\/p\n\nThis initially started off as a game jam with 2 other friends of mine. We thought it was fun and took it a little further. We ended up showing it at Forest City Comicon in London Ontario."
+    },
+    "3": {
+      "short_body": "Blood Glocuse Tracker for people with hypoglycemia.",
+      "body": "This was a thesis project for school, I partnered with Digital Echidna to work on the app. They did the initial design and prototyping. I worked on the back-end API and the app. I used Drupal for the back-end and used AngularJS and Ionic for the front-end then wrapped it up with PhoneGap."
+    },
+    "4": {
+      "short_body": "Hybrid mobile app made with Ionic and Angular targeting the pharmacare industry.",
+      "body": "This was an Ionic app I worked on with a team. It's a presentation and video sharing app built for Android and web. It was made to replace an existing flash app Indegene Life Systems Pvt ltd had for mobile and web. I had joined the project about 6 months into development. At this point the bare bones of the app was already set in place with Ionic and Angular 2. I worked on app scaling, new feature development and general UI implementation."
+    },
+    "5": {
+      "short_body": "Check whether or not your message will work within the constraints of the lightbox.",
+      "body": "Tells you whether the message you want to type will work with the letters and length of the sign. Will also allow for substitutions of characters.\n\nThis was a project I made working at Xello as part of their Successful Futures Day. I got the slack bot working in the first day and worked towards the react site in the next few days.\n\nIntegrates into Slack as a bot <a href='https://github.com/HellooooNewman/Lightbox-Quote-Checker'>Here</a><br><br><h3>Features:</h3>\n\n<ul><li>Text alternatives (3 = E)</li><li>Character limits = (only 3 E's)</li><li>Sentence length check (40 characters)</li><li>Invalid character check (A-Z, 0-9, #\u0026amp;@)</li><li>Word length check(Max 10 letters per word)</li><li>Too many line breaks in the sentence(Max 3 line breaks)</li></ul>"
+    },
+    "6": {
+      "short_body": "Rebranding of the the Trailer Works video production company and Metrick System the in house design agency.",
+      "body": "I worked with the Metrick System to build out two new client facing sites to rebrand both of their businesses. The first was <a href=http://www.metricksystem.commetricksystem.com/a, which was designed to be a simple layout built in React that would highlight unique case studies they had, as well as managing their past case studies.\n\nThe second site, a href=http://www.trailerworks.comtrailerworks.com/a, was built on top of the existing React site but enhanced to feature dynamic layouts of case studies, drawing SVGs, light and dark theme of site as well as new and improved site look.\n\nI helped to launch the a href=http://www.randomactsofmusic.carandomactsofmusic.ca/a which featured the Yamaha: Going Solo Series site, with weekly updates relating to their YouTube channel."
+    },
+    "7": {
+      "short_body": "Redesigning the Tesla mobile app and car dashboard UI with dots and lines.",
+      "body": "I was partnered with another student to create a new UI for Tesla's dashboard, user dashboard and smartphone app. The theme we went with was dots and lines. I did the user dashboard and smartphone app."
+    },
+    "8": {
+      "short_body": "This was a rebuild of tvokids.com from a flash site to modern responsive site.",
+      "body": "This was a rebuild of tvokids.com from a flash site to modern HTML5 site. It's a Drupal 7 site build using a custom built theme with a heavy javascript front-end. I was a part of a team while working on this at Digital Echidna. I mainly worked on the client side search, videos page and detail pages."
+    },
+    "9": {
+      "short_body": "Rebuild of UofT KPE website.",
+      "body": "This was a rebuild of an existing site that required migration of their old content to there new site. This was a full Drupal 8 site build while Drupal 8 was still in development. This added some complexity because Drupal 8 wasn't widely used so there was a bit of research that needed to be done into custom modules. We followed a brand guideline placed out by U of T."
+    },
+    "10": {
+      "short_body": "This was made for a 3D mini competition for the website www.gameartisans.org.",
+      "body": "This was made for a 3D mini competition for the website www.gameartisans.org. The competition was to make a low poly dragon character that was under 15000 tris with the use of 3 maps: spec, diffuse, and normal map at 2048 texture size."
+    }
+  },
+  "gamesArray": {
+    "277320": "Don't let your lights go out. Find the pattern. Destroy the enemies. Protect the your lights."
+  }
+}

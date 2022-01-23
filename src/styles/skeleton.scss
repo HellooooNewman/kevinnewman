@@ -605,7 +605,6 @@ input[type="button"] {
   font-weight: 600;
   line-height: 2.5rem;
   letter-spacing: 0.1rem;
-  text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   background-color: transparent;
@@ -808,10 +807,10 @@ input[type="url"],
 input[type="password"],
 textarea,
 select {
-  border: 1px solid #fff;
+  border: 1px solid var(--light-grey);
   padding: 0.4rem 0.6rem;
   background-color: #FFF;
-  border-bottom: 1px var(--light-grey) solid;
+  // border-bottom: 1px var(--light-grey) solid;
   box-shadow: none;
   -webkit-transition: border 0.2s;
   transition: border 0.2s;
