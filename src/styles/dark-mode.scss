@@ -9,6 +9,12 @@
         color: #fff;
     }
 
+    #main-nav {
+      &:after {
+        display: none;
+      }
+    }
+
     .sky-header, #main-nav, #kevin-nav, ::-webkit-scrollbar-track {
         background: #222!important;
     }
