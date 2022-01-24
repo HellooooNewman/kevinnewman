@@ -118,6 +118,17 @@
     z-index: 2;
     padding: 0.80rem 0;
 
+    &:after {
+      background: url("../../assets/images/nav-closed-2.svg");
+      content: "";
+      display: block;
+      position: absolute;
+      top: -10px;
+      height: 30px;
+      width: 100%;
+      z-index: -1;
+    }
+
     .swoop {
         position: absolute;
         top: -20px;
@@ -176,9 +187,9 @@
         line-height: 1.7;
     }
 
+
     @media (min-width: 720px) {
         height: auto;
-        background: url("../../assets/images/nav-closed-2.svg") no-repeat;
     }
 
     ul {
