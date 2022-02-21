@@ -32,7 +32,7 @@
   "enButton": "🇬🇧  EN",
   "remote": "Remote",
   "resume": {
-    "introduction": "<p>Hi there, I'm Kevin Newman, a developer, designer and hobbyist living in Canada. I like to make responsive websites, captivating videos and 3D models. In my off time, you can usually find me playing/making some video games, working on a side project, or doodling some little drawings. I try to keep up with the current trends in technology by going to developer meetups in the area. </p><p>Currently working on a Unity couch co-op multiplayer game called Hammer Fight.",
+    "introduction": "<p>Hi there, I'm Kevin Newman, a developer, and Game Jam hobbyist living in Canada. </p><p>Currently working on a Unity couch co-op multiplayer game called Hammer Fight.</p>",
     "work": {
       "employmentType": {
         "fullTime": "Full-time",
@@ -50,10 +50,10 @@
         },
         "1": {
           "year": "Jan 2019 - Dec 2020",
-          "points": "<ul><li>Maintain micro frontend shell application</li><li>Upgrade angularjs components, services, and unit tests to Angular and Jest</li><li>Localizing the existing product to the UK market with a different school system style</li><li>Created new stored procedures following existing conventions</li><li>Performance improvements to existing SQL queries</li><li>Created documentation site for product along with a content writer <a href='https://help.xello.world/'>help.xello.world</a></li><li>Agile scrum sprints and demo at the end of sprint</li><li>Hackathons one day every sprint towards self learning: <a href='https://www.kevinnewman.ca/lightbox-quote-checker/'>Lightbox</a> and <a href='https://github.com/HellooooNewman/helloooonewman-vscode-extension'>Chrome Extension</a></li><li>Adding to and updating existing microservices architecture</li><li>Maintaining and scaling storybook components</li><li>Working towards making student side application a PWA</li></ul>"
+          "points": "<ul><li>Maintain micro frontend shell application to work with web components</li><li>Upgrade angularjs components, services, and unit tests to Angular and Jest</li><li>Localizing the existing product to the UK market with a different school system style</li><li>Performance improvements to existing SQL queries</li><li>Created documentation site for product along with a content writer <a href='https://help.xello.world/'>help.xello.world</a></li><li>Hackathons day towards self learning <a href='https://www.kevinnewman.ca/lightbox-quote-checker/'>Lightbox</a> and improving productivity <a href='https://github.com/HellooooNewman/helloooonewman-vscode-extension'>Chrome Extension</a></li><li>Maintaining and scaling storybook components</li><li>Working towards making student side application a PWA</li></ul>"
         },
         "2": {
-          "year": "Oct 2018 - Present",
+          "year": "Oct 2018 - Jan 2020",
           "points": "<ul><li>Update and maintain existing Laravel and Vue.js codebase</li><li>Document new and old processes for documentation</li><li>Create Photoshop Action scripts for automating cover creation process and dynamic resizing of images</li><li>Improve existing codebase to make components more reusable</li><li>Created trello board system for company to use and manage their workflow</li><li>Added comic books as a new type of book they offer to kids</li><li>General performance and design changes around the site</li><li>Managed support requests from users, writers, artists, and teachers</li></ul>"
         },
         "3": {
@@ -79,9 +79,10 @@
       }
     },
     "skills": {
-      "code": "Code",
+      "frontEndMobile": "Front-end/Mobile",
       "tools": "Tools",
-      "design": "Design"
+      "backEnd": "Back-end",
+      "os": "OSs"
     }
   },
   "roles": "Roles",

@@ -1,17 +1,30 @@
-<div class="container">
+<div class="container introduction">
   <h2>
     <span>{{'introduction'| translate}}</span>
     <hr />
   </h2>
   <div [innerHtml]="resume.introduction | translate"></div>
 </div>
-<div class="container">
+
+<div class="container skills">
+  <h2>
+    <span>{{'skills'| translate}}</span>
+    <hr />
+  </h2>
+  <div class="six columns"
+       *ngFor="let skill of resume.skills">
+    <h3>{{ 'resume.skills.' + skill.title | translate }}</h3>
+    <ul>
+      <li *ngFor="let item of skill.list">{{ item }}</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container job">
   <h2>
     <span>{{'work'| translate}}</span>
     <hr />
   </h2>
-</div>
-<div class="container job">
   <div class="columns twelve"
        *ngFor="let job of resume.work.jobs; let i = index">
     <div class="job-information">
@@ -63,19 +76,7 @@
     <p>{{('projectsArray.' + project.id +  '.short_body') | translate}}</p>
   </a>
 </div>
-<div class="container skills">
-  <h2>
-    <span>{{'skills'| translate}}</span>
-    <hr />
-  </h2>
-  <div class="six columns"
-       *ngFor="let skill of resume.skills">
-    <h3>{{ 'resume.skills.' + skill.title | translate }}</h3>
-    <ul>
-      <li *ngFor="let item of skill.list">{{ item }}</li>
-    </ul>
-  </div>
-</div>
+
 <div class="container education">
   <h2>
     <span>{{'education'| translate}}</span>

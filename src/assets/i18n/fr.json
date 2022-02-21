@@ -32,7 +32,7 @@
   "enButton": "🇬🇧 EN",
   "remote": "Travail à domicile",
   "resume": {
-    "introduction": "<p>Bonjour je suis Kevin Newman, a développeur, designer et amateur vivant au Canada. J'aime créer des sites Web réactifs, des vidéos captivantes et des modèles 3D. Pendant mon temps libre, vous pouvez généralement me trouver en train de jouer / faire des jeux vidéo, de travailler sur un projet parallèle ou de gribouiller quelques petits dessins. J'essaie de suivre les tendances actuelles de la technologie en participant à des rencontres de développeurs dans la région. </p><p> Actuellement sur un jeu multijoueur coopératif sur canapé Unity appelé Hammer Fight.",
+    "introduction": "<p>Bonjour je suis Kevin Newman, a développeur, et amateur Game Jam vivant au Canada.</p><p> Actuellement sur un jeu multijoueur coopératif sur canapé Unity appelé Hammer Fight.",
     "work": {
       "employmentType": {
         "fullTime": "Plein Temps",
@@ -79,9 +79,10 @@
       }
     },
     "skills": {
-      "code": "Code",
+      "frontEndMobile": "Front-end/Mobile",
       "tools": "Outils",
-      "design": "Concevoir"
+      "backEnd": "Back-end",
+      "os": "OSs"
     }
   },
   "roles": "Roles",

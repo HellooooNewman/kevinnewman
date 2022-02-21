@@ -26,10 +26,10 @@ export class HomeComponent implements OnInit {
           employer_link: "http://sonar.software/",
           employment_type: "fullTime",
           location: "remote",
-          technology: "ES6, SCSS, Vue.js, PHP, Laravel, Graphql, SQL, Azure, CircleCI, Flutter",
+          technology: "ES6, SCSS, Vue.js, PHP, Laravel, Graphql, PostgreSQL, Azure, CircleCI, Flutter, Docker",
         },
         {
-          showDetails: false,
+          showDetails: true,
           logo: "./assets/company-logos/xello.svg",
           title: "fullStackWebDeveloper",
           employer: "Xello",
@@ -105,47 +105,61 @@ export class HomeComponent implements OnInit {
     },
     skills: [
       {
-        title: "code",
+        title: "frontEndMobile",
         list: [
-          "HTML5 - PHP - ES6 - C# - Bash - Typescript",
-          "CSS3 - SCSS",
-          "CodeIgniter - Laravel - Wordpress - Drupal 7/8 - .NET Core",
-          "Angular - JQuery - Ionic - Vue - React - Electron",
-          "Highcharts - Babylon - RXjs",
-          "MVC - OOP - Rest API - Redux",
-          "Git - SVN",
-          "Gulp - Webpack - Grunt - Webhooks",
-
+          "HTML5 - CSS3 - SASS",
+          "Angular - Vue - React",
+          "Three.js - Babylon - RXjs",
+          "Electron - Ionic",
+          "Flutter - React Native"
+        ],
+      },
+      {
+        title: "backEnd",
+        list: [
+          "ORM - OOP - REST API - MVC",
+          "Node.js - Express",
+          "C# - .NET - Unity",
+          "PHP - Laravel",
+          "MongoDB - MySQL - PostgreSQL - Redis",
+          "Docker - CircleCI - Jenkins - Octopus",
         ],
       },
       {
         title: "tools",
         list: [
+          "Git - Github",
           "Mac - PC",
           "VS Code",
-          "Photoshop - Illustrator",
-          "Figma",
+          "Photoshop - Illustrator - Figma",
           "After Effects - Premiere",
-          "Blender",
-          "Github - Bitbucket - Gitlab",
-          "Unity",
-          "NPM - Bower - Yarn",
+          "Blender - Unity",
+          "NPM - Yarn",
           "AWS - Digital Ocean - Azure",
         ],
       },
+      {
+        title: "os",
+        list: [
+          "OSX",
+          "Windows",
+          "iOS",
+          "Android",
+        ],
+      }
     ],
     education: [
       {
-        program: "Interactive Media Design",
-        year: "Fanshawe - 2011-2013",
+        program: "Interactive Media Specialist",
+        year: "Fanshawe - 2014-2015",
       },
       {
-        program: "3d Character Design & Animation",
+        program: "3D Character Design & Animation",
         year: "Fanshawe - 2013-2014",
       },
       {
-        program: "Interactive Media Specialist",
-        year: "Fanshawe - 2014-2015",
+        program: "Interactive Media Design",
+        year: "Fanshawe - 2011-2013",
       },
     ],
   }
