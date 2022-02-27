@@ -39,10 +39,9 @@
       </a>
       <h4 class="employer__job-title">{{ 'resume.work.title.' + job.title | translate }}</h4>
       <h5 class="employer__type">{{ 'resume.work.employmentType.' + job.employment_type | translate }}</h5>
-      <div>
+      <div class="employer__details">
         <h5 class="employer__year">{{ 'resume.work.jobs.' + i + '.year' | translate }}</h5>
         <h5 class="employer__location">{{ job.location | translate}}</h5>
-
       </div>
       <button (click)="job.showDetails = !job.showDetails">
         {{(job.showDetails ? 'viewLess' : 'viewMore') | translate}}

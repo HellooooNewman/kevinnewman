@@ -16,7 +16,7 @@
   "whatIsAGameJam": "Qu'est-ce qu'une Game Jam",
   "whatIsAGameJamDescription": "Une game jam (game jam est parfois utilisé avec le genre masculin) est un hackathon avec pour thème principal les jeux vidéo, mais pouvant aussi porter sur les jeux au sens large1. Les participants, groupés en équipes, doivent créer un jeu dans un temps limité2, généralement le temps d'un week-end, sur 24 à 72 heures. Wikipedia",
   "helloWearyTraveller": "Bonjour voyageur fatigué,",
-  "helloWearyTravellerDescription": "<p> Eh bien, vous êtes arrivé jusqu'ici. Faites une pause. Reposez vos doigts et profitez des étoiles qui défilent. En attendant, vous pouvez consulter mon <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> fopour plus de mes événements aléatoires.</p><p>Si vous êtes intéressé à travailler avec moi, envoyez-moi un message par <a href='mailto:knewmanium@gmail.com' target='_blank'>Email</a> / <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> / <a href='https://www.linkedin.com/in/helloooonewman/' target='_blank'>LinkedIn</a>. Toujours à la recherche de nouveaux projets intéressants.</p>",
+  "helloWearyTravellerDescription": "<p> Eh bien, vous êtes arrivé jusqu'ici. Faites une pause. Reposez vos doigts et profitez des étoiles qui défilent. En attendant, vous pouvez consulter mon <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> fopour plus de mes événements aléatoires.</p><p>Si vous êtes intéressé à travailler avec moi, envoyez-moi un message par <a href='mailto:kevin@kevinnewman.ca' target='_blank'>Email</a> / <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> / <a href='https://www.linkedin.com/in/helloooonewman/' target='_blank'>LinkedIn</a>. Toujours à la recherche de nouveaux projets intéressants.</p>",
   "projectLink": "Site web du projet",
   "projectSummary": "Résumé du projet",
   "features": "Fonctionnalités",
@@ -45,12 +45,12 @@
       },
       "jobs": {
         "0": {
-          "year": "déc 2020 - Aujourd'hui",
+          "year": "janv 2021 - Aujourd'hui",
           "points": "<ul><li>Continuer le développement d'un système de requête graphql créé dynamiquement </li><li>Génération automatique d'enum dynamique BE en FE </li><li> Mises à jour gérées du site Web marketing, avec push vers nuxt.js</li><li>Déplacement de composants réguliers vers le storyboard </li><li>Base de code de variables SCSS régulière convertie pour utiliser des variables CSS</li><li>Travailler avec une autre équipe pour mettre en place un service dynamique de fonctionnalités en marque blanche</li></ul>"
         },
         "1": {
-          "year": "janv 2019 - déc 2020",
-          "points": "<ul><li>Maintenez l'application shell micro frontend</li><li>Mise à niveau des composants, des services et des tests unitaires angularjs vers Angular et Jest</li><li>Localisation du produit existant sur le marché britannique avec un style de système scolaire différent </li><li>Création de nouvelles procédures stockées suivant les conventions existantes </li><li>Amélioration des performances des requêtes SQL existantes </li><li>Création d'un site de documentation pour le produit avec un rédacteur de contenu <a href='https://help.xello.world/'>help.xello.world</a></li><li>Agile scrum sprints et démo à la fin de sprint</li><li>Hackathons un jour chaque sprint vers l'auto-apprentissage: <a href='https://www.kevinnewman.ca/lightbox-quote-checker/'>Lightbox</a> et <a href='https://github.com/HellooooNewman/helloooonewman-vscode-extension'>Chrome Extension</a></li><li>Ajout et mise à jour de l'architecture de microservices existantes</li><li>Maintaining and scaling storybook components</li><li>Working towards making student side application a PWA</li></ul>"
+          "year": "janv 2019 - janv 2021",
+          "points": "<ul><li>Maintenez l'application shell micro frontend</li><li>Mise à niveau des composants, des services et des tests unitaires angularjs vers Angular et Jest</li><li>Localisation du produit existant sur le marché britannique avec un style de système scolaire différent </li><li>Création de nouvelles procédures stockées suivant les conventions existantes </li><li>Amélioration des performances des requêtes SQL existantes </li><li>Création d'un site de documentation pour le produit avec un rédacteur de contenu <a href='https://help.xello.world/'>help.xello.world</a></li><li>Agile scrum sprints et démo à la fin de sprint</li><li>Hackathons un jour chaque sprint vers l'auto-apprentissage: <a href='https://www.kevinnewman.ca/lightbox-quote-checker/'>Lightbox</a> et <a href='https://github.com/HellooooNewman/helloooonewman-vscode-extension'>Chrome Extension</a></li><li>Ajout et mise à jour de l'architecture de microservices existantes</li><li>Maintaining and scaling storybook components</li></ul>"
         },
         "2": {
           "year": "oct 2018 - déc 2020",
@@ -79,9 +79,9 @@
       }
     },
     "skills": {
-      "frontEndMobile": "Front-end/Mobile",
+      "frontEndMobile": "Front-End - Mobile",
       "tools": "Outils",
-      "backEnd": "Back-end",
+      "backEnd": "Back-End",
       "os": "OSs"
     }
   },

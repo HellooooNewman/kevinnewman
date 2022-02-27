@@ -16,7 +16,7 @@
                 <h3>{{'projectSummary' | translate}}</h3>
                 <div style="margin-bottom: 10px;">
                     <span style="font-weight:bold;">{{'year' | translate}}: </span>
-                    <span>{{ project.start_date }} - {{ project.end_date }}</span>
+                    <span>{{ project.start_date | date:'LLL yyyy' }} - {{ project.end_date | date:'LLL yyyy' }}</span>
                 </div>
                 <div style="margin-bottom: 10px;">
                     <span style="font-weight:bold;">{{'roles' | translate}}: </span>

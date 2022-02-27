@@ -111,7 +111,8 @@ export class HomeComponent implements OnInit {
           "Angular - Vue - React",
           "Three.js - Babylon - RXjs",
           "Electron - Ionic",
-          "Flutter - React Native"
+          "Flutter - React Native",
+
         ],
       },
       {
@@ -121,7 +122,7 @@ export class HomeComponent implements OnInit {
           "Node.js - Express",
           "C# - .NET - Unity",
           "PHP - Laravel",
-          "MongoDB - MySQL - PostgreSQL - Redis",
+          "MongoDB - MySQL - PostgreSQL - Redis - GraphQL",
           "Docker - CircleCI - Jenkins - Octopus",
         ],
       },
@@ -171,8 +172,8 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     this.dataService.setTitle("home")
     this.projects$ = this.dataService.project.pipe(
-      map(todos => todos.filter(item => item.promote === true))
-    );
+      map(projects => projects.filter(item => item.promote))
+    )
     this.dataService.getAllProjects()
   }
 }

@@ -2,7 +2,6 @@
   html {
     h1, h2, h3, h4, h5, h6, blockquote, dl, figure, form, ol, p, pre, table, ul {
       margin-bottom: 0.1rem;
-
     }
     h1 {
       margin-top: 10px;
@@ -10,19 +9,31 @@
     h2 {
       font-size: 1.5rem;
     }
-    h3 {
-      font-size: 1.25rem;
+    h3, .employer__name, .employer__job-title {
+      font-size: 1.25rem!important;
+      display: inline-block !important;
     }
     h4 {
       font-size: 1.125rem;
+    }
+
+    .employer__details {
+      display: inline;
+      margin-left: 1rem;
     }
 
     app-header {
       position: relative;
       top: 0!important;
     }
-    .github-link {
-      display: inline-block !important;
+    .print-link {
+      display: block !important;
+      color: white;
+      line-height: 12px;
+      margin-top: 5px;
+      a {
+        position: relative !important;
+      }
     }
 
     .employer__name {
@@ -40,6 +51,7 @@
     nav#kevin-nav {
       transform: translateY(1px);
       margin-top: 15px;
+      height: auto;
     }
 
     #kevin-nav .container {
@@ -54,8 +66,12 @@
     }
 
     .skills {
-      li {
+
+      ul, h3 {
         display: inline;
+      }
+      li {
+        display: inline-block;
         &:before {
           padding: 0 5px;
           content: '-';

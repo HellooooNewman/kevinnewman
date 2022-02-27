@@ -231,8 +231,8 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   toggleDarkMode() {
-    this.isDarkMode = this.isDarkMode ? false : true;
-    this.setDarkMode();
+    this.isDarkMode = !this.isDarkMode;
+    this.setDarkMode()
   }
 
   setDarkMode() {

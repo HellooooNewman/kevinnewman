@@ -16,7 +16,7 @@
   "whatIsAGameJam": "What is a Game Jam?",
   "whatIsAGameJamDescription": "A game jam is a hackathon for video games. It is a gathering of people for the purpose of planning, designing, and creating one or more games within a short span of time, usually ranging between 24 and 72 hours, and some even longer. Wikipedia",
   "helloWearyTraveller": "Hello weary traveller,",
-  "helloWearyTravellerDescription": "<p> Well you made it this far. Take a break. Rest your fingers and enjoy the stars scrolling by. In the mean time you can check out my <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> for more of my random going ons.</p><p>If you're interested in working with me, shoot me a message either through <a href='mailto:knewmanium@gmail.com' target='_blank'>Email</a> / <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> / <a href='https://www.linkedin.com/in/helloooonewman/' target='_blank'>LinkedIn</a>. Always looking for new interesting projects.</p>",
+  "helloWearyTravellerDescription": "<p> Well you made it this far. Take a break. Rest your fingers and enjoy the stars scrolling by. In the mean time you can check out my <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> for more of my random going ons.</p><p>If you're interested in working with me, shoot me a message either through <a href='mailto:kevin@kevinnewman.ca' target='_blank'>Email</a> / <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> / <a href='https://www.linkedin.com/in/helloooonewman/' target='_blank'>LinkedIn</a>. Always looking for new interesting projects.</p>",
   "projectLink": "Project Link",
   "projectSummary": "Project Summary",
   "features": "Features",
@@ -45,12 +45,12 @@
       },
       "jobs": {
         "0": {
-          "year": "Dec 2020 - Present",
+          "year": "Jan 2021 - Present",
           "points": "<ul><li>Continue development of dynamically created graphql query system</li><li>Automated BE to FE dynamic enum generation</li><li>Managed updates to marketing website, with push to nuxt.js</li><li>Moving regular components over to storyboard</li><li>Converted regular SCSS variable codebase to use CSS variables</li><li>Work with another team to bring on dynamic white labelling service of features</li></ul>"
         },
         "1": {
-          "year": "Jan 2019 - Dec 2020",
-          "points": "<ul><li>Maintain micro frontend shell application to work with web components</li><li>Upgrade angularjs components, services, and unit tests to Angular and Jest</li><li>Localizing the existing product to the UK market with a different school system style</li><li>Performance improvements to existing SQL queries</li><li>Created documentation site for product along with a content writer <a href='https://help.xello.world/'>help.xello.world</a></li><li>Hackathons day towards self learning <a href='https://www.kevinnewman.ca/lightbox-quote-checker/'>Lightbox</a> and improving productivity <a href='https://github.com/HellooooNewman/helloooonewman-vscode-extension'>Chrome Extension</a></li><li>Maintaining and scaling storybook components</li><li>Working towards making student side application a PWA</li></ul>"
+          "year": "Jan 2019 - Jan 2021",
+          "points": "<ul><li>Maintain micro frontend shell application to work with web components</li><li>Upgrade angularjs components, services, and unit tests to Angular and Jest</li><li>Localizing the existing product to the UK market with a different school system style</li><li>Performance improvements to existing SQL queries</li><li>Created documentation site for product along with a content writer <a href='https://help.xello.world/'>help.xello.world</a></li><li>Hackathons day towards self learning <a href='https://www.kevinnewman.ca/lightbox-quote-checker/'>Lightbox</a> and improving productivity <a href='https://github.com/HellooooNewman/helloooonewman-vscode-extension'>Chrome Extension</a></li><li>Maintaining and scaling storybook components</li></ul>"
         },
         "2": {
           "year": "Oct 2018 - Jan 2020",
@@ -79,9 +79,9 @@
       }
     },
     "skills": {
-      "frontEndMobile": "Front-end/Mobile",
+      "frontEndMobile": "Front-End - Mobile",
       "tools": "Tools",
-      "backEnd": "Back-end",
+      "backEnd": "Back-End",
       "os": "OSs"
     }
   },

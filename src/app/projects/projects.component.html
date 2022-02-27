@@ -8,7 +8,28 @@
   <div *ngIf="(projects | async).length">
     <a routerLink="/project/{{ project.id }}"
        class="row"
-       *ngFor="let project of (projects | async)">
+       *ngFor="let project of (projects | async)" [@fadeInOut]="project" >
+      <div class="project-holder">
+        <div class="four column img-holder">
+          <img src="{{ project.thumbnail_img }}"
+               alt="{{ project.title }}"
+               loading="lazy" />
+        </div>
+        <div class="eight column">
+          <h3>{{ project.title }}</h3>
+          <p>{{('projectsArray.' + project.id + '.short_body') | translate}}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+    <a *ngIf="!showArchivedProjects"
+       class="button button-primary u-center-block"
+       [ngStyle]="{'width': '140px'}"
+       (click)="showMoreProjects()">{{'viewMore'| translate}}</a>
+  <div *ngIf="(archivedProjects | async).length && showArchivedProjects">
+    <a routerLink="/project/{{ project.id }}"
+       class="row"
+       *ngFor="let project of (archivedProjects | async)">
       <div class="project-holder">
         <div class="four column img-holder">
           <img src="{{ project.thumbnail_img }}"
