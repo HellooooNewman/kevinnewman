@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "node-sass": "^7.0.0",
-    "@angular-devkit/build-angular": "~13.1.2",
+    "@angular-devkit/build-angular": "~13.3.11",
     "@angular/cli": "^13.1.2",
     "@angular/compiler-cli": "^13.1.1",
     "@angular/language-service": "^13.1.1",
@@ -44,7 +44,7 @@
     "cssnano": "^3.10.0",
     "exports-loader": "^0.6.3",
     "file-loader": "^0.10.0",
-    "istanbul-instrumenter-loader": "^2.0.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
     "json-loader": "^0.5.7",
     "less-loader": "^4.1.0",
     "minimalcss": "^0.7.6",
