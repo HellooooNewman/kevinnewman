@@ -7,7 +7,7 @@
   "education": "Éducation",
   "contact": "Contact",
   "thanksForComing": "Merci d'être venu. <strong>Bonne journée</strong>",
-  "designAndDeveloped": "Conçu et développé par Kevin Newman.",
+  "designAndDeveloped": "Conçu et développé par moi :)",
   "contactMe": "Contactez-moi",
   "downloadResume": "Télécharger le CV",
   "gameJams": "Game Jams",
@@ -32,7 +32,7 @@
   "enButton": "🇬🇧 EN",
   "remote": "Travail à domicile",
   "resume": {
-    "introduction": "<p>Bonjour je suis Kevin Newman, a développeur, et amateur Game Jam vivant au Canada.</p><p> Actuellement sur un jeu multijoueur coopératif sur canapé Unity appelé Hammer Fight.",
+    "introduction": "<p>Bonjour je suis Kevin Newman, a développeur, et amateur Game Jam vivant au Canada.</p><p>Joue actuellement trop à Age of Empires 2 DE. Toujours en train de travailler sur quelques projets parallèles en coulisses.</p>",
     "work": {
       "employmentType": {
         "fullTime": "Plein Temps",
@@ -46,15 +46,15 @@
       "jobs": {
         "0": {
           "year": "janv 2021 - Aujourd'hui",
-          "points": "<ul><li>Continuer le développement d'un système de requête graphql créé dynamiquement </li><li>Génération automatique d'enum dynamique BE en FE </li><li> Mises à jour gérées du site Web marketing, avec push vers nuxt.js</li><li>Déplacement de composants réguliers vers le storyboard </li><li>Base de code de variables SCSS régulière convertie pour utiliser des variables CSS</li><li>Travailler avec une autre équipe pour mettre en place un service dynamique de fonctionnalités en marque blanche</li></ul>"
+          "points": "<ul><li>Travailler avec l'équipe pour ajouter une plateforme de traitement de paiement interne</li><li>Maintenir l'application mobile pour techniciens de terrain et le portail client</li><li>Travailler avec l'équipe pour ajouter sonarPay à la plateforme</li><li>Continuer le développement d'un système de requête graphql créé dynamiquement </li><li>Génération automatique d'enum dynamique BE en FE </li><li> Mises à jour gérées du site Web marketing, avec push vers nuxt.js</li><li>Déplacement de composants réguliers vers le storyboard </li><li>Base de code de variables SCSS régulière convertie pour utiliser des variables CSS</li><li>Travailler avec une autre équipe pour mettre en place un service dynamique de fonctionnalités en marque blanche</li></ul>"
         },
         "1": {
           "year": "janv 2019 - janv 2021",
-          "points": "<ul><li>Maintenez l'application shell micro frontend</li><li>Mise à niveau des composants, des services et des tests unitaires angularjs vers Angular et Jest</li><li>Localisation du produit existant sur le marché britannique avec un style de système scolaire différent </li><li>Création de nouvelles procédures stockées suivant les conventions existantes </li><li>Amélioration des performances des requêtes SQL existantes </li><li>Création d'un site de documentation pour le produit avec un rédacteur de contenu <a href='https://help.xello.world/'>help.xello.world</a></li><li>Agile scrum sprints et démo à la fin de sprint</li><li>Hackathons un jour chaque sprint vers l'auto-apprentissage: <a href='https://www.kevinnewman.ca/lightbox-quote-checker/'>Lightbox</a> et <a href='https://github.com/HellooooNewman/helloooonewman-vscode-extension'>Chrome Extension</a></li><li>Ajout et mise à jour de l'architecture de microservices existantes</li><li>Maintaining and scaling storybook components</li></ul>"
+          "points": "<ul><li>Maintenez l'application shell micro frontend</li><li>Mise à niveau des composants, des services et des tests unitaires angularjs vers Angular et Jest</li><li>Localisation du produit existant sur le marché britannique avec un style de système scolaire différent </li><li>Création de nouvelles procédures stockées suivant les conventions existantes </li><li>Amélioration des performances des requêtes SQL existantes </li></ul>"
         },
         "2": {
           "year": "oct 2018 - déc 2020",
-          "points": "<ul><li>Mettre à jour et maintenir la base de code Laravel et Vue.js existante</li><li>Documentr les nouveaux et anciens processus de documentation </li><li>Créer des scripts Photoshop Action pour automatiser le processus de création de couverture et le redimensionnement dynamique des images </li><li> Améliorer la base de code existante pour rendre les composants plus réutilisables </li><li>Créé système de tableau trello pour que l'entreprise puisse utiliser et gérer son flux de travail </li><li>Les bandes dessinées ajoutées en tant que nouveau type de livre qu'elles proposent aux enfants </li><li> Performances générales et modifications de conception sur le site</li><li>Demanie d'assistance gérée par des utilisateurs, des écrivains, des artistes et des enseignants</li></ul>"
+          "points": "<ul><li>Mettre à jour et maintenir la base de code Laravel et Vue existante</li><li>Documentr les nouveaux et anciens processus de documentation </li><li>Créer des scripts Photoshop Action pour automatiser le processus de création de couverture et le redimensionnement dynamique des images </li><li> Améliorer la base de code existante pour rendre les composants plus réutilisables </li><li>Créé système de tableau trello pour que l'entreprise puisse utiliser et gérer son flux de travail </li><li>Les bandes dessinées ajoutées en tant que nouveau type de livre qu'elles proposent aux enfants </li><li> Performances générales et modifications de conception sur le site</li><li>Demanie d'assistance gérée par des utilisateurs, des écrivains, des artistes et des enseignants</li></ul>"
         },
         "3": {
           "year": "août 2018 - janv 2019",
@@ -66,7 +66,7 @@
         },
         "5": {
           "year": "oct 2017 - fév 2018",
-          "points": "<ul><li>Créez des applications de marketing 3D avec Babylon.js pour différentes divisions de GE(Healthcare, Energy, Grid Solutions)</li><li>Prototype et comparez différents frameworks frontaux à la solution logicielle actuelle de GE (Haxe)</li><li>Convertis l'application flash destinée à montrer tout leur matériel marketing lors de conférences à une application HTML5 avec Vue.js qui publie à la fois sur le Web et sur le bureau (Electron) et dispose d'un stockage hors ligne</li></ul>"
+          "points": "<ul><li>Créez des applications de marketing 3D avec Babylon.js pour différentes divisions de GE(Healthcare, Energy, Grid Solutions)</li><li>Prototype et comparez différents frameworks frontaux à la solution logicielle actuelle de GE (Haxe)</li><li>Convertis l'application flash destinée à montrer tout leur matériel marketing lors de conférences à une application HTML5 avec Vue qui publie à la fois sur le Web et sur le bureau (Electron) et dispose d'un stockage hors ligne</li></ul>"
         },
         "6": {
           "year": "fév 2017 - oct 2017",

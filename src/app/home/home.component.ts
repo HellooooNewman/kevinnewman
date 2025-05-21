@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
           employer_link: "http://sonar.software/",
           employment_type: "fullTime",
           location: "remote",
-          technology: "ES6, SCSS, Vue.js, PHP, Laravel, Graphql, PostgreSQL, Azure, CircleCI, Flutter, Docker",
+          technology: "TS, SCSS, Vue, PHP, Laravel, Graphql, Kotlin, React Native, PostgreSQL, Azure, CircleCI, Flutter, Docker",
         },
         {
           showDetails: true,
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
           employer_link: "http://xello.world/",
           employment_type: "fullTime",
           location: "Toronto, CA",
-          technology: "ES6, SCSS, Angular, NgRx, Rxjs, .NET, SQL, SlackBot API, Jest, Jenkins, Octopus, Azure",
+          technology: "TS, SCSS, Angular, NgRx, Rxjs, .NET, SQL, SlackBot API, Jest, Jenkins, Octopus, Azure",
         },
         {
           showDetails: false,
@@ -107,60 +107,46 @@ export class HomeComponent implements OnInit {
       {
         title: "frontEndMobile",
         list: [
-          "HTML5 - CSS3 - SASS",
-          "Angular - Vue - React",
-          "Three.js - Babylon - RXjs",
-          "Electron - Ionic",
-          "Flutter - React Native",
-
+          "HTML5 - CSS3 - SASS - TS",
+          "<strong>Vue</strong> - React - Angular",
+          "<strong>Three.js</strong> - Babylon - RXjs",
+          "<strong>Electron</strong> - Ionic",
+          "<strong>React Native - Flutter</strong>",
         ],
       },
       {
         title: "backEnd",
         list: [
           "ORM - OOP - REST API - MVC",
-          "Node.js - Express",
-          "C# - .NET - Unity",
-          "PHP - Laravel",
-          "MongoDB - MySQL - PostgreSQL - Redis - GraphQL",
-          "Docker - CircleCI - Jenkins - Octopus",
+          "<strong>Node.js</strong> - Laravel",
+          "<strong>PHP - TS</strong> - C# - .NET",
+          "<strong>PostgreSQL - GraphQL - Redis</strong> - MongoDB - MySQL",
+          "<strong>Docker</strong> - CircleCI - Jenkins - Octopus",
         ],
       },
       {
         title: "tools",
         list: [
-          "Git - Github",
-          "Mac - PC",
-          "VS Code",
-          "Photoshop - Illustrator - Figma",
-          "After Effects - Premiere",
-          "Blender - Unity",
-          "NPM - Yarn",
-          "AWS - Digital Ocean - Azure",
+          "Git - Github - VS Code",
+          "<strong>Illustrator - Figma</strong> - Photoshop",
+          "<strong>After Effects</strong> - Premiere",
+          "<strong>Unity</strong> - Blender",
+          "<strong>Azure - Digital Ocean</strong> - AWS",
         ],
       },
-      {
-        title: "os",
-        list: [
-          "OSX",
-          "Windows",
-          "iOS",
-          "Android",
-        ],
-      }
     ],
     education: [
       {
-        program: "Interactive Media Specialist",
-        year: "Fanshawe - 2014-2015",
+        program: "Interactive Media Design",
+        year: "Fanshawe - 2011-2013",
       },
       {
         program: "3D Character Design & Animation",
         year: "Fanshawe - 2013-2014",
       },
       {
-        program: "Interactive Media Design",
-        year: "Fanshawe - 2011-2013",
+        program: "Interactive Media Specialist",
+        year: "Fanshawe - 2014-2015",
       },
     ],
   }

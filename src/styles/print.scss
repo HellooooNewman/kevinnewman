@@ -1,10 +1,16 @@
 @media print {
+  .dark-mode {
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+
   html {
     h1, h2, h3, h4, h5, h6, blockquote, dl, figure, form, ol, p, pre, table, ul {
       margin-bottom: 0.1rem;
     }
     h1 {
       margin-top: 10px;
+      font-size: 1.7rem;
     }
     h2 {
       font-size: 1.5rem;
@@ -55,18 +61,17 @@
     }
 
     #kevin-nav .container {
-      transform: translateY(10px);
+      transform: translateY(20px);
     }
 
     #kevin-nav .mountains {
-      background-image: url('/../assets/images/mountains.png') !important;
+      background-image: url('https://kevinnewman.ca/assets/images/mountains.png') !important;
       background-size: cover !important;
-      top: -23px !important;
+      top: -27px !important;
       height: 47px !important;
     }
 
     .skills {
-
       ul, h3 {
         display: inline;
       }
@@ -97,7 +102,8 @@
     .dl-resume,
     #main-nav,
     .job-information button,
-    .sky-header
+    .sky-header,
+    #social-links
      {
       display: none!important;
     }

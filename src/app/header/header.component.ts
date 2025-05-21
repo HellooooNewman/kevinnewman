@@ -1,132 +1,54 @@
 import { SocialMediaLinksComponent } from './../social-media-links/social-media-links.component';
 import { DataService } from './../services/services.data';
-import { Component, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation, AfterViewInit, Renderer2, OnDestroy } from '@angular/core';
 import { DOCUMENT } from "@angular/common";
 import { Router, NavigationEnd } from '@angular/router';
+import { Star } from '../interfaces/star';
+import { Line } from '../interfaces/line';
+
+// Constants for canvas and scroll thresholds
+const CANVAS_HEIGHT = 500;
+const SCROLL_THRESHOLD_1 = 270;
+const SCROLL_THRESHOLD_2 = 339;
 
 // canvas dimensions
 let width = window.innerWidth;
-const height = 500;
-// const height = 500;
-
-export class Star {
-  public modifer;
-  public x: any;
-  public y: any;
-  public vx: any;
-  public vy: any;
-  public radius: any;
-  public color: String;
-
-  constructor(modifer?: any, posX?: number, posY?: number) {
-    this.modifer = Math.random() * 2;
-    this.x = posX ? posX : width * Math.random();
-    this.y = posY ? posY : height * Math.random();
-    this.vx = modifer ? this.modifer * modifer : this.modifer * this.modifer;
-    this.vy = modifer ? this.modifer * modifer : this.modifer * this.modifer;
-    this.radius = modifer ? this.modifer * modifer : this.modifer * 10 * Math.random();
-    this.color = 'rgba(47, 81, 163, ' + this.modifer + ')';
-    // console.log('rgba(' + getComputedStyle(document.body).getPropertyValue('--blue') + ', ' + this.modifer + ')');
-  }
-
-  draw(ctx) {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    ctx.fill();
-
-    let planetes = 10;
-    for (let i; i < planetes; i++) {
-      ctx.fillStyle = 'red';
-      ctx.beginPath();
-      ctx.arc(this.x + 1, this.y + 2, 10, 0, 2 * Math.PI);
-      ctx.fill();
-    }
-  }
-
-  update() {
-    this.x += this.vx;
-    this.y -= this.vy;
-
-    if (this.x > width) {
-      this.x = -50;
-    }
-
-    if (this.y < -50) {
-      this.y = height;
-    }
-  }
-}
-
-export class Line {
-  public modifer;
-  public x: any;
-  public y: any;
-  public vx: any;
-  public vy: any;
-  public stroke: any;
-  public color: String;
-
-  constructor() {
-    this.modifer = Math.random() * 2;
-    this.x = width * Math.random();
-    this.y = height * Math.random();
-    this.vx = this.modifer * this.modifer + 0.3;
-    this.vy = this.modifer * this.modifer + 0.3;
-    this.stroke = this.modifer * 10 * Math.random();
-    this.color = 'rgba(20, 20, 20, ' + this.modifer + ')';
-  }
-
-  draw(ctx) {
-    ctx.strokeStyle = 'lightgrey';
-    ctx.beginPath();
-    ctx.moveTo(this.x, this.y);
-    ctx.lineTo(this.x + (40 * this.modifer), this.y - (40 * this.modifer));
-    ctx.stroke();
-    ctx.lineWidth = this.modifer * 1.5;
-  }
-
-  update() {
-    this.x += this.vx;
-    this.y -= this.vy;
-
-    if (this.x > width) {
-      this.x = -50;
-    }
-
-    if (this.y < -50) {
-      this.y = height;
-    }
-  }
-}
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('mainNav') mainNav: ElementRef;
   public position: string;
 
   // Canvas
   @ViewChild('skyCanvas') canvasRef: ElementRef;
-  public ctx: CanvasRenderingContext2D;
-  public canvas;
-  private running: boolean;
+  public ctx: CanvasRenderingContext2D | null = null;
+  public canvas: HTMLCanvasElement | null = null;
+  private running: boolean = false;
   openedBool: boolean = false;
   isActive: boolean = false;
   isDarkMode: boolean = false;
 
   // Particles
-  private maxParticles = 50;
-  private particles = [];
-  private backgroundParticles = [];
+  private maxParticles: number = 50;
+  private particles: Star[] = [];
+  private backgroundParticles: Star[] = [];
 
   // Lines
-  private maxLines = 35;
-  private lines = [];
+  private maxLines: number = 35;
+  private lines: (Line | Star)[] = [];
+
+  // Moon properties
+  private moonX: number = window.innerWidth - 200; // Start at the far right edge
+  private moonY: number = 90; // High in the sky
+  private moonRadius: number = 60; // Large moon
+  private moonSpeed: number = 0.04; // Very slow
+
+  private lastTimestamp: number = performance.now();
 
   constructor(public ngZone: NgZone,
     public dataService: DataService,
@@ -136,11 +58,8 @@ export class HeaderComponent implements AfterViewInit {
     this.router.events.subscribe(event => {
       this.openedBool = false;
     });
-
-
   }
 
-  // ngOnInit() {
   ngAfterViewInit() {
     this.ctx = this.canvasRef.nativeElement.getContext('2d');
     this.canvas = this.ctx.canvas;
@@ -162,72 +81,105 @@ export class HeaderComponent implements AfterViewInit {
     }
 
     this.running = true;
-    this.ngZone.runOutsideAngular(() => this.update());
+    this.lastTimestamp = performance.now();
+    this.ngZone.runOutsideAngular(() => this.update(this.lastTimestamp));
 
-    // Dark mode check
-    this.isDarkMode = localStorage.getItem('dark-mode') == 'true' ? true : false;
-    if (this.isDarkMode) {
-      this.setDarkMode();
+    // Dark mode check: system preference, then fallback to light
+    const stored = localStorage.getItem('dark-mode');
+    if (stored === 'true' || stored === 'false') {
+      this.isDarkMode = stored === 'true';
+    } else {
+      this.isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
+    this.setDarkMode();
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.openedBool = false;
 
+    // Use named constants for scroll thresholds
     let scrollPosition = this.document.scrollingElement.scrollTop;
-    if (scrollPosition > 270 && scrollPosition < 339) {
-      this.position = '-' + (scrollPosition - 270);
+    if (scrollPosition > SCROLL_THRESHOLD_1 && scrollPosition < SCROLL_THRESHOLD_2) {
+      this.position = '-' + (scrollPosition - SCROLL_THRESHOLD_1);
     }
 
-    if (scrollPosition > 339) {
+    if (scrollPosition > SCROLL_THRESHOLD_2) {
       this.position = '-67';
     }
 
-    if (scrollPosition < 270) {
+    if (scrollPosition < SCROLL_THRESHOLD_1) {
       this.position = '0';
     }
   }
 
   @HostListener('mousemove', ['$event'])
-  draw(event) {
+  draw(event: MouseEvent): void {
     if (event.target !== this.canvas) {
       return;
     }
 
+    // Add a new Star at the mouse position, accounting for scroll
+    const scrollY = window.scrollY || this.document.scrollingElement.scrollTop || 0;
     this.maxLines++;
-    this.lines.push(new Star(null, event.clientX, event.clientY));
+    this.lines.push(new Star(undefined, event.clientX, event.clientY + scrollY));
   }
 
   @HostListener('window:resize', [])
-  resize() {
-    this.canvas.width = window.innerWidth;
+  resize(): void {
+    if (this.canvas) {
+      this.canvas.width = window.innerWidth;
+    }
     width = window.innerWidth;
   }
 
-  OnDestroy() {
+  ngOnDestroy(): void {
+    // Stop the animation loop when the component is destroyed
     this.running = false;
   }
 
-  private update() {
-    if (!this.running) {
+  private update = (timestamp: number = performance.now()): void => {
+    if (!this.running || !this.ctx) {
       return;
     }
 
-    this.ctx.clearRect(0, 0, width, height);
+    // Normalize to 60fps
+    const delta = (timestamp - this.lastTimestamp) / 16.67;
+    this.lastTimestamp = timestamp;
 
+    this.ctx.clearRect(0, 0, window.innerWidth, CANVAS_HEIGHT);
+
+    // Draw the moon (before stars/lines)
+    this.ctx.save();
+    this.ctx.globalAlpha = 0.35;
+    this.ctx.beginPath();
+    this.ctx.arc(this.moonX, this.moonY, this.moonRadius, 0, 2 * Math.PI);
+    this.ctx.fillStyle = '#444'; // darker grey
+    this.ctx.shadowColor = '#222';
+    this.ctx.shadowBlur = 30;
+    this.ctx.fill();
+    this.ctx.restore();
+
+    // Move the moon slowly
+    this.moonX += this.moonSpeed * delta;
+    if (this.moonX - this.moonRadius > window.innerWidth) {
+      this.moonX = -this.moonRadius; // Loop to left
+    }
+
+    // Draw and update lines (shooting stars)
     for (let i = 0; i < this.maxLines; i++) {
-      this.lines[i].update();
+      this.lines[i].update(delta);
       this.lines[i].draw(this.ctx);
     }
 
+    // Draw and update stars
     for (let i = 0; i < this.maxParticles; i++) {
-      this.particles[i].update();
+      this.particles[i].update(delta);
       this.particles[i].draw(this.ctx);
       this.backgroundParticles[i].draw(this.ctx);
-      this.backgroundParticles[i].update();
+      this.backgroundParticles[i].update(delta);
     }
-    requestAnimationFrame(() => this.update());
+    requestAnimationFrame(this.update);
   }
 
   toggleDarkMode() {

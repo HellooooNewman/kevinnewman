@@ -7,7 +7,7 @@
   "education": "Education",
   "contact": "Contact",
   "thanksForComing": "Thanks for coming by. <strong>Have a nice day</strong>",
-  "designAndDeveloped": "Designed and developed by Kevin Newman.",
+  "designAndDeveloped": "Designed and developed by me :)",
   "contactMe": "Contact Me",
   "downloadResume": "Download Resume",
   "gameJams": "Game Jams",
@@ -32,7 +32,7 @@
   "enButton": "🇬🇧  EN",
   "remote": "Remote",
   "resume": {
-    "introduction": "<p>Hi there, I'm Kevin Newman, a developer, and Game Jam hobbyist living in Canada. </p><p>Currently working on a Unity couch co-op multiplayer game called Hammer Fight.</p>",
+    "introduction": "<p>Hi there, I'm Kevin Newman, a developer, and Game Jam hobbyist living in Canada. </p><p>Currently playing to much Age of Empires 2 DE. Always working on a few side projects behind the scenes.</p>",
     "work": {
       "employmentType": {
         "fullTime": "Full-time",
@@ -46,15 +46,15 @@
       "jobs": {
         "0": {
           "year": "Jan 2021 - Present",
-          "points": "<ul><li>Continue development of dynamically created graphql query system</li><li>Automated BE to FE dynamic enum generation</li><li>Managed updates to marketing website, with push to nuxt.js</li><li>Moving regular components over to storyboard</li><li>Converted regular SCSS variable codebase to use CSS variables</li><li>Work with another team to bring on dynamic white labelling service of features</li></ul>"
+          "points": "<ul><li>Work with team to add in house payment processor platform</li><li>Maintain field tech mobile app and customer portal</li><li>Automated BE to FE dynamic enum generation with AST</li><li>Converted regular SCSS variable codebase to use CSS variables</li><li>Work with another team to bring on dynamic white labelling service of features</li></ul>"
         },
         "1": {
           "year": "Jan 2019 - Jan 2021",
-          "points": "<ul><li>Maintain micro frontend shell application to work with web components</li><li>Upgrade angularjs components, services, and unit tests to Angular and Jest</li><li>Localizing the existing product to the UK market with a different school system style</li><li>Performance improvements to existing SQL queries</li><li>Created documentation site for product along with a content writer <a href='https://help.xello.world/'>help.xello.world</a></li><li>Hackathons day towards self learning <a href='https://www.kevinnewman.ca/lightbox-quote-checker/'>Lightbox</a> and improving productivity <a href='https://github.com/HellooooNewman/helloooonewman-vscode-extension'>Chrome Extension</a></li><li>Maintaining and scaling storybook components</li></ul>"
+          "points": "<ul><li>Maintain micro frontend shell application to work with web components</li><li>Upgrade angularjs components, services, and unit tests to Angular and Jest</li><li>Localizing the existing product to the UK market with a different school system style</li><li>Performance improvements to existing SQL queries</li></ul>"
         },
         "2": {
           "year": "Oct 2018 - Jan 2020",
-          "points": "<ul><li>Update and maintain existing Laravel and Vue.js codebase</li><li>Document new and old processes for documentation</li><li>Create Photoshop Action scripts for automating cover creation process and dynamic resizing of images</li><li>Improve existing codebase to make components more reusable</li><li>Created trello board system for company to use and manage their workflow</li><li>Added comic books as a new type of book they offer to kids</li><li>General performance and design changes around the site</li><li>Managed support requests from users, writers, artists, and teachers</li></ul>"
+          "points": "<ul><li>Update and maintain existing Laravel and Vue codebase</li><li>Document new and old processes for documentation</li><li>Create Photoshop Action scripts for automating cover creation process and dynamic resizing of images</li><li>Improve existing codebase to make components more reusable</li><li>Created trello board system for company to use and manage their workflow</li><li>Added comic books as a new type of book they offer to kids</li><li>General performance and design changes around the site</li><li>Managed support requests from users, writers, artists, and teachers</li></ul>"
         },
         "3": {
           "year": "Aug 2018 - Jan 2019",
@@ -66,7 +66,7 @@
         },
         "5": {
           "year": "Oct 2017 - Feb 2018",
-          "points": "<ul><li>Create 3D marketing apps with Babylon.js for different divisions of GE(Healthcare, Energy, Grid Solutions)</li><li>Prototype and compare different Frontend frameworks to GE's current software solution(Haxe)</li><li>Convert flash application meant for showing off all their marketing material at conferences to an HTML5 application with Vue.js that publishes to both web and desktop (Electron) and features offline storage</li></ul>"
+          "points": "<ul><li>Create 3D marketing apps with Babylon.js for different divisions of GE(Healthcare, Energy, Grid Solutions)</li><li>Prototype and compare different Frontend frameworks to GE's current software solution(Haxe)</li><li>Convert flash application meant for showing off all their marketing material at conferences to an HTML5 application with Vue that publishes to both web and desktop (Electron) and features offline storage</li></ul>"
         },
         "6": {
           "year": "Feb 2017 - Oct 2017",

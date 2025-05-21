@@ -21,6 +21,9 @@ export class ProjectsComponent implements OnInit {
   async ngOnInit() {
     this.loading = true
     this.dataService.setTitle("projects")
+    // Restore showArchivedProjects from localStorage
+    const archivedPref = localStorage.getItem('showArchivedProjects');
+    this.showArchivedProjects = archivedPref === 'true';
     this.projects = this.dataService.project.pipe(
       map(projects => projects
         .filter(item => !item.archived)
@@ -43,5 +46,7 @@ export class ProjectsComponent implements OnInit {
 
   showMoreProjects() {
     this.showArchivedProjects = !this.showArchivedProjects
+    // Save to localStorage
+    localStorage.setItem('showArchivedProjects', String(this.showArchivedProjects));
   }
 }

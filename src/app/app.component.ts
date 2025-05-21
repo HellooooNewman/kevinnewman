@@ -47,6 +47,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log('Oh hey....what are you doing here :P');
     console.log('Try putting your mouse on the stars in the header. ^');
+    console.log('Did you know if you press ctrl + p on the home page you can get the most up to date version of my resume');
 
     this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
       this.dataService.setTitle(this.dataService.title.getValue().toString());

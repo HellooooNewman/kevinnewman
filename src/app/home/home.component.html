@@ -11,11 +11,11 @@
     <span>{{'skills'| translate}}</span>
     <hr />
   </h2>
-  <div class="six columns"
+  <div class="four columns"
        *ngFor="let skill of resume.skills">
     <h3>{{ 'resume.skills.' + skill.title | translate }}</h3>
     <ul>
-      <li *ngFor="let item of skill.list">{{ item }}</li>
+      <li *ngFor="let item of skill.list" [innerHTML]="item"></li>
     </ul>
   </div>
 </div>
