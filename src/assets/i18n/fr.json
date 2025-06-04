@@ -142,6 +142,10 @@
     "10": {
       "short_body": "Cela a été fait pour un mini concours 3D pour le site Web www.gameartisans.org.",
       "body": "Cela a été fait pour un mini concours 3D pour le site Web www.gameartisans.org. La compétition consistait à créer un personnage de dragon poly faible inférieur à 15000 tris avec l'utilisation de 3 cartes: spécifications, carte diffuse et normale à une taille de texture de 2048."
+    },
+    "11_fr": {
+      "short_body": "Un outil web simple pour comparer visuellement des images avant/après avec glisser-déposer.",
+      "body": "Cet outil de comparaison d’images a été conçu comme une solution rapide et intuitive pour comparer visuellement des images avant/après dans le navigateur. Il prend en charge le glisser-déposer, la navigation dans l’historique, les aperçus, et fonctionne hors ligne en tant que PWA. Il s’adresse aux designers, développeurs et photographes cherchant un moyen simple de montrer des changements visuels."
     }
   },
   "gamesArray": {

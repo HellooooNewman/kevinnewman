@@ -1,5 +1,38 @@
 [
   {
+    "title": "Image Comparison Tool",
+    "id": "11",
+    "thumbnail_img": "./assets/projects/imagecomparison.jpg",
+    "main_img": "./assets/projects/gallery/imagecomparison0.jpeg",
+    "project_type": "web",
+    "project_url": "https://kevinnewman.ca/image-comparison-tool/",
+    "work_type": "personal",
+    "promote": true,
+    "start_date": "2025-05-01T00:00:00Z",
+    "end_date": "2025-05-04T00:00:00Z",
+    "roles": ["designer", "developer"],
+    "gallery": [
+      {
+        "url": "./assets/projects/gallery/imagecomparison0.jpeg",
+        "alt": "Image Comparison Tool homepage"
+      },
+      {
+        "url": "./assets/projects/gallery/imagecomparison1.jpeg",
+        "alt": "Image upload with drag and drop"
+      },
+      {
+        "url": "./assets/projects/gallery/imagecomparison2.jpeg",
+        "alt": "Before and after comparison preview"
+      },
+      {
+        "url": "./assets/projects/gallery/imagecomparison3.jpeg",
+        "alt": "Rounded corners and border customization"
+      }
+    ],
+    "archived": false,
+    "videos": []
+  },
+  {
     "title": "Confederation College",
     "id": "1",
     "thumbnail_img": "./assets/projects/confederation.jpg",
@@ -40,7 +73,7 @@
     "project_type": "3d",
     "project_url": false,
     "work_type": "personal",
-    "promote": true,
+    "promote": false,
     "start_date": "2016-01-01T00:00:00Z",
     "end_date": "2016-06-01T00:00:00Z",
     "roles": ["leadDeveloper", "teamLead"],
