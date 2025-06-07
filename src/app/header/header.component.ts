@@ -1,10 +1,15 @@
-import { SocialMediaLinksComponent } from './../social-media-links/social-media-links.component';
 import { DataService } from './../services/services.data';
-import { Component, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation, AfterViewInit, Renderer2, OnDestroy } from '@angular/core';
+import { Component, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation, AfterViewInit, Renderer2, OnDestroy, ChangeDetectorRef, OnInit } from '@angular/core';
 import { DOCUMENT } from "@angular/common";
 import { Router, NavigationEnd } from '@angular/router';
 import { Star } from '../interfaces/star';
 import { Line } from '../interfaces/line';
+import { TranslateModule } from '@ngx-translate/core';
+import { TranslationToggleComponent } from '../translation-toggle/translation-toggle.component';
+import { SocialMediaLinksComponent } from '../social-media-links/social-media-links.component';
+import { AsyncPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 // Constants for canvas and scroll thresholds
 const CANVAS_HEIGHT = 500;
@@ -17,9 +22,10 @@ let width = window.innerWidth;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  imports: [CommonModule, RouterModule, TranslateModule, TranslationToggleComponent, SocialMediaLinksComponent, AsyncPipe],
 })
-export class HeaderComponent implements AfterViewInit, OnDestroy {
+export class HeaderComponent implements AfterViewInit, OnDestroy, OnInit {
 
   @ViewChild('mainNav') mainNav: ElementRef;
   public position: string;
@@ -50,14 +56,26 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   private lastTimestamp: number = performance.now();
 
-  constructor(public ngZone: NgZone,
+  constructor(
+    public ngZone: NgZone,
     public dataService: DataService,
     private renderer: Renderer2,
     @Inject(DOCUMENT) private document: Document,
-    private router: Router) {
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {
     this.router.events.subscribe(event => {
       this.openedBool = false;
     });
+  }
+
+  ngOnInit() {
+    // Initialize dark mode from localStorage if present
+    const stored = localStorage.getItem('dark-mode');
+    if (stored !== null) {
+      this.isDarkMode = stored === 'true';
+      this.cdr.markForCheck();
+    }
   }
 
   ngAfterViewInit() {
@@ -184,7 +202,8 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
 
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
-    this.setDarkMode()
+    this.setDarkMode();
+    this.cdr.detectChanges();
   }
 
   setDarkMode() {

@@ -1,7 +1,7 @@
 import { Title } from "@angular/platform-browser"
 import { Injectable } from "@angular/core"
 import { HttpClient } from "@angular/common/http"
-import { Observable } from "rxjs/Observable"
+import { Observable } from "rxjs"
 import { BehaviorSubject } from 'rxjs';
 import { Project, GameJam } from "./../interfaces/common"
 import ProjectsJson from "../../assets/data/projects.json"

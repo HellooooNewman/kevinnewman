@@ -16,7 +16,7 @@
   "whatIsAGameJam": "Qu'est-ce qu'une Game Jam",
   "whatIsAGameJamDescription": "Une game jam (game jam est parfois utilisé avec le genre masculin) est un hackathon avec pour thème principal les jeux vidéo, mais pouvant aussi porter sur les jeux au sens large1. Les participants, groupés en équipes, doivent créer un jeu dans un temps limité2, généralement le temps d'un week-end, sur 24 à 72 heures. Wikipedia",
   "helloWearyTraveller": "Bonjour voyageur fatigué,",
-  "helloWearyTravellerDescription": "<p> Eh bien, vous êtes arrivé jusqu'ici. Faites une pause. Reposez vos doigts et profitez des étoiles qui défilent. En attendant, vous pouvez consulter mon <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> fopour plus de mes événements aléatoires.</p><p>Si vous êtes intéressé à travailler avec moi, envoyez-moi un message par <a href='mailto:kevin@kevinnewman.ca' target='_blank'>Email</a> / <a href='https://twitter.com/Helloooo_Newman' target='_blank'>Twitter</a> / <a href='https://www.linkedin.com/in/helloooonewman/' target='_blank'>LinkedIn</a>. Toujours à la recherche de nouveaux projets intéressants.</p>",
+  "helloWearyTravellerDescription": "<p> Eh bien, vous êtes arrivé jusqu'ici. Faites une pause. Reposez vos doigts et profitez des étoiles qui défilent. En attendant, vous pouvez consulter mon <a href='https://twitter.com/Helloooo_Newman' target='_blank'>X</a> fopour plus de mes événements aléatoires.</p><p>Si vous êtes intéressé à travailler avec moi, envoyez-moi un message par <a href='mailto:kevin@kevinnewman.ca' target='_blank'>Email</a> / <a href='https://twitter.com/Helloooo_Newman' target='_blank'>x</a> / <a href='https://www.linkedin.com/in/helloooonewman/' target='_blank'>LinkedIn</a>. Toujours à la recherche de nouveaux projets intéressants.</p>",
   "projectLink": "Site web du projet",
   "projectSummary": "Résumé du projet",
   "features": "Fonctionnalités",
@@ -150,5 +150,6 @@
   },
   "gamesArray": {
     "277320": "Ne laissez pas vos lumières s'éteindre. Trouvez le motif. Détruisez les ennemis. Protégez vos lumières."
-  }
+  },
+  "archivedProjects": "Projets archivés"
 }

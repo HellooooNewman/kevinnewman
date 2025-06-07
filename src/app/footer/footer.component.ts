@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
+  imports: [CommonModule, TranslateModule, RouterModule],
 })
 export class FooterComponent implements OnInit {
   public isContactPage: boolean = false;
@@ -14,7 +17,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.isContactPage = this.router.url === '/contact' ? true : false;
+        this.isContactPage = this.router.url.startsWith('/contact');
       }
     });
   }

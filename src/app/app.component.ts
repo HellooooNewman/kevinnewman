@@ -3,21 +3,20 @@ import { Component, ViewEncapsulation, HostListener, Inject, OnInit } from '@ang
 import { DOCUMENT } from "@angular/common";
 import { Router, NavigationEnd } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { RouterOutlet } from '@angular/router';
 
 import { routerTransition } from './router.animations';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 declare let ga: Function;
 
 @Component({
   selector: 'app-app',
   encapsulation: ViewEncapsulation.None,
   animations: [routerTransition],
-  template: `
-        <app-header [style.top]="position + 'px'" [class.small-nav]="dataService.smallNav"></app-header>
-        <main>
-            <router-outlet #route="outlet" (activate)="changeOfRoutes()"></router-outlet>
-        </main>
-        <app-footer></app-footer>`,
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet],
 })
 
 export class AppComponent implements OnInit {

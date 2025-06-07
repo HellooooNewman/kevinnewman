@@ -27,7 +27,7 @@
        [ngStyle]="{'width': '140px'}"
        (click)="showMoreProjects()">{{'viewMore'| translate}}</a>
   <h2 *ngIf="(archivedProjects | async).length && showArchivedProjects" class="archived-header">
-    <span>Archived Projects</span><hr>
+    <span>{{'archivedProjects' | translate}}</span><hr>
   </h2>
   <div *ngIf="(archivedProjects | async).length && showArchivedProjects">
     <a routerLink="/project/{{ project.id }}"

@@ -1,7 +1,7 @@
 /* Global Import for styles */
 
-@import "./styles/global.scss";
-@import "./styles/skeleton.scss";
-@import "./styles/variables.scss";
-@import "./styles/print.scss";
-@import "./styles/dark-mode.scss";
+@use "./styles/global.scss";
+@use "./styles/skeleton.scss";
+@use "./styles/variables.scss";
+@use "./styles/print.scss";
+@use "./styles/dark-mode.scss";

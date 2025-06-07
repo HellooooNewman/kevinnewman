@@ -2,11 +2,8 @@ import { NgModule } from "@angular/core"
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { BrowserModule } from "@angular/platform-browser"
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
-import { CommonModule } from "@angular/common"
 
 
-import { HomeComponent } from "./home/home.component"
-import { ContactComponent } from "./contact/contact.component"
 import { AppComponent } from "./app.component"
 import { FooterComponent } from "./footer/footer.component"
 import { HeaderComponent } from "./header/header.component"
@@ -20,16 +17,15 @@ import { NotFoundComponent } from "./errors/400/not-found-component/not-found.co
 import { TranslationToggleComponent } from './translation-toggle/translation-toggle.component'
 import { TruncatePipe } from "./pipes/truncate"
 import { SharedModule } from "./shared/shared.module"
+import { HomeComponent } from "./home/home.component"
+import { ContactComponent } from "./contact/contact.component"
 
 
-import { LazyLoadImagesModule } from "ngx-lazy-load-images"
 import { TranslateHttpLoader } from "@ngx-translate/http-loader"
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    ContactComponent,
+  imports: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
@@ -40,15 +36,13 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
     NotFoundComponent,
     TruncatePipe,
     TranslationToggleComponent,
-  ],
-  imports: [
+    ContactComponent,
+    HomeComponent,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LazyLoadImagesModule,
     SharedModule,
-    CommonModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -58,7 +52,6 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
     })
   ],
   providers: [DataService],
-  bootstrap: [AppComponent],
 })
 export class AppModule { }
 

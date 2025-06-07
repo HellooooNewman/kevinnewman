@@ -1,14 +1,18 @@
 import { Project } from "./../interfaces/common"
-import { Observable } from "rxjs/Rx"
-import "rxjs/add/operator/filter"
+import { Observable } from "rxjs"
+import { filter, map } from "rxjs/operators"
 import { DataService } from "./../services/services.data"
 import { Component, OnInit } from "@angular/core"
-import { map } from "rxjs/operators"
+import { HeaderComponent } from "../header/header.component"
+import { CommonModule, AsyncPipe } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
+  imports: [CommonModule, TranslateModule, AsyncPipe, RouterModule],
 })
 export class HomeComponent implements OnInit {
   public projects$: Observable<Project[]>

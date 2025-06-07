@@ -1,0 +1,5 @@
+<app-header [style.top]="position + 'px'" [class.small-nav]="dataService.smallNav" />
+<main>
+<router-outlet #route="outlet" (activate)="changeOfRoutes()"></router-outlet>
+</main>
+<app-footer></app-footer>

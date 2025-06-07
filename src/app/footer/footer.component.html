@@ -1,17 +1,19 @@
-<div class="container">
-  <br>
-  <br>
-  <br>
-  <br>
-  <p [innerHTML]="'thanksForComing' | translate"></p>
-  <a *ngIf="!isContactPage"
-     class="button button-primary contact-link"
-     routerLink="/contact">{{'contactMe'| translate}}</a>
+<div>
+  <div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <p [innerHTML]="'thanksForComing' | translate"></p>
+    <a *ngIf="!isContactPage"
+       class="button button-primary contact-link"
+       routerLink='/contact'>{{'contactMe'| translate}}</a>
+  </div>
+  <p>
+    {{'designAndDeveloped'| translate}}
+  </p>
+  <span>
+    <div class="footer-background"
+         [class.is-contact-page]="isContactPage"></div>
+  </span>
 </div>
-<p>
-  {{'designAndDeveloped'| translate}}
-</p>
-<span lazy-load-images>
-  <div class="footer-background"
-       [class.is-contact-page]="isContactPage"></div>
-</span>

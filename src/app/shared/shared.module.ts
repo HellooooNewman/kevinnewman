@@ -3,8 +3,8 @@ import { CommonModule } from "@angular/common"
 import { PlaceholderComponent } from "./placeholder/placeholder.component"
 
 @NgModule({
-    imports: [CommonModule],
-    declarations: [PlaceholderComponent],
+    imports: [CommonModule, PlaceholderComponent],
+    declarations: [],
     exports: [PlaceholderComponent, CommonModule],
 })
 export class SharedModule {}

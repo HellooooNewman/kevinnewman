@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'translation-toggle',
   templateUrl: './translation-toggle.component.html',
-  styleUrls: ['./translation-toggle.component.scss']
+  styleUrls: ['./translation-toggle.component.scss'],
+  imports: [CommonModule, TranslateModule],
 })
 export class TranslationToggleComponent {
   languages = [

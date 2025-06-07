@@ -1,6 +1,6 @@
-
 import { DataService } from './../services/services.data';
 import { Component, OnInit } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 const enum messageStates {
   pending,
@@ -13,7 +13,8 @@ const enum messageStates {
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
+  imports: [TranslateModule],
 })
 export class ContactComponent implements OnInit {
   public message: String = '';
