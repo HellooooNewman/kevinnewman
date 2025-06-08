@@ -11,4 +11,13 @@ Firefox ESR
 not dead
 not IE 9-11 # For IE 9-11 support, remove 'not'.
 not kaios 2.5
+not kaios 3.0-3.1
+not and_qq 14.9
+not and_uc 15.5
+not android 137
+not op_mob 80
+not opera 117
+not opera 116
+not samsung 28
+not samsung 27
 not op_mini all
