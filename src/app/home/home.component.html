@@ -11,13 +11,17 @@
     <span>{{'skills'| translate}}</span>
     <hr />
   </h2>
-  <div class="four columns"
-       *ngFor="let skill of resume.skills">
-    <h3>{{ 'resume.skills.' + skill.title | translate }}</h3>
-    <ul>
-      <li *ngFor="let item of skill.list" [innerHTML]="item"></li>
-    </ul>
-  </div>
+  @for (skill of resume.skills; track skill) {
+    <div class="four columns"
+      >
+      <h3>{{ 'resume.skills.' + skill.title | translate }}</h3>
+      <ul>
+        @for (item of skill.list; track item) {
+          <li [innerHTML]="item"></li>
+        }
+      </ul>
+    </div>
+  }
 </div>
 
 <div class="container job">
@@ -25,65 +29,75 @@
     <span>{{'work'| translate}}</span>
     <hr />
   </h2>
-  <div class="columns twelve"
-       *ngFor="let job of resume.work.jobs; let i = index">
-    <div class="job-information">
-      <a href="{{ job.employer_link }}"
-         rel="noopener"
-         target="_blank">
-        <img loading="lazy"
-             class="employer__logo"
-             src="{{ job.logo }}"
-             alt="{{ job.employer }}" />
-        <h3 class="employer__name">{{ job.employer }}</h3>
-      </a>
-      <h4 class="employer__job-title">{{ 'resume.work.title.' + job.title | translate }}</h4>
-      <h5 class="employer__type">{{ 'resume.work.employmentType.' + job.employment_type | translate }}</h5>
-      <div class="employer__details">
-        <h5 class="employer__year">{{ 'resume.work.jobs.' + i + '.year' | translate }}</h5>
-        <h5 class="employer__location">{{ job.location | translate}}</h5>
+  @for (job of resume.work.jobs; track job; let i = $index) {
+    <div class="columns twelve"
+      >
+      <div class="job-information">
+        <a href="{{ job.employer_link }}"
+          rel="noopener"
+          target="_blank">
+          <img loading="lazy"
+            class="employer__logo"
+            src="{{ job.logo }}"
+            alt="{{ job.employer }}" />
+          <h3 class="employer__name">{{ job.employer }}</h3>
+        </a>
+        <h4 class="employer__job-title">{{ 'resume.work.title.' + job.title | translate }}</h4>
+        <h5 class="employer__type">{{ 'resume.work.employmentType.' + job.employment_type | translate }}</h5>
+        <div class="employer__details">
+          <h5 class="employer__year">{{ 'resume.work.jobs.' + i + '.year' | translate }}</h5>
+          <h5 class="employer__location">{{ job.location | translate}}</h5>
+        </div>
+        <button (click)="job.showDetails = !job.showDetails">
+          {{(job.showDetails ? 'viewLess' : 'viewMore') | translate}}
+        </button>
       </div>
-      <button (click)="job.showDetails = !job.showDetails">
-        {{(job.showDetails ? 'viewLess' : 'viewMore') | translate}}
-      </button>
+      @if (job.showDetails) {
+        <div>
+          <div class="details"
+          [innerHTML]="'resume.work.jobs.' + i + '.points' | translate"></div>
+          <p>{{ job.technology }}</p>
+        </div>
+      }
     </div>
-    <div *ngIf="job.showDetails">
-      <div class="details"
-           [innerHTML]="'resume.work.jobs.' + i + '.points' | translate"></div>
-      <p>{{ job.technology }}</p>
-    </div>
-  </div>
+  }
 </div>
 
-<div class="container side-projects"
-     *ngIf="(projects$ | async).length">
-  <h2>
-    <span>{{'projects'| translate}}</span><span><a routerLink="/projects">{{'viewAll'| translate}}</a></span>
-    <hr />
-  </h2>
-  <a [attr.href]="'project/' + project.id"
-     [routerLink]="['/project', project.id]"
-     class="six columns"
-     *ngFor="let project of (projects$ | async)">
-    <div class="project-holder"></div>
-    <div class="img-holder">
-      <img src="{{ project.thumbnail_img }}"
-           alt="{{ project.title }}"
-           loading="lazy" />
-    </div>
-    <h3>{{ project.title }}</h3>
-    <p>{{('projectsArray.' + project.id +  '.short_body') | translate}}</p>
-  </a>
-</div>
+@if ((projects$ | async).length) {
+  <div class="container side-projects"
+    >
+    <h2>
+      <span>{{'projects'| translate}}</span><span><a routerLink="/projects">{{'viewAll'| translate}}</a></span>
+      <hr />
+    </h2>
+    @for (project of (projects$ | async); track project) {
+      <a [attr.href]="'project/' + project.id"
+        [routerLink]="['/project', project.id]"
+        class="six columns"
+        >
+        <div class="project-holder"></div>
+        <div class="img-holder">
+          <img src="{{ project.thumbnail_img }}"
+            alt="{{ project.title }}"
+            loading="lazy" />
+        </div>
+        <h3>{{ project.title }}</h3>
+        <p>{{('projectsArray.' + project.id +  '.short_body') | translate}}</p>
+      </a>
+    }
+  </div>
+}
 
 <div class="container education">
   <h2>
     <span>{{'education'| translate}}</span>
     <hr />
   </h2>
-  <div class="four columns"
-       *ngFor="let school of resume.education">
-    <h3>{{ school.program }}</h3>
-    <p>{{ school.year }}</p>
-  </div>
+  @for (school of resume.education; track school) {
+    <div class="four columns"
+      >
+      <h3>{{ school.program }}</h3>
+      <p>{{ school.year }}</p>
+    </div>
+  }
 </div>

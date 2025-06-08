@@ -1,49 +1,63 @@
 <div class="container">
-  <div class="project-holder"
-       *ngIf="(projects | async).length === 0">
-    <placeholder-content></placeholder-content>
-    <placeholder-content></placeholder-content>
-    <placeholder-content></placeholder-content>
-  </div>
-  <div *ngIf="(projects | async).length">
-    <a routerLink="/project/{{ project.id }}"
-       class="row"
-       *ngFor="let project of (projects | async)" [@fadeInOut]="project" >
-      <div class="project-holder">
-        <div class="four column img-holder">
-          <img src="{{ project.thumbnail_img }}"
-               alt="{{ project.title }}"
-               loading="lazy" />
-        </div>
-        <div class="eight column">
-          <h3>{{ project.title }}</h3>
-          <p>{{('projectsArray.' + project.id + '.short_body') | translate}}</p>
-        </div>
-      </div>
-    </a>
-  </div>
-    <a *ngIf="!showArchivedProjects"
-       class="button button-primary u-center-block"
-       [ngStyle]="{'width': '140px'}"
-       (click)="showMoreProjects()">{{'viewMore'| translate}}</a>
-  <h2 *ngIf="(archivedProjects | async).length && showArchivedProjects" class="archived-header">
-    <span>{{'archivedProjects' | translate}}</span><hr>
-  </h2>
-  <div *ngIf="(archivedProjects | async).length && showArchivedProjects">
-    <a routerLink="/project/{{ project.id }}"
-       class="row"
-       *ngFor="let project of (archivedProjects | async)">
-      <div class="project-holder">
-        <div class="four column img-holder">
-          <img src="{{ project.thumbnail_img }}"
-               alt="{{ project.title }}"
-               loading="lazy" />
-        </div>
-        <div class="eight column">
-          <h3>{{ project.title }}</h3>
-          <p>{{('projectsArray.' + project.id + '.short_body') | translate}}</p>
-        </div>
-      </div>
-    </a>
-  </div>
+  @if ((projects | async).length === 0) {
+    <div class="project-holder"
+      >
+      <placeholder-content></placeholder-content>
+      <placeholder-content></placeholder-content>
+      <placeholder-content></placeholder-content>
+    </div>
+  }
+  @if ((projects | async).length) {
+    <div>
+      @for (project of (projects | async); track project) {
+        <a routerLink="/project/{{ project.id }}"
+          class="row"
+          [@fadeInOut]="project" >
+          <div class="project-holder">
+            <div class="four column img-holder">
+              <img src="{{ project.thumbnail_img }}"
+                alt="{{ project.title }}"
+                loading="lazy" />
+            </div>
+            <div class="eight column">
+              <h3>{{ project.title }}</h3>
+              <p>{{('projectsArray.' + project.id + '.short_body') | translate}}</p>
+            </div>
+          </div>
+        </a>
+      }
+    </div>
+  }
+  @if (!showArchivedProjects) {
+    <a
+      class="button button-primary u-center-block"
+      [ngStyle]="{'width': '140px'}"
+    (click)="showMoreProjects()">{{'viewMore'| translate}}</a>
+  }
+  @if ((archivedProjects | async).length && showArchivedProjects) {
+    <h2 class="archived-header">
+      <span>{{'archivedProjects' | translate}}</span><hr>
+    </h2>
+  }
+  @if ((archivedProjects | async).length && showArchivedProjects) {
+    <div>
+      @for (project of (archivedProjects | async); track project) {
+        <a routerLink="/project/{{ project.id }}"
+          class="row"
+          >
+          <div class="project-holder">
+            <div class="four column img-holder">
+              <img src="{{ project.thumbnail_img }}"
+                alt="{{ project.title }}"
+                loading="lazy" />
+            </div>
+            <div class="eight column">
+              <h3>{{ project.title }}</h3>
+              <p>{{('projectsArray.' + project.id + '.short_body') | translate}}</p>
+            </div>
+          </div>
+        </a>
+      }
+    </div>
+  }
 </div>

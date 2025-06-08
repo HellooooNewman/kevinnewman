@@ -1,6 +1,6 @@
 import { DataService } from './services/services.data';
-import { Component, ViewEncapsulation, HostListener, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from "@angular/common";
+import { Component, ViewEncapsulation, HostListener, Inject, OnInit, DOCUMENT } from '@angular/core';
+
 import { Router, NavigationEnd } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { RouterOutlet } from '@angular/router';

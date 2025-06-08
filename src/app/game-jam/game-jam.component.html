@@ -1,30 +1,36 @@
 <div class="container">
-  <div class="project-holder"
-       *ngIf="(gameJams | async).length === 0">
-    <placeholder-content></placeholder-content>
-    <placeholder-content></placeholder-content>
-    <placeholder-content></placeholder-content>
-  </div>
-  <div *ngIf="(gameJams | async).length">
-    <h2 style="text-align: center;"><em>{{'whatIsAGameJam' | translate}}</em></h2>
-    <p>
-      {{'whatIsAGameJamDescription' | translate}}
-    </p>
-    <a href="{{ gameJam.url }}"
-       target="_blank"
-       class="row"
-       *ngFor="let gameJam of (gameJams | async)">
-      <div class="gameJams-holder">
-        <div class="four column img-holder">
-          <img loading="lazy"
-               src="{{ gameJam.cover_url }}"
-               alt="{{ gameJam.title }}" />
-        </div>
-        <div class="eight column">
-          <h3>{{ gameJam.title }}</h3>
-          <p [innerHtml]="'gamesArray.' + gameJam.id | translate"></p>
-        </div>
-      </div>
-    </a>
-  </div>
+  @if ((gameJams | async).length === 0) {
+    <div class="project-holder"
+      >
+      <placeholder-content></placeholder-content>
+      <placeholder-content></placeholder-content>
+      <placeholder-content></placeholder-content>
+    </div>
+  }
+  @if ((gameJams | async).length) {
+    <div>
+      <h2 style="text-align: center;"><em>{{'whatIsAGameJam' | translate}}</em></h2>
+      <p>
+        {{'whatIsAGameJamDescription' | translate}}
+      </p>
+      @for (gameJam of (gameJams | async); track gameJam) {
+        <a href="{{ gameJam.url }}"
+          target="_blank"
+          class="row"
+          >
+          <div class="gameJams-holder">
+            <div class="four column img-holder">
+              <img loading="lazy"
+                src="{{ gameJam.cover_url }}"
+                alt="{{ gameJam.title }}" />
+            </div>
+            <div class="eight column">
+              <h3>{{ gameJam.title }}</h3>
+              <p [innerHtml]="'gamesArray.' + gameJam.id | translate"></p>
+            </div>
+          </div>
+        </a>
+      }
+    </div>
+  }
 </div>

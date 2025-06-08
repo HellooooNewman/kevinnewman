@@ -1,19 +1,21 @@
 <div>
   <div class="container">
     <br>
-    <br>
-    <br>
-    <br>
-    <p [innerHTML]="'thanksForComing' | translate"></p>
-    <a *ngIf="!isContactPage"
-       class="button button-primary contact-link"
-       routerLink='/contact'>{{'contactMe'| translate}}</a>
-  </div>
-  <p>
-    {{'designAndDeveloped'| translate}}
-  </p>
-  <span>
-    <div class="footer-background"
-         [class.is-contact-page]="isContactPage"></div>
-  </span>
-</div>
+      <br>
+        <br>
+          <br>
+            <p [innerHTML]="'thanksForComing' | translate"></p>
+            @if (!isContactPage) {
+              <a
+                class="button button-primary contact-link"
+              routerLink='/contact'>{{'contactMe'| translate}}</a>
+            }
+          </div>
+          <p>
+            {{'designAndDeveloped'| translate}}
+          </p>
+          <span>
+            <div class="footer-background"
+            [class.is-contact-page]="isContactPage"></div>
+          </span>
+        </div>

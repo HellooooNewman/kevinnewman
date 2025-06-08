@@ -1,6 +1,6 @@
 import { DataService } from './../services/services.data';
-import { Component, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation, AfterViewInit, Renderer2, OnDestroy, ChangeDetectorRef, OnInit } from '@angular/core';
-import { DOCUMENT } from "@angular/common";
+import { Component, ViewChild, ElementRef, NgZone, HostListener, Inject, ViewEncapsulation, AfterViewInit, Renderer2, OnDestroy, ChangeDetectorRef, OnInit, DOCUMENT } from '@angular/core';
+
 import { Router, NavigationEnd } from '@angular/router';
 import { Star } from '../interfaces/star';
 import { Line } from '../interfaces/line';

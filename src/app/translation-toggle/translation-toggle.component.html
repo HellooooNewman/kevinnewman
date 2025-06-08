@@ -1,14 +1,16 @@
 <div class="translation__btn">
   <span>
     <select
-            #langauge
-            (change)="translateSite(langauge.value)">
+      #langauge
+      (change)="translateSite(langauge.value)">
 
-      <option *ngFor="let localization of languages"
-              [value]="localization.value"
-              [selected]="localization === localization.currentLang">
-        {{ localization.text | translate }}
-      </option>
+      @for (localization of languages; track localization) {
+        <option
+          [value]="localization.value"
+          [selected]="localization === localization.currentLang">
+          {{ localization.text | translate }}
+        </option>
+      }
 
     </select>
   </span>
