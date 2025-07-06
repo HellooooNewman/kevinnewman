@@ -11,10 +11,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": {
-              "base": "build",
-              "media": "assetsimages"
-            },
+            "outputPath": "build",
             "index": "src/index.html",
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": [
