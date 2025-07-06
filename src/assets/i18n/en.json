@@ -144,8 +144,8 @@
       "body": "This was made for a 3D mini competition for the website www.gameartisans.org. The competition was to make a low poly dragon character that was under 15000 tris with the use of 3 maps: spec, diffuse, and normal map at 2048 texture size."
     },
     "11": {
-      "short_body": "A simple web tool for visually comparing before-and-after images with drag-and-drop support.",
-      "body": "This image comparison tool was built as a fast and intuitive way to compare before-and-after visuals in the browser. It supports drag-and-drop, history navigation, preview features, and works offline as a PWA. It was designed for designers, developers, and photographers who want a no-frills way to show visual changes."
+      "short_body": "A simple web tool for visually comparing before and after images with drag and drop support.",
+      "body": "This image comparison tool was built as a fast and intuitive way to compare before and after visuals in the browser. It supports drag and drop, history navigation, preview features, and works offline as a PWA. It was designed for designers, developers, and photographers who want a no-frills way to show visual changes."
     }
   },
   "gamesArray": {
