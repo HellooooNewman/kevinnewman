@@ -8,9 +8,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production",
+    "build": "ng build --configuration production && npm run postbuild",
     "lint": "ng lint",
-    "analyze": "ng build --configuration production --stats-json && webpack-bundle-analyzer dist/stats.json"
+    "analyze": "ng build --configuration production --stats-json && webpack-bundle-analyzer dist/stats.json",
+    "postbuild": "rsync -a build/browser/ build/ && rm -rf build/browser"
   },
   "private": true,
   "dependencies": {
