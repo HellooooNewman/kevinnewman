@@ -11,7 +11,7 @@
     "build": "ng build --configuration production && npm run postbuild",
     "lint": "ng lint",
     "analyze": "ng build --configuration production --stats-json && webpack-bundle-analyzer dist/stats.json",
-    "postbuild": "rsync -a build/browser/ build/ && rm -rf build/browser"
+    "postbuild": "if [ -d build/browser ]; then rsync -a build/browser/ build/ && rm -rf build/browser; fi"
   },
   "private": true,
   "dependencies": {
