@@ -1,0 +1,58 @@
+# Kevin Newman
+
+> Kevin Newman is a full stack developer based in Canada (remote) with 10+ years of experience building web and mobile products end to end — from payment platforms and customer portals to 3D marketing apps, hybrid mobile products, and native Nintendo 64 games. He is also a game jam regular. This is his personal portfolio site.
+
+- Full Stack Developer · Remote · Canada
+- Core stack: TypeScript, React, React Native, Vue, Node.js, Laravel (PHP), PostgreSQL, GraphQL
+- Also works with: Angular, Flutter, Three.js, Babylon, Electron, Ionic, C/C++/C#, .NET, Docker, Unity, Blender
+- Currently: Software Engineer → Senior Software Engineer at Sonar Software (Jan 2021 – present), rewriting an ISP field-tech app in React Native
+- Contact: kevin [at] kevinnewman.ca
+- Résumé (PDF): https://www.kevinnewman.ca/assets/pdf/Kevin%20Newman%20%C2%B7%20Full%20Stack%20Developer.pdf
+
+## Pages
+
+- [Home](https://www.kevinnewman.ca/): Intro, current work, skills, work history, and education
+- [Projects](https://www.kevinnewman.ca/projects/): Full portfolio of personal, work, and school projects
+- [Game Jams](https://www.kevinnewman.ca/game-jams/): Game jam entries and released games
+- [Contact](https://www.kevinnewman.ca/contact/): How to get in touch
+
+## Featured projects
+
+- [Reality64](https://www.kevinnewman.ca/projects/reality64/): Cross-platform desktop editor and engine for making real Nintendo 64 games — author scenes, cutscenes, and UI on PC, then build a .z64 ROM. C++17, SDL3, Dear ImGui, libdragon + tiny3d. In development.
+- [CondoPulse](https://www.kevinnewman.ca/projects/condopulse/): Statuspage.io for condo buildings — tracks elevator uptime, amenity outages, and per-unit issues. Next.js 15, Drizzle/Postgres, Expo/React Native, deployed across Vercel, Neon, and Cloudflare. Live SaaS with a free demo.
+- [Pandemonium](https://www.kevinnewman.ca/projects/pandemonium/): A souls-like boss-battle game for the Nintendo 64, built in C with libdragon for the 2025 N64brew Game Jam. Its making-of video has over a million views.
+- [E-Ink Image Converter](https://www.kevinnewman.ca/projects/e-ink-image-converter/): Browser-based tool that converts images into dithered BMP files for e-ink displays. Svelte 5, client-side, with a Three.js 3D frame viewer.
+- [Image Comparison Tool](https://www.kevinnewman.ca/projects/image-comparison-tool/): Web tool for visually comparing before-and-after images, with an MCP server for AI-driven workflows.
+- [Lightbox Quote Checker](https://www.kevinnewman.ca/projects/lightbox-quote-checker/): Checks whether a message fits the constraints of a letterboard lightbox. Built at Xello.
+
+## Other projects
+
+- [UFO Desk Sensor](https://www.kevinnewman.ca/projects/ufo-desk-sensor/): 3D-printed flying saucer with a Raspberry Pi camera that watches a sit/stand desk — green light rising, red lowering. OpenCV ArUco tracking + NeoPixel LEDs.
+- [Hammer Fight](https://www.kevinnewman.ca/projects/hammer-fight/): Couch co-op arena brawler pitting 2–4 astronauts against each other with anti-gravity hammers. Shown at Forest City Comicon.
+- [The Scarecrow](https://www.kevinnewman.ca/projects/the-scarecrow/): 3D platformer built in college by a team of five, starring a scarecrow in a stylized farm world.
+- [Metrick System / Trailerworks](https://www.kevinnewman.ca/projects/metrick-system-trailerworks/): Rebrand sites for a video production company and its in-house design agency. React.
+- [Indegene Omnipresence](https://www.kevinnewman.ca/projects/indegene-omnipresence/): Hybrid presentation and video-sharing app for the pharma industry. Ionic + Angular 2.
+- [Hypoglycemia App](https://www.kevinnewman.ca/projects/hypoglycemia-app/): Blood glucose tracker thesis project. Drupal API + AngularJS/Ionic.
+- [TVO Kids](https://www.kevinnewman.ca/projects/tvo-kids/): Rebuild of tvokids.com from Flash to a modern responsive Drupal 7 site.
+- [U of T KPE](https://www.kevinnewman.ca/projects/uoft-kpe/): Rebuild of the University of Toronto Kinesiology site in early Drupal 8.
+- [Confederation College](https://www.kevinnewman.ca/projects/confederation-college/): Full rebuild of the college's main website in Drupal 7.
+- [Tesla UI Concept](https://www.kevinnewman.ca/projects/tesla-ui-concept/): Redesign concept for the Tesla mobile app and car dashboard UI.
+- [Ye Olde Dragon](https://www.kevinnewman.ca/projects/ye-olde-dragon/): Low-poly dragon character (<15k tris) built for a 3D mini competition.
+
+## Work history
+
+- Sonar Software — Software Engineer → Senior Software Engineer (Jan 2021 – present): Sole developer of the offline-first field-technician mobile apps (Flutter → React Native), payments/billing owner on the core web platform (SonarPay, flexible billing), and customer self-service portal features.
+- Xello — Full Stack Web Developer (Jan 2019 – Jan 2021): Micro-frontend shell app, AngularJS → Angular migration, UK localization.
+- Wuzzals — Full Stack Web Developer, contract (Oct 2018 – Jan 2020): Laravel + Vue platform for a personalized children's-book company.
+- Trailerworks — Full Stack Web Developer, contract (Aug 2018 – Jan 2019): Marketing sites in React, Magento and Shopify stores.
+- Grassriots — Full Stack Web Developer, contract (Mar 2018 – Jul 2018): Fundraising campaign delivery for UNICEF Canada, World Vision, and others.
+- GE — Frontend Developer, contract (Oct 2017 – Feb 2018): Interactive 3D marketing apps in Babylon.js for GE Healthcare, Energy, and Grid Solutions.
+- Indegene — Frontend Developer (Feb 2017 – Oct 2017): Angular 2 / Ionic 3 hybrid app for the pharma industry.
+- Digital Echidna — Full Stack Web Developer (Feb 2015 – Feb 2017): Drupal client sites, front-end themes, and custom back-end modules.
+
+## Links
+
+- [GitHub](https://github.com/HellooooNewman)
+- [LinkedIn](https://www.linkedin.com/in/helloooonewman)
+- [itch.io](https://helloooonewman.itch.io)
+- [Twitter/X](https://twitter.com/Helloooo_Newman)
