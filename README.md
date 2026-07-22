@@ -1,16 +1,27 @@
-# Kevin Newman Personal Website
+# Kevin Newman - Personal Website
 
-`ng serve` to run.
+Personal portfolio site built with Next.js (App Router, static export). The
+space theme - starfield, moon, mountains - carries over from the original
+Angular version, rebuilt for real prerendered HTML, SEO, and mobile.
 
-`ng serve --prod` to test production settings locally
+## Commands
 
-`ng build --configuration production` to build.
+| Command         | What it does                                 |
+| --------------- | -------------------------------------------- |
+| `npm run dev`   | Dev server at http://localhost:4300          |
+| `npm run build` | Static export to `out/` (deploy that folder) |
+| `npm run lint`  | Lint                                         |
 
-`ng generate *` to [build](https://github.com/angular/angular-cli/wiki/generate)
+## Where things live
 
-`ng update` to [update](https://github.com/angular/angular-cli/wiki/update)
+- `data/resume.ts` - intro, status pill, stats, "Right now" panel, skills, jobs, education
+- `data/projects.ts` - all projects (`promote: true` features them on the home page; first two become spotlights)
+- `app/` - routes (home, projects, project detail, game-jams, contact, legacy redirects)
+- `components/` - Starfield canvas, Hero, JobCard, nav/footer
+- `public/assets/` - images, logos, résumé PDF
+- `assets/custom_projects/` - original full-res photos/videos (not deployed; web-sized copies live under `public/assets/`)
 
-#### Things to do
+## Legacy URLs
 
--   Custom projects
--   Rocketship 🚀
+Old v1 routes (`/project/:id`, `/home`) are prerendered redirect stubs - kept
+automatically in sync with `data/projects.ts`.

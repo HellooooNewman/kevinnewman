@@ -1,25 +1,41 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "module": "es2020",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
+    "target": "ES2020",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "target": "ES2022",
-    "typeRoots": [
-      "node_modules/@types"
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
     ],
-    "lib": [
-      "es2016",
-      "dom"
-    ],
-    "useDefineForClassFields": false
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
   },
-  "angularCompilerOptions": {
-    "enableIvy": true
-  }
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

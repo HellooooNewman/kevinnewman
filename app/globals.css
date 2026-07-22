@@ -1,0 +1,1244 @@
+/* ─── Kevin Newman · space theme, evolved ─────────────────────────── */
+
+:root {
+  /* Brand */
+  --brand-blue: #2e50a2;
+  --brand-blue-bright: #5b7fd4;
+  --brand-blue-glow: #7c9ff0;
+  --moon-yellow: #ffd82f;
+
+  /* Dark theme (default; it's a night sky) */
+  --bg: #0a0e1a;
+  --bg-raised: #111627;
+  --bg-card: #141a2e;
+  --border: #232c4a;
+  --border-bright: #3a4770;
+  --text: #e8ecf6;
+  --text-dim: #9aa5c4;
+  --text-faint: #6b7599;
+  --link: #8fb0ff;
+  --star: #cdd9ff;
+  --mountain-far: #1c2648;
+  --mountain-mid: #171f3e;
+  --mountain-near: #131a33;
+  --mountain-snow: #3d4d8a;
+
+  --radius: 12px;
+  --container: 1200px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f7f8fc;
+  --bg-raised: #ffffff;
+  --bg-card: #ffffff;
+  --border: #dde3f0;
+  --border-bright: #c3cce2;
+  --text: #1a2138;
+  --text-dim: #4a5578;
+  --text-faint: #7c86a6;
+  --link: #2e50a2;
+  --star: #2e50a2;
+  --mountain-far: #aebdde;
+  --mountain-mid: #9fb1d6;
+  --mountain-near: #90a3cd;
+  --mountain-snow: #f4f8ff;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* belt-and-suspenders: no horizontal scroll, ever */
+  transition: background 0.3s ease, color 0.3s ease;
+  /* Sticky footer: short pages stretch so the campsite sits at the
+     bottom of the viewport instead of floating mid-screen. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+main {
+  flex: 1;
+  /* Column flex so a page (e.g. contact) can stretch a sky section to
+     fill the leftover space with `flex: 1`. */
+  display: flex;
+  flex-direction: column;
+}
+
+main > * {
+  width: 100%;
+}
+
+/* A page that declares its own full-height sky merges seamlessly into
+   the footer's: no divider between two identical night skies. */
+main:has([data-sky-page]) + .site-footer {
+  border-top: none;
+  margin-top: 0;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+::selection {
+  background: var(--brand-blue);
+  color: #fff;
+}
+
+/* ─── Layout primitives ─── */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.section {
+  padding-block: 2.75rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.75rem;
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-bright), transparent);
+}
+
+.section-title .view-all {
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ─── Buttons ─── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-bright);
+  background: var(--bg-raised);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease,
+    background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  border-color: var(--brand-blue-bright);
+  box-shadow: 0 4px 20px rgba(46, 80, 162, 0.35);
+}
+
+.btn--primary {
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--brand-blue-bright);
+}
+
+.theme-toggle {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+/* ─── Cards & grids (fluid; fixes the old mobile clipping) ─── */
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+}
+
+.card {
+  --card-pad: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--card-pad);
+  transition: border-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+a.card {
+  color: var(--text);
+  display: block;
+}
+
+a.card:hover {
+  text-decoration: none;
+  border-color: var(--brand-blue-bright);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* ─── Chips ─── */
+
+.chip {
+  display: inline-block;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-bright);
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.chip--accent {
+  border-color: var(--brand-blue-bright);
+  color: var(--brand-blue-glow);
+}
+
+/* doubled selector so it also beats the `.chip-cloud .chip` sizing below */
+.chip--lg,
+.chip-cloud .chip--lg {
+  padding: 0.45rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* ─── Social icon links ─── */
+
+.social-icon-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-dim);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.social-icon-link:hover {
+  color: var(--brand-blue-glow);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+/* ─── Footer campsite ─── */
+
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+}
+
+.site-footer__inner {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  /* Center the text vertically in the sky band above the campsite. The
+     bottom padding reserves roughly the scene's hill/tree region so the
+     text floats in open sky at any width.
+     single left column: the starfield's crescent moon lives top-right */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: max(520px, 33vw);
+  padding-top: 2rem;
+  padding-bottom: calc(max(260px, 22.3vw) / 2);
+}
+
+/* Daytime: the fire is out — no flames, no glow. The smoke keeps rising
+   off the logs so it reads as freshly doused, not forgotten. */
+[data-theme="light"] .campfire-glow,
+[data-theme="light"] .campfire-flame {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .campfire-flame {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: campfire-flicker 1.7s ease-in-out infinite;
+  }
+
+  .campfire-flame--inner {
+    animation-duration: 1.1s;
+    animation-delay: 0.25s;
+  }
+
+  .campfire-glow {
+    animation: campfire-glow-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes campfire-flicker {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  30% {
+    transform: scale(0.94, 1.08);
+  }
+  60% {
+    transform: scale(1.06, 0.92);
+  }
+  80% {
+    transform: scale(0.97, 1.04);
+  }
+}
+
+@keyframes campfire-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Smoke puffs - invisible unless motion is allowed (a static puff looks odd).
+   Fill comes from the soft radial gradient in the SVG defs. */
+.campfire-smoke {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .campfire-smoke {
+    animation: campfire-smoke-rise 5s linear infinite;
+  }
+}
+
+@keyframes campfire-smoke-rise {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  25% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(9px, -32px) scale(1.4);
+  }
+}
+
+/* Fireflies - night only, and only when motion is allowed */
+.campfire-firefly {
+  fill: var(--moon-yellow);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .campfire-firefly {
+    animation: campfire-firefly-drift 6s ease-in-out infinite;
+  }
+}
+
+[data-theme="light"] .campfire-firefly {
+  display: none;
+}
+
+@keyframes campfire-firefly-drift {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  30% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.2;
+    transform: translate(-8px, -10px);
+  }
+  70% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0;
+    transform: translate(-14px, -4px);
+  }
+}
+
+/* ─── Job cards (details/summary) ─── */
+
+.job-card {
+  /* keep deep-linked cards (#job-…) clear of the sticky nav */
+  scroll-margin-top: 5.5rem;
+}
+
+.job-card > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  cursor: pointer;
+  list-style: none;
+}
+
+.job-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.job-card__id {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.job-card__logo {
+  flex-shrink: 0;
+  display: inline-flex;
+  border-radius: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.job-card__logo:hover,
+.job-card__logo:focus-visible {
+  transform: translateY(-3px) scale(1.25);
+  box-shadow: 0 10px 26px rgba(46, 80, 162, 0.6),
+    0 0 18px rgba(124, 159, 240, 0.5);
+}
+
+.job-card__meta {
+  margin-left: auto;
+  text-align: right;
+  line-height: 1.45;
+}
+
+.job-card__period {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.job-card__location {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+}
+
+.job-card > summary::after {
+  content: "+";
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-faint);
+  order: 3;
+}
+
+.job-card[open] > summary::after {
+  content: "−";
+}
+
+.job-card:hover {
+  border-color: var(--border-bright);
+}
+
+/* ─── Hero extras ─── */
+
+/* Dark: a faint blue glow at the top of the hero's night sky. */
+.hero-sky {
+  background: radial-gradient(
+    ellipse at 50% -20%,
+    rgba(46, 80, 162, 0.28),
+    transparent 60%
+  );
+}
+
+/* Light: a soft daytime gradient - a gentle blue overhead fading to haze
+   at the horizon - shared by every sky section so the white clouds and
+   pale mountains have something to stand against. Fixed attachment sizes
+   the gradient to the viewport, so stacked skies (the contact page
+   flowing into the footer) read as one continuous sky. */
+[data-theme="light"] .hero-sky,
+[data-theme="light"] .site-footer,
+[data-theme="light"] [data-sky-page] {
+  background: linear-gradient(180deg, #cddef7 0%, #e6eefb 52%, #f7f9fd 100%)
+    fixed;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 4.5rem;
+  padding-bottom: 5.5rem;
+  pointer-events: none; /* let the starfield catch pointer moves… */
+}
+
+.hero-name {
+  background: linear-gradient(
+    100deg,
+    var(--text) 30%,
+    var(--brand-blue-glow) 85%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* The pale glow endpoint vanishes against a daytime sky; daylight gets
+   the full brand blue instead. */
+[data-theme="light"] .hero-name {
+  background-image: linear-gradient(
+    100deg,
+    var(--text) 30%,
+    var(--brand-blue) 85%
+  );
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  margin-top: 2.25rem;
+}
+
+.hero-stats > div {
+  border-left: 2px solid var(--brand-blue-bright);
+  padding-left: 0.85rem;
+}
+
+.hero-stats strong {
+  display: block;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.hero-stats span {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+}
+
+/* ─── Reveal on scroll ─── */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ─── Constellation timeline (Work) ─── */
+
+.timeline {
+  --tl-inset: 1.75rem;
+  --tl-gap: 0.85rem;
+  position: relative;
+  display: grid;
+  gap: var(--tl-gap);
+  padding-left: var(--tl-inset);
+}
+
+.timeline > * {
+  position: relative;
+}
+
+/* Rail drawn per card, from this card's dot to the next card's dot, so it
+   always ends exactly at the last dot regardless of card heights. */
+.timeline > *:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--tl-inset) + 6px);
+  top: calc(var(--card-pad, 1.5rem) + 25px);
+  /* reach across the grid gap into the next card, up to its dot */
+  bottom: calc(-1 * var(--tl-gap) - var(--card-pad, 1.5rem) - 15px);
+  width: 2px;
+  background: var(--brand-blue);
+  opacity: 0.5;
+}
+
+.timeline > *::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--tl-inset) + 2px);
+  /* card padding + half the 40px logo row, minus half the dot:
+     centers the dot on the collapsed summary */
+  top: calc(var(--card-pad, 1.5rem) + 20px - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand-blue-glow);
+  box-shadow: 0 0 10px 2px rgba(124, 159, 240, 0.55);
+}
+
+/* ─── Spotlight project cards ─── */
+
+.grid--spotlight {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+  margin-bottom: 1.25rem;
+}
+
+.card__media {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: var(--bg-raised);
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+a.card:hover .card__media img {
+  transform: scale(1.04);
+}
+
+.card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(10, 14, 26, 0.82);
+  border: 1px solid var(--brand-blue-bright);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(4px);
+}
+
+/* ─── Skill chips ─── */
+
+.chip-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.chip-cloud .chip {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+/* ─── Now panel ─── */
+
+.intro-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 820px) {
+  .intro-grid {
+    grid-template-columns: 3fr 2fr;
+    /* center the short intro copy against the taller now-panel so the
+       column doesn't leave a void beneath the text */
+    align-items: center;
+  }
+}
+
+.now-panel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.now-panel a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-bright);
+  text-underline-offset: 3px;
+}
+
+.now-panel a:hover {
+  color: var(--link);
+  text-decoration-color: currentColor;
+}
+
+.now-panel li {
+  display: flex;
+  gap: 0.65rem;
+  padding: 0.5rem 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.now-panel li:last-child {
+  border-bottom: none;
+}
+
+/* ─── Gallery lightbox ─── */
+
+.gallery-item {
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  cursor: zoom-in;
+}
+
+.gallery-zoom-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.gallery-item--hero {
+  margin-bottom: 2rem;
+}
+
+.gallery-item--hero img {
+  border-radius: var(--radius);
+}
+
+.gallery-item:hover .gallery-zoom-btn,
+.gallery-item:focus-within .gallery-zoom-btn {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .gallery-zoom-btn {
+    opacity: 1;
+  }
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 7, 15, 0.92);
+  cursor: zoom-out;
+}
+
+.lightbox-image {
+  max-width: 92vw;
+  max-height: 92vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.lightbox-close,
+.lightbox-nav {
+  position: absolute;
+  z-index: 201;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus,
+.lightbox-nav:hover,
+.lightbox-nav:focus {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.lightbox-close {
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+}
+
+.lightbox-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 80px;
+  font-size: 38px;
+}
+
+.lightbox-nav--prev {
+  left: 16px;
+}
+
+.lightbox-nav--next {
+  right: 16px;
+}
+
+/* ─── Mobile refinements ─── */
+
+@media (max-width: 640px) {
+  /* Desktop-scale whitespace stretches a phone page out; tighten it. */
+  .section {
+    padding-block: 2rem;
+  }
+
+  .section-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .card {
+    --card-pad: 1.15rem;
+  }
+
+  .grid,
+  .grid--spotlight {
+    gap: 1rem;
+  }
+
+  .intro-grid {
+    gap: 1.5rem;
+  }
+
+  /* Hero: shorter, so the content above the fold is yours, not padding
+     (bottom padding still keeps the stats clear of the mountain peaks) */
+  .hero-inner {
+    min-height: 0;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+  }
+
+  /* Nav: the toggle goes icon-only and the hero already carries the brand,
+     so all four links fit without a hidden horizontal scroll */
+  .theme-toggle {
+    padding: 0.45rem 0.6rem;
+  }
+
+  .theme-toggle__label {
+    display: none;
+  }
+
+  .hero-stats {
+    gap: 1rem 1.5rem;
+    margin-top: 1.75rem;
+  }
+
+  /* Give the cards back the horizontal space the rail was renting */
+  .timeline {
+    --tl-inset: 1.1rem;
+  }
+
+  /* Job summary: on desktop the dates sit right-aligned beside the title;
+     on a phone that fight for width wraps badly. Drop the meta to its own
+     row, left-aligned under the employer text. */
+  .job-card > summary {
+    row-gap: 0.35rem;
+  }
+
+  .job-card__id {
+    flex: 1;
+  }
+
+  .job-card__meta {
+    order: 4;
+    flex-basis: 100%;
+    margin-left: calc(40px + 0.85rem); /* logo width + id gap */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.75rem;
+    text-align: left;
+  }
+
+  .job-card__period,
+  .job-card__location {
+    display: inline;
+  }
+
+  /* Footer: on a phone the campsite scene is bottom-anchored with empty sky
+     above it, so the text can sit lower without touching the tent */
+  .site-footer {
+    margin-top: 2rem;
+  }
+
+  .site-footer__inner {
+    padding-top: 2rem;
+    padding-bottom: 13rem;
+  }
+}
+
+/* ─── Accessibility ─── */
+
+:focus-visible {
+  outline: 2px solid var(--brand-blue-glow);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 100;
+  background: var(--brand-blue);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 8px 0;
+}
+
+.skip-link:focus {
+  left: 0;
+  top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Print: the page IS the résumé ───
+   Ctrl+P on the home page yields a clean resume PDF, like the v1 site's
+   print.scss. Chrome doesn't print backgrounds by default, so everything
+   flattens to black-on-white and the decorative sky/mountains/cards go. */
+
+.print-only {
+  display: none !important;
+}
+
+@media print {
+  .print-only {
+    display: block !important;
+  }
+
+  /* Neutralize the theme: every component colors itself with these vars
+     (including inline styles), so overriding them here cascades everywhere
+     regardless of the visitor's dark/light toggle. */
+  :root,
+  [data-theme] {
+    --bg: #fff;
+    --bg-raised: #fff;
+    --bg-card: #fff;
+    --border: #ddd;
+    --border-bright: #bbb;
+    --text: #000;
+    --text-dim: #333;
+    --text-faint: #555;
+    --link: #000;
+    --brand-blue-glow: #333;
+    color-scheme: light;
+  }
+
+  @page {
+    margin: 1.2cm;
+  }
+
+  /* Everything sized in rem compacts with the root */
+  html {
+    font-size: 13px;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 1rem;
+    line-height: 1.45;
+    display: block;
+  }
+
+  main {
+    display: block;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Chrome-only chrome and decoration */
+  .no-print,
+  canvas,
+  .skip-link,
+  .view-all,
+  #hero-logo,
+  .hero-stats,
+  .now-panel,
+  .card-badge,
+  .job-card__logo {
+    display: none !important;
+  }
+
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+
+  .section {
+    padding-block: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    margin: 0 0 0.6rem;
+    break-after: avoid;
+  }
+
+  .section-title::after {
+    background: #bbb;
+  }
+
+  /* Hero → resume header: no sky, no gradient text (transparent fill
+     prints as invisible), just name / title / contact. */
+  .hero-sky {
+    background: none !important;
+  }
+
+  .hero-inner {
+    min-height: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .hero-name {
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: var(--text) !important;
+    font-size: 20pt !important;
+  }
+
+  .hero-inner p {
+    margin: 0.15rem 0 0 !important;
+    font-size: 1rem !important;
+    max-width: none !important;
+  }
+
+  /* p.print-contact so it out-cascades the .hero-inner p sizing above */
+  p.print-contact {
+    font-family: var(--font-mono);
+    font-size: 0.85rem !important;
+    margin-top: 0.5rem !important;
+  }
+
+  /* Cards flatten to plain text blocks */
+  .card {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .card h3 {
+    font-size: 1rem !important;
+    margin: 0.3rem 0 0.15rem !important;
+  }
+
+  .intro-grid {
+    display: block;
+  }
+
+  .grid,
+  .grid--spotlight {
+    display: block;
+  }
+
+  /* Work: drop the constellation rail, keep each job compact.
+     Summary rows stay with their first lines; long job bodies may
+     break across pages. */
+  .timeline {
+    padding-left: 0;
+    gap: 0.6rem;
+  }
+
+  .timeline > *::before,
+  .timeline > *:not(:last-child)::after {
+    display: none;
+  }
+
+  /* Belt-and-suspenders with JobCard's beforeprint handler: engines that
+     support ::details-content print collapsed cards even without JS
+     (headless print-to-pdf never fires beforeprint, for one) */
+  details::details-content {
+    content-visibility: visible !important;
+  }
+
+  .job-card > summary {
+    break-inside: avoid;
+    break-after: avoid;
+  }
+
+  /* doubled with [open] to out-rank the screen rules either way */
+  .job-card > summary::after,
+  .job-card[open] > summary::after {
+    content: none;
+  }
+
+  /* Employer · title · type on one line (the title span is inline-styled
+     as display:block for the screen layout) */
+  .job-card__id > span > span {
+    display: inline !important;
+    margin-left: 0.4rem;
+  }
+
+  .job-card__id > span > span::before {
+    content: "· ";
+  }
+
+  .job-card__period,
+  .job-card__location {
+    display: inline;
+    font-size: 0.8rem;
+  }
+
+  .job-card__location::before {
+    content: " · ";
+  }
+
+  .job-card > div {
+    padding-top: 0.3rem !important;
+  }
+
+  .job-card h4 {
+    margin: 0.45rem 0 0.15rem !important;
+  }
+
+  .job-card p {
+    margin: 0.2rem 0 !important;
+  }
+
+  .job-card li {
+    margin-bottom: 0.1rem !important;
+  }
+
+  /* Featured projects: plain text list (the card grids carry no-print) */
+  .print-projects {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  .print-projects li {
+    margin-bottom: 0.15rem;
+  }
+
+  /* Skills: chips become comma-separated text, like the old inline list */
+  .chip-cloud {
+    display: block;
+  }
+
+  /* doubled selectors to out-rank the .chip-cloud/.chip--lg sizing */
+  .chip,
+  .chip-cloud .chip,
+  .chip-cloud .chip--lg {
+    display: inline;
+    padding: 0;
+    border: none;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--text-dim) !important;
+  }
+
+  .chip:not(:last-child)::after {
+    content: ", ";
+  }
+
+  /* Education: one compact line per school */
+  .grid > .card {
+    break-inside: avoid;
+    margin-bottom: 0.4rem;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
