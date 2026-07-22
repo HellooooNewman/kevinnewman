@@ -14,7 +14,7 @@ export const intro = {
   // HTML/bundle - see components/EmailButton.tsx.
   emailUser: "kevin",
   emailDomain: "kevinnewman.ca",
-  resumePdf: "/assets/pdf/KevinNewmanResume.pdf",
+  resumePdf: "/assets/pdf/Kevin Newman · Full Stack Developer.pdf",
   stats: [
     { value: "10+", label: "years shipping software" },
     { value: "Web · Mobile · Desktop · N64", label: "platforms shipped on" },
