@@ -2,6 +2,9 @@
   "name": "kevinnewman-v2",
   "version": "2.0.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev -p 4301",
     "build": "next build",
