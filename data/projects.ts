@@ -170,7 +170,30 @@ export const projects: Project[] = [
       note: "to explore triage, SLA escalation, asset health scores, cost tracking, QR stickers, and the printable board report.",
     },
     gallery: [
-      { url: "/assets/projects/condopulse-kiosk.jpg", alt: "CondoPulse kiosk mode dashboard" },
+      {
+        url: "/assets/projects/gallery/condopulse0.jpeg",
+        alt: "CondoPulse marketing site hero: “A status page for your building” with a preview of a live property status page",
+      },
+      {
+        url: "/assets/projects/gallery/condopulse1.jpeg",
+        alt: "CondoPulse property status page for Harborview Towers, showing per-tower assets with 90-day uptime bars and a scheduled maintenance window",
+      },
+      {
+        url: "/assets/projects/gallery/condopulse2.jpeg",
+        alt: "CondoPulse admin triage queue listing SLA-breached open incidents with priority, reporter, and assign/acknowledge controls",
+      },
+      {
+        url: "/assets/projects/gallery/condopulse3.jpeg",
+        alt: "CondoPulse kiosk mode: full-screen dark lobby-TV dashboard with uptime bars, upcoming maintenance, and a scrolling open-incident ticker",
+      },
+      {
+        url: "/assets/projects/gallery/condopulse4.jpeg",
+        alt: "CondoPulse Starlight documentation site with separate entry points for residents, boards and managers, and the REST API reference",
+      },
+      {
+        url: "/assets/projects/gallery/condopulse5.jpeg",
+        alt: "CondoPulse mobile app status screen with asset uptime bars grouped by tower and tabs for status, incidents, reporting, and contacts",
+      },
     ],
     archived: false,
   },
