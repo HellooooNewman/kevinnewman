@@ -13,26 +13,41 @@ export default function Mountains() {
   const nearRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     let target = window.scrollY;
     let y = target;
     let raf = 0;
 
-    const onScroll = () => {
-      target = window.scrollY;
-    };
-
-    const tick = () => {
-      y += (target - y) * 0.08;
-      // Distant peaks sink fastest as you scroll; the foothills hold.
-      // Kept very subtle - just a hint of depth.
+    // Distant peaks sink fastest as you scroll; the foothills hold.
+    // Kept very subtle - just a hint of depth.
+    const apply = () => {
       farRef.current?.setAttribute("transform", `translate(0 ${y * 0.035})`);
       midRef.current?.setAttribute("transform", `translate(0 ${y * 0.02})`);
       nearRef.current?.setAttribute("transform", `translate(0 ${y * 0.0075})`);
+    };
+
+    // Ease toward the scroll position, then stop: no frames run while the
+    // page sits still.
+    const tick = () => {
+      y += (target - y) * 0.08;
+      if (Math.abs(target - y) < 0.5) {
+        y = target;
+        apply();
+        raf = 0;
+        return;
+      }
+      apply();
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
+
+    const onScroll = () => {
+      target = window.scrollY;
+      if (reducedMotion.matches || raf) return;
+      raf = requestAnimationFrame(tick);
+    };
+
+    if (!reducedMotion.matches) apply();
     window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
