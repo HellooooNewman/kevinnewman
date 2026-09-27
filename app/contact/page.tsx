@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Starfield from "@/components/Starfield";
 import SocialLinks from "@/components/SocialLinks";
 import EmailButton from "@/components/EmailButton";
 import { intro } from "@/data/resume";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
   description: "Email Kevin Newman, or find him on GitHub, LinkedIn, itch.io and X.",
-};
+  path: "/contact/",
+});
 
 export default function ContactPage() {
   return (

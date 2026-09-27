@@ -3,8 +3,7 @@ import "./globals.css";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
 import Starfield from "@/components/Starfield";
-
-const SITE_URL = "https://www.kevinnewman.ca";
+import { SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

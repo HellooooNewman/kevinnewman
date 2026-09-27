@@ -1,14 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { games } from "@/data/projects";
 import { intro } from "@/data/resume";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Game Jams",
   description:
     "Games Kevin Newman has built at game jams, hackathons for video games.",
-};
+  path: "/game-jams/",
+});
 
 export default function GameJamsPage() {
   return (
