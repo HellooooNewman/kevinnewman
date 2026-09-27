@@ -35,7 +35,7 @@ function ItchIcon() {
     <svg
       width={ICON_SIZE}
       height={ICON_SIZE}
-      viewBox="0 0 245.371 220.736"
+      viewBox="0 -12 245.371 245.371"
       fill="currentColor"
       aria-hidden="true"
     >

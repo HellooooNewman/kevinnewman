@@ -12,17 +12,7 @@ export default function Footer() {
       <div className="container site-footer__inner">
         <div style={{ pointerEvents: "auto", display: "inline-block" }}>
           <p style={{ margin: 0, fontWeight: 700 }}>
-            Thanks for coming by. <span aria-hidden="true">✨</span> Have a nice
-            day.
-          </p>
-          <p
-            style={{
-              margin: "0.25rem 0 0",
-              color: "var(--text-faint)",
-              fontSize: "0.9rem",
-            }}
-          >
-            Designed and developed by me :)
+            Thanks for coming by. Have a nice day.
           </p>
           <div style={{ marginTop: "1rem" }}>
             <SocialLinks />
