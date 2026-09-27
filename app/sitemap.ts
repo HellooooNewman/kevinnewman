@@ -1,9 +1,8 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
+import { SITE_URL } from "@/lib/seo";
 
 export const dynamic = "force-static";
-
-const SITE_URL = "https://www.kevinnewman.ca";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["", "projects/", "game-jams/", "contact/"].map((p) => ({

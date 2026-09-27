@@ -1,10 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
+import type { Metadata } from "next";
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import JobCard from "@/components/JobCard";
 import RevealInit from "@/components/RevealInit";
 import { intro, skills, jobs, education } from "@/data/resume";
 import { projects, type Project } from "@/data/projects";
+
+// The home page keeps the site-wide preview cards from the layout; it only
+// needs to name its canonical address.
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 function ProjectCard({ p, large = false }: { p: Project; large?: boolean }) {
   return (

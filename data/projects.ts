@@ -37,8 +37,6 @@ export const projects: Project[] = [
     thumbnail: "/assets/projects/reality64.jpg",
     mainImg: "/assets/projects/gallery/reality640.jpeg",
     projectType: ["Desktop", "Game", "3D"],
-    projectUrl: "https://github.com/HellooooNewman/reality64",
-    repoUrl: "https://github.com/HellooooNewman/reality64",
     workType: "Personal",
     promote: true,
     year: "2026",
@@ -49,6 +47,7 @@ export const projects: Project[] = [
       "Reality64 grew out of building Pandemonium: a desktop editor for making N64 games on the open-source libdragon + tiny3d stack, so the next game doesn't start from raw C and Makefiles. It's C++17 with SDL3 and Dear ImGui, rendered through SDL3's GPU backend so a single binary targets Vulkan, D3D12, or Metal across Windows, macOS, and Linux.",
       "The editor never touches N64 headers. Scenes, cutscenes, and UI screens are authored in portable JSON formats, and a separate cooker bakes them into on-cartridge formats: binary scene files, tiny3d models, and compressed sprites. A component-driven runtime engine consumes the baked output, and a gallery of example scenes mirrors the tiny3d feature set: skeletal animation, particles, cel shading, point lights, zone streaming, HDR bloom, and split-screen.",
       "The whole toolchain experience is built in: the editor installs the N64 toolchain (mips64-elf-gcc, libdragon, tiny3d), cooks assets, builds the ROM, and launches it in the ares emulator or deploys it to a SummerCart flashcart. It ships as installers for all three platforms with a SHA-256-verified self-updater.",
+      "The source, docs and releases go public at launch. Until then, I'm happy to walk through it on request.",
     ],
     features: [
       "Dockable scene editor with orbit camera, transform gizmo, ray-pick selection, outliner, and a component inspector, with undo/redo across every mutation",
@@ -59,28 +58,6 @@ export const projects: Project[] = [
       "One-click build and run to the ares emulator or a SummerCart flashcart, plus a ROM build-analysis panel",
       "In-app N64 toolchain installer, .blend to .glb export, and a CRT preview filter that approximates real hardware output",
       "Native PC export through an SDL3 shim layer for libdragon/tiny3d",
-    ],
-    links: [
-      {
-        label: "GitHub repository",
-        url: "https://github.com/HellooooNewman/reality64",
-        description: "Editor, cooker, runtime engine, and example projects (public at launch)",
-      },
-      {
-        label: "Documentation site",
-        url: "https://helloooonewman.github.io/reality64/",
-        description: "Docusaurus docs: setup, tutorials, and format references",
-      },
-      {
-        label: "Releases",
-        url: "https://github.com/HellooooNewman/reality64/releases",
-        description: "Windows, macOS, and Linux builds with the N64 toolchain fetched in-app",
-      },
-      {
-        label: "Architecture",
-        url: "https://github.com/HellooooNewman/reality64/blob/main/ARCHITECTURE.md",
-        description: "The four-layer editor design and the editor/cooker/runtime split",
-      },
     ],
     gallery: [
       {

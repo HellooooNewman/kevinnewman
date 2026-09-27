@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
 import GalleryLightbox from "@/components/GalleryLightbox";
 import TweetEmbeds from "@/components/TweetEmbeds";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -18,15 +19,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
-  return {
+  return pageMetadata({
     title: project.title,
     description: project.shortBody,
-    openGraph: {
-      title: project.title,
-      description: project.shortBody,
-      images: [{ url: project.mainImg }],
-    },
-  };
+    path: `/projects/${project.slug}/`,
+    image: { url: project.mainImg, alt: project.title },
+  });
 }
 
 export default async function ProjectDetail({

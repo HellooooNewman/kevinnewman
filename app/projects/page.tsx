@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { projects, type Project } from "@/data/projects";
+import { pageMetadata } from "@/lib/seo";
 import ProjectGrid from "@/components/ProjectGrid";
 import ArchivedProjects from "@/components/ArchivedProjects";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Projects",
   description:
     "Selected work and personal projects by Kevin Newman: web apps, games, tools, and design.",
-};
+  path: "/projects/",
+});
 
 // Newest first; years look like "2019" or "2025–2026", so compare the start year.
 function byNewest(a: Project, b: Project) {
