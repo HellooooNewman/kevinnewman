@@ -2,7 +2,15 @@
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 
-export default function ProjectGrid({ items }: { items: Project[] }) {
+export default function ProjectGrid({
+  items,
+  headingLevel = 2,
+}: {
+  items: Project[];
+  /** Card titles sit one level below the heading above the grid. */
+  headingLevel?: 2 | 3;
+}) {
+  const Heading = headingLevel === 3 ? "h3" : "h2";
   return (
     <div className="grid">
       {items.map((p) => (
@@ -39,7 +47,7 @@ export default function ProjectGrid({ items }: { items: Project[] }) {
             ))}
             <span className="chip">{p.year}</span>
           </div>
-          <h3 style={{ margin: "0 0 0.4rem", fontSize: "1.1rem" }}>{p.title}</h3>
+          <Heading style={{ margin: "0 0 0.4rem", fontSize: "1.1rem" }}>{p.title}</Heading>
           <p style={{ margin: 0, color: "var(--text-dim)", fontSize: "0.95rem" }}>
             {p.shortBody}
           </p>

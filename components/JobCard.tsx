@@ -61,16 +61,7 @@ export default function JobCard({ job }: { job: Job }) {
     <details className="card job-card" id={anchorId} ref={detailsRef}>
       <summary>
         <span className="job-card__id">
-          <a
-            href={job.employerLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${job.employer} website`}
-            title={`Visit ${job.employer}`}
-            // keep the logo click from also toggling the <details>
-            onClick={(e) => e.stopPropagation()}
-            className="job-card__logo"
-          >
+          <span className="job-card__logo">
             <img
               src={job.logo}
               alt=""
@@ -86,7 +77,7 @@ export default function JobCard({ job }: { job: Job }) {
                 padding: 4,
               }}
             />
-          </a>
+          </span>
           <span>
             <strong style={{ fontSize: "1.05rem" }}>{job.employer}</strong>
             <span
@@ -114,14 +105,14 @@ export default function JobCard({ job }: { job: Job }) {
         {job.sections ? (
           job.sections.map((section) => (
             <div key={section.heading}>
-              <h4
+              <h3
                 style={{
                   margin: "1rem 0 0.5rem",
                   fontSize: "0.95rem",
                 }}
               >
                 {section.heading}
-              </h4>
+              </h3>
               <ul style={{ margin: 0, paddingLeft: "1.25rem", color: "var(--text-dim)" }}>
                 {section.points.map((p) => (
                   <li key={p} style={{ marginBottom: "0.35rem" }}>
@@ -149,6 +140,13 @@ export default function JobCard({ job }: { job: Job }) {
           }}
         >
           {job.technology}
+        </p>
+        {/* The employer link lives here rather than in <summary>, where a
+            link inside the toggle button confuses screen readers */}
+        <p className="no-print" style={{ margin: "0.6rem 0 0", fontSize: "0.9rem" }}>
+          <a href={job.employerLink} target="_blank" rel="noopener noreferrer">
+            Visit {job.employer} ↗
+          </a>
         </p>
       </div>
     </details>
