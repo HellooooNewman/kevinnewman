@@ -41,7 +41,7 @@
 
 ## Work history
 
-- Sonar Software — Software Engineer → Senior Software Engineer (Jan 2021 – present): Sole developer of the offline-first field-technician mobile apps (Flutter → React Native), payments/billing owner on the core web platform (SonarPay, flexible billing), and customer self-service portal features.
+- Sonar Software — Software Engineer → Senior Software Engineer (Jan 2021 – present): Sole developer of the field-technician mobile app (Flutter → React Native), co-developer of payments and billing on the core web platform (SonarPay, flexible billing, white-label add-ons), and rebuilding the customer self-service portal.
 - Xello — Full Stack Web Developer (Jan 2019 – Jan 2021): Micro-frontend shell app, AngularJS → Angular migration, UK localization.
 - Wuzzals — Full Stack Web Developer, contract (Oct 2018 – Jan 2020): Laravel + Vue platform for a personalized children's-book company.
 - Trailerworks — Full Stack Web Developer, contract (Aug 2018 – Jan 2019): Marketing sites in React, Magento and Shopify stores.
