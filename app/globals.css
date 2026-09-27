@@ -15,7 +15,7 @@
   --border-bright: #3a4770;
   --text: #e8ecf6;
   --text-dim: #9aa5c4;
-  --text-faint: #6b7599;
+  --text-faint: #7a83a3;
   --link: #8fb0ff;
   --star: #cdd9ff;
   --mountain-far: #1c2648;
@@ -34,6 +34,9 @@
 }
 
 [data-theme="light"] {
+  /* The pale dark-mode glow is too faint on white for chip text, the
+     active nav link and the focus ring */
+  --brand-blue-glow: #3168e7;
   --bg: #f7f8fc;
   --bg-raised: #ffffff;
   --bg-card: #ffffff;
@@ -41,7 +44,7 @@
   --border-bright: #c3cce2;
   --text: #1a2138;
   --text-dim: #4a5578;
-  --text-faint: #7c86a6;
+  --text-faint: #657094;
   --link: #2e50a2;
   --star: #2e50a2;
   --mountain-far: #aebdde;
