@@ -6,7 +6,7 @@ import { intro } from "@/data/resume";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with Kevin Newman.",
+  description: "Email Kevin Newman, or find him on GitHub, LinkedIn, itch.io and X.",
 };
 
 export default function ContactPage() {
@@ -39,7 +39,7 @@ export default function ContactPage() {
           }}
         >
           <h1 style={{ margin: "0 0 1rem", fontSize: "1.8rem", letterSpacing: "-0.02em" }}>
-            Hello, weary traveller 👋
+            Hello, weary traveller
           </h1>
           <p style={{ color: "var(--text-dim)" }}>
             You made it this far. Take a break, rest your fingers, and enjoy
@@ -55,12 +55,12 @@ export default function ContactPage() {
               domain={intro.emailDomain}
               className="btn btn--primary"
             >
-              <span aria-hidden="true">✉️</span> Email me
+              Email me
             </EmailButton>
           </p>
           <SocialLinks />
           <p style={{ margin: "1.5rem 0 0", fontSize: "0.9rem", color: "var(--text-faint)" }}>
-            Tip: at night, the stars follow your cursor. Go on, try it. ✨
+            Tip: at night, the stars follow your cursor. Go on, try it.
           </p>
         </div>
       </div>

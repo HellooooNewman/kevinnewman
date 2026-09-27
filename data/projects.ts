@@ -105,7 +105,7 @@ export const projects: Project[] = [
   {
     id: "13",
     slug: "condopulse",
-    badge: "Live SaaS · Free demo",
+    badge: "Free demo",
     title: "CondoPulse",
     thumbnail: "/assets/projects/condopulse.jpg",
     mainImg: "/assets/projects/condopulse.jpg",
@@ -200,7 +200,6 @@ export const projects: Project[] = [
   {
     id: "12",
     slug: "pandemonium",
-    badge: "Native N64 game",
     title: "Pandemonium",
     thumbnail: "/assets/projects/pandemonium.jpg",
     mainImg: "/assets/projects/pandemonium.jpg",
@@ -292,7 +291,7 @@ export const projects: Project[] = [
     shortBody:
       "A simple web tool for visually comparing before-and-after images with drag-and-drop support, plus an MCP server for AI-driven workflows.",
     body: [
-      "This image comparison tool was built as a fast and intuitive way to compare before-and-after visuals in the browser. It supports drag and drop, history navigation, preview features, and works offline as a PWA.",
+      "This image comparison tool was built as a way to compare before-and-after visuals in the browser. It supports drag and drop, history navigation, preview features, and works offline as a PWA.",
       "It was designed for designers, developers, and photographers who want a no-frills way to show visual changes.",
       "It also includes an MCP server connection, so AI coding agents like Claude can hook into the tool and generate merged before-and-after comparisons directly from their own workflows.",
     ],
@@ -505,7 +504,7 @@ export const projects: Project[] = [
     promote: false,
     year: "2017",
     roles: ["Developer"],
-    shortBody: "Hybrid mobile app built with Ionic and Angular for the pharmacare industry.",
+    shortBody: "Hybrid mobile app built with Ionic and Angular for the pharma industry.",
     body: [
       "A presentation and video-sharing app built for Android and web, replacing an existing Flash app. I joined about six months into development and worked on app scaling, new feature development, and general UI implementation on top of the Ionic + Angular 2 foundation.",
     ],
@@ -713,7 +712,7 @@ export const games = [
     coverUrl: "/assets/projects/scarecrow.jpg",
     url: "/projects/the-scarecrow/",
     description:
-      "A 3D platformer starring a scarecrow brought to life in a stylized farm world, built in college by a team of four.",
+      "A 3D platformer starring a scarecrow brought to life in a stylized farm world, built in college by a team of five.",
     year: "2014",
     platforms: ["Desktop"],
     genre: "3D platformer",

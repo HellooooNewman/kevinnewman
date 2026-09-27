@@ -90,7 +90,7 @@ export default function Hero() {
               domain={intro.emailDomain}
               className="btn btn--primary"
             >
-              Get in touch
+              Email me
             </EmailButton>
             <a
               className="btn"
@@ -101,15 +101,6 @@ export default function Hero() {
               ↓ Résumé
             </a>
             <SocialLinks />
-          </div>
-
-          <div className="hero-stats">
-            {intro.stats.map((s) => (
-              <div key={s.label}>
-                <strong>{s.value}</strong>
-                <span>{s.label}</span>
-              </div>
-            ))}
           </div>
         </div>
       </div>

@@ -23,7 +23,6 @@ export default function ThemeToggle() {
       className="btn no-print theme-toggle"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
-      <span aria-hidden="true">{theme === "dark" ? "🌞" : "🌝"}</span>
       <span className="theme-toggle__label">
         {theme === "dark" ? "Light" : "Dark"}
       </span>

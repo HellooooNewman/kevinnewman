@@ -149,7 +149,7 @@ a:hover {
   content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, var(--border-bright), transparent);
+  background: var(--border-bright);
 }
 
 .section-title .view-all {
@@ -163,9 +163,7 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 
@@ -279,15 +277,12 @@ a:hover {
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease,
-    background 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .btn:hover {
   text-decoration: none;
-  transform: translateY(-1px);
   border-color: var(--brand-blue-bright);
-  box-shadow: 0 4px 20px rgba(46, 80, 162, 0.35);
 }
 
 .btn--primary {
@@ -319,8 +314,7 @@ a:hover {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: var(--card-pad);
-  transition: border-color 0.2s ease, transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 a.card {
@@ -331,8 +325,6 @@ a.card {
 a.card:hover {
   text-decoration: none;
   border-color: var(--brand-blue-bright);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 /* ─── Chips ─── */
@@ -366,12 +358,11 @@ a.card:hover {
   display: inline-flex;
   align-items: center;
   color: var(--text-dim);
-  transition: color 0.15s ease, transform 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 .social-icon-link:hover {
   color: var(--brand-blue-glow);
-  transform: translateY(-2px);
   text-decoration: none;
 }
 
@@ -550,14 +541,12 @@ a.card:hover {
   flex-shrink: 0;
   display: inline-flex;
   border-radius: 8px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .job-card__logo:hover,
 .job-card__logo:focus-visible {
-  transform: translateY(-3px) scale(1.25);
-  box-shadow: 0 10px 26px rgba(46, 80, 162, 0.6),
-    0 0 18px rgba(124, 159, 240, 0.5);
+  outline: 2px solid var(--brand-blue-bright);
+  outline-offset: 2px;
 }
 
 .job-card__meta {
@@ -631,70 +620,6 @@ a.card:hover {
   pointer-events: none; /* let the starfield catch pointer moves… */
 }
 
-.hero-name {
-  background: linear-gradient(
-    100deg,
-    var(--text) 30%,
-    var(--brand-blue-glow) 85%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-/* The pale glow endpoint vanishes against a daytime sky; daylight gets
-   the full brand blue instead. */
-[data-theme="light"] .hero-name {
-  background-image: linear-gradient(
-    100deg,
-    var(--text) 30%,
-    var(--brand-blue) 85%
-  );
-}
-
-.hero-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem 2.5rem;
-  margin-top: 2.25rem;
-}
-
-.hero-stats > div {
-  border-left: 2px solid var(--brand-blue-bright);
-  padding-left: 0.85rem;
-}
-
-.hero-stats strong {
-  display: block;
-  font-size: 1.15rem;
-  letter-spacing: -0.01em;
-}
-
-.hero-stats span {
-  color: var(--text-faint);
-  font-size: 0.85rem;
-}
-
-/* ─── Reveal on scroll ─── */
-
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-[data-reveal].revealed {
-  opacity: 1;
-  transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-  }
-}
 
 /* ─── Constellation timeline (Work) ─── */
 
@@ -736,7 +661,6 @@ a.card:hover {
   height: 10px;
   border-radius: 50%;
   background: var(--brand-blue-glow);
-  box-shadow: 0 0 10px 2px rgba(124, 159, 240, 0.55);
 }
 
 /* ─── Spotlight project cards ─── */
@@ -760,11 +684,6 @@ a.card:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.35s ease;
-}
-
-a.card:hover .card__media img {
-  transform: scale(1.04);
 }
 
 .card-badge {
@@ -773,13 +692,12 @@ a.card:hover .card__media img {
   left: 10px;
   padding: 0.25rem 0.7rem;
   border-radius: 999px;
-  background: rgba(10, 14, 26, 0.82);
-  border: 1px solid var(--brand-blue-bright);
-  color: #fff;
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  color: var(--text);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  backdrop-filter: blur(4px);
 }
 
 /* ─── Skill chips ─── */
@@ -831,8 +749,6 @@ a.card:hover .card__media img {
 }
 
 .now-panel li {
-  display: flex;
-  gap: 0.65rem;
   padding: 0.5rem 0;
   color: var(--text-dim);
   font-size: 0.95rem;
@@ -863,6 +779,9 @@ a.card:hover .card__media img {
   right: 10px;
   width: 40px;
   height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   border: none;
   border-radius: 8px;
@@ -991,19 +910,9 @@ a.card:hover .card__media img {
     padding-bottom: 5rem;
   }
 
-  /* Nav: the toggle goes icon-only and the hero already carries the brand,
-     so all four links fit without a hidden horizontal scroll */
+  /* Nav: a tighter toggle so all four links fit beside it */
   .theme-toggle {
     padding: 0.45rem 0.6rem;
-  }
-
-  .theme-toggle__label {
-    display: none;
-  }
-
-  .hero-stats {
-    gap: 1rem 1.5rem;
-    margin-top: 1.75rem;
   }
 
   /* Give the cards back the horizontal space the rail was renting */
@@ -1147,18 +1056,12 @@ a.card:hover .card__media img {
     display: block;
   }
 
-  [data-reveal] {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
   /* Chrome-only chrome and decoration */
   .no-print,
   canvas,
   .skip-link,
   .view-all,
   #hero-logo,
-  .hero-stats,
   .now-panel,
   .card-badge,
   .job-card__logo {
@@ -1184,8 +1087,7 @@ a.card:hover .card__media img {
     background: #bbb;
   }
 
-  /* Hero → resume header: no sky, no gradient text (transparent fill
-     prints as invisible), just name / title / contact. */
+  /* Hero → resume header: no sky, just name / title / contact. */
   .hero-sky {
     background: none !important;
   }
@@ -1197,9 +1099,6 @@ a.card:hover .card__media img {
   }
 
   .hero-name {
-    background: none !important;
-    -webkit-text-fill-color: currentColor !important;
-    color: var(--text) !important;
     font-size: 20pt !important;
   }
 

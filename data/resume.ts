@@ -5,7 +5,8 @@ export const intro = {
   name: "Kevin Newman",
   tagline: "Full Stack Developer",
   location: "Remote · Canada",
-  headline: "I build web and mobile products, end to end.",
+  headline:
+    "Payments and billing on the web, field-tech apps on mobile, and the odd Nintendo 64 game.",
   body: [
     "I'm a full stack developer with 10+ years of experience shipping software, from payment platforms and customer portals to 3D marketing apps and hybrid mobile products.",
     "Away from work I'm a game jam regular, always tinkering on a side project (and playing too much Age of Empires II: DE).",
@@ -15,23 +16,16 @@ export const intro = {
   emailUser: "kevin",
   emailDomain: "kevinnewman.ca",
   resumePdf: "/assets/pdf/Kevin Newman · Full Stack Developer.pdf",
-  stats: [
-    { value: "10+", label: "years shipping software" },
-    { value: "Web · Mobile · Desktop · N64", label: "platforms shipped on" },
-  ],
   now: [
     {
-      icon: "🛰",
       text: "Building CondoPulse, a status platform for condo buildings",
       href: "/projects/condopulse/",
     },
     {
-      icon: "📱",
       text: "Rewriting an ISP field-tech app in React Native at Sonar",
       href: "#job-sonar-software",
     },
     {
-      icon: "🎮",
       text: "Pandemonium, a souls-like for the Nintendo 64",
       href: "/projects/pandemonium/",
     },
@@ -128,11 +122,11 @@ export const jobs: Job[] = [
         heading: "Mobile: Field Tech (Flutter → React Native)",
         points: [
           "Sole developer of Sonar's offline-first field-technician mobile app in Flutter (886 commits, versions 0.13→0.16), used by ISP installers to manage jobs, tickets, inventory, and provisioning",
-          "Architected an offline-first sync engine (mutation queue with retry/backoff, connectivity detection, and a Drift/SQLite local database with a multi-version migration path), enabling technicians to work without connectivity",
+          "Built an offline-first sync engine (mutation queue with retry/backoff, connectivity detection, and a Drift/SQLite local database with a multi-version migration path), enabling technicians to work without connectivity",
           "Led a ground-up Flutter rewrite to Riverpod state management and a repository pattern, consolidating three data-mutation patterns into one documented standard",
           "Rebuilt the app from the ground up in modern React Native (RN 0.79, TypeScript, React Navigation 7, Apollo GraphQL, Redux Toolkit) with a redesigned UI and full light/dark theming across ~17 screens (2025–2026)",
           "Currently building white-label sales and customer-portal app variants for ISP clients on the same React Native foundation",
-          "Shipped high-value field features: credit-card scanning for on-site payments, handwritten-signature contracts, iOS Live Activities for job tracking, global search, and a technician dashboard",
+          "Shipped field features: credit-card scanning for on-site payments, handwritten-signature contracts, iOS Live Activities for job tracking, global search, and a technician dashboard",
           "Integrated Calix SMx provisioning and Auth0 SSO with MFA; built the mobile CI/CD pipeline (Azure Pipelines + GitHub Actions, Fastlane, ConfigCat flags) and a Patrol end-to-end test suite with full internationalization",
         ],
       },
@@ -141,7 +135,7 @@ export const jobs: Job[] = [
         points: [
           "Owned the SonarPay payments domain end to end: disbursements, disputes, AVS/CVV/3DS verification, and void/refund/reverse-payment workflows across multiple processors (Payrix, ProPay)",
           "Delivered Flexible / 30-Day Billing: configurable service-period offsets, bill-day vs. invoice-day logic, proration, and delinquency calculations, rolled out behind feature flags",
-          "Drove a frontend de-globalization refactor converting 35+ global services to explicit imports/singletons, resolving circular-dependency and webpack memory issues and modernizing the unit-test suite",
+          "Led a frontend de-globalization refactor converting 35+ global services to explicit imports/singletons, resolving circular-dependency and webpack memory issues and modernizing the unit-test suite",
           "Built a code-generation pipeline for type-safe enums (with translation integration) reused across the entire codebase, plus the mobile-app login backend (Auth0, FCM push notifications)",
           "Rebuilt the account overview into a permission-aware, user-customizable dashboard, and shipped RADIUS session tooling, SAML/Active Directory auth, and Print-to-Mail invoice batching",
         ],
@@ -149,7 +143,7 @@ export const jobs: Job[] = [
       {
         heading: "Customer Portal",
         points: [
-          "Overhauled the subscriber payment experience: billing summaries, auto-pay UX, multi-currency support, and Stripe integration updates",
+          "Rebuilt the subscriber payment experience: billing summaries, auto-pay UX, multi-currency support, and Stripe integration updates",
           "Implemented NACHA compliance and Canadian bank-routing support, plus credit-card-processor gating and multi-language (French) localization",
         ],
       },

@@ -34,7 +34,7 @@ export default function Home() {
       <Hero />
 
       {/* Introduction + Now */}
-      <section className="section container" aria-labelledby="intro-heading" data-reveal>
+      <section className="section container" aria-labelledby="intro-heading">
         <h2 className="section-title" id="intro-heading">
           Introduction
         </h2>
@@ -58,7 +58,6 @@ export default function Home() {
             <ul>
               {intro.now.map((item) => (
                 <li key={item.text}>
-                  <span aria-hidden="true">{item.icon}</span>
                   {item.href ? (
                     // Hash links use a plain <a>: native fragment navigation
                     // fires hashchange (which opens the job card) and honors
@@ -79,7 +78,7 @@ export default function Home() {
       </section>
 
       {/* Work - constellation timeline */}
-      <section className="section container" aria-labelledby="work-heading" data-reveal>
+      <section className="section container" aria-labelledby="work-heading">
         <h2 className="section-title" id="work-heading">
           Work
         </h2>
@@ -95,7 +94,6 @@ export default function Home() {
         <section
           className="section container"
           aria-labelledby="projects-heading"
-          data-reveal
         >
           <h2 className="section-title" id="projects-heading">
             Projects
@@ -127,7 +125,7 @@ export default function Home() {
       )}
 
       {/* Skills - core stack first, the long tail second */}
-      <section className="section container" aria-labelledby="skills-heading" data-reveal>
+      <section className="section container" aria-labelledby="skills-heading">
         <h2 className="section-title" id="skills-heading">
           Skills
         </h2>
@@ -162,7 +160,7 @@ export default function Home() {
       </section>
 
       {/* Education */}
-      <section className="section container" aria-labelledby="edu-heading" data-reveal>
+      <section className="section container" aria-labelledby="edu-heading">
         <h2 className="section-title" id="edu-heading">
           Education
         </h2>
