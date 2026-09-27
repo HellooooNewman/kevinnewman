@@ -11,7 +11,7 @@
 
 ## Pages
 
-- [Home](https://www.kevinnewman.ca/): Intro, current work, skills, work history, and education
+- [Home](https://www.kevinnewman.ca/): Intro, current work, work history, projects, skills, and education
 - [Projects](https://www.kevinnewman.ca/projects/): Full portfolio of personal, work, and school projects
 - [Game Jams](https://www.kevinnewman.ca/game-jams/): Game jam entries and released games
 - [Contact](https://www.kevinnewman.ca/contact/): How to get in touch

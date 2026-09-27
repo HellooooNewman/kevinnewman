@@ -3,7 +3,7 @@
     "short_name": "Kevin Newman",
     "description": "Portfolio website of Kevin Newman",
     "orientation": "portrait-primary",
-    "theme_color": "#2e50a2",
+    "theme_color": "#0a0e1a",
     "background_color": "#2e50a2",
     "display": "standalone",
     "icons": [

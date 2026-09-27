@@ -14,7 +14,7 @@ Angular version, rebuilt for real prerendered HTML, SEO, and mobile.
 
 ## Where things live
 
-- `data/resume.ts` - intro, status pill, stats, "Right now" panel, skills, jobs, education
+- `data/resume.ts` - intro, "Right now" panel, skills, jobs, education
 - `data/projects.ts` - all projects (`promote: true` features them on the home page; first two become spotlights)
 - `app/` - routes (home, projects, project detail, game-jams, contact, legacy redirects)
 - `components/` - Starfield canvas, Hero, JobCard, nav/footer

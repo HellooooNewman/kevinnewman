@@ -504,7 +504,7 @@ export const projects: Project[] = [
     promote: false,
     year: "2017",
     roles: ["Developer"],
-    shortBody: "Hybrid mobile app built with Ionic and Angular for the pharmacare industry.",
+    shortBody: "Hybrid mobile app built with Ionic and Angular for the pharma industry.",
     body: [
       "A presentation and video-sharing app built for Android and web, replacing an existing Flash app. I joined about six months into development and worked on app scaling, new feature development, and general UI implementation on top of the Ionic + Angular 2 foundation.",
     ],
@@ -712,7 +712,7 @@ export const games = [
     coverUrl: "/assets/projects/scarecrow.jpg",
     url: "/projects/the-scarecrow/",
     description:
-      "A 3D platformer starring a scarecrow brought to life in a stylized farm world, built in college by a team of four.",
+      "A 3D platformer starring a scarecrow brought to life in a stylized farm world, built in college by a team of five.",
     year: "2014",
     platforms: ["Desktop"],
     genre: "3D platformer",
