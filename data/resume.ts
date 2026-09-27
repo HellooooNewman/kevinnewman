@@ -116,35 +116,31 @@ export const jobs: Job[] = [
     period: "Jan 2021 – Present",
     location: "Remote",
     summary:
-      "Full-stack and mobile engineer spanning three products over 5 years: sole developer of the field-technician mobile apps, payments/billing owner on the core web platform, and feature developer on the customer self-service portal.",
+      "Three products over five years: the field-tech mobile app, payments and billing on the core platform, and the customer portal.",
     sections: [
       {
-        heading: "Mobile: Field Tech (Flutter → React Native)",
+        heading: "Mobile: Field Tech",
         points: [
-          "Sole developer of Sonar's offline-first field-technician mobile app in Flutter (886 commits, versions 0.13→0.16), used by ISP installers to manage jobs, tickets, inventory, and provisioning",
-          "Built an offline-first sync engine (mutation queue with retry/backoff, connectivity detection, and a Drift/SQLite local database with a multi-version migration path), enabling technicians to work without connectivity",
-          "Led a ground-up Flutter rewrite to Riverpod state management and a repository pattern, consolidating three data-mutation patterns into one documented standard",
-          "Rebuilt the app from the ground up in modern React Native (RN 0.79, TypeScript, React Navigation 7, Apollo GraphQL, Redux Toolkit) with a redesigned UI and full light/dark theming across ~17 screens (2025–2026)",
-          "Currently building white-label sales and customer-portal app variants for ISP clients on the same React Native foundation",
-          "Shipped field features: credit-card scanning for on-site payments, handwritten-signature contracts, iOS Live Activities for job tracking, global search, and a technician dashboard",
-          "Integrated Calix SMx provisioning and Auth0 SSO with MFA; built the mobile CI/CD pipeline (Azure Pipelines + GitHub Actions, Fastlane, ConfigCat flags) and a Patrol end-to-end test suite with full internationalization",
+          "Sole developer of the app ISP installers use to manage jobs, tickets and inventory",
+          "Built its offline sync so technicians keep working without a connection",
+          "Rebuilt it from Flutter in React Native and TypeScript, and now building white-label versions on the same codebase",
+          "Shipped card scanning for on-site payments, signed contracts, iOS Live Activities and the mobile CI/CD pipeline",
         ],
       },
       {
-        heading: "Core Platform: Payments & Billing",
+        heading: "Core Platform",
         points: [
-          "Owned the SonarPay payments domain end to end: disbursements, disputes, AVS/CVV/3DS verification, and void/refund/reverse-payment workflows across multiple processors (Payrix, ProPay)",
-          "Delivered Flexible / 30-Day Billing: configurable service-period offsets, bill-day vs. invoice-day logic, proration, and delinquency calculations, rolled out behind feature flags",
-          "Led a frontend de-globalization refactor converting 35+ global services to explicit imports/singletons, resolving circular-dependency and webpack memory issues and modernizing the unit-test suite",
-          "Built a code-generation pipeline for type-safe enums (with translation integration) reused across the entire codebase, plus the mobile-app login backend (Auth0, FCM push notifications)",
-          "Rebuilt the account overview into a permission-aware, user-customizable dashboard, and shipped RADIUS session tooling, SAML/Active Directory auth, and Print-to-Mail invoice batching",
+          "Co-built SonarPay's disbursements, disputes, card verification and refunds on Payrix with one other developer, starting on the front end and now working full stack",
+          "Built flexible 30-day billing with proration alongside the same developer, released behind feature flags",
+          "Built Print-to-Mail with another developer, one of a set of white-label add-ons like SMS that customers can turn on à la carte",
+          "Split 35+ global frontend services into explicit imports, fixing circular dependencies and webpack memory issues",
+          "Built an AST-based code generator for type-safe enums used across the codebase",
         ],
       },
       {
         heading: "Customer Portal",
         points: [
-          "Rebuilt the subscriber payment experience: billing summaries, auto-pay UX, multi-currency support, and Stripe integration updates",
-          "Implemented NACHA compliance and Canadian bank-routing support, plus credit-card-processor gating and multi-language (French) localization",
+          "Rebuilt the subscriber payment flow with auto-pay and multi-currency, and now rebuilding the rest of the portal",
         ],
       },
     ],
