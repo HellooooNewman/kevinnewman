@@ -329,13 +329,22 @@ export default function Starfield({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Under reduced motion the sky is drawn once and only redrawn when
+    // something changes (resize, theme, a new star), instead of every frame.
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let reduced = reducedMotion.matches;
     let w = window.innerWidth;
     let h = ambient ? window.innerHeight : height;
     let raf = 0;
     let last = performance.now();
+    let lastPaint = 0;
     let running = true;
     let visible = true;
+    // The faint page-wide backdrop barely moves, so it paints at ~20fps.
+    const AMBIENT_FRAME_MS = 50;
+    // Queue one frame; a no-op if one is already queued or the sky is paused.
+    // Assigned below, once draw exists.
+    let schedule = () => {};
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const resize = () => {
@@ -347,6 +356,8 @@ export default function Starfield({
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // Resizing clears the canvas, so repaint even when idle
+      schedule();
     };
     resize();
 
@@ -442,7 +453,13 @@ export default function Starfield({
       document.documentElement.getAttribute("data-theme") === "light";
 
     const draw = (now: number) => {
+      raf = 0;
       if (!running || !visible) return;
+      if (ambient && !reduced && now - lastPaint < AMBIENT_FRAME_MS) {
+        schedule();
+        return;
+      }
+      lastPaint = now;
       const delta = Math.min((now - last) / 16.67, 4);
       last = now;
       ctx.clearRect(0, 0, w, h);
@@ -453,7 +470,7 @@ export default function Starfield({
         ctx.save();
         ctx.globalAlpha = light ? 0.18 : 0.35;
         for (const p of stars) {
-          p.twinkle += 0.02 * delta;
+          if (!reduced) p.twinkle += 0.02 * delta;
           const tw = 0.7 + Math.sin(p.twinkle) * 0.3;
           ctx.fillStyle = light
             ? `rgba(46, 80, 162, ${p.alpha * tw})`
@@ -469,7 +486,7 @@ export default function Starfield({
           }
         }
         ctx.restore();
-        raf = requestAnimationFrame(draw);
+        if (!reduced) schedule();
         return;
       }
 
@@ -524,7 +541,7 @@ export default function Starfield({
 
         // Stars (twinkling; smaller stars are "farther" and lag more)
         for (const p of stars) {
-          p.twinkle += 0.03 * delta;
+          if (!reduced) p.twinkle += 0.03 * delta;
           const tw = 0.75 + Math.sin(p.twinkle) * 0.25;
           const py = mod(p.y + 10 + scroll * starLag(p.radius), h + 20) - 10;
           ctx.fillStyle = `rgba(205, 217, 255, ${p.alpha * tw})`;
@@ -645,9 +662,27 @@ export default function Starfield({
         }
       }
 
+      if (!reduced) schedule();
+    };
+    schedule = () => {
+      if (raf || !running || !visible) return;
       raf = requestAnimationFrame(draw);
     };
-    raf = requestAnimationFrame(draw);
+    schedule();
+
+    // Pick up a change to the motion preference without a reload
+    const onMotionChange = () => {
+      reduced = reducedMotion.matches;
+      schedule();
+    };
+    reducedMotion.addEventListener("change", onMotionChange);
+
+    // The theme toggle swaps stars for clouds; repaint when it flips
+    const themeObserver = new MutationObserver(() => schedule());
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
 
     // Pause the animation loop while the canvas is offscreen - the home
     // page runs several of these at once and they don't all need to tick.
@@ -657,9 +692,10 @@ export default function Starfield({
       visible = nowVisible;
       if (visible) {
         last = performance.now();
-        raf = requestAnimationFrame(draw);
+        schedule();
       } else {
         cancelAnimationFrame(raf);
+        raf = 0;
       }
     });
     io.observe(canvas);
@@ -685,6 +721,7 @@ export default function Starfield({
       star.y = mod(y - scroll * starLag(star.radius) + 10, h + 20) - 10;
       stars.push(star);
       if (stars.length > MAX_STARS) stars.shift();
+      schedule();
     };
 
     // Track the scroll position so the sky lags behind the page
@@ -703,6 +740,8 @@ export default function Starfield({
       running = false;
       cancelAnimationFrame(raf);
       io.disconnect();
+      themeObserver.disconnect();
+      reducedMotion.removeEventListener("change", onMotionChange);
       ro?.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", sprinkle);

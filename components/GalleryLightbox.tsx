@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface GalleryImage {
   url: string;
@@ -16,6 +16,9 @@ export default function GalleryLightbox({
   variant?: "grid" | "hero";
 }) {
   const [index, setIndex] = useState<number | null>(null);
+  const open = index !== null;
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   const close = useCallback(() => setIndex(null), []);
   const next = useCallback(
@@ -26,6 +29,15 @@ export default function GalleryLightbox({
     () => setIndex((i) => (i === null ? i : (i - 1 + images.length) % images.length)),
     [images.length],
   );
+
+  // Keyboard users land on the close button when the viewer opens, and go
+  // back to the image they opened it from when it closes.
+  useEffect(() => {
+    if (!open) return;
+    const opener = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
+    return () => opener?.focus();
+  }, [open]);
 
   useEffect(() => {
     if (index === null) return;
@@ -43,9 +55,30 @@ export default function GalleryLightbox({
           prev();
           break;
         case " ":
+          // Space on a focused button should press it, not skip ahead
+          if (e.target instanceof HTMLButtonElement) break;
           e.preventDefault();
           next();
           break;
+        case "Tab": {
+          // Keep focus inside the viewer while it is open
+          const buttons = dialogRef.current?.querySelectorAll<HTMLElement>("button");
+          if (!buttons || buttons.length === 0) break;
+          const first = buttons[0];
+          const last = buttons[buttons.length - 1];
+          const active = document.activeElement;
+          if (!dialogRef.current?.contains(active)) {
+            e.preventDefault();
+            first.focus();
+          } else if (e.shiftKey && active === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && active === last) {
+            e.preventDefault();
+            first.focus();
+          }
+          break;
+        }
       }
     };
     window.addEventListener("keydown", onKeyDown);
@@ -114,8 +147,16 @@ export default function GalleryLightbox({
       )}
 
       {index !== null && (
-        <div className="lightbox" role="dialog" aria-modal="true" onClick={close}>
+        <div
+          ref={dialogRef}
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Image viewer: ${images[index].alt}`}
+          onClick={close}
+        >
           <button
+            ref={closeRef}
             type="button"
             className="lightbox-close"
             aria-label="Close image"

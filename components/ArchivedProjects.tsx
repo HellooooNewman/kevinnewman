@@ -27,7 +27,7 @@ export default function ArchivedProjects({ items }: { items: Project[] }) {
       <p style={{ color: "var(--text-faint)", marginTop: "-1rem", marginBottom: "1.5rem" }}>
         Older work, kept around for the memories.
       </p>
-      <ProjectGrid items={items} />
+      <ProjectGrid items={items} headingLevel={3} />
     </>
   );
 }
