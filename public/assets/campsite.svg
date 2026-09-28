@@ -1,0 +1,453 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 600" role="img" aria-labelledby="campsite-title">
+  <title id="campsite-title">An alpine lake with snowy peaks and a glowing dome tent on a forested overlook; transparent sky</title>
+  <defs>
+    <radialGradient id="campfire-glow-grad">
+      <stop stop-color="#ffb45f" stop-opacity="0.24"/>
+      <stop offset="0.4" stop-color="#f29352" stop-opacity="0.09"/>
+      <stop offset="1" stop-color="#f29352" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="campfire-ground-grad">
+      <stop stop-color="#eaaa70" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#eaaa70" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="campfire-smoke-grad">
+      <stop stop-color="#a0a9bd" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#a0a9bd" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="camp-tent-fabric" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="rgb(121, 133, 156)"/>
+      <stop offset="1" stop-color="rgb(73, 91, 121)"/>
+    </linearGradient>
+    <linearGradient id="camp-tent-front" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="rgb(73, 91, 121)"/>
+      <stop offset="1" stop-color="rgb(121, 133, 156)"/>
+    </linearGradient>
+    <radialGradient id="camp-tent-lamplight" gradientUnits="userSpaceOnUse" cx="832" cy="208" r="88">
+      <stop stop-color="#ffda8d" stop-opacity="0.92"/>
+      <stop offset="0.45" stop-color="#f7bb6b" stop-opacity="0.76"/>
+      <stop offset="1" stop-color="#eaaa70" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="camp-tent-interior" cx="45%" cy="70%" r="75%">
+      <stop stop-color="#ffe7ac"/>
+      <stop offset="0.5" stop-color="#eeb871"/>
+      <stop offset="1" stop-color="#79563e"/>
+    </radialGradient>
+    <radialGradient id="camp-tent-spill">
+      <stop stop-color="#ffd48a" stop-opacity="0.3"/>
+      <stop offset="0.5" stop-color="#efb46e" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#efb46e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="camp-flame" x1="0" y1="1" x2="0" y2="0">
+      <stop stop-color="#ed7840"/>
+      <stop offset="0.55" stop-color="#ffb34d"/>
+      <stop offset="1" stop-color="#ffdb85"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <defs>
+      <clipPath id="alpine-water-clip">
+        <path d="M797,403 Q854,412 931,408 L883,423 Q1055,425 1192,418 L1440,430 V600 H412 L570,464 714,439 841,427 771,416 Z"/>
+      </clipPath>
+      <linearGradient id="alpine-mountain" x2="0.2" y2="1">
+        <stop stop-color="rgb(41, 75, 128)"/>
+        <stop offset="1" stop-color="rgb(19, 44, 76)"/>
+      </linearGradient>
+      <linearGradient id="alpine-snow" x2="0.6" y2="1">
+        <stop stop-color="rgb(148, 184, 244)"/>
+        <stop offset="1" stop-color="rgb(41, 75, 128)"/>
+      </linearGradient>
+      <linearGradient id="alpine-lake" gradientUnits="userSpaceOnUse" x1="0" y1="403" x2="0" y2="600">
+        <stop stop-color="rgb(65, 107, 166)"/>
+        <stop offset="1" stop-color="rgb(18, 39, 68)"/>
+      </linearGradient>
+      <radialGradient id="alpine-reflection">
+        <stop stop-color="rgb(148, 184, 244)" stop-opacity="0.35"/>
+        <stop offset="0.4" stop-color="rgb(148, 184, 244)" stop-opacity="0.12"/>
+        <stop offset="1" stop-color="rgb(148, 184, 244)" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="alpine-mist" x2="0" y2="1">
+        <stop stop-color="rgb(142, 175, 216)" stop-opacity="0"/>
+        <stop offset="0.55" stop-color="rgb(142, 175, 216)" stop-opacity="0.22"/>
+        <stop offset="1" stop-color="rgb(142, 175, 216)" stop-opacity="0"/>
+      </linearGradient>
+      <g id="alpine-pine">
+        <path d="M-2,0 L-1,-111 1,-111 3,0 Z"/>
+        <path d="M0,-125 -5,-110 -2,-112 -10,-100 -5,-102 -15,-89 -8,-92 -21,-76 -13,-80 -25,-66 -18,-70 -31,-53 -22,-58 -35,-42 -24,-47 -40,-28 -29,-33 -45,-14 -32,-18 -47,-7 -29,-10 -20,-8 -7,-11 0,-8 10,-10 23,-7 33,-10 45,-7 31,-20 40,-17 26,-33 36,-29 23,-45 32,-41 18,-58 28,-53 16,-70 23,-66 11,-82 19,-77 7,-95 13,-91 3,-109 7,-105 Z"/>
+      </g>
+    </defs>
+    <path d="M0,403 H1440 V600 H0 Z" fill="url(#alpine-lake)"/>
+    <g data-parallax-depth="18">
+      <path data-sky-occluder="" d="M0,341 49,303 91,323 147,264 176,279 230,251 270,298 303,277 355,325 408,294 452,326 488,308 533,347 574,329 616,355 661,329 695,350 737,310 758,329 806,282 830,311 863,299 907,341 953,296 982,311 1030,259 1067,283 1111,222 1150,261 1193,230 1238,289 1274,265 1312,292 1363,249 1440,290 V470 H0 Z" fill="rgb(48, 81, 129)"/>
+    </g>
+    <g data-parallax-depth="12">
+      <path data-sky-occluder="" d="M0,325 48,285 82,303 132,247 171,215 198,249 220,257 256,300 283,283 312,309 367,258 405,237 439,278 464,286 501,331 535,315 573,357 614,343 659,375 704,362 745,385 784,367 815,379 861,349 901,325 931,298 967,315 1001,260 1038,245 1061,209 1090,226 1127,184 1167,137 1202,194 1230,206 1252,250 1280,234 1312,270 1343,247 1384,286 1440,253 V463 H0 Z" fill="url(#alpine-mountain)"/>
+      <g fill="rgb(16, 32, 59)">
+        <path d="M171,215 192,272 210,286 225,337 273,363 256,300 220,257 198,249 Z"/>
+        <path d="M405,237 425,300 452,323 475,378 534,395 501,331 464,286 439,278 Z"/>
+        <path d="M1167,137 1182,216 1207,250 1197,288 1230,337 1272,362 1252,250 1230,206 1202,194 Z"/>
+        <path d="M1061,209 1072,267 1104,297 1090,326 1137,378 1160,383 1090,226 Z"/>
+        <path d="M1312,270 1328,320 1368,349 1397,389 1440,417 1440,302 1384,286 1343,247 Z"/>
+      </g>
+      <g fill="url(#alpine-snow)">
+        <path d="M1167,137 1127,184 1105,208 1131,195 1120,221 1144,203 1136,234 1155,207 1151,185 1165,171 1158,200 1177,222 1170,188 1181,208 Z"/>
+        <path d="M1128,219 1105,249 1085,265 1107,258 1094,280 1120,258 1142,243 1154,216 1137,235 Z" opacity="0.7"/>
+        <path d="M1061,209 1038,245 1019,255 1036,252 1026,274 1048,249 1058,235 1075,256 1065,227 Z"/>
+        <path d="M171,215 147,237 135,252 157,242 168,227 177,254 193,266 184,242 Z"/>
+        <path d="M405,237 382,253 371,270 391,259 401,246 413,279 426,291 418,266 Z"/>
+      </g>
+      <g fill="none" stroke="rgb(72, 105, 148)" stroke-width="1.2" opacity="0.45">
+        <path d="M168,251 142,282 118,320 M182,280 169,309 182,345 M384,278 356,316 322,340 M419,313 433,339 426,361 M1146,259 1130,289 1099,316 M1190,280 1201,316 1221,340 M1028,283 1003,324 965,351"/>
+      </g>
+    </g>
+    <g data-parallax-depth="6">
+      <path data-sky-occluder="" d="M0,370 84,341 133,349 190,318 248,340 304,331 359,365 421,349 487,378 535,366 596,389 666,378 743,400 811,382 866,395 934,358 986,365 1049,327 1081,340 1122,307 1184,333 1229,351 1275,339 1341,316 1382,334 1440,324 V467 H0 Z" fill="rgb(19, 44, 76)"/>
+      <path d="M0,386 Q148,359 284,383 T533,404 Q681,437 812,406 T1082,389 Q1272,354 1440,384 V443 H0 Z" fill="url(#alpine-mist)"/>
+    </g>
+    <path d="M797,403 Q854,412 931,408 L883,423 Q1055,425 1192,418 L1440,430 V600 H412 L570,464 714,439 841,427 771,416 Z" fill="url(#alpine-lake)"/>
+    <path d="M887,423 820,459 842,490 780,600 H1017 L916,507 940,462 908,428 Z" fill="url(#alpine-reflection)"/>
+    <ellipse cx="862" cy="493" rx="133" ry="131" fill="url(#alpine-reflection)"/>
+    <g fill="rgb(19, 44, 76)" opacity="0.3">
+      <path d="M990,436 1027,474 1070,485 1118,540 1171,499 1201,459 1258,443 Z"/>
+      <path d="M493,443 581,484 628,515 677,478 719,444 Z"/>
+    </g>
+    <g fill="none" stroke="rgb(65, 107, 166)" stroke-linecap="round">
+      <path d="M882.8,453.5 h69.9" stroke-width="1.2" opacity="0.32136087451959616"/>
+      <path d="M1107.9,487.4 h47.3" stroke-width="0.6" opacity="0.2304058834401076"/>
+      <path d="M486.8,533.2 h77.3" stroke-width="0.6" opacity="0.3693817886174656"/>
+      <path d="M527.7,510.6 h94.4" stroke-width="0.6" opacity="0.2517288131109672"/>
+      <path d="M791.3,519.5 h81.8" stroke-width="1.2" opacity="0.1835687088931445"/>
+      <path d="M1301.3,542.4 h31.0" stroke-width="0.6" opacity="0.351538105662039"/>
+      <path d="M1308.7,469.7 h79.8" stroke-width="0.6" opacity="0.2938128582805405"/>
+      <path d="M1200.1,479.0 h58.2" stroke-width="0.6" opacity="0.28713335032283793"/>
+      <path d="M940.6,436.4 h44.3" stroke-width="1.2" opacity="0.32213672285673967"/>
+      <path d="M740.6,543.0 h37.8" stroke-width="0.6" opacity="0.29561511398263973"/>
+      <path d="M577.0,509.7 h38.0" stroke-width="0.6" opacity="0.36735598624276466"/>
+      <path d="M492.4,451.7 h83.0" stroke-width="0.6" opacity="0.31317450340255165"/>
+      <path d="M631.7,538.5 h21.8" stroke-width="1.2" opacity="0.38216332288677224"/>
+      <path d="M631.3,540.1 h10.5" stroke-width="0.6" opacity="0.32996738349917"/>
+      <path d="M1204.8,456.0 h61.2" stroke-width="0.6" opacity="0.3578649557984318"/>
+      <path d="M825.3,507.4 h26.4" stroke-width="0.6" opacity="0.1812373163709708"/>
+      <path d="M915.5,517.8 h58.9" stroke-width="1.2" opacity="0.31896526007156356"/>
+      <path d="M1077.1,539.4 h66.4" stroke-width="0.6" opacity="0.13543465436137922"/>
+      <path d="M1070.7,456.5 h70.2" stroke-width="0.6" opacity="0.2148233758175047"/>
+      <path d="M1174.3,556.9 h30.0" stroke-width="0.6" opacity="0.20608994589252688"/>
+      <path d="M732.5,556.7 h83.5" stroke-width="1.2" opacity="0.2765275535875117"/>
+      <path d="M1007.1,494.3 h84.5" stroke-width="0.6" opacity="0.1623533949776902"/>
+      <path d="M733.3,536.0 h80.6" stroke-width="0.6" opacity="0.19024598747550045"/>
+      <path d="M1196.7,513.0 h27.3" stroke-width="0.6" opacity="0.24401583558457787"/>
+      <path d="M596.4,526.1 h39.9" stroke-width="1.2" opacity="0.376181703471375"/>
+      <path d="M527.9,457.5 h77.9" stroke-width="0.6" opacity="0.36203699436038733"/>
+      <path d="M1004.0,490.2 h58.0" stroke-width="0.6" opacity="0.36123976401868274"/>
+      <path d="M934.9,563.4 h13.5" stroke-width="0.6" opacity="0.3982533647422679"/>
+      <path d="M1100.0,472.1 h92.5" stroke-width="1.2" opacity="0.28765582445132165"/>
+      <path d="M1333.2,447.5 h79.7" stroke-width="0.6" opacity="0.31347489106294235"/>
+      <path d="M1281.8,495.4 h78.6" stroke-width="0.6" opacity="0.38512376928978487"/>
+      <path d="M969.9,577.7 h45.3" stroke-width="0.6" opacity="0.19333271025214344"/>
+      <path d="M1029.1,477.2 h77.7" stroke-width="1.2" opacity="0.25124831970555533"/>
+      <path d="M498.1,454.1 h36.2" stroke-width="0.6" opacity="0.36365975282038565"/>
+      <path d="M1075.5,484.4 h78.0" stroke-width="0.6" opacity="0.21495812726119767"/>
+      <path d="M819.0,549.7 h36.4" stroke-width="0.6" opacity="0.1849398324043432"/>
+      <path d="M1296.8,504.8 h56.0" stroke-width="1.2" opacity="0.28099574406864125"/>
+      <path d="M1174.1,554.4 h89.0" stroke-width="0.6" opacity="0.12689894796232692"/>
+      <path d="M848.0,462.1 h69.4" stroke-width="0.6" opacity="0.1341938688646769"/>
+      <path d="M934.2,533.5 h89.2" stroke-width="0.6" opacity="0.2624659033308854"/>
+      <path d="M1032.1,484.2 h79.4" stroke-width="1.2" opacity="0.259318472960731"/>
+      <path d="M1181.2,574.7 h64.4" stroke-width="0.6" opacity="0.25244286437330854"/>
+      <path d="M750.6,453.4 h94.2" stroke-width="0.6" opacity="0.27841627360263377"/>
+      <path d="M902.5,534.1 h48.3" stroke-width="0.6" opacity="0.29361780671279125"/>
+      <path d="M993.2,567.1 h94.0" stroke-width="1.2" opacity="0.14086368398653576"/>
+    </g>
+    <g fill="none" stroke="rgb(148, 184, 244)" opacity="0.22" stroke-width="0.8">
+      <path d="M850,431 h30 M842,437 h36 M857,443 h22 M831,453 h49 M841,462 h27 M822,478 h51 M846,490 h31 M813,507 h67 M827,522 h35 M802,543 h79 M823,566 h46"/>
+    </g>
+    <g fill="rgb(11, 32, 54)">
+      <path data-water-occluder="" d="M0,410 Q169,368 301,397 L434,422 589,431 715,449 794,453 745,462 628,458 499,452 346,438 0,452 Z"/>
+      <g>
+        <use href="#alpine-pine" transform="translate(266.00 446.13) scale(0.104 0.139)"/>
+        <use href="#alpine-pine" transform="translate(272.20 444.96) scale(0.086 0.114)"/>
+        <use href="#alpine-pine" transform="translate(278.40 446.37) scale(0.115 0.153)"/>
+        <use href="#alpine-pine" transform="translate(284.60 443.94) scale(0.071 0.095)"/>
+        <use href="#alpine-pine" transform="translate(290.80 446.56) scale(0.083 0.111)"/>
+        <use href="#alpine-pine" transform="translate(297.00 442.63) scale(0.067 0.089)"/>
+        <use href="#alpine-pine" transform="translate(303.20 445.49) scale(0.074 0.099)"/>
+        <use href="#alpine-pine" transform="translate(309.40 443.27) scale(0.069 0.092)"/>
+        <use href="#alpine-pine" transform="translate(315.60 444.52) scale(0.090 0.120)"/>
+        <use href="#alpine-pine" transform="translate(321.80 444.47) scale(0.083 0.111)"/>
+        <use href="#alpine-pine" transform="translate(328.00 442.79) scale(0.077 0.103)"/>
+        <use href="#alpine-pine" transform="translate(334.20 442.46) scale(0.084 0.112)"/>
+        <use href="#alpine-pine" transform="translate(340.40 443.19) scale(0.130 0.173)"/>
+        <use href="#alpine-pine" transform="translate(346.60 445.35) scale(0.065 0.086)"/>
+        <use href="#alpine-pine" transform="translate(352.80 443.97) scale(0.112 0.149)"/>
+        <use href="#alpine-pine" transform="translate(359.00 442.03) scale(0.085 0.114)"/>
+        <use href="#alpine-pine" transform="translate(365.20 444.61) scale(0.079 0.105)"/>
+        <use href="#alpine-pine" transform="translate(371.40 442.68) scale(0.101 0.134)"/>
+        <use href="#alpine-pine" transform="translate(377.60 445.56) scale(0.083 0.111)"/>
+        <use href="#alpine-pine" transform="translate(383.80 446.14) scale(0.085 0.113)"/>
+        <use href="#alpine-pine" transform="translate(390.00 444.42) scale(0.086 0.114)"/>
+        <use href="#alpine-pine" transform="translate(396.20 445.25) scale(0.108 0.144)"/>
+        <use href="#alpine-pine" transform="translate(402.40 446.66) scale(0.131 0.174)"/>
+        <use href="#alpine-pine" transform="translate(408.60 442.31) scale(0.090 0.120)"/>
+        <use href="#alpine-pine" transform="translate(414.80 443.75) scale(0.114 0.152)"/>
+        <use href="#alpine-pine" transform="translate(421.00 442.68) scale(0.104 0.139)"/>
+        <use href="#alpine-pine" transform="translate(427.20 443.60) scale(0.073 0.098)"/>
+        <use href="#alpine-pine" transform="translate(433.40 445.79) scale(0.106 0.141)"/>
+        <use href="#alpine-pine" transform="translate(439.60 444.37) scale(0.106 0.141)"/>
+        <use href="#alpine-pine" transform="translate(445.80 442.89) scale(0.061 0.081)"/>
+        <use href="#alpine-pine" transform="translate(452.00 445.31) scale(0.111 0.148)"/>
+        <use href="#alpine-pine" transform="translate(458.20 446.83) scale(0.092 0.123)"/>
+        <use href="#alpine-pine" transform="translate(464.40 444.38) scale(0.092 0.123)"/>
+        <use href="#alpine-pine" transform="translate(470.60 446.88) scale(0.130 0.173)"/>
+        <use href="#alpine-pine" transform="translate(476.80 445.82) scale(0.071 0.095)"/>
+        <use href="#alpine-pine" transform="translate(483.00 445.36) scale(0.121 0.162)"/>
+        <use href="#alpine-pine" transform="translate(489.20 445.13) scale(0.072 0.096)"/>
+        <use href="#alpine-pine" transform="translate(495.40 446.17) scale(0.083 0.111)"/>
+        <use href="#alpine-pine" transform="translate(501.60 443.67) scale(0.060 0.080)"/>
+        <use href="#alpine-pine" transform="translate(507.80 443.34) scale(0.130 0.173)"/>
+        <use href="#alpine-pine" transform="translate(514.00 445.12) scale(0.089 0.119)"/>
+        <use href="#alpine-pine" transform="translate(520.20 443.69) scale(0.083 0.111)"/>
+        <use href="#alpine-pine" transform="translate(526.40 445.21) scale(0.102 0.136)"/>
+        <use href="#alpine-pine" transform="translate(532.60 446.33) scale(0.098 0.130)"/>
+        <use href="#alpine-pine" transform="translate(538.80 442.02) scale(0.087 0.116)"/>
+        <use href="#alpine-pine" transform="translate(545.00 446.92) scale(0.114 0.152)"/>
+        <use href="#alpine-pine" transform="translate(551.20 445.77) scale(0.085 0.113)"/>
+        <use href="#alpine-pine" transform="translate(557.40 442.36) scale(0.108 0.144)"/>
+        <use href="#alpine-pine" transform="translate(563.60 446.97) scale(0.112 0.149)"/>
+        <use href="#alpine-pine" transform="translate(569.80 442.33) scale(0.103 0.137)"/>
+        <use href="#alpine-pine" transform="translate(576.00 443.21) scale(0.115 0.153)"/>
+        <use href="#alpine-pine" transform="translate(582.20 446.03) scale(0.085 0.113)"/>
+        <use href="#alpine-pine" transform="translate(588.40 442.33) scale(0.096 0.128)"/>
+        <use href="#alpine-pine" transform="translate(594.60 446.92) scale(0.088 0.117)"/>
+        <use href="#alpine-pine" transform="translate(600.80 446.64) scale(0.112 0.149)"/>
+        <use href="#alpine-pine" transform="translate(607.00 443.72) scale(0.094 0.125)"/>
+        <use href="#alpine-pine" transform="translate(613.20 446.98) scale(0.089 0.119)"/>
+        <use href="#alpine-pine" transform="translate(619.40 442.21) scale(0.122 0.163)"/>
+        <use href="#alpine-pine" transform="translate(625.60 445.99) scale(0.109 0.145)"/>
+        <use href="#alpine-pine" transform="translate(631.80 443.55) scale(0.071 0.095)"/>
+        <use href="#alpine-pine" transform="translate(638.00 446.11) scale(0.085 0.113)"/>
+        <use href="#alpine-pine" transform="translate(644.20 442.94) scale(0.060 0.081)"/>
+        <use href="#alpine-pine" transform="translate(650.40 443.80) scale(0.126 0.168)"/>
+        <use href="#alpine-pine" transform="translate(656.60 446.62) scale(0.120 0.160)"/>
+        <use href="#alpine-pine" transform="translate(662.80 446.15) scale(0.112 0.149)"/>
+        <use href="#alpine-pine" transform="translate(669.00 444.88) scale(0.075 0.100)"/>
+        <use href="#alpine-pine" transform="translate(675.20 442.07) scale(0.110 0.147)"/>
+        <use href="#alpine-pine" transform="translate(681.40 442.10) scale(0.097 0.129)"/>
+        <use href="#alpine-pine" transform="translate(687.60 446.16) scale(0.129 0.173)"/>
+        <use href="#alpine-pine" transform="translate(693.80 446.31) scale(0.099 0.132)"/>
+        <use href="#alpine-pine" transform="translate(700.00 445.98) scale(0.078 0.104)"/>
+        <use href="#alpine-pine" transform="translate(706.20 445.68) scale(0.092 0.123)"/>
+        <use href="#alpine-pine" transform="translate(712.40 443.34) scale(0.120 0.161)"/>
+        <use href="#alpine-pine" transform="translate(718.60 442.33) scale(0.106 0.141)"/>
+        <use href="#alpine-pine" transform="translate(724.80 443.80) scale(0.103 0.138)"/>
+        <use href="#alpine-pine" transform="translate(731.00 444.69) scale(0.107 0.143)"/>
+      </g>
+      <path data-water-occluder="" d="M1440,397 1343,407 1271,429 1200,438 1129,447 1040,459 950,460 874,468 953,471 1080,466 1210,457 1440,448 Z"/>
+      <g>
+        <use href="#alpine-pine" transform="translate(934.00 465.69) scale(0.078 0.103)"/>
+        <use href="#alpine-pine" transform="translate(938.38 464.49) scale(0.138 0.184)"/>
+        <use href="#alpine-pine" transform="translate(942.76 464.08) scale(0.146 0.194)"/>
+        <use href="#alpine-pine" transform="translate(947.14 463.84) scale(0.154 0.205)"/>
+        <use href="#alpine-pine" transform="translate(951.51 464.36) scale(0.090 0.120)"/>
+        <use href="#alpine-pine" transform="translate(955.89 464.46) scale(0.150 0.200)"/>
+        <use href="#alpine-pine" transform="translate(960.27 466.44) scale(0.072 0.097)"/>
+        <use href="#alpine-pine" transform="translate(964.65 464.25) scale(0.111 0.147)"/>
+        <use href="#alpine-pine" transform="translate(969.03 467.68) scale(0.150 0.200)"/>
+        <use href="#alpine-pine" transform="translate(973.41 467.83) scale(0.082 0.109)"/>
+        <use href="#alpine-pine" transform="translate(977.78 467.65) scale(0.085 0.114)"/>
+        <use href="#alpine-pine" transform="translate(982.16 463.18) scale(0.089 0.119)"/>
+        <use href="#alpine-pine" transform="translate(986.54 465.12) scale(0.146 0.195)"/>
+        <use href="#alpine-pine" transform="translate(990.92 465.59) scale(0.132 0.177)"/>
+        <use href="#alpine-pine" transform="translate(995.30 465.71) scale(0.109 0.146)"/>
+        <use href="#alpine-pine" transform="translate(999.68 466.72) scale(0.084 0.112)"/>
+        <use href="#alpine-pine" transform="translate(1004.05 467.04) scale(0.135 0.179)"/>
+        <use href="#alpine-pine" transform="translate(1008.43 465.51) scale(0.125 0.166)"/>
+        <use href="#alpine-pine" transform="translate(1012.81 464.42) scale(0.099 0.132)"/>
+        <use href="#alpine-pine" transform="translate(1017.19 464.91) scale(0.111 0.148)"/>
+        <use href="#alpine-pine" transform="translate(1021.57 466.84) scale(0.108 0.144)"/>
+        <use href="#alpine-pine" transform="translate(1025.95 465.62) scale(0.151 0.201)"/>
+        <use href="#alpine-pine" transform="translate(1030.32 463.34) scale(0.091 0.121)"/>
+        <use href="#alpine-pine" transform="translate(1034.70 467.23) scale(0.118 0.157)"/>
+        <use href="#alpine-pine" transform="translate(1039.08 464.07) scale(0.109 0.145)"/>
+        <use href="#alpine-pine" transform="translate(1043.46 466.52) scale(0.097 0.130)"/>
+        <use href="#alpine-pine" transform="translate(1047.84 466.66) scale(0.150 0.200)"/>
+        <use href="#alpine-pine" transform="translate(1052.22 464.14) scale(0.147 0.196)"/>
+        <use href="#alpine-pine" transform="translate(1056.59 463.05) scale(0.099 0.132)"/>
+        <use href="#alpine-pine" transform="translate(1060.97 465.60) scale(0.152 0.203)"/>
+        <use href="#alpine-pine" transform="translate(1065.35 464.35) scale(0.132 0.175)"/>
+        <use href="#alpine-pine" transform="translate(1069.73 463.33) scale(0.108 0.144)"/>
+        <use href="#alpine-pine" transform="translate(1074.11 464.67) scale(0.115 0.153)"/>
+        <use href="#alpine-pine" transform="translate(1078.49 467.96) scale(0.091 0.122)"/>
+        <use href="#alpine-pine" transform="translate(1082.86 466.11) scale(0.113 0.150)"/>
+        <use href="#alpine-pine" transform="translate(1087.24 463.22) scale(0.124 0.165)"/>
+        <use href="#alpine-pine" transform="translate(1091.62 464.91) scale(0.119 0.158)"/>
+        <use href="#alpine-pine" transform="translate(1096.00 463.81) scale(0.122 0.163)"/>
+      </g>
+      <g>
+        <use href="#alpine-pine" transform="translate(1244.00 437.52) scale(0.137 0.182)"/>
+        <use href="#alpine-pine" transform="translate(1249.44 440.28) scale(0.135 0.180)"/>
+        <use href="#alpine-pine" transform="translate(1254.89 438.14) scale(0.192 0.256)"/>
+        <use href="#alpine-pine" transform="translate(1260.33 441.13) scale(0.155 0.207)"/>
+        <use href="#alpine-pine" transform="translate(1265.78 440.17) scale(0.137 0.182)"/>
+        <use href="#alpine-pine" transform="translate(1271.22 439.38) scale(0.152 0.203)"/>
+        <use href="#alpine-pine" transform="translate(1276.67 437.87) scale(0.098 0.131)"/>
+        <use href="#alpine-pine" transform="translate(1282.11 440.75) scale(0.159 0.211)"/>
+        <use href="#alpine-pine" transform="translate(1287.56 440.77) scale(0.189 0.252)"/>
+        <use href="#alpine-pine" transform="translate(1293.00 441.07) scale(0.128 0.171)"/>
+        <use href="#alpine-pine" transform="translate(1298.44 438.08) scale(0.181 0.241)"/>
+        <use href="#alpine-pine" transform="translate(1303.89 437.04) scale(0.190 0.253)"/>
+        <use href="#alpine-pine" transform="translate(1309.33 438.40) scale(0.153 0.204)"/>
+        <use href="#alpine-pine" transform="translate(1314.78 439.48) scale(0.213 0.285)"/>
+        <use href="#alpine-pine" transform="translate(1320.22 437.36) scale(0.170 0.227)"/>
+        <use href="#alpine-pine" transform="translate(1325.67 440.08) scale(0.138 0.185)"/>
+        <use href="#alpine-pine" transform="translate(1331.11 439.06) scale(0.108 0.144)"/>
+        <use href="#alpine-pine" transform="translate(1336.56 438.98) scale(0.101 0.135)"/>
+        <use href="#alpine-pine" transform="translate(1342.00 438.57) scale(0.138 0.184)"/>
+        <use href="#alpine-pine" transform="translate(1347.44 437.47) scale(0.129 0.172)"/>
+        <use href="#alpine-pine" transform="translate(1352.89 440.50) scale(0.148 0.198)"/>
+        <use href="#alpine-pine" transform="translate(1358.33 437.77) scale(0.164 0.218)"/>
+        <use href="#alpine-pine" transform="translate(1363.78 441.22) scale(0.203 0.271)"/>
+        <use href="#alpine-pine" transform="translate(1369.22 440.75) scale(0.187 0.249)"/>
+        <use href="#alpine-pine" transform="translate(1374.67 437.58) scale(0.215 0.286)"/>
+        <use href="#alpine-pine" transform="translate(1380.11 438.44) scale(0.134 0.179)"/>
+        <use href="#alpine-pine" transform="translate(1385.56 438.76) scale(0.199 0.265)"/>
+        <use href="#alpine-pine" transform="translate(1391.00 437.62) scale(0.167 0.223)"/>
+        <use href="#alpine-pine" transform="translate(1396.44 439.31) scale(0.197 0.263)"/>
+        <use href="#alpine-pine" transform="translate(1401.89 440.21) scale(0.152 0.203)"/>
+        <use href="#alpine-pine" transform="translate(1407.33 440.12) scale(0.157 0.209)"/>
+        <use href="#alpine-pine" transform="translate(1412.78 439.00) scale(0.132 0.176)"/>
+        <use href="#alpine-pine" transform="translate(1418.22 440.08) scale(0.128 0.171)"/>
+        <use href="#alpine-pine" transform="translate(1423.67 437.35) scale(0.149 0.198)"/>
+        <use href="#alpine-pine" transform="translate(1429.11 441.88) scale(0.164 0.218)"/>
+        <use href="#alpine-pine" transform="translate(1434.56 437.90) scale(0.195 0.260)"/>
+        <use href="#alpine-pine" transform="translate(1440.00 439.46) scale(0.109 0.146)"/>
+      </g>
+    </g>
+    <path d="M342,430 Q507,414 674,439 T850,450 L750,468 Q576,442 379,451 Z M1036,418 Q1215,404 1440,416 V441 Q1267,421 1124,439 Z" fill="url(#alpine-mist)"/>
+    <path data-water-occluder="" d="M0,332 66,353 124,385 182,402 226,425 285,432 347,434 397,444 427,465 470,479 516,515 562,527 599,566 650,580 682,600 H0 Z" fill="rgb(6, 15, 26)"/>
+    <g fill="rgb(16, 31, 49)">
+      <path d="M0,346 61,366 98,408 77,426 100,491 43,449 20,389 Z"/>
+      <path d="M113,392 167,416 197,468 184,488 220,550 161,502 142,442 Z"/>
+      <path d="M229,435 282,441 313,475 323,527 367,589 300,554 273,474 Z"/>
+      <path d="M371,451 400,458 418,495 457,521 475,570 438,548 390,504 Z"/>
+      <path d="M499,518 541,539 570,581 611,600 H566 L533,570 Z"/>
+    </g>
+    <g fill="none" stroke="rgb(72, 105, 148)" stroke-width="1" opacity="0.25">
+      <path d="M15,356 50,381 64,411 M129,411 158,435 168,470 M243,445 275,459 292,492 M390,467 405,495 441,530"/>
+    </g>
+    <path d="M223,429 Q259,426 290,430 L346,432 Q379,434 402,444 L412,451 392,459 348,455 304,452 270,444 236,441 Z" fill="rgb(16, 31, 49)"/>
+    <path d="M223,429 Q259,426 290,430 L346,432 Q379,434 402,444 L412,451 392,459 348,455 304,452 270,444 236,441 Z" fill="rgb(72, 105, 148)" opacity="0.18"/>
+    <path d="M270,444 304,452 348,455 392,459 412,451 408,458 392,465 348,461 302,459 Z" fill="rgb(16, 31, 49)"/>
+    <g fill="rgb(72, 105, 148)" opacity="0.4">
+      <path d="M297,447 l4,-1 3,2 -5,1 Z M349,451 l3,-2 4,2 -3,1 Z M377,455 l3,-1 4,2 -5,1 Z"/>
+    </g>
+    <path data-water-occluder="" d="M1072,600 1114,568 1164,565 1197,539 1244,551 1283,514 1315,507 1364,473 1440,467 V600 Z" fill="rgb(6, 15, 26)"/>
+    <path d="M1151,600 1200,552 1244,559 1285,529 1316,522 1284,547 1250,566 1225,600 Z M1371,486 1334,534 1345,552 1322,600 H1344 L1365,550 1379,529 1390,482 Z" fill="rgb(16, 31, 49)"/>
+    <g fill="rgb(6, 15, 26)">
+      <use href="#alpine-pine" transform="translate(31 363) scale(.8 1.65)"/>
+      <use href="#alpine-pine" transform="translate(91 393) scale(1.25 2.5)"/>
+      <use href="#alpine-pine" transform="translate(177 418) scale(.62 1.45)"/>
+      <use href="#alpine-pine" transform="translate(242 437) scale(.43 .85)"/>
+      <use href="#alpine-pine" transform="translate(406 456) scale(.48 1.05)"/>
+      <use href="#alpine-pine" transform="translate(469 495) scale(.35 .7)"/>
+      <use href="#alpine-pine" transform="translate(528 536) scale(.42 .8)"/>
+      <use href="#alpine-pine" transform="translate(1344 517) scale(.6 1.2)"/>
+      <use href="#alpine-pine" transform="translate(1410 492) scale(.75 1.6)"/>
+      <g>
+        <use href="#alpine-pine" transform="translate(705.00 612.48) scale(0.261 0.348)"/>
+        <use href="#alpine-pine" transform="translate(721.14 610.13) scale(0.247 0.329)"/>
+        <use href="#alpine-pine" transform="translate(737.27 609.26) scale(0.256 0.341)"/>
+        <use href="#alpine-pine" transform="translate(753.41 611.67) scale(0.286 0.381)"/>
+        <use href="#alpine-pine" transform="translate(769.55 608.67) scale(0.403 0.537)"/>
+        <use href="#alpine-pine" transform="translate(785.68 608.19) scale(0.323 0.431)"/>
+        <use href="#alpine-pine" transform="translate(801.82 608.62) scale(0.303 0.404)"/>
+        <use href="#alpine-pine" transform="translate(817.95 609.62) scale(0.301 0.401)"/>
+        <use href="#alpine-pine" transform="translate(834.09 612.03) scale(0.340 0.454)"/>
+        <use href="#alpine-pine" transform="translate(850.23 609.90) scale(0.401 0.535)"/>
+        <use href="#alpine-pine" transform="translate(866.36 609.13) scale(0.474 0.632)"/>
+        <use href="#alpine-pine" transform="translate(882.50 611.68) scale(0.260 0.346)"/>
+        <use href="#alpine-pine" transform="translate(898.64 609.37) scale(0.492 0.656)"/>
+        <use href="#alpine-pine" transform="translate(914.77 610.54) scale(0.333 0.444)"/>
+        <use href="#alpine-pine" transform="translate(930.91 611.92) scale(0.379 0.506)"/>
+        <use href="#alpine-pine" transform="translate(947.05 608.75) scale(0.365 0.486)"/>
+        <use href="#alpine-pine" transform="translate(963.18 609.35) scale(0.249 0.332)"/>
+        <use href="#alpine-pine" transform="translate(979.32 608.78) scale(0.488 0.651)"/>
+        <use href="#alpine-pine" transform="translate(995.45 609.25) scale(0.417 0.556)"/>
+        <use href="#alpine-pine" transform="translate(1011.59 608.77) scale(0.302 0.402)"/>
+        <use href="#alpine-pine" transform="translate(1027.73 609.94) scale(0.350 0.467)"/>
+        <use href="#alpine-pine" transform="translate(1043.86 609.00) scale(0.345 0.460)"/>
+        <use href="#alpine-pine" transform="translate(1060.00 611.38) scale(0.407 0.542)"/>
+      </g>
+    </g>
+  </g>
+  <g transform="translate(-30 340) scale(.43)">
+    <circle cx="964" cy="201" r="94" fill="url(#campfire-glow-grad)"/>
+    <ellipse cx="960" cy="238" rx="134" ry="31" fill="url(#campfire-ground-grad)"/>
+    <ellipse cx="875" cy="243" rx="67" ry="21" fill="url(#camp-tent-spill)"/>
+    <path d="M750,232 Q827,248 916,231 L916,236 Q829,251 750,237 Z" fill="rgb(6, 15, 26)" opacity="0.7"/>
+    <g stroke-linejoin="round">
+      <path d="M752,232 C764,192 778,164 802,155 C823,147 847,150 864,164 C887,182 903,208 914,231 Q871,242 828,241 Z" fill="url(#camp-tent-fabric)"/>
+      <path d="M858,160 C837,176 827,206 828,241 Q876,240 914,231 C901,198 882,173 858,160 Z" fill="url(#camp-tent-front)"/>
+      <path d="M752,232 C764,192 778,164 802,155 C823,147 847,150 864,164 C887,182 903,208 914,231 Q871,242 828,241 Z" fill="url(#camp-tent-lamplight)"/>
+      <path d="M755,224 Q790,231 829,232 Q874,232 910,224 L914,231 Q873,243 828,241 L752,232 Z" fill="rgb(27, 41, 69)"/>
+      <path d="M759,225 Q793,232 829,232 Q871,232 909,225" fill="none" stroke="rgb(161, 171, 192)" stroke-width="0.8" opacity="0.6"/>
+      <g fill="none" stroke="rgb(161, 171, 192)" stroke-linecap="round">
+        <path d="M753,232 C769,181 791,149 822,152 C852,155 881,185 900,234" stroke-width="1.8"/>
+        <path d="M785,237 C784,195 802,158 831,152 C855,149 888,185 913,231" stroke-width="1.4"/>
+        <path d="M828,239 C827,207 837,176 858,161" stroke-width="1" opacity="0.6"/>
+      </g>
+      <g stroke="rgb(27, 41, 69)" stroke-width="2" stroke-linecap="round">
+        <path d="M770,191 l4,2 M792,162 l3,3 M858,173 l-3,3 M887,207 l-3,2"/>
+      </g>
+      <path d="M799,179 Q809,169 821,168 L828,181 Z" fill="rgb(27, 41, 69)" opacity="0.8"/>
+      <path d="M796,177 Q808,166 821,166 L830,178 Q813,174 796,177 Z" fill="rgb(121, 133, 156)"/>
+      <path d="M799,177 Q814,174 826,178" fill="none" stroke="rgb(161, 171, 192)" stroke-width="0.8"/>
+      <path d="M841,230 C841,207 850,182 862,180 C878,178 893,207 900,226 Q870,232 841,230 Z" fill="rgb(10, 14, 26)"/>
+      <path d="M841,230 C841,207 850,182 862,180 C878,178 893,207 900,226 Q870,232 841,230 Z" fill="url(#camp-tent-interior)"/>
+      <path d="M839,230 C839,205 850,179 862,178 C880,176 895,207 902,226" fill="none" stroke="rgb(161, 171, 192)" stroke-width="1"/>
+      <path d="M865,182 C879,190 890,209 897,225 L886,225 C887,208 878,191 865,182 Z" fill="rgb(121, 133, 156)"/>
+      <path d="M866,183 C879,197 882,214 886,224" fill="none" stroke="rgb(161, 171, 192)" stroke-width="0.8" opacity="0.7"/>
+      <path d="M884,213 l7,-2" stroke="rgb(27, 41, 69)" stroke-width="2" stroke-linecap="round"/>
+      <path d="M841,230 Q869,233 900,226" fill="none" stroke="rgb(161, 171, 192)" stroke-width="1"/>
+      <g fill="none" stroke="rgb(96, 116, 147)" stroke-width="1" opacity="0.75">
+        <path d="M773,193 L731,239 M893,198 L931,237"/>
+        <path d="M728,236 l4,7 M929,234 l4,7" stroke-width="2"/>
+      </g>
+    </g>
+    <g transform="translate(916 243)">
+      <ellipse cy="7" rx="15" ry="3" fill="rgb(10, 14, 26)" opacity="0.3"/>
+      <path d="M-13,6 L-9,0 H7 L12,5 8,8 -10,8 Z" fill="rgb(86, 96, 119)"/>
+      <path d="M-9,0 H7 L10,3 H-11 Z" fill="rgb(96, 116, 147)"/>
+      <g transform="translate(-1 -3)">
+        <path d="M-3,-12 V-15 A3,3 0 0 1 3,-15 V-12" fill="none" stroke="rgb(96, 116, 147)"/>
+        <rect x="-5" y="-12" width="10" height="13" rx="2" fill="rgb(96, 116, 147)"/>
+        <rect x="-3" y="-10" width="6" height="8" rx="1" fill="rgb(255, 211, 146)"/>
+        <path d="M-6,2 H6" stroke="rgb(27, 41, 69)" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </g>
+    <g transform="translate(964 231)">
+      <ellipse cy="5" rx="31" ry="8" fill="rgb(10, 14, 26)" opacity="0.3"/>
+      <g fill="rgb(86, 96, 119)">
+        <path d="M-29,3 Q-30,-3 -24,-4 Q-18,-4 -17,2 Z"/>
+        <path d="M-15,-5 Q-15,-10 -9,-9 L-3,-5 Z M7,-5 Q12,-12 18,-6 L19,-3 Z"/>
+        <path d="M20,3 Q20,-4 27,-2 Q32,-1 31,4 Z"/>
+      </g>
+      <path d="M-18,0 L17,7 M-16,8 L17,-1" stroke="rgb(36, 38, 56)" stroke-width="7" stroke-linecap="round"/>
+      <path d="M-15,0 L13,6" stroke="#b07958" stroke-opacity="0.35" stroke-width="1.2"/>
+      <g>
+        <path d="M-2,2 C-18,0 -17,-15 -9,-26 C-10,-17 -5,-18 -6,-28 C-8,-37 2,-42 1,-49 C14,-37 8,-29 14,-21 C23,-7 13,4 -2,2 Z" fill="url(#camp-flame)"/>
+        <path d="M0,2 C-10,-2 -8,-12 -3,-18 C0,-22 2,-27 1,-30 C11,-20 4,-16 9,-10 C13,-2 6,3 0,2 Z" fill="#ffe3a0"/>
+      </g>
+      <g fill="rgb(86, 96, 119)">
+        <path d="M-24,8 Q-22,1 -15,4 L-12,10 Z M-7,11 Q-9,4 -2,5 Q5,4 6,11 Z M13,10 Q12,4 19,4 L25,8 Z"/>
+      </g>
+      <ellipse cx="1" cy="-38" rx="8" ry="5" fill="url(#campfire-smoke-grad)" opacity="0"/>
+      <ellipse cx="-3" cy="-41" rx="10" ry="5" fill="url(#campfire-smoke-grad)" opacity="0"/>
+      <ellipse cx="4" cy="-43" rx="7" ry="4" fill="url(#campfire-smoke-grad)" opacity="0"/>
+    </g>
+    <g>
+      <circle cx="954" cy="167" r="1.4" fill="rgb(255, 216, 47)" opacity="0.7"/>
+      <circle cx="980" cy="183" r="1" fill="rgb(255, 216, 47)" opacity="0.7"/>
+      <circle cx="1019" cy="204" r="1.5" fill="rgb(255, 216, 47)" opacity="0.7"/>
+    </g>
+  </g>
+</svg>
