@@ -23,6 +23,20 @@
   --mountain-near: #131a33;
   --mountain-snow: #3d4d8a;
 
+  /* Shared alpine palette for the header horizon and footer landscape. */
+  --alpine-distant: #305181;
+  --alpine-peak: #294b80;
+  --alpine-ridge: #132c4c;
+  --alpine-shadow: #10203b;
+  --alpine-snow: #94b8f4;
+  --alpine-facet: #486994;
+  --alpine-mist: #8eafd8;
+  --alpine-water-light: #416ba6;
+  --alpine-water: #122744;
+  --alpine-shore: #0b2036;
+  --alpine-foreground: #060f1a;
+  --alpine-rock: #101f31;
+
   --radius: 12px;
   --container: 1200px;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -51,6 +65,18 @@
   --mountain-mid: #9fb1d6;
   --mountain-near: #90a3cd;
   --mountain-snow: #f4f8ff;
+  --alpine-distant: #a6bdd7;
+  --alpine-peak: #8fa9c8;
+  --alpine-ridge: #6685a6;
+  --alpine-shadow: #718cae;
+  --alpine-snow: #edf5ff;
+  --alpine-facet: #c4d6e8;
+  --alpine-mist: #e8f2ff;
+  --alpine-water-light: #a7cce1;
+  --alpine-water: #648ba9;
+  --alpine-shore: #4c7189;
+  --alpine-foreground: #2e4b5d;
+  --alpine-rock: #3b5c70;
   color-scheme: light;
 }
 
@@ -380,7 +406,84 @@ a.card:hover {
   text-decoration: none;
 }
 
+.hero-mountains {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  height: 190px;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 700px) {
+  .hero-mountains {
+    /* Crop to the snowy right-hand peaks, without squeezing the range. */
+    left: auto;
+    right: 0;
+    width: 900px;
+    height: 130px;
+  }
+}
+
 /* ─── Footer campsite ─── */
+
+.footer-parallax {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.campsite-scene {
+  --camp-tree: #1b2945;
+  --camp-detail: #607493;
+  --camp-tent: #495b79;
+  --camp-tent-light: #79859c;
+  --camp-tent-seam: #a1abc0;
+  --camp-rock: #566077;
+  --camp-log: #242638;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: max(100%, 1440px);
+  height: auto;
+  transform: translateX(-50%);
+  display: block;
+  pointer-events: none;
+}
+
+[data-theme="light"] .campsite-scene {
+  --camp-tree: #6a82aa;
+  --camp-detail: #50678a;
+  --camp-tent: #a08b77;
+  --camp-tent-light: #dbc5a6;
+  --camp-tent-seam: #eee0c7;
+  --camp-rock: #7e8a9c;
+  --camp-log: #58677d;
+}
+
+.camp-lantern-light {
+  fill: #ffd392;
+}
+
+[data-theme="light"] .camp-lantern-light {
+  fill: #c3cce2;
+}
+
+[data-theme="light"] .camp-tent-glow,
+[data-theme="light"] [data-star-reflections] {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .campsite-scene {
+    /* Frame the overlook and the lake together on narrow screens. */
+    width: 1100px;
+    left: calc(25% - 275px);
+    transform: none;
+  }
+}
 
 .site-footer {
   position: relative;
@@ -393,16 +496,13 @@ a.card:hover {
   position: relative;
   z-index: 1;
   pointer-events: none;
-  /* Center the text vertically in the sky band above the campsite. The
-     bottom padding reserves roughly the scene's hill/tree region so the
-     text floats in open sky at any width.
-     single left column: the starfield's crescent moon lives top-right */
+  /* Keep the farewell in open sky above the left mountain range. */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: max(520px, 33vw);
-  padding-top: 2rem;
-  padding-bottom: calc(max(260px, 22.3vw) / 2);
+  justify-content: flex-start;
+  min-height: max(600px, 41.667vw);
+  padding-top: clamp(4rem, 6.5vw, 9rem);
+  padding-bottom: 25rem;
 }
 
 .site-footer__meta {

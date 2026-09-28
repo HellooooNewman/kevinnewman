@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { createWaterReflections, type ReflectedStar } from "@/lib/water-reflections";
 
 /**
  * The sky, evolved from the original Angular canvas header.
@@ -309,6 +310,7 @@ export default function Starfield({
   ambient = false,
   moonStyle = "full",
   fill = false,
+  reflectOnWater = false,
 }: {
   height?: number;
   /** Full-viewport fixed background: sparse, faint, no moon, non-interactive. */
@@ -320,6 +322,8 @@ export default function Starfield({
   /** Track the parent element's height instead of a fixed height — for
    * sections that stretch to fill the viewport (e.g. the contact page). */
   fill?: boolean;
+  /** Reflect bright sky stars into the footer's SVG lake. */
+  reflectOnWater?: boolean;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -328,6 +332,7 @@ export default function Starfield({
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    const reflections = reflectOnWater ? createWaterReflections(canvas) : null;
 
     // Under reduced motion the sky is drawn once and only redrawn when
     // something changes (resize, theme, a new star), instead of every frame.
@@ -356,6 +361,7 @@ export default function Starfield({
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      reflections?.resize();
       // Resizing clears the canvas, so repaint even when idle
       schedule();
     };
@@ -464,6 +470,8 @@ export default function Starfield({
       last = now;
       ctx.clearRect(0, 0, w, h);
       const light = isLight();
+      const reflectedStars: ReflectedStar[] | null =
+        reflections?.shouldDraw(now, reduced, light) ? [] : null;
 
       if (ambient) {
         // Faint drifting stars only - a quiet backdrop for the whole page.
@@ -548,6 +556,15 @@ export default function Starfield({
           ctx.beginPath();
           ctx.arc(p.x, py, p.radius, 0, Math.PI * 2);
           ctx.fill();
+          if (reflectedStars) {
+            reflectedStars.push({
+              x: p.x,
+              y: py,
+              radius: p.radius,
+              brightness: p.alpha * tw,
+              phase: p.twinkle,
+            });
+          }
           if (!reduced) {
             p.x += p.vx * delta;
             p.y -= p.vy * delta;
@@ -556,6 +573,8 @@ export default function Starfield({
           }
         }
       }
+
+      if (reflectedStars) reflections?.draw(reflectedStars, now, reduced);
 
       // Moon (or sun, in light mode) - drawn after the stars so it occludes
       // them. Bobs gently in the upper right; the scroll drift is clamped
@@ -738,6 +757,7 @@ export default function Starfield({
 
     return () => {
       running = false;
+      reflections?.clear();
       cancelAnimationFrame(raf);
       io.disconnect();
       themeObserver.disconnect();
@@ -748,7 +768,7 @@ export default function Starfield({
       window.removeEventListener("pointerdown", sprinkle);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [height, ambient, moonStyle, fill]);
+  }, [height, ambient, moonStyle, fill, reflectOnWater]);
 
   return (
     <canvas

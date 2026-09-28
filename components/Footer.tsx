@@ -1,15 +1,16 @@
-import SocialLinks from "./SocialLinks";
 import Starfield from "./Starfield";
+import SocialLinks from "./SocialLinks";
 import CampsiteScene from "./CampsiteScene";
 import { lastUpdated } from "@/data/resume";
+import FooterParallax from "./FooterParallax";
 
 export default function Footer() {
   return (
-    <footer className="no-print site-footer">
-      <Starfield height={560} moonStyle="none" />
-      <CampsiteScene />
-      {/* pointer-events pattern from the contact page: the wrapper lets
-          events through to the starfield, interactive children opt back in */}
+    <footer id="footer" className="no-print site-footer">
+      <Starfield fill moonStyle="none" reflectOnWater />
+      <FooterParallax>
+        <CampsiteScene />
+      </FooterParallax>
       <div className="container site-footer__inner">
         <div style={{ pointerEvents: "auto", display: "inline-block" }}>
           <p style={{ margin: 0, fontWeight: 700 }}>
