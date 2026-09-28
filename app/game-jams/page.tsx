@@ -38,13 +38,9 @@ export default function GameJamsPage() {
           const body = (
             <>
               <div
+                className="card__media"
                 style={{
-                  borderRadius: 8,
-                  overflow: "hidden",
-                  position: "relative",
-                  marginBottom: "1rem",
-                  aspectRatio: "315 / 250",
-                  background: "var(--bg-raised)",
+                  aspectRatio: "16 / 10",
                 }}
               >
                 <Image
