@@ -30,7 +30,14 @@ export const metadata: Metadata = {
     title: "Kevin Newman · Full Stack Developer",
     description:
       "Full stack developer in Canada with 10+ years of experience building web and mobile products.",
-    images: [{ url: "/assets/icons/logo-image.png", alt: "Kevin Newman logo" }],
+    images: [
+      {
+        url: "/assets/social/kevin-newman-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "A starry mountain landscape with a glowing campsite and geometric constellations",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -38,7 +45,7 @@ export const metadata: Metadata = {
     title: "Kevin Newman · Full Stack Developer",
     description:
       "Full stack developer in Canada with 10+ years of experience building web and mobile products.",
-    images: ["/assets/icons/logo-image.png"],
+    images: ["/assets/social/kevin-newman-og.jpg"],
   },
   icons: {
     icon: [
