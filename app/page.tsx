@@ -5,7 +5,7 @@ import Hero from "@/components/Hero";
 import JsonLd from "@/components/JsonLd";
 import JobCard from "@/components/JobCard";
 import RevealInit from "@/components/RevealInit";
-import { intro, skills, jobs, education, lastUpdated } from "@/data/resume";
+import { intro, skills, jobs, education } from "@/data/resume";
 import { projects, type Project } from "@/data/projects";
 import { SITE_URL } from "@/lib/seo";
 
@@ -102,7 +102,6 @@ export default function Home() {
           <aside className="card now-panel" aria-label="What I'm up to now">
             <div className="now-panel__header">
               <h3 style={{ margin: 0, fontSize: "1rem" }}>Right now</h3>
-              <span>Updated {lastUpdated}</span>
             </div>
             <ul>
               {intro.now.map((item) => (
