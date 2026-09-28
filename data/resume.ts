@@ -11,8 +11,8 @@ export const intro = {
     "I'm a full stack developer with 10+ years of experience shipping software, from payment platforms and customer portals to 3D marketing apps and hybrid mobile products.",
     "Away from work I'm a game jam regular, always tinkering on a side project (and playing too much Age of Empires II: DE).",
   ],
-  // Kept as split parts so the address never appears assembled in the
-  // HTML/bundle - see components/EmailButton.tsx.
+  // Kept as split parts so contact components can format the address for
+  // screen and print without duplicating it in the content data.
   emailUser: "kevin",
   emailDomain: "kevinnewman.ca",
   resumePdf: "/assets/pdf/Kevin Newman · Full Stack Developer.pdf",
@@ -38,6 +38,8 @@ export const intro = {
   },
 };
 
+export const lastUpdated = "September 2026";
+
 // Two tiers: the curated stack I work in daily, then everything else.
 export const skills = {
   core: [
@@ -53,37 +55,21 @@ export const skills = {
   also: [
     "Angular",
     "Flutter",
-    "HTML5",
-    "CSS3/Sass",
-    "Three.js",
-    "Babylon",
     "RxJS",
-    "Electron",
-    "Ionic",
-    "C",
-    "C++",
-    "C#",
+    "C / C++",
     ".NET",
     "Redis",
-    "MongoDB",
-    "MySQL",
+    "SQLite",
     "REST APIs",
     "MCP servers",
     "Docker",
-    "CircleCI",
-    "Jenkins",
-    "Octopus",
-    "Git",
-    "Figma",
-    "Illustrator",
-    "Photoshop",
-    "After Effects",
-    "Premiere",
+    "CI/CD",
+    "Azure / AWS",
+    "Three.js / Babylon.js",
     "Unity",
     "Blender",
-    "Azure",
-    "DigitalOcean",
-    "AWS",
+    "Figma",
+    "Adobe Creative Cloud",
   ],
 };
 

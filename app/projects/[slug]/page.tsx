@@ -1,11 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
 import GalleryLightbox from "@/components/GalleryLightbox";
+import JsonLd from "@/components/JsonLd";
 import TweetEmbeds from "@/components/TweetEmbeds";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, SITE_URL } from "@/lib/seo";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -36,8 +36,38 @@ export default async function ProjectDetail({
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
+  const projectUrl = `${SITE_URL}/projects/${project.slug}/`;
+  const sameAs = [
+    ...new Set(
+      [
+        project.projectUrl,
+        project.repoUrl,
+        ...(project.links?.map((link) => link.url) ?? []),
+      ].filter((url): url is string => Boolean(url)),
+    ),
+  ];
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": `${projectUrl}#project`,
+    url: projectUrl,
+    name: project.title,
+    description: project.shortBody,
+    image: new URL(project.mainImg, SITE_URL).toString(),
+    dateCreated: project.year.slice(0, 4),
+    creator: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#kevin-newman`,
+      name: "Kevin Newman",
+    },
+    genre: project.projectType,
+    keywords: [...project.projectType, ...project.roles].join(", "),
+    ...(sameAs.length > 0 ? { sameAs } : {}),
+  };
+
   return (
     <article className="section container" style={{ maxWidth: 860 }}>
+      <JsonLd data={jsonLd} />
       <Link
         href="/projects/"
         style={{ fontSize: "0.9rem", color: "var(--text-faint)" }}

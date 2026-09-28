@@ -1,6 +1,7 @@
 import SocialLinks from "./SocialLinks";
 import Starfield from "./Starfield";
 import CampsiteScene from "./CampsiteScene";
+import { lastUpdated } from "@/data/resume";
 
 export default function Footer() {
   return (
@@ -13,6 +14,9 @@ export default function Footer() {
         <div style={{ pointerEvents: "auto", display: "inline-block" }}>
           <p style={{ margin: 0, fontWeight: 700 }}>
             Thanks for coming by. Have a nice day.
+          </p>
+          <p className="site-footer__meta">
+            © {new Date().getFullYear()} Kevin Newman · Last updated {lastUpdated}
           </p>
           <div style={{ marginTop: "1rem" }}>
             <SocialLinks />

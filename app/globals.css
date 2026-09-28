@@ -405,6 +405,12 @@ a.card:hover {
   padding-bottom: calc(max(260px, 22.3vw) / 2);
 }
 
+.site-footer__meta {
+  margin: 0.35rem 0 0;
+  color: var(--text-faint);
+  font-size: 0.82rem;
+}
+
 /* Daytime: the fire is out — no flames, no glow. The smoke keeps rising
    off the logs so it reads as freshly doused, not forgotten. */
 [data-theme="light"] .campfire-glow,
@@ -744,6 +750,21 @@ a.card:hover {
   list-style: none;
 }
 
+.now-panel__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.now-panel__header span {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
 .now-panel a {
   color: var(--text);
   text-decoration: underline;
@@ -832,9 +853,12 @@ a.card:hover {
   cursor: zoom-out;
 }
 
+.lightbox-image-wrap {
+  position: absolute;
+  inset: 4vh 4vw;
+}
+
 .lightbox-image {
-  max-width: 92vw;
-  max-height: 92vh;
   object-fit: contain;
   border-radius: 8px;
 }

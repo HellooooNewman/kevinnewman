@@ -1,11 +1,13 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Hero from "@/components/Hero";
+import JsonLd from "@/components/JsonLd";
 import JobCard from "@/components/JobCard";
 import RevealInit from "@/components/RevealInit";
-import { intro, skills, jobs, education } from "@/data/resume";
+import { intro, skills, jobs, education, lastUpdated } from "@/data/resume";
 import { projects, type Project } from "@/data/projects";
+import { SITE_URL } from "@/lib/seo";
 
 // The home page keeps the site-wide preview cards from the layout; it only
 // needs to name its canonical address.
@@ -15,7 +17,12 @@ function ProjectCard({ p, large = false }: { p: Project; large?: boolean }) {
   return (
     <Link className="card" href={`/projects/${p.slug}/`}>
       <div className="card__media" style={{ aspectRatio: large ? "16 / 9" : "16 / 10" }}>
-        <img src={p.thumbnail} alt={p.title} loading="lazy" />
+        <Image
+          src={p.thumbnail}
+          alt=""
+          fill
+          sizes={large ? "(max-width: 820px) 100vw, 50vw" : "(max-width: 720px) 100vw, 33vw"}
+        />
         {p.badge && <span className="card-badge">{p.badge}</span>}
       </div>
       <h3 style={{ margin: "0 0 0.4rem", fontSize: large ? "1.3rem" : "1.1rem" }}>
@@ -32,9 +39,45 @@ export default function Home() {
   const featured = projects.filter((p) => p.promote);
   const spotlight = featured.slice(0, 2);
   const rest = featured.slice(2);
+  const personId = `${SITE_URL}/#kevin-newman`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": `${SITE_URL}/#profile-page`,
+        url: `${SITE_URL}/`,
+        name: "Kevin Newman · Full Stack Developer",
+        description: intro.body[0],
+        dateModified: "2026-09-01",
+        mainEntity: { "@id": personId },
+      },
+      {
+        "@type": "Person",
+        "@id": personId,
+        name: intro.name,
+        url: `${SITE_URL}/`,
+        image: `${SITE_URL}/assets/icons/logo-image.png`,
+        jobTitle: "Senior Software Engineer",
+        description: intro.body[0],
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "CA",
+        },
+        worksFor: {
+          "@type": "Organization",
+          name: "Sonar Software",
+          url: "https://sonar.software",
+        },
+        knowsAbout: skills.core,
+        sameAs: Object.values(intro.social),
+      },
+    ],
+  };
 
   return (
     <>
+      <JsonLd data={jsonLd} />
       <RevealInit />
       <Hero />
 
@@ -57,9 +100,10 @@ export default function Home() {
             ))}
           </div>
           <aside className="card now-panel" aria-label="What I'm up to now">
-            <h3 style={{ margin: "0 0 0.5rem", fontSize: "1rem" }}>
-              Right now
-            </h3>
+            <div className="now-panel__header">
+              <h3 style={{ margin: 0, fontSize: "1rem" }}>Right now</h3>
+              <span>Updated {lastUpdated}</span>
+            </div>
             <ul>
               {intro.now.map((item) => (
                 <li key={item.text}>
@@ -89,7 +133,11 @@ export default function Home() {
         </h2>
         <div className="timeline">
           {jobs.map((job) => (
-            <JobCard key={job.employer + job.period} job={job} />
+            <JobCard
+              key={job.employer + job.period}
+              job={job}
+              defaultOpen={job.employer === "Sonar Software"}
+            />
           ))}
         </div>
       </section>
