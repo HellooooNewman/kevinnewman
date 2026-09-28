@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import JsonLd from "@/components/JsonLd";
 import JobCard from "@/components/JobCard";
 import RevealInit from "@/components/RevealInit";
+import NowPreviewLink, { type NowPreview } from "@/components/NowPreviewLink";
 import { intro, skills, jobs, education } from "@/data/resume";
 import { projects, type Project } from "@/data/projects";
 import { SITE_URL } from "@/lib/seo";
@@ -12,6 +13,28 @@ import { SITE_URL } from "@/lib/seo";
 // The home page keeps the site-wide preview cards from the layout; it only
 // needs to name its canonical address.
 export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+function getNowPreview(href: string): NowPreview | undefined {
+  const project = projects.find((p) => href === `/projects/${p.slug}/`);
+  if (project) {
+    return {
+      title: project.title,
+      description: project.shortBody,
+      image: project.thumbnail,
+      label: `${project.workType} project · ${project.year}`,
+    };
+  }
+  const job = jobs.find((j) => href === `#job-${j.employer.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`);
+  if (job) {
+    return {
+      title: job.employer,
+      description: job.summary ?? job.points[0] ?? job.title,
+      image: job.logo,
+      label: `${job.employmentType} · ${job.period}`,
+      logo: true,
+    };
+  }
+}
 
 function ProjectCard({ p, large = false }: { p: Project; large?: boolean }) {
   return (
@@ -107,14 +130,9 @@ export default function Home() {
               {intro.now.map((item) => (
                 <li key={item.text}>
                   {item.href ? (
-                    // Hash links use a plain <a>: native fragment navigation
-                    // fires hashchange (which opens the job card) and honors
-                    // scroll-margin-top, unlike Next's client-side scrolling.
-                    item.href.startsWith("#") ? (
-                      <a href={item.href}>{item.text}</a>
-                    ) : (
-                      <Link href={item.href}>{item.text}</Link>
-                    )
+                    <NowPreviewLink href={item.href} preview={getNowPreview(item.href)}>
+                      {item.text}
+                    </NowPreviewLink>
                   ) : (
                     <span>{item.text}</span>
                   )}
