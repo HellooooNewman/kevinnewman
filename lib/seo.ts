@@ -6,8 +6,8 @@ export const SITE_URL = "https://www.kevinnewman.ca";
 
 const SITE_NAME = "Kevin Newman";
 const DEFAULT_IMAGE = {
-  url: "/assets/icons/logo-image.png",
-  alt: "Kevin Newman logo",
+  url: "/assets/social/kevin-newman-og.jpg",
+  alt: "A starry mountain landscape with a glowing campsite and geometric constellations",
 };
 
 /**
