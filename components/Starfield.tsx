@@ -603,9 +603,9 @@ export default function Starfield({
         } else {
           ctx.beginPath();
           ctx.arc(mx, my, moonR, 0, Math.PI * 2);
-          ctx.fillStyle = light ? "#ffd82f" : "#d8deef";
-          ctx.shadowColor = light ? "#ffd82f" : "#8fb0ff";
-          ctx.shadowBlur = 40;
+          ctx.fillStyle = light ? "#fffdf5" : "#d8deef";
+          ctx.shadowColor = light ? "rgba(255, 253, 245, 0.45)" : "#8fb0ff";
+          ctx.shadowBlur = light ? 28 : 40;
           ctx.fill();
           if (!light) {
             // Craters - the sun doesn't have these
