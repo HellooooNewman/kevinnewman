@@ -1,10 +1,16 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element */
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import type { Job } from "@/data/resume";
 
-export default function JobCard({ job }: { job: Job }) {
+export default function JobCard({
+  job,
+  defaultOpen = false,
+}: {
+  job: Job;
+  defaultOpen?: boolean;
+}) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   // Anchor id so other parts of the site (e.g. the "Right now" panel) can
   // deep-link to a job: #job-sonar-software opens and scrolls to this card.
@@ -58,14 +64,18 @@ export default function JobCard({ job }: { job: Job }) {
   }, []);
 
   return (
-    <details className="card job-card" id={anchorId} ref={detailsRef}>
+    <details
+      className="card job-card"
+      id={anchorId}
+      ref={detailsRef}
+      open={defaultOpen}
+    >
       <summary>
         <span className="job-card__id">
           <span className="job-card__logo">
-            <img
+            <Image
               src={job.logo}
               alt=""
-              loading="lazy"
               width={40}
               height={40}
               style={{

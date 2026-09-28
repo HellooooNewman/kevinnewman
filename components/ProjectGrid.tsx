@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 
@@ -16,19 +16,16 @@ export default function ProjectGrid({
       {items.map((p) => (
         <Link className="card" href={`/projects/${p.slug}/`} key={p.id}>
           <div
+            className="card__media"
             style={{
-              borderRadius: 8,
-              overflow: "hidden",
-              marginBottom: "1rem",
               aspectRatio: "16 / 10",
-              background: "var(--bg-raised)",
             }}
           >
-            <img
+            <Image
               src={p.thumbnail}
-              alt={p.title}
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              alt=""
+              fill
+              sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
             />
           </div>
           <div

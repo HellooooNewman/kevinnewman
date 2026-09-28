@@ -90,7 +90,7 @@ export default function Hero() {
               domain={intro.emailDomain}
               className="btn btn--primary"
             >
-              Email me
+              Let&apos;s work together
             </EmailButton>
             <a
               className="btn"

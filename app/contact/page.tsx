@@ -56,7 +56,7 @@ export default function ContactPage() {
               domain={intro.emailDomain}
               className="btn btn--primary"
             >
-              Email me
+              Let&apos;s work together
             </EmailButton>
           </p>
           <SocialLinks />

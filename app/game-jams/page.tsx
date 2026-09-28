@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import { pageMetadata } from "@/lib/seo";
+import Image from "next/image";
 import Link from "next/link";
 import { games } from "@/data/projects";
 import { intro } from "@/data/resume";
@@ -41,16 +41,17 @@ export default function GameJamsPage() {
                 style={{
                   borderRadius: 8,
                   overflow: "hidden",
+                  position: "relative",
                   marginBottom: "1rem",
                   aspectRatio: "315 / 250",
                   background: "var(--bg-raised)",
                 }}
               >
-                <img
+                <Image
                   src={g.coverUrl}
-                  alt={g.title}
-                  loading="lazy"
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  alt=""
+                  fill
+                  sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
                 />
               </div>
               <div

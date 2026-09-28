@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 interface GalleryImage {
   url: string;
@@ -99,9 +99,13 @@ export default function GalleryLightbox({
     <>
       {variant === "hero" ? (
         <div className="gallery-item gallery-item--hero">
-          <img
+          <Image
             src={images[0].url}
             alt={images[0].alt}
+            width={1600}
+            height={1000}
+            sizes="(max-width: 900px) 100vw, 860px"
+            preload
             tabIndex={0}
             role="button"
             aria-label={`Enlarge image: ${images[0].alt}`}
@@ -122,10 +126,12 @@ export default function GalleryLightbox({
         <div className="grid" style={{ gap: "0.85rem" }}>
           {images.map((g, i) => (
             <div className="gallery-item" key={g.url}>
-              <img
+              <Image
                 src={g.url}
                 alt={g.alt}
-                loading="lazy"
+                width={1200}
+                height={750}
+                sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
                 tabIndex={0}
                 role="button"
                 aria-label={`Enlarge image: ${g.alt}`}
@@ -191,11 +197,15 @@ export default function GalleryLightbox({
               </button>
             </>
           )}
-          <img
-            className="lightbox-image"
-            src={images[index].url}
-            alt={images[index].alt}
-          />
+          <div className="lightbox-image-wrap">
+            <Image
+              className="lightbox-image"
+              src={images[index].url}
+              alt={images[index].alt}
+              fill
+              sizes="92vw"
+            />
+          </div>
         </div>
       )}
     </>
