@@ -417,6 +417,17 @@ a.card:hover {
   z-index: 0;
 }
 
+[data-theme="light"] .hero-mountains {
+  /* Daylight haze softens the valley without the footer's dark shoreline. */
+  --alpine-foreground: #a6bdd7;
+  mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+}
+
+[data-theme="light"] .hero-sky {
+  /* Let the page color show through behind the fading foothills. */
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 80px), transparent);
+}
+
 @media (max-width: 700px) {
   .hero-mountains {
     /* Crop to the snowy right-hand peaks, without squeezing the range. */
@@ -490,6 +501,26 @@ a.card:hover {
   overflow: hidden;
   border-top: 1px solid var(--border);
   margin-top: 4rem;
+}
+
+[data-theme="light"] .site-footer {
+  border-top: none;
+}
+
+[data-theme="light"] .site-footer::before {
+  /* Blend the page into the sky while keeping the landscape edges crisp. */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 120px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, var(--bg), transparent);
+}
+
+/* Full-height sky pages already flow directly into the footer sky. */
+main:has([data-sky-page]) + .site-footer::before {
+  content: none;
 }
 
 .site-footer__inner {
