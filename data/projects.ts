@@ -181,7 +181,7 @@ export const projects: Project[] = [
     thumbnail: "/assets/projects/pandemonium.jpg",
     mainImg: "/assets/projects/pandemonium.jpg",
     projectType: ["Game", "3D"],
-    projectUrl: "https://github.com/Boxingbruin/Pandemonium",
+    projectUrl: "https://helloooonewman.itch.io/pandemonium",
     repoUrl: "https://github.com/Boxingbruin/Pandemonium",
     workType: "Personal",
     promote: true,
