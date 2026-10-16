@@ -11,6 +11,8 @@ export const intro = {
     "I'm a full stack developer with 10+ years of experience shipping software, from payment platforms and customer portals to 3D marketing apps and hybrid mobile products.",
     "Away from work I'm a game jam regular, always tinkering on a side project (and playing too much Age of Empires II: DE).",
   ],
+  // Phrases in `body` that render as links on the home page; body stays plain text.
+  bodyLinks: [{ text: "Age of Empires II: DE", href: "/aoe2/" }],
   // Kept as split parts so contact components can format the address for
   // screen and print without duplicating it in the content data.
   emailUser: "kevin",
