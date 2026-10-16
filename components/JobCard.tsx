@@ -81,6 +81,7 @@ export default function JobCard({
               alt=""
               width={40}
               height={40}
+              unoptimized={job.logo.endsWith(".svg")}
               className={styles.logoImage}
             />
           </span>
