@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useMountTheme } from "@/lib/client-state";
 import styles from "./TweetEmbeds.module.css";
 
 declare global {
@@ -15,12 +16,8 @@ const WIDGETS_SRC = "https://platform.twitter.com/widgets.js";
 
 export default function TweetEmbeds({ urls }: { urls: string[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [theme, setTheme] = useState<"dark" | "light" | null>(null);
-
-  useEffect(() => {
-    const current = document.documentElement.getAttribute("data-theme");
-    setTheme(current === "light" ? "light" : "dark");
-  }, []);
+  // X renders each embed once in the theme it's given, so read it at mount
+  const theme = useMountTheme();
 
   useEffect(() => {
     if (!theme) return;

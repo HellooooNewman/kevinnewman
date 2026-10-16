@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useIsClient } from "@/lib/client-state";
 import { cx } from "@/lib/cx";
 import styles from "./PrintContact.module.css";
 
@@ -17,11 +17,7 @@ export default function PrintContact({
   domain: string;
   links: string[];
 }) {
-  const [email, setEmail] = useState<string>();
-
-  useEffect(() => {
-    setEmail(user + "@" + domain);
-  }, [user, domain]);
+  const email = useIsClient() ? user + "@" + domain : undefined;
 
   return (
     <p className={cx("print-only", styles.printContact)}>

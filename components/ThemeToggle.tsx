@@ -1,21 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useTheme } from "@/lib/client-state";
 import { cx } from "@/lib/cx";
 import button from "@/styles/button.module.css";
 import styles from "./ThemeToggle.module.css";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const theme = useTheme();
 
-  useEffect(() => {
-    const current = document.documentElement.getAttribute("data-theme");
-    if (current === "light") setTheme("light");
-  }, []);
-
+  // useTheme re-renders from the attribute change itself
   const toggle = () => {
     const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
   };
