@@ -197,15 +197,26 @@ export default function GalleryLightbox({
               </button>
             </>
           )}
-          <div className="lightbox-image-wrap">
-            <Image
-              className="lightbox-image"
-              src={images[index].url}
-              alt={images[index].alt}
-              fill
-              sizes="92vw"
-            />
-          </div>
+          <figure className="lightbox-figure">
+            <div className="lightbox-image-wrap">
+              <Image
+                className="lightbox-image"
+                src={images[index].url}
+                alt={images[index].alt}
+                fill
+                sizes="92vw"
+              />
+            </div>
+            {/* Clicks here select caption text instead of closing the viewer */}
+            <figcaption className="lightbox-caption" onClick={(e) => e.stopPropagation()}>
+              {images[index].alt}
+              {images.length > 1 && (
+                <span className="lightbox-count">
+                  {index + 1} / {images.length}
+                </span>
+              )}
+            </figcaption>
+          </figure>
         </div>
       )}
     </>
