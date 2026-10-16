@@ -175,6 +175,69 @@ export const projects: Project[] = [
     archived: false,
   },
   {
+    id: "18",
+    slug: "buzzword-bingo",
+    badge: "Play it",
+    title: "Buzzword Bingo",
+    thumbnail: "/assets/projects/bingo.jpg",
+    mainImg: "/assets/projects/gallery/bingo0.jpeg",
+    projectType: ["Web", "Game"],
+    projectUrl: "https://bingo.kevinnewman.ca/",
+    workType: "Personal",
+    promote: true,
+    year: "2024–2026",
+    roles: ["Designer", "Developer"],
+    shortBody:
+      "Multiplayer bingo for video calls: everyone in the room gets a card of meeting buzzwords, and an optional speech listener marks tiles as they're actually said.",
+    body: [
+      "Buzzword Bingo started as a way to make long remote calls more fun with friends and coworkers. Players join a room, get a card dealt from a shared phrase deck, and race to five in a row while the call carries on. The joke is on the jargon, not the people using it: I say \"let's circle back\" as much as anyone.",
+      "It's a React + Redux front end built with Vite, talking to an Express and Socket.IO back end on Prisma and Postgres. Room state lives in Redis behind the Socket.IO Redis adapter, so it runs across multiple backend instances and survives restarts. The server deals every card and times every win, so the leaderboard can't be padded by reshuffling or playing alone.",
+      "When someone marks a phrase, everyone else in the room sees it called: they can back it up, doubt it, or mark their own copy in one tap. The optional listener hears the call through the browser's share picker, transcribes it with Whisper, and suggests tiles as the phrases come up. Audio is held in memory for a few seconds and never stored, and transcription can run entirely on your own machine.",
+      "A pop-out board uses the Document Picture-in-Picture API to float your card in a small always-on-top window, so you can keep playing while the call has focus.",
+    ],
+    features: [
+      "Real-time rooms with a live roster, mini-boards of everyone's progress, chat, and broadcast wins",
+      "\"Call it\": see the moment someone marks a phrase, back them up 👍 or doubt it 🤨, and mark your own copy in one tap",
+      "Phrase decks, with custom phrases added from inside a room",
+      "Speech listener that suggests or auto-marks tiles, transcribed by Whisper on the server or locally",
+      "Always-on-top pop-out board via Document Picture-in-Picture",
+      "Monthly leaderboard with server-timed fastest wins, plus phrase stats: heard rate, buzzword of the month, and phrases that never get said",
+      "Save your card as an image, six color schemes, dark mode, and a layout that works down to phone width",
+      "Vitest unit tests, two-player Playwright end-to-end tests, and Docker images published to GHCR from CI",
+    ],
+    gallery: [
+      {
+        url: "/assets/projects/gallery/bingo0.jpeg",
+        alt: "Buzzword Bingo room mid-game: a card with marked tiles, four players with live mini-boards of their progress, and the room chat",
+      },
+      {
+        url: "/assets/projects/gallery/bingo1.jpeg",
+        alt: "Landing page with a fresh card and the join panel: player name, phrase deck picker, and an optional room code",
+      },
+      {
+        url: "/assets/projects/gallery/bingo2.jpeg",
+        alt: "A \"Call it\" toast: another player heard \"Democratization\", with one player backing it up, one doubting it, and a Mark mine button, while the tile shows a heard? hint",
+      },
+      {
+        url: "/assets/projects/gallery/bingo3.jpeg",
+        alt: "Bingo win dialog after a 14-minute card, with confetti and options for a new round for everyone or a new card",
+      },
+      {
+        url: "/assets/projects/gallery/bingo4.jpeg",
+        alt: "Stats drawer showing this month's leaderboard, ranking players by wins with each one's fastest bingo",
+      },
+      {
+        url: "/assets/projects/gallery/bingo5.jpeg",
+        alt: "Phrase stats with \"Can you hear me?\" as buzzword of the month, and each phrase's heard rate across finished cards",
+      },
+      {
+        url: "/assets/projects/gallery/bingo6.jpeg",
+        alt: "Dark mode in yellow and purple color schemes, on desktop and at phone width",
+      },
+    ],
+    archived: false,
+  },
+  {
     id: "12",
     slug: "pandemonium",
     title: "Pandemonium",
