@@ -1,0 +1,19 @@
+.intro {
+  max-width: 680px;
+  margin-bottom: 2rem;
+}
+
+.introTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.introText {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+/* ↗ after titles that leave the site */
+.external {
+  color: var(--text-faint);
+}

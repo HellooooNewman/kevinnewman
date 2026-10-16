@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { cx } from "@/lib/cx";
+import button from "@/styles/button.module.css";
 
 // A real anchor keeps native mailto behavior and works before hydration.
 // Clicking also copies the address, so the action still produces a useful
@@ -8,7 +10,7 @@ import { useState } from "react";
 export default function EmailButton({
   user,
   domain,
-  className = "btn btn--primary",
+  className = cx(button.btn, button.primary),
   children,
 }: {
   user: string;

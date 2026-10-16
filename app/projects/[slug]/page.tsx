@@ -6,6 +6,12 @@ import GalleryLightbox from "@/components/GalleryLightbox";
 import JsonLd from "@/components/JsonLd";
 import TweetEmbeds from "@/components/TweetEmbeds";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
+import { cx } from "@/lib/cx";
+import button from "@/styles/button.module.css";
+import card from "@/styles/card.module.css";
+import chip from "@/styles/chip.module.css";
+import layout from "@/styles/layout.module.css";
+import styles from "./page.module.css";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -66,41 +72,23 @@ export default async function ProjectDetail({
   };
 
   return (
-    <article className="section container" style={{ maxWidth: 860 }}>
+    <article className={cx(layout.section, layout.container, styles.article)}>
       <JsonLd data={jsonLd} />
-      <Link
-        href="/projects/"
-        style={{ fontSize: "0.9rem", color: "var(--text-faint)" }}
-      >
+      <Link href="/projects/" className={styles.back}>
         ← All projects
       </Link>
-      <h1
-        style={{
-          margin: "0.75rem 0 0.5rem",
-          fontSize: "clamp(1.8rem, 1.4rem + 2vw, 2.6rem)",
-          letterSpacing: "-0.02em",
-        }}
-      >
-        {project.title}
-      </h1>
+      <h1 className={styles.title}>{project.title}</h1>
 
-      <div
-        style={{
-          display: "flex",
-          gap: "0.4rem",
-          flexWrap: "wrap",
-          marginBottom: "1.5rem",
-        }}
-      >
-        <span className="chip chip--accent">{project.workType}</span>
+      <div className={cx(chip.row, styles.chips)}>
+        <span className={cx(chip.chip, chip.accent)}>{project.workType}</span>
         {project.projectType.map((t) => (
-          <span className="chip" key={t}>
+          <span className={chip.chip} key={t}>
             {t}
           </span>
         ))}
-        <span className="chip">{project.year}</span>
+        <span className={chip.chip}>{project.year}</span>
         {project.roles.map((r) => (
-          <span className="chip" key={r}>
+          <span className={chip.chip} key={r}>
             {r}
           </span>
         ))}
@@ -111,18 +99,18 @@ export default async function ProjectDetail({
         variant="hero"
       />
 
-      <h2 style={{ fontSize: "1.25rem" }}>Project Summary</h2>
+      <h2 className={styles.heading}>Project Summary</h2>
       {project.body.map((p) => (
-        <p key={p} style={{ color: "var(--text-dim)" }}>
+        <p key={p} className={styles.text}>
           {p}
         </p>
       ))}
 
       {(project.projectUrl || project.repoUrl) && (
-        <p style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap" }}>
+        <p className={styles.actions}>
           {project.projectUrl && (
             <a
-              className="btn btn--primary"
+              className={cx(button.btn, button.primary)}
               href={project.projectUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -132,7 +120,7 @@ export default async function ProjectDetail({
           )}
           {project.repoUrl && project.repoUrl !== project.projectUrl && (
             <a
-              className="btn"
+              className={button.btn}
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -145,10 +133,10 @@ export default async function ProjectDetail({
 
       {project.links && (
         <>
-          <h2 style={{ fontSize: "1.25rem" }}>Links</h2>
-          <ul style={{ color: "var(--text-dim)" }}>
+          <h2 className={styles.heading}>Links</h2>
+          <ul className={cx(styles.text, styles.links)}>
             {project.links.map((l) => (
-              <li key={l.url} style={{ marginBottom: "0.4rem" }}>
+              <li key={l.url}>
                 <a href={l.url} target="_blank" rel="noopener noreferrer">
                   {l.label} ↗
                 </a>
@@ -160,14 +148,9 @@ export default async function ProjectDetail({
       )}
 
       {project.demoCredentials && (
-        <div
-          className="card"
-          style={{ marginTop: "1.5rem", padding: "1.25rem" }}
-        >
-          <h2 style={{ margin: "0 0 0.5rem", fontSize: "1.1rem" }}>
-            Try the demo
-          </h2>
-          <p style={{ margin: "0 0 0.75rem", color: "var(--text-dim)" }}>
+        <div className={cx(card.card, styles.demo)}>
+          <h2 className={styles.demoTitle}>Try the demo</h2>
+          <p className={styles.demoNote}>
             <a
               href={project.demoCredentials.url}
               target="_blank"
@@ -177,14 +160,7 @@ export default async function ProjectDetail({
             </a>{" "}
             {project.demoCredentials.note}
           </p>
-          <p
-            style={{
-              margin: 0,
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.85rem",
-              color: "var(--text-faint)",
-            }}
-          >
+          <p className={styles.demoLogin}>
             {project.demoCredentials.email} / {project.demoCredentials.password}
           </p>
         </div>
@@ -192,25 +168,15 @@ export default async function ProjectDetail({
 
       {project.youtubeVideos && (
         <>
-          <h2 style={{ fontSize: "1.25rem", marginTop: "2rem" }}>Videos</h2>
+          <h2 className={cx(styles.heading, styles.spaced)}>Videos</h2>
           {project.youtubeVideos.map((v) => (
-            <div
-              key={v.id}
-              style={{
-                aspectRatio: "16 / 9",
-                borderRadius: "var(--radius)",
-                border: "1px solid var(--border)",
-                overflow: "hidden",
-                marginTop: "1rem",
-              }}
-            >
+            <div key={v.id} className={styles.youtube}>
               <iframe
                 src={`https://www.youtube-nocookie.com/embed/${v.id}`}
                 title={v.title}
                 loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                style={{ width: "100%", height: "100%", border: 0, display: "block" }}
               />
             </div>
           ))}
@@ -219,8 +185,8 @@ export default async function ProjectDetail({
 
       {project.features && (
         <>
-          <h2 style={{ fontSize: "1.25rem" }}>Features</h2>
-          <ul style={{ color: "var(--text-dim)" }}>
+          <h2 className={styles.heading}>Features</h2>
+          <ul className={styles.text}>
             {project.features.map((f) => (
               <li key={f}>{f}</li>
             ))}
@@ -231,16 +197,11 @@ export default async function ProjectDetail({
       {project.videos?.map((v) => (
         <video
           key={v}
+          className={styles.video}
           controls
           muted
           playsInline
           preload="metadata"
-          style={{
-            width: "100%",
-            borderRadius: "var(--radius)",
-            border: "1px solid var(--border)",
-            marginTop: "1rem",
-          }}
         >
           <source src={`${v}.webm`} type="video/webm" />
           <source src={`${v}.mp4`} type="video/mp4" />
@@ -250,14 +211,14 @@ export default async function ProjectDetail({
 
       {project.tweets && (
         <>
-          <h2 style={{ fontSize: "1.25rem", marginTop: "2rem" }}>Posts</h2>
+          <h2 className={cx(styles.heading, styles.spaced)}>Posts</h2>
           <TweetEmbeds urls={project.tweets} />
         </>
       )}
 
       {project.gallery.length > 0 && (
         <>
-          <h2 style={{ fontSize: "1.25rem", marginTop: "2rem" }}>Gallery</h2>
+          <h2 className={cx(styles.heading, styles.spaced)}>Gallery</h2>
           <GalleryLightbox images={project.gallery} />
         </>
       )}

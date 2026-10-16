@@ -1,0 +1,108 @@
+/* ─── Design tokens ───────────────────────────────────────────────────
+   Every color, size and font the site shares. Components read these via
+   var(); the theme toggle only swaps [data-theme] on <html>.
+
+   Breakpoints (media queries can't read custom properties):
+     400px   narrow phone nav
+     640px   phone
+     700px   hero mountains crop
+     820px   intro goes two-column
+     1000px  footer campsite crop */
+
+:root {
+  /* Brand */
+  --brand-blue: #2e50a2;
+  --brand-blue-bright: #5b7fd4;
+  --brand-blue-glow: #7c9ff0;
+  --moon-yellow: #ffd82f;
+
+  /* Dark theme (default; it's a night sky) */
+  --bg: #0a0e1a;
+  --bg-raised: #111627;
+  --bg-card: #141a2e;
+  --border: #232c4a;
+  --border-bright: #3a4770;
+  --text: #e8ecf6;
+  --text-dim: #9aa5c4;
+  --text-faint: #7a83a3;
+  --link: #8fb0ff;
+
+  /* Shared alpine palette for the header horizon and footer landscape. */
+  --alpine-distant: #305181;
+  --alpine-peak: #294b80;
+  --alpine-ridge: #132c4c;
+  --alpine-shadow: #10203b;
+  --alpine-snow: #94b8f4;
+  --alpine-facet: #486994;
+  --alpine-mist: #8eafd8;
+  --alpine-water-light: #416ba6;
+  --alpine-water: #122744;
+  --alpine-shore: #0b2036;
+  --alpine-foreground: #060f1a;
+  --alpine-rock: #101f31;
+
+  /* Light: a soft daytime gradient - a gentle blue overhead fading to haze
+     at the horizon - shared by every sky section so the white clouds and
+     pale mountains have something to stand against. Fixed attachment sizes
+     the gradient to the viewport, so stacked skies (the contact page
+     flowing into the footer) read as one continuous sky. */
+  --sky-day: linear-gradient(180deg, #cddef7 0%, #e6eefb 52%, #f7f9fd 100%)
+    fixed;
+
+  --radius: 12px;
+  --container: 1200px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+    monospace;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  /* The pale dark-mode glow is too faint on white for chip text, the
+     active nav link and the focus ring */
+  --brand-blue-glow: #3168e7;
+  --bg: #f7f8fc;
+  --bg-raised: #ffffff;
+  --bg-card: #ffffff;
+  --border: #dde3f0;
+  --border-bright: #c3cce2;
+  --text: #1a2138;
+  --text-dim: #4a5578;
+  --text-faint: #657094;
+  --link: #2e50a2;
+  --alpine-distant: #a6bdd7;
+  --alpine-peak: #8fa9c8;
+  --alpine-ridge: #6685a6;
+  --alpine-shadow: #718cae;
+  --alpine-snow: #edf5ff;
+  --alpine-facet: #c4d6e8;
+  --alpine-mist: #e8f2ff;
+  --alpine-water-light: #a7cce1;
+  --alpine-water: #648ba9;
+  --alpine-shore: #4c7189;
+  --alpine-foreground: #2e4b5d;
+  --alpine-rock: #3b5c70;
+  color-scheme: light;
+}
+
+@media print {
+  /* Neutralize the theme: every component colors itself with these vars,
+     so overriding them here cascades everywhere regardless of the
+     visitor's dark/light toggle. */
+  :root,
+  :root[data-theme] {
+    --bg: #fff;
+    --bg-raised: #fff;
+    --bg-card: #fff;
+    --border: #ddd;
+    --border-bright: #bbb;
+    --text: #000;
+    --text-dim: #333;
+    --text-faint: #555;
+    --link: #000;
+    --brand-blue-glow: #333;
+    color-scheme: light;
+  }
+}

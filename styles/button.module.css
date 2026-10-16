@@ -1,0 +1,35 @@
+/* ─── Buttons: pill links and <button>s ─── */
+
+@layer primitives {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.35rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-bright);
+    background: var(--bg-raised);
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 600;
+    /* Opt out of the running-text link underline in the base layer */
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .btn:hover {
+    text-decoration: none;
+    border-color: var(--brand-blue-bright);
+  }
+
+  .primary {
+    background: var(--brand-blue);
+    border-color: var(--brand-blue);
+    color: #fff;
+  }
+
+  .primary:hover {
+    background: var(--brand-blue-bright);
+  }
+}

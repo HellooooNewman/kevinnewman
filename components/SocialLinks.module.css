@@ -1,0 +1,17 @@
+.links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-dim);
+  transition: color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--brand-blue-glow);
+  text-decoration: none;
+}

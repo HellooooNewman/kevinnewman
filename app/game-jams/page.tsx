@@ -3,6 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { games } from "@/data/projects";
 import { intro } from "@/data/resume";
+import { cx } from "@/lib/cx";
+import card from "@/styles/card.module.css";
+import chip from "@/styles/chip.module.css";
+import layout from "@/styles/layout.module.css";
+import styles from "./page.module.css";
 
 export const metadata = pageMetadata({
   title: "Game Jams",
@@ -13,14 +18,14 @@ export const metadata = pageMetadata({
 
 export default function GameJamsPage() {
   return (
-    <div className="section container">
-      <h1 className="section-title">Game Jams</h1>
+    <div className={cx(layout.section, layout.container)}>
+      <h1 className={layout.sectionTitle}>Game Jams</h1>
 
-      <div className="card" style={{ maxWidth: 680, marginBottom: "2rem" }}>
-        <h2 style={{ margin: "0 0 0.5rem", fontSize: "1.15rem" }}>
+      <div className={cx(card.card, styles.intro)}>
+        <h2 className={styles.introTitle}>
           What is a game jam?
         </h2>
-        <p style={{ margin: 0, color: "var(--text-dim)" }}>
+        <p className={styles.introText}>
           A game jam is a hackathon for video games: a gathering of people to
           plan, design, and build one or more games in a short span of time,
           usually 24–72 hours. I try to join a few every year; you can find
@@ -32,17 +37,12 @@ export default function GameJamsPage() {
         </p>
       </div>
 
-      <div className="grid">
+      <div className={layout.grid}>
         {games.filter((g) => !g.hidden).map((g) => {
           const isLocal = g.url.startsWith("/");
           const body = (
             <>
-              <div
-                className="card__media"
-                style={{
-                  aspectRatio: "16 / 10",
-                }}
-              >
+              <div className={card.media}>
                 <Image
                   src={g.coverUrl}
                   alt=""
@@ -50,44 +50,35 @@ export default function GameJamsPage() {
                   sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
                 />
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  gap: "0.4rem",
-                  flexWrap: "wrap",
-                  marginBottom: "0.6rem",
-                }}
-              >
-                <span className="chip chip--accent">{g.year}</span>
+              <div className={chip.row}>
+                <span className={cx(chip.chip, chip.accent)}>{g.year}</span>
                 {g.platforms.map((p) => (
-                  <span className="chip" key={p}>
+                  <span className={chip.chip} key={p}>
                     {p}
                   </span>
                 ))}
-                <span className="chip">{g.genre}</span>
+                <span className={chip.chip}>{g.genre}</span>
               </div>
-              <h3 style={{ margin: "0 0 0.4rem", fontSize: "1.1rem" }}>
+              <h3 className={card.title}>
                 {g.title}
                 {!isLocal && (
                   <>
                     {" "}
-                    <span style={{ color: "var(--text-faint)" }}>↗</span>
+                    <span className={styles.external}>↗</span>
                   </>
                 )}
               </h3>
-              <p style={{ margin: 0, color: "var(--text-dim)", fontSize: "0.95rem" }}>
-                {g.description}
-              </p>
+              <p className={card.summary}>{g.description}</p>
             </>
           );
 
           return isLocal ? (
-            <Link className="card" key={g.id} href={g.url}>
+            <Link className={card.card} key={g.id} href={g.url}>
               {body}
             </Link>
           ) : (
             <a
-              className="card"
+              className={card.card}
               key={g.id}
               href={g.url}
               target="_blank"

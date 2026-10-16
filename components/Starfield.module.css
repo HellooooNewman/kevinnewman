@@ -1,0 +1,17 @@
+/* Site-wide backdrop behind everything */
+.ambient {
+  position: fixed;
+  inset: 0;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Fills its positioned parent (hero, contact page, footer) */
+.layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  user-select: none;
+}

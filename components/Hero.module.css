@@ -1,0 +1,115 @@
+/* Wrapper so the mountains can hang below the section's clipped edge */
+.hero {
+  position: relative;
+}
+
+/* Dark: a faint blue glow at the top of the hero's night sky. */
+.sky {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% -20%,
+    rgba(46, 80, 162, 0.28),
+    transparent 60%
+  );
+}
+
+[data-theme="light"] .sky {
+  background: var(--sky-day);
+  /* Let the page color show through behind the fading foothills. */
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 80px), transparent);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 4.5rem;
+  padding-bottom: 5.5rem;
+  pointer-events: none; /* let the starfield catch pointer moves… */
+}
+
+.content {
+  pointer-events: auto; /* …but keep the copy and links clickable */
+  max-width: 680px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  color: var(--brand-blue-bright);
+}
+
+.name {
+  margin: 0;
+  font-size: clamp(2.2rem, 1.5rem + 4vw, 3.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.tagline {
+  margin: 0.75rem 0 0;
+  font-size: clamp(1.1rem, 1rem + 1vw, 1.45rem);
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.headline {
+  margin: 1rem 0 0;
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  max-width: 520px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  /* Shorter, so the content above the fold is yours, not padding
+     (bottom padding still keeps the stats clear of the mountain peaks) */
+  .inner {
+    min-height: 0;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Hero → resume header: no sky, just name / title / contact. */
+@media print {
+  .sky {
+    background: none !important;
+  }
+
+  .inner {
+    min-height: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .name {
+    font-size: 20pt;
+  }
+
+  .tagline,
+  .headline {
+    margin: 0.15rem 0 0;
+    font-size: 1rem;
+    max-width: none;
+  }
+}

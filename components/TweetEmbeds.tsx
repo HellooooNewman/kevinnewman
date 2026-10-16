@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import styles from "./TweetEmbeds.module.css";
 
 declare global {
   interface Window {
@@ -44,12 +45,7 @@ export default function TweetEmbeds({ urls }: { urls: string[] }) {
   return (
     <div
       ref={containerRef}
-      style={{
-        display: "flex",
-        gap: "1rem",
-        flexWrap: "wrap",
-        justifyContent: "center",
-      }}
+      className={styles.tweets}
     >
       {urls.map((url) => (
         <blockquote

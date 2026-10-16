@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
+import { cx } from "@/lib/cx";
+import card from "@/styles/card.module.css";
+import chip from "@/styles/chip.module.css";
+import layout from "@/styles/layout.module.css";
 
 export default function ProjectGrid({
   items,
@@ -12,15 +16,10 @@ export default function ProjectGrid({
 }) {
   const Heading = headingLevel === 3 ? "h3" : "h2";
   return (
-    <div className="grid">
+    <div className={layout.grid}>
       {items.map((p) => (
-        <Link className="card" href={`/projects/${p.slug}/`} key={p.id}>
-          <div
-            className="card__media"
-            style={{
-              aspectRatio: "16 / 10",
-            }}
-          >
+        <Link className={card.card} href={`/projects/${p.slug}/`} key={p.id}>
+          <div className={card.media}>
             <Image
               src={p.thumbnail}
               alt=""
@@ -28,26 +27,17 @@ export default function ProjectGrid({
               sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
             />
           </div>
-          <div
-            style={{
-              display: "flex",
-              gap: "0.4rem",
-              flexWrap: "wrap",
-              marginBottom: "0.6rem",
-            }}
-          >
-            <span className="chip chip--accent">{p.workType}</span>
+          <div className={chip.row}>
+            <span className={cx(chip.chip, chip.accent)}>{p.workType}</span>
             {p.projectType.map((t) => (
-              <span className="chip" key={t}>
+              <span className={chip.chip} key={t}>
                 {t}
               </span>
             ))}
-            <span className="chip">{p.year}</span>
+            <span className={chip.chip}>{p.year}</span>
           </div>
-          <Heading style={{ margin: "0 0 0.4rem", fontSize: "1.1rem" }}>{p.title}</Heading>
-          <p style={{ margin: 0, color: "var(--text-dim)", fontSize: "0.95rem" }}>
-            {p.shortBody}
-          </p>
+          <Heading className={card.title}>{p.title}</Heading>
+          <p className={card.summary}>{p.shortBody}</p>
         </Link>
       ))}
     </div>

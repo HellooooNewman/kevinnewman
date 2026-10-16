@@ -1,0 +1,46 @@
+/* ─── Chips: small pill labels for tags, years and skills ─── */
+
+@layer primitives {
+  /* Size comes from --chip-pad / --chip-size so a container (e.g. the
+     skills cloud) can resize every chip inside it. */
+  .chip {
+    display: inline-block;
+    padding: var(--chip-pad, 0.15rem 0.65rem);
+    border-radius: 999px;
+    border: 1px solid var(--border-bright);
+    color: var(--text-dim);
+    font-size: var(--chip-size, 0.78rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .accent {
+    border-color: var(--brand-blue-bright);
+    color: var(--brand-blue-glow);
+  }
+
+  /* A wrapping line of chips under a card's media */
+  .row {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+  }
+
+  /* Skills: chips become comma-separated text, like the old inline list */
+  @media print {
+    .chip {
+      display: inline;
+      padding: 0;
+      border: none;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      color: var(--text-dim) !important;
+    }
+
+    .chip:not(:last-child)::after {
+      content: ", ";
+    }
+  }
+}

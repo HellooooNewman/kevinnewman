@@ -1,0 +1,95 @@
+/* ─── Layout primitives: page width, section rhythm, headings, grids ─── */
+
+@layer primitives {
+  .container {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  .section {
+    padding-block: 2.75rem;
+  }
+
+  .sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.75rem;
+  }
+
+  .sectionTitle::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border-bright);
+  }
+
+  /* A "View all →" link riding at the end of a section title */
+  .viewAll {
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Fluid card grid; fixes the old mobile clipping */
+  .grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  }
+
+  @media (max-width: 640px) {
+    /* Desktop-scale whitespace stretches a phone page out; tighten it. */
+    .section {
+      padding-block: 2rem;
+    }
+
+    .sectionTitle {
+      margin-bottom: 1.25rem;
+    }
+
+    .grid {
+      gap: 1rem;
+    }
+  }
+
+  @media print {
+    .container {
+      max-width: none;
+      padding: 0;
+    }
+
+    .section {
+      padding-block: 0.5rem;
+    }
+
+    .sectionTitle {
+      font-size: 1.25rem;
+      margin: 0 0 0.6rem;
+      break-after: avoid;
+    }
+
+    .sectionTitle::after {
+      background: #bbb;
+    }
+
+    .viewAll {
+      display: none !important;
+    }
+
+    .grid {
+      display: block;
+    }
+
+    /* Education: one compact line per school */
+    .grid > * {
+      break-inside: avoid;
+      margin-bottom: 0.4rem;
+    }
+  }
+}

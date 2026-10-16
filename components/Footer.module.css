@@ -1,0 +1,79 @@
+.footer {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+}
+
+[data-theme="light"] .footer {
+  border-top: none;
+  background: var(--sky-day);
+}
+
+[data-theme="light"] .footer::before {
+  /* Blend the page into the sky while keeping the landscape edges crisp. */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 120px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, var(--bg), transparent);
+}
+
+/* A page that declares its own full-height sky merges seamlessly into
+   the footer's: no divider between two identical night skies. */
+main:has([data-sky-page]) + .footer {
+  border-top: none;
+  margin-top: 0;
+}
+
+main:has([data-sky-page]) + .footer::before {
+  content: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  /* Keep the farewell in open sky above the left mountain range. */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: max(600px, 41.667vw);
+  padding-top: clamp(4rem, 6.5vw, 9rem);
+  padding-bottom: 25rem;
+}
+
+.farewell {
+  pointer-events: auto;
+  display: inline-block;
+}
+
+.thanks {
+  margin: 0;
+  font-weight: 700;
+}
+
+.meta {
+  margin: 0.35rem 0 0;
+  color: var(--text-faint);
+  font-size: 0.82rem;
+}
+
+.social {
+  margin-top: 1rem;
+}
+
+@media (max-width: 640px) {
+  /* On a phone the campsite scene is bottom-anchored with empty sky above
+     it, so the text can sit lower without touching the tent */
+  .footer {
+    margin-top: 2rem;
+  }
+
+  .inner {
+    padding-top: 2rem;
+    padding-bottom: 13rem;
+  }
+}

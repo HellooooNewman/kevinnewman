@@ -1,4 +1,5 @@
 import { LAKE_SURFACE_PATH } from "@/lib/alpine-scene";
+import styles from "./AlpineLandscape.module.css";
 
 // Deterministic vector detail keeps the server render and SVG export identical.
 const scatter = (index: number, seed: number) => {
@@ -107,7 +108,7 @@ export default function AlpineLandscape() {
 
       {/* The sky controller updates these SVG strokes; shores and trees
           paint over them so reflected light cannot cross onto land. */}
-      <g data-star-reflections="" clipPath="url(#alpine-water-clip)" fill="none" stroke="#c5dbff" strokeLinecap="round">
+      <g className={styles.starReflections} data-star-reflections="" clipPath="url(#alpine-water-clip)" fill="none" stroke="#c5dbff" strokeLinecap="round">
         {Array.from({ length: 6 }, (_, i) => (
           <g key={i} data-water-glint="" opacity="0">
             <path strokeWidth="2.8" opacity="0.15" />

@@ -1,0 +1,203 @@
+/* A .card primitive rendered as <details>/<summary> */
+.jobCard {
+  /* keep deep-linked cards (#job-…) clear of the sticky nav */
+  scroll-margin-top: 5.5rem;
+}
+
+.jobCard:hover {
+  border-color: var(--border-bright);
+}
+
+.jobCard > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  cursor: pointer;
+  list-style: none;
+}
+
+.jobCard > summary::-webkit-details-marker {
+  display: none;
+}
+
+.jobCard > summary::after {
+  content: "+";
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-faint);
+  order: 3;
+}
+
+.jobCard[open] > summary::after {
+  content: "−";
+}
+
+.id {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.logo {
+  flex-shrink: 0;
+  display: inline-flex;
+  border-radius: 8px;
+}
+
+.logoImage {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px;
+}
+
+.employer {
+  font-size: 1.05rem;
+}
+
+.role {
+  display: block;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.meta {
+  margin-left: auto;
+  text-align: right;
+  line-height: 1.45;
+}
+
+.period {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.location {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+}
+
+.body {
+  padding-top: 1rem;
+}
+
+.summary {
+  margin: 0 0 1rem;
+  color: var(--text-dim);
+}
+
+.sectionHeading {
+  margin: 1rem 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.points {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--text-dim);
+}
+
+.points li {
+  margin-bottom: 0.35rem;
+}
+
+.tech {
+  margin: 0.9rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-faint);
+}
+
+.employerLink {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+  /* On desktop the dates sit right-aligned beside the title; on a phone
+     that fight for width wraps badly. Drop the meta to its own row,
+     left-aligned under the employer text. */
+  .jobCard > summary {
+    row-gap: 0.35rem;
+  }
+
+  .id {
+    flex: 1;
+  }
+
+  .meta {
+    order: 4;
+    flex-basis: 100%;
+    margin-left: calc(40px + 0.85rem); /* logo width + id gap */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.75rem;
+    text-align: left;
+  }
+
+  .period,
+  .location {
+    display: inline;
+  }
+}
+
+/* Work: keep each job compact. Summary rows stay with their first lines;
+   long job bodies may break across pages. */
+@media print {
+  .jobCard > summary {
+    break-inside: avoid;
+    break-after: avoid;
+  }
+
+  /* doubled with [open] to out-rank the screen rules either way */
+  .jobCard > summary::after,
+  .jobCard[open] > summary::after {
+    content: none;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  /* Employer · title · type on one line */
+  .role {
+    display: inline;
+    margin-left: 0.4rem;
+  }
+
+  .role::before {
+    content: "· ";
+  }
+
+  .period,
+  .location {
+    display: inline;
+    font-size: 0.8rem;
+  }
+
+  .location::before {
+    content: " · ";
+  }
+
+  .body {
+    padding-top: 0.3rem;
+  }
+
+  .jobCard p {
+    margin: 0.2rem 0;
+  }
+
+  .jobCard li {
+    margin-bottom: 0.1rem;
+  }
+}

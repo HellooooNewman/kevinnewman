@@ -1,0 +1,12 @@
+.page {
+  text-align: center;
+  padding: 6rem 1.25rem;
+}
+
+.title {
+  letter-spacing: -0.02em;
+}
+
+.text {
+  color: var(--text-dim);
+}

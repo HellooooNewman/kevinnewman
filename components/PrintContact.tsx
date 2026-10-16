@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { cx } from "@/lib/cx";
+import styles from "./PrintContact.module.css";
 
-// Print-only contact line for the résumé header (see the @media print
-// block in globals.css). The email arrives as split parts and is only
+// Print-only contact line for the résumé header (print styles in
+// PrintContact.module.css). The email arrives as split parts and is only
 // assembled after mount — same anti-scraper barrier as EmailButton, so
 // the address never appears in the served HTML or the RSC payload.
 export default function PrintContact({
@@ -22,7 +24,7 @@ export default function PrintContact({
   }, [user, domain]);
 
   return (
-    <p className="print-only print-contact">
+    <p className={cx("print-only", styles.printContact)}>
       {[email, ...links].filter(Boolean).join(" · ")}
     </p>
   );
