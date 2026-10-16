@@ -14,6 +14,7 @@
 - [Home](https://www.kevinnewman.ca/): Intro, current work, work history, projects, skills, and education
 - [Projects](https://www.kevinnewman.ca/projects/): Full portfolio of personal, work, and school projects
 - [Game Jams](https://www.kevinnewman.ca/game-jams/): Game jam entries and released games
+- [Age of Empires II stats](https://www.kevinnewman.ca/aoe2/): Kevin's Age of Empires II: DE ladder ratings, rating history, most-played civs and maps, and recent matches, refreshed each deploy
 - [Contact](https://www.kevinnewman.ca/contact/): How to get in touch
 
 ## Featured projects

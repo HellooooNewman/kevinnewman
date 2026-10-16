@@ -10,7 +10,7 @@ import styles from "./NowPreviewLink.module.css";
 export interface NowPreview {
   title: string;
   description: string;
-  image: string;
+  image?: string;
   label: string;
   logo?: boolean;
 }
@@ -154,15 +154,17 @@ export default function NowPreviewLink({
             scheduleClose();
           }}
         >
-          <div className={cx(styles.image, preview.logo && styles.imageLogo)}>
-            <Image
-              src={preview.image}
-              alt=""
-              fill
-              sizes="320px"
-              unoptimized={preview.image.endsWith(".svg")}
-            />
-          </div>
+          {preview.image && (
+            <div className={cx(styles.image, preview.logo && styles.imageLogo)}>
+              <Image
+                src={preview.image}
+                alt=""
+                fill
+                sizes="320px"
+                unoptimized={preview.image.endsWith(".svg")}
+              />
+            </div>
+          )}
           <div className={styles.body}>
             <span className={styles.label}>{preview.label}</span>
             <strong className={styles.title}>{preview.title}</strong>

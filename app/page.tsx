@@ -9,6 +9,7 @@ import NowPreviewLink, { type NowPreview } from "@/components/NowPreviewLink";
 import { intro, skills, jobs, education } from "@/data/resume";
 import { projects, type Project } from "@/data/projects";
 import { SITE_URL } from "@/lib/seo";
+import { fmtDate, fmtInt, fmtPct, getAoe2Summary, type Aoe2Summary } from "@/lib/aoe2";
 import { cx } from "@/lib/cx";
 import card from "@/styles/card.module.css";
 import chip from "@/styles/chip.module.css";
@@ -19,7 +20,32 @@ import styles from "./page.module.css";
 // needs to name its canonical address.
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-function getNowPreview(href: string): NowPreview | undefined {
+// The AoE2 link preview fetches ladder stats at build time; this keeps the
+// page prerendered into the static export.
+export const dynamic = "force-static";
+
+function aoe2Preview(aoe2: Aoe2Summary | null): NowPreview {
+  const team = aoe2?.team;
+  if (!aoe2 || !team || team.rating === null) {
+    return {
+      title: "Age of Empires II: DE",
+      label: "Ladder stats",
+      description: "Ratings, rating history, most-played civs and maps, and recent matches.",
+    };
+  }
+  const parts = [`Team RM ${fmtInt(team.rating)}`];
+  if (team.peak !== null) parts[0] += ` (peak ${fmtInt(team.peak)})`;
+  parts.push(`${fmtInt(team.wins)}W–${fmtInt(team.losses)}L`);
+  if (team.rank !== null && team.total) parts.push(`top ${fmtPct(team.rank / team.total)} of ${fmtInt(team.total)}`);
+  return {
+    title: "Age of Empires II: DE",
+    label: `Ladder stats · as of ${fmtDate(aoe2.asOf)}`,
+    description: parts.join(" · "),
+  };
+}
+
+function getNowPreview(href: string, aoe2: Aoe2Summary | null): NowPreview | undefined {
+  if (href === "/aoe2/") return aoe2Preview(aoe2);
   const project = projects.find((p) => href === `/projects/${p.slug}/`);
   if (project) {
     return {
@@ -59,7 +85,24 @@ function ProjectCard({ p, large = false }: { p: Project; large?: boolean }) {
   );
 }
 
-export default function Home() {
+/** Renders `text` with each of `intro.bodyLinks` turned into a preview link. */
+function linkify(text: string, aoe2: Aoe2Summary | null): React.ReactNode {
+  const link = intro.bodyLinks.find((l) => text.includes(l.text));
+  if (!link) return text;
+  const i = text.indexOf(link.text);
+  return (
+    <>
+      {text.slice(0, i)}
+      <NowPreviewLink href={link.href} preview={getNowPreview(link.href, aoe2)}>
+        {link.text}
+      </NowPreviewLink>
+      {linkify(text.slice(i + link.text.length), aoe2)}
+    </>
+  );
+}
+
+export default async function Home() {
+  const aoe2 = await getAoe2Summary();
   const featured = projects.filter((p) => p.promote);
   const spotlight = featured.slice(0, 2);
   const rest = featured.slice(2);
@@ -118,7 +161,7 @@ export default function Home() {
                 // Only the first (professional) paragraph belongs on the résumé
                 className={cx(styles.introText, i > 0 && "no-print")}
               >
-                {p}
+                {linkify(p, aoe2)}
               </p>
             ))}
           </div>
@@ -133,7 +176,7 @@ export default function Home() {
               {intro.now.map((item) => (
                 <li key={item.text}>
                   {item.href ? (
-                    <NowPreviewLink href={item.href} preview={getNowPreview(item.href)}>
+                    <NowPreviewLink href={item.href} preview={getNowPreview(item.href, aoe2)}>
                       {item.text}
                     </NowPreviewLink>
                   ) : (
