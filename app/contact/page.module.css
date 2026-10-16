@@ -1,0 +1,47 @@
+/* This sky fills the viewport down to the footer (flex: 1 inside <main>),
+   whose own sky continues it seamlessly; see Footer.module.css. */
+.skyPage {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+[data-theme="light"] .skyPage {
+  background: var(--sky-day);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  pointer-events: none; /* let the starfield catch pointer moves… */
+}
+
+.panel {
+  max-width: 620px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  pointer-events: auto; /* …but keep the card itself interactive */
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-size: 1.8rem;
+  letter-spacing: -0.02em;
+}
+
+.text {
+  color: var(--text-dim);
+}
+
+.cta {
+  margin: 1.5rem 0;
+}
+
+.tip {
+  margin: 1.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-faint);
+}

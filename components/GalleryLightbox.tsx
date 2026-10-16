@@ -2,6 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { cx } from "@/lib/cx";
+import layout from "@/styles/layout.module.css";
+import styles from "./GalleryLightbox.module.css";
 
 interface GalleryImage {
   url: string;
@@ -98,7 +101,7 @@ export default function GalleryLightbox({
   return (
     <>
       {variant === "hero" ? (
-        <div className="gallery-item gallery-item--hero">
+        <div className={cx(styles.item, styles.itemHero)}>
           <Image
             src={images[0].url}
             alt={images[0].alt}
@@ -114,7 +117,7 @@ export default function GalleryLightbox({
           />
           <button
             type="button"
-            className="gallery-zoom-btn"
+            className={styles.zoomBtn}
             aria-label={`Enlarge image: ${images[0].alt}`}
             title="Enlarge image"
             onClick={() => setIndex(0)}
@@ -123,9 +126,9 @@ export default function GalleryLightbox({
           </button>
         </div>
       ) : (
-        <div className="grid" style={{ gap: "0.85rem" }}>
+        <div className={cx(layout.grid, styles.gallery)}>
           {images.map((g, i) => (
-            <div className="gallery-item" key={g.url}>
+            <div className={styles.item} key={g.url}>
               <Image
                 src={g.url}
                 alt={g.alt}
@@ -140,7 +143,7 @@ export default function GalleryLightbox({
               />
               <button
                 type="button"
-                className="gallery-zoom-btn"
+                className={styles.zoomBtn}
                 aria-label={`Enlarge image: ${g.alt}`}
                 title="Enlarge image"
                 onClick={() => setIndex(i)}
@@ -155,7 +158,7 @@ export default function GalleryLightbox({
       {index !== null && (
         <div
           ref={dialogRef}
-          className="lightbox"
+          className={styles.lightbox}
           role="dialog"
           aria-modal="true"
           aria-label={`Image viewer: ${images[index].alt}`}
@@ -164,7 +167,7 @@ export default function GalleryLightbox({
           <button
             ref={closeRef}
             type="button"
-            className="lightbox-close"
+            className={styles.close}
             aria-label="Close image"
             title="Close image"
             onClick={close}
@@ -175,7 +178,7 @@ export default function GalleryLightbox({
             <>
               <button
                 type="button"
-                className="lightbox-nav lightbox-nav--prev"
+                className={cx(styles.nav, styles.prev)}
                 aria-label="Previous image"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -186,7 +189,7 @@ export default function GalleryLightbox({
               </button>
               <button
                 type="button"
-                className="lightbox-nav lightbox-nav--next"
+                className={cx(styles.nav, styles.next)}
                 aria-label="Next image"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -197,10 +200,10 @@ export default function GalleryLightbox({
               </button>
             </>
           )}
-          <figure className="lightbox-figure">
-            <div className="lightbox-image-wrap">
+          <figure className={styles.figure}>
+            <div className={styles.imageWrap}>
               <Image
-                className="lightbox-image"
+                className={styles.image}
                 src={images[index].url}
                 alt={images[index].alt}
                 fill
@@ -208,10 +211,10 @@ export default function GalleryLightbox({
               />
             </div>
             {/* Clicks here select caption text instead of closing the viewer */}
-            <figcaption className="lightbox-caption" onClick={(e) => e.stopPropagation()}>
+            <figcaption className={styles.caption} onClick={(e) => e.stopPropagation()}>
               {images[index].alt}
               {images.length > 1 && (
-                <span className="lightbox-count">
+                <span className={styles.count}>
                   {index + 1} / {images.length}
                 </span>
               )}

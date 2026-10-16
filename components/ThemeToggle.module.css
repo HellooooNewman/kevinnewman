@@ -1,0 +1,12 @@
+/* Sits on top of the .btn primitive, a little more compact */
+.toggle {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  /* A tighter toggle so all four nav links fit beside it */
+  .toggle {
+    padding: 0.45rem 0.6rem;
+  }
+}

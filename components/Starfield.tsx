@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { createWaterReflections, type ReflectedStar } from "@/lib/water-reflections";
+import styles from "./Starfield.module.css";
 
 /**
  * The sky, evolved from the original Angular canvas header.
@@ -774,23 +775,7 @@ export default function Starfield({
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      style={
-        ambient
-          ? {
-              position: "fixed",
-              inset: 0,
-              display: "block",
-              userSelect: "none",
-              pointerEvents: "none",
-              zIndex: -1,
-            }
-          : {
-              position: "absolute",
-              inset: 0,
-              display: "block",
-              userSelect: "none",
-            }
-      }
+      className={ambient ? styles.ambient : styles.layer}
     />
   );
 }

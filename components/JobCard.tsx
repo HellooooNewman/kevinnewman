@@ -3,6 +3,9 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import type { Job } from "@/data/resume";
+import { cx } from "@/lib/cx";
+import card from "@/styles/card.module.css";
+import styles from "./JobCard.module.css";
 
 export default function JobCard({
   job,
@@ -65,95 +68,58 @@ export default function JobCard({
 
   return (
     <details
-      className="card job-card"
+      className={cx(card.card, styles.jobCard)}
       id={anchorId}
       ref={detailsRef}
       open={defaultOpen}
     >
       <summary>
-        <span className="job-card__id">
-          <span className="job-card__logo">
+        <span className={styles.id}>
+          <span className={styles.logo}>
             <Image
               src={job.logo}
               alt=""
               width={40}
               height={40}
-              style={{
-                width: 40,
-                height: 40,
-                objectFit: "contain",
-                borderRadius: 8,
-                background: "rgba(255,255,255,0.9)",
-                padding: 4,
-              }}
+              className={styles.logoImage}
             />
           </span>
           <span>
-            <strong style={{ fontSize: "1.05rem" }}>{job.employer}</strong>
-            <span
-              style={{
-                display: "block",
-                color: "var(--text-dim)",
-                fontSize: "0.95rem",
-              }}
-            >
+            <strong className={styles.employer}>{job.employer}</strong>
+            <span className={styles.role}>
               {job.title} · {job.employmentType}
             </span>
           </span>
         </span>
-        <span className="job-card__meta">
-          <span className="job-card__period">{job.period}</span>
-          <span className="job-card__location">{job.location}</span>
+        <span className={styles.meta}>
+          <span className={styles.period}>{job.period}</span>
+          <span className={styles.location}>{job.location}</span>
         </span>
       </summary>
-      <div style={{ paddingTop: "1rem" }}>
-        {job.summary && (
-          <p style={{ margin: "0 0 1rem", color: "var(--text-dim)" }}>
-            {job.summary}
-          </p>
-        )}
+      <div className={styles.body}>
+        {job.summary && <p className={styles.summary}>{job.summary}</p>}
         {job.sections ? (
           job.sections.map((section) => (
             <div key={section.heading}>
-              <h3
-                style={{
-                  margin: "1rem 0 0.5rem",
-                  fontSize: "0.95rem",
-                }}
-              >
-                {section.heading}
-              </h3>
-              <ul style={{ margin: 0, paddingLeft: "1.25rem", color: "var(--text-dim)" }}>
+              <h3 className={styles.sectionHeading}>{section.heading}</h3>
+              <ul className={styles.points}>
                 {section.points.map((p) => (
-                  <li key={p} style={{ marginBottom: "0.35rem" }}>
-                    {p}
-                  </li>
+                  <li key={p}>{p}</li>
                 ))}
               </ul>
             </div>
           ))
         ) : (
-          <ul style={{ margin: 0, paddingLeft: "1.25rem", color: "var(--text-dim)" }}>
+          <ul className={styles.points}>
             {job.points.map((p) => (
-              <li key={p} style={{ marginBottom: "0.35rem" }}>
-                {p}
-              </li>
+              <li key={p}>{p}</li>
             ))}
           </ul>
         )}
-        <p
-          style={{
-            margin: "0.9rem 0 0",
-            fontFamily: "var(--font-mono)",
-            fontSize: "0.82rem",
-            color: "var(--text-faint)",
-          }}
-        >
-          {job.technology}
-        </p>
+        <p className={styles.tech}>{job.technology}</p>
         {/* The employer link lives here rather than in <summary>, where a
             link inside the toggle button confuses screen readers */}
-        <p className="no-print" style={{ margin: "0.6rem 0 0", fontSize: "0.9rem" }}>
+        <p className={cx("no-print", styles.employerLink)}>
           <a href={job.employerLink} target="_blank" rel="noopener noreferrer">
             Visit {job.employer} ↗
           </a>

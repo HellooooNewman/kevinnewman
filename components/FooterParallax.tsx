@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import styles from "./FooterParallax.module.css";
 
 /** Move only the distant scenery; the server-rendered campsite stays anchored. */
 export default function FooterParallax({ children }: { children: ReactNode }) {
@@ -79,5 +80,5 @@ export default function FooterParallax({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  return <div ref={rootRef} className="footer-parallax">{children}</div>;
+  return <div ref={rootRef} className={styles.parallax}>{children}</div>;
 }

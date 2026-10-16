@@ -1,0 +1,4 @@
+/* Stars only reflect on the lake at night */
+[data-theme="light"] .starReflections {
+  display: none;
+}

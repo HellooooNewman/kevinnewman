@@ -3,6 +3,10 @@
 import { useState } from "react";
 import type { Project } from "@/data/projects";
 import ProjectGrid from "@/components/ProjectGrid";
+import { cx } from "@/lib/cx";
+import button from "@/styles/button.module.css";
+import layout from "@/styles/layout.module.css";
+import styles from "./ArchivedProjects.module.css";
 
 export default function ArchivedProjects({ items }: { items: Project[] }) {
   const [show, setShow] = useState(false);
@@ -11,8 +15,8 @@ export default function ArchivedProjects({ items }: { items: Project[] }) {
 
   if (!show) {
     return (
-      <div style={{ textAlign: "center", marginTop: "3rem" }}>
-        <button className="btn" onClick={() => setShow(true)}>
+      <div className={styles.reveal}>
+        <button className={button.btn} onClick={() => setShow(true)}>
           View archived projects
         </button>
       </div>
@@ -21,10 +25,10 @@ export default function ArchivedProjects({ items }: { items: Project[] }) {
 
   return (
     <>
-      <h2 className="section-title" style={{ marginTop: "3.5rem" }}>
+      <h2 className={cx(layout.sectionTitle, styles.title)}>
         Archived Projects
       </h2>
-      <p style={{ color: "var(--text-faint)", marginTop: "-1rem", marginBottom: "1.5rem" }}>
+      <p className={styles.note}>
         Older work, kept around for the memories.
       </p>
       <ProjectGrid items={items} headingLevel={3} />

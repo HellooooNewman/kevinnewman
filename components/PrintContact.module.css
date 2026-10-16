@@ -1,0 +1,7 @@
+@media print {
+  .printContact {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+}

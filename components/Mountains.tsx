@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { cx } from "@/lib/cx";
+import styles from "./Mountains.module.css";
 
 /**
  * The hero's horizon: three mountain ridges that fall away at different
@@ -58,7 +60,7 @@ export default function Mountains() {
 
   return (
     <svg
-      className="no-print hero-mountains"
+      className={cx("no-print", styles.mountains)}
       viewBox="0 0 1440 240"
       preserveAspectRatio="none"
       aria-hidden="true"

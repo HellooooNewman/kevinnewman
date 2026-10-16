@@ -9,6 +9,11 @@ import NowPreviewLink, { type NowPreview } from "@/components/NowPreviewLink";
 import { intro, skills, jobs, education } from "@/data/resume";
 import { projects, type Project } from "@/data/projects";
 import { SITE_URL } from "@/lib/seo";
+import { cx } from "@/lib/cx";
+import card from "@/styles/card.module.css";
+import chip from "@/styles/chip.module.css";
+import layout from "@/styles/layout.module.css";
+import styles from "./page.module.css";
 
 // The home page keeps the site-wide preview cards from the layout; it only
 // needs to name its canonical address.
@@ -38,22 +43,18 @@ function getNowPreview(href: string): NowPreview | undefined {
 
 function ProjectCard({ p, large = false }: { p: Project; large?: boolean }) {
   return (
-    <Link className="card" href={`/projects/${p.slug}/`}>
-      <div className="card__media" style={{ aspectRatio: large ? "16 / 9" : "16 / 10" }}>
+    <Link className={card.card} href={`/projects/${p.slug}/`}>
+      <div className={cx(card.media, large && styles.mediaWide)}>
         <Image
           src={p.thumbnail}
           alt=""
           fill
           sizes={large ? "(max-width: 820px) 100vw, 50vw" : "(max-width: 720px) 100vw, 33vw"}
         />
-        {p.badge && <span className="card-badge">{p.badge}</span>}
+        {p.badge && <span className={card.badge}>{p.badge}</span>}
       </div>
-      <h3 style={{ margin: "0 0 0.4rem", fontSize: large ? "1.3rem" : "1.1rem" }}>
-        {p.title}
-      </h3>
-      <p style={{ margin: 0, color: "var(--text-dim)", fontSize: "0.95rem" }}>
-        {p.shortBody}
-      </p>
+      <h3 className={cx(card.title, large && styles.titleLarge)}>{p.title}</h3>
+      <p className={card.summary}>{p.shortBody}</p>
     </Link>
   );
 }
@@ -105,26 +106,28 @@ export default function Home() {
       <Hero />
 
       {/* Introduction + Now */}
-      <section className="section container" aria-labelledby="intro-heading">
-        <h2 className="section-title" id="intro-heading">
+      <section className={cx(layout.section, layout.container)} aria-labelledby="intro-heading">
+        <h2 className={layout.sectionTitle} id="intro-heading">
           Introduction
         </h2>
-        <div className="intro-grid">
+        <div className={styles.introGrid}>
           <div>
             {intro.body.map((p, i) => (
               <p
                 key={p}
                 // Only the first (professional) paragraph belongs on the résumé
-                className={i > 0 ? "no-print" : undefined}
-                style={{ marginTop: 0, color: "var(--text-dim)" }}
+                className={cx(styles.introText, i > 0 && "no-print")}
               >
                 {p}
               </p>
             ))}
           </div>
-          <aside className="card now-panel" aria-label="What I'm up to now">
-            <div className="now-panel__header">
-              <h3 style={{ margin: 0, fontSize: "1rem" }}>Right now</h3>
+          <aside
+            className={cx(card.card, styles.nowPanel, "no-print")}
+            aria-label="What I'm up to now"
+          >
+            <div className={styles.nowPanelHeader}>
+              <h3 className={styles.nowPanelTitle}>Right now</h3>
             </div>
             <ul>
               {intro.now.map((item) => (
@@ -144,11 +147,11 @@ export default function Home() {
       </section>
 
       {/* Work - constellation timeline */}
-      <section className="section container" aria-labelledby="work-heading">
-        <h2 className="section-title" id="work-heading">
+      <section className={cx(layout.section, layout.container)} aria-labelledby="work-heading">
+        <h2 className={layout.sectionTitle} id="work-heading">
           Work
         </h2>
-        <div className="timeline">
+        <div className={styles.timeline}>
           {jobs.map((job) => (
             <JobCard
               key={job.employer + job.period}
@@ -162,29 +165,29 @@ export default function Home() {
       {/* Featured projects - spotlights first */}
       {featured.length > 0 && (
         <section
-          className="section container"
+          className={cx(layout.section, layout.container)}
           aria-labelledby="projects-heading"
         >
-          <h2 className="section-title" id="projects-heading">
+          <h2 className={layout.sectionTitle} id="projects-heading">
             Projects
-            <Link className="view-all" href="/projects/">
+            <Link className={layout.viewAll} href="/projects/">
               View all →
             </Link>
           </h2>
-          <div className="grid--spotlight no-print">
+          <div className={cx(styles.spotlight, "no-print")}>
             {spotlight.map((p) => (
               <ProjectCard key={p.id} p={p} large />
             ))}
           </div>
           {rest.length > 0 && (
-            <div className="grid no-print">
+            <div className={cx(layout.grid, "no-print")}>
               {rest.map((p) => (
                 <ProjectCard key={p.id} p={p} />
               ))}
             </div>
           )}
           {/* Résumé view: the cards above collapse to one line per project */}
-          <ul className="print-only print-projects">
+          <ul className={cx("print-only", styles.printProjects)}>
             {featured.map((p) => (
               <li key={p.id}>
                 <strong>{p.title}</strong> — {p.shortBody}
@@ -195,33 +198,23 @@ export default function Home() {
       )}
 
       {/* Skills - core stack first, the long tail second */}
-      <section className="section container" aria-labelledby="skills-heading">
-        <h2 className="section-title" id="skills-heading">
+      <section className={cx(layout.section, layout.container)} aria-labelledby="skills-heading">
+        <h2 className={layout.sectionTitle} id="skills-heading">
           Skills
         </h2>
-        <div className="card">
-          <h3 style={{ margin: "0 0 0.85rem", fontSize: "1.05rem" }}>
-            My core stack
-          </h3>
-          <div className="chip-cloud">
+        <div className={card.card}>
+          <h3 className={styles.skillsTitle}>My core stack</h3>
+          <div className={styles.chipCloud}>
             {skills.core.map((skill) => (
-              <span className="chip chip--accent chip--lg" key={skill}>
+              <span className={cx(chip.chip, chip.accent)} key={skill}>
                 {skill}
               </span>
             ))}
           </div>
-          <h3
-            style={{
-              margin: "1.75rem 0 0.85rem",
-              fontSize: "0.95rem",
-              color: "var(--text-dim)",
-            }}
-          >
-            Also experienced with
-          </h3>
-          <div className="chip-cloud">
+          <h3 className={styles.skillsSubtitle}>Also experienced with</h3>
+          <div className={styles.chipCloud}>
             {skills.also.map((skill) => (
-              <span className="chip" key={skill}>
+              <span className={chip.chip} key={skill}>
                 {skill}
               </span>
             ))}
@@ -230,17 +223,15 @@ export default function Home() {
       </section>
 
       {/* Education */}
-      <section className="section container" aria-labelledby="edu-heading">
-        <h2 className="section-title" id="edu-heading">
+      <section className={cx(layout.section, layout.container)} aria-labelledby="edu-heading">
+        <h2 className={layout.sectionTitle} id="edu-heading">
           Education
         </h2>
-        <div className="grid">
+        <div className={layout.grid}>
           {education.map((school) => (
-            <div className="card" key={school.program}>
-              <h3 style={{ margin: "0 0 0.25rem", fontSize: "1.02rem" }}>
-                {school.program}
-              </h3>
-              <p style={{ margin: 0, color: "var(--text-faint)" }}>
+            <div className={card.card} key={school.program}>
+              <h3 className={styles.program}>{school.program}</h3>
+              <p className={styles.school}>
                 {school.school} · {school.year}
               </p>
             </div>

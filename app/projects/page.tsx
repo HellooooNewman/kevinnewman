@@ -2,6 +2,8 @@ import { projects, type Project } from "@/data/projects";
 import { pageMetadata } from "@/lib/seo";
 import ProjectGrid from "@/components/ProjectGrid";
 import ArchivedProjects from "@/components/ArchivedProjects";
+import { cx } from "@/lib/cx";
+import layout from "@/styles/layout.module.css";
 
 export const metadata = pageMetadata({
   title: "Projects",
@@ -22,8 +24,8 @@ export default function ProjectsPage() {
   const archived = listed.filter((p) => p.archived).sort(byNewest);
 
   return (
-    <div className="section container">
-      <h1 className="section-title">Projects</h1>
+    <div className={cx(layout.section, layout.container)}>
+      <h1 className={layout.sectionTitle}>Projects</h1>
       <ProjectGrid items={current} />
       <ArchivedProjects items={archived} />
     </div>

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import "@/styles/tokens.css";
 import "./globals.css";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";

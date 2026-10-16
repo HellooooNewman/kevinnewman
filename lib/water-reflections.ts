@@ -10,7 +10,7 @@ export interface ReflectedStar {
 
 /** Reuse the sky's frame loop; paint a handful of vector ripples at 20fps. */
 export function createWaterReflections(canvas: HTMLCanvasElement) {
-  const svg = canvas.parentElement?.querySelector<SVGSVGElement>(".campsite-scene");
+  const svg = canvas.parentElement?.querySelector<SVGSVGElement>("[data-campsite]");
   const group = svg?.querySelector<SVGGElement>("[data-star-reflections]");
   if (!svg || !group) return null;
 

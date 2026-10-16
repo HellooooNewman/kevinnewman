@@ -1,0 +1,205 @@
+/* ─── Introduction + Now ─── */
+
+.introGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 820px) {
+  .introGrid {
+    grid-template-columns: 3fr 2fr;
+    /* center the short intro copy against the taller now-panel so the
+       column doesn't leave a void beneath the text */
+    align-items: center;
+  }
+}
+
+.introText {
+  margin-top: 0;
+  color: var(--text-dim);
+}
+
+.nowPanel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nowPanelHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.nowPanelTitle {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.nowPanel a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.nowPanel a:hover {
+  color: var(--link);
+}
+
+.nowPanel li {
+  padding: 0.5rem 0;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.nowPanel li:last-child {
+  border-bottom: none;
+}
+
+/* ─── Constellation timeline (Work) ─── */
+
+.timeline {
+  --tl-inset: 1.75rem;
+  --tl-gap: 0.85rem;
+  position: relative;
+  display: grid;
+  gap: var(--tl-gap);
+  padding-left: var(--tl-inset);
+}
+
+.timeline > * {
+  position: relative;
+}
+
+/* Rail drawn per card, from this card's dot to the next card's dot, so it
+   always ends exactly at the last dot regardless of card heights. */
+.timeline > *:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--tl-inset) + 6px);
+  top: calc(var(--card-pad, 1.5rem) + 25px);
+  /* reach across the grid gap into the next card, up to its dot */
+  bottom: calc(-1 * var(--tl-gap) - var(--card-pad, 1.5rem) - 15px);
+  width: 2px;
+  background: var(--brand-blue);
+  opacity: 0.5;
+}
+
+.timeline > *::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--tl-inset) + 2px);
+  /* card padding + half the 40px logo row, minus half the dot:
+     centers the dot on the collapsed summary */
+  top: calc(var(--card-pad, 1.5rem) + 20px - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand-blue-glow);
+}
+
+/* ─── Projects ─── */
+
+.spotlight {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+  margin-bottom: 1.25rem;
+}
+
+.mediaWide {
+  aspect-ratio: 16 / 9;
+}
+
+.titleLarge {
+  font-size: 1.3rem;
+}
+
+/* ─── Skills ─── */
+
+.chipCloud {
+  --chip-pad: 0.3rem 0.8rem;
+  --chip-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.skillsTitle {
+  margin: 0 0 0.85rem;
+  font-size: 1.05rem;
+}
+
+.skillsSubtitle {
+  margin: 1.75rem 0 0.85rem;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+}
+
+/* ─── Education ─── */
+
+.program {
+  margin: 0 0 0.25rem;
+  font-size: 1.02rem;
+}
+
+.school {
+  margin: 0;
+  color: var(--text-faint);
+}
+
+@media (max-width: 640px) {
+  .introGrid {
+    gap: 1.5rem;
+  }
+
+  .spotlight {
+    gap: 1rem;
+  }
+
+  /* Give the cards back the horizontal space the rail was renting */
+  .timeline {
+    --tl-inset: 1.1rem;
+  }
+}
+
+@media print {
+  .introGrid {
+    display: block;
+  }
+
+  .spotlight {
+    display: block;
+  }
+
+  /* Drop the constellation rail */
+  .timeline {
+    padding-left: 0;
+    gap: 0.6rem;
+  }
+
+  .timeline > *::before,
+  .timeline > *:not(:last-child)::after {
+    display: none;
+  }
+
+  /* Featured projects: plain text list (the card grids carry no-print) */
+  .printProjects {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  .printProjects li {
+    margin-bottom: 0.15rem;
+  }
+
+  /* Skills: one running line of comma-separated chips */
+  .chipCloud {
+    display: block;
+  }
+}

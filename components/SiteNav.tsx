@@ -5,6 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
+import { cx } from "@/lib/cx";
+import layout from "@/styles/layout.module.css";
+import styles from "./SiteNav.module.css";
 
 const links = [
   { href: "/", label: "Home" },
@@ -39,19 +42,19 @@ export default function SiteNav() {
   const showLogo = !isHome || pastHeroLogo;
 
   return (
-    <header className="site-nav no-print">
-      <div className="container site-nav__inner">
+    <header className={cx(styles.siteNav, "no-print")}>
+      <div className={cx(layout.container, styles.inner)}>
         <Link
           href="/"
           aria-label="Home"
-          className={`site-nav__logo${showLogo ? " is-visible" : ""}`}
+          className={cx(styles.logo, showLogo && styles.visible)}
           aria-hidden={!showLogo}
           tabIndex={showLogo ? undefined : -1}
         >
           <Logo size={34} color="var(--brand-blue-bright)" />
         </Link>
-        <nav aria-label="Main">
-          <ul className="site-nav__links">
+        <nav aria-label="Main" className={styles.menu}>
+          <ul className={styles.links}>
             {links.map((l) => {
               const active =
                 l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
@@ -60,7 +63,7 @@ export default function SiteNav() {
                   <Link
                     href={l.href}
                     aria-current={active ? "page" : undefined}
-                    className={active ? "active" : undefined}
+                    className={active ? styles.active : undefined}
                   >
                     {l.label}
                   </Link>

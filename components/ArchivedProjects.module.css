@@ -1,0 +1,14 @@
+.reveal {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.title {
+  margin-top: 3.5rem;
+}
+
+.note {
+  color: var(--text-faint);
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+}

@@ -4,6 +4,8 @@ import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
+import { cx } from "@/lib/cx";
+import styles from "./NowPreviewLink.module.css";
 
 export interface NowPreview {
   title: string;
@@ -141,7 +143,7 @@ export default function NowPreviewLink({
           ref={cardRef}
           id={id}
           role="tooltip"
-          className="now-preview no-print"
+          className={cx(styles.preview, "no-print")}
           style={position}
           onPointerEnter={() => {
             hovered.current = true;
@@ -152,12 +154,12 @@ export default function NowPreviewLink({
             scheduleClose();
           }}
         >
-          <div className={`now-preview__image${preview.logo ? " now-preview__image--logo" : ""}`}>
+          <div className={cx(styles.image, preview.logo && styles.imageLogo)}>
             <Image src={preview.image} alt="" fill sizes="320px" />
           </div>
-          <div className="now-preview__body">
-            <span className="now-preview__label">{preview.label}</span>
-            <strong className="now-preview__title">{preview.title}</strong>
+          <div className={styles.body}>
+            <span className={styles.label}>{preview.label}</span>
+            <strong className={styles.title}>{preview.title}</strong>
             <p>{preview.description}</p>
           </div>
         </div>,

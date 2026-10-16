@@ -1,11 +1,14 @@
 import AlpineLandscape from "./AlpineLandscape";
+import { cx } from "@/lib/cx";
+import styles from "./CampsiteScene.module.css";
 
 // An entirely vector campsite: shared silhouettes, layered terrain, and
 // theme-aware fabric and foliage. Animation is handled by reduced-motion CSS.
 export default function CampsiteScene() {
   return (
     <svg
-      className="campsite-scene"
+      className={styles.scene}
+      data-campsite=""
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       focusable="false"
@@ -59,19 +62,19 @@ export default function CampsiteScene() {
 
       {/* A small, warm campsite on the left overlook. */}
       <g transform="translate(-30 340) scale(.43)">
-        <circle className="campfire-glow" cx="964" cy="201" r="94" fill="url(#campfire-glow-grad)" />
-        <ellipse className="campfire-glow" cx="960" cy="238" rx="134" ry="31" fill="url(#campfire-ground-grad)" />
+        <circle className={styles.fireGlow} cx="964" cy="201" r="94" fill="url(#campfire-glow-grad)" />
+        <ellipse className={styles.fireGlow} cx="960" cy="238" rx="134" ry="31" fill="url(#campfire-ground-grad)" />
 
         {/* A freestanding dome tent: curved poles, fitted fly, mesh vent,
             rounded doorway, and a waterproof bathtub floor. */}
-        <ellipse className="camp-tent-glow" cx="875" cy="243" rx="67" ry="21" fill="url(#camp-tent-spill)" />
+        <ellipse className={styles.tentGlow} cx="875" cy="243" rx="67" ry="21" fill="url(#camp-tent-spill)" />
         {/* Contact shadow follows the curved floor, without an air gap. */}
         <path d="M750,232 Q827,248 916,231 L916,236 Q829,251 750,237 Z" fill="var(--alpine-foreground)" opacity="0.7" />
         <g strokeLinejoin="round">
           <path d="M752,232 C764,192 778,164 802,155 C823,147 847,150 864,164 C887,182 903,208 914,231 Q871,242 828,241 Z" fill="url(#camp-tent-fabric)" />
           <path d="M858,160 C837,176 827,206 828,241 Q876,240 914,231 C901,198 882,173 858,160 Z" fill="url(#camp-tent-front)" />
           {/* Steady interior light diffuses through the fabric, fading at the edges. */}
-          <path className="camp-tent-glow" d="M752,232 C764,192 778,164 802,155 C823,147 847,150 864,164 C887,182 903,208 914,231 Q871,242 828,241 Z" fill="url(#camp-tent-lamplight)" />
+          <path className={styles.tentGlow} d="M752,232 C764,192 778,164 802,155 C823,147 847,150 864,164 C887,182 903,208 914,231 Q871,242 828,241 Z" fill="url(#camp-tent-lamplight)" />
           {/* Dark floor wraps around both panels and meets the ground. */}
           <path d="M755,224 Q790,231 829,232 Q874,232 910,224 L914,231 Q873,243 828,241 L752,232 Z" fill="var(--camp-tree)" />
           <path d="M759,225 Q793,232 829,232 Q871,232 909,225" fill="none" stroke="var(--camp-tent-seam)" strokeWidth="0.8" opacity="0.6" />
@@ -90,7 +93,7 @@ export default function CampsiteScene() {
           <path d="M799,177 Q814,174 826,178" fill="none" stroke="var(--camp-tent-seam)" strokeWidth="0.8" />
           {/* Open arched door, with the fabric gathered against one side. */}
           <path d="M841,230 C841,207 850,182 862,180 C878,178 893,207 900,226 Q870,232 841,230 Z" fill="var(--bg)" />
-          <path className="camp-tent-glow" d="M841,230 C841,207 850,182 862,180 C878,178 893,207 900,226 Q870,232 841,230 Z" fill="url(#camp-tent-interior)" />
+          <path className={styles.tentGlow} d="M841,230 C841,207 850,182 862,180 C878,178 893,207 900,226 Q870,232 841,230 Z" fill="url(#camp-tent-interior)" />
           <path d="M839,230 C839,205 850,179 862,178 C880,176 895,207 902,226" fill="none" stroke="var(--camp-tent-seam)" strokeWidth="1" />
           <path d="M865,182 C879,190 890,209 897,225 L886,225 C887,208 878,191 865,182 Z" fill="var(--camp-tent-light)" />
           <path d="M866,183 C879,197 882,214 886,224" fill="none" stroke="var(--camp-tent-seam)" strokeWidth="0.8" opacity="0.7" />
@@ -110,7 +113,7 @@ export default function CampsiteScene() {
           <g transform="translate(-1 -3)">
             <path d="M-3,-12 V-15 A3,3 0 0 1 3,-15 V-12" fill="none" stroke="var(--camp-detail)" />
             <rect x="-5" y="-12" width="10" height="13" rx="2" fill="var(--camp-detail)" />
-            <rect className="camp-lantern-light" x="-3" y="-10" width="6" height="8" rx="1" />
+            <rect className={styles.lanternLight} x="-3" y="-10" width="6" height="8" rx="1" />
             <path d="M-6,2 H6" stroke="var(--camp-tree)" strokeWidth="2" strokeLinecap="round" />
           </g>
         </g>
@@ -125,21 +128,21 @@ export default function CampsiteScene() {
           </g>
           <path d="M-18,0 L17,7 M-16,8 L17,-1" stroke="var(--camp-log)" strokeWidth="7" strokeLinecap="round" />
           <path d="M-15,0 L13,6" stroke="#b07958" strokeOpacity="0.35" strokeWidth="1.2" />
-          <g className="campfire-flame">
+          <g className={styles.flame}>
             <path d="M-2,2 C-18,0 -17,-15 -9,-26 C-10,-17 -5,-18 -6,-28 C-8,-37 2,-42 1,-49 C14,-37 8,-29 14,-21 C23,-7 13,4 -2,2 Z" fill="url(#camp-flame)" />
-            <path className="campfire-flame--inner campfire-flame" d="M0,2 C-10,-2 -8,-12 -3,-18 C0,-22 2,-27 1,-30 C11,-20 4,-16 9,-10 C13,-2 6,3 0,2 Z" fill="#ffe3a0" />
+            <path className={cx(styles.flame, styles.flameInner)} d="M0,2 C-10,-2 -8,-12 -3,-18 C0,-22 2,-27 1,-30 C11,-20 4,-16 9,-10 C13,-2 6,3 0,2 Z" fill="#ffe3a0" />
           </g>
           <g fill="var(--camp-rock)">
             <path d="M-24,8 Q-22,1 -15,4 L-12,10 Z M-7,11 Q-9,4 -2,5 Q5,4 6,11 Z M13,10 Q12,4 19,4 L25,8 Z" />
           </g>
-          <ellipse className="campfire-smoke" cx="1" cy="-38" rx="8" ry="5" fill="url(#campfire-smoke-grad)" />
-          <ellipse className="campfire-smoke" cx="-3" cy="-41" rx="10" ry="5" fill="url(#campfire-smoke-grad)" style={{ animationDelay: "1.7s" }} />
-          <ellipse className="campfire-smoke" cx="4" cy="-43" rx="7" ry="4" fill="url(#campfire-smoke-grad)" style={{ animationDelay: "3.4s" }} />
+          <ellipse className={styles.smoke} cx="1" cy="-38" rx="8" ry="5" fill="url(#campfire-smoke-grad)" />
+          <ellipse className={styles.smoke} cx="-3" cy="-41" rx="10" ry="5" fill="url(#campfire-smoke-grad)" style={{ animationDelay: "1.7s" }} />
+          <ellipse className={styles.smoke} cx="4" cy="-43" rx="7" ry="4" fill="url(#campfire-smoke-grad)" style={{ animationDelay: "3.4s" }} />
         </g>
         <g>
-          <circle className="campfire-firefly" cx="954" cy="167" r="1.4" />
-          <circle className="campfire-firefly" cx="980" cy="183" r="1" style={{ animationDelay: "1.8s" }} />
-          <circle className="campfire-firefly" cx="1019" cy="204" r="1.5" style={{ animationDelay: "3.2s" }} />
+          <circle className={styles.firefly} cx="954" cy="167" r="1.4" />
+          <circle className={styles.firefly} cx="980" cy="183" r="1" style={{ animationDelay: "1.8s" }} />
+          <circle className={styles.firefly} cx="1019" cy="204" r="1.5" style={{ animationDelay: "3.2s" }} />
         </g>
 
       </g>

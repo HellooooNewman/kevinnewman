@@ -1,4 +1,5 @@
 import { intro } from "@/data/resume";
+import styles from "./SocialLinks.module.css";
 
 const ICON_SIZE = 20;
 
@@ -67,14 +68,14 @@ const links = [
 
 export default function SocialLinks() {
   return (
-    <nav aria-label="Social media" style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+    <nav aria-label="Social media" className={styles.links}>
       {links.map(({ label, href, Icon }) => (
         <a
           key={label}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="social-icon-link"
+          className={styles.link}
           aria-label={label}
           title={label}
         >

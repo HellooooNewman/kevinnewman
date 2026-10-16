@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { cx } from "@/lib/cx";
+import button from "@/styles/button.module.css";
+import styles from "./ThemeToggle.module.css";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -20,12 +23,10 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="btn no-print theme-toggle"
+      className={cx(button.btn, "no-print", styles.toggle)}
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
-      <span className="theme-toggle__label">
-        {theme === "dark" ? "Light" : "Dark"}
-      </span>
+      {theme === "dark" ? "Light" : "Dark"}
     </button>
   );
 }

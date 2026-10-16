@@ -1,0 +1,85 @@
+.article {
+  max-width: 860px;
+}
+
+.back {
+  font-size: 0.9rem;
+  color: var(--text-faint);
+}
+
+.title {
+  margin: 0.75rem 0 0.5rem;
+  font-size: clamp(1.8rem, 1.4rem + 2vw, 2.6rem);
+  letter-spacing: -0.02em;
+}
+
+.chips {
+  margin-bottom: 1.5rem;
+}
+
+.heading {
+  font-size: 1.25rem;
+}
+
+/* Media sections get a little more air above them */
+.spaced {
+  margin-top: 2rem;
+}
+
+.text {
+  color: var(--text-dim);
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.links li {
+  margin-bottom: 0.4rem;
+}
+
+.demo {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+}
+
+.demoTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.demoNote {
+  margin: 0 0 0.75rem;
+  color: var(--text-dim);
+}
+
+.demoLogin {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.youtube {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.youtube iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.video {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-top: 1rem;
+}
