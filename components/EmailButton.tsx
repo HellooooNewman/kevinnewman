@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useIsClient } from "@/lib/client-state";
 import { cx } from "@/lib/cx";
 import button from "@/styles/button.module.css";
 
-// A real anchor keeps native mailto behavior and works before hydration.
-// Clicking also copies the address, so the action still produces a useful
-// result on machines without a configured mail client.
+// The address arrives as split parts and is only assembled in the browser,
+// so it never appears in the served HTML that scrapers read. Once hydrated
+// it's a real mailto anchor, and clicking also copies the address, so the
+// action still produces a useful result without a configured mail client.
 export default function EmailButton({
   user,
   domain,
@@ -19,6 +21,7 @@ export default function EmailButton({
   children: React.ReactNode;
 }) {
   const [copied, setCopied] = useState(false);
+  const isClient = useIsClient();
   const address = `${user}@${domain}`;
 
   const showCopied = () => {
@@ -49,10 +52,10 @@ export default function EmailButton({
   return (
     <a
       className={className}
-      href={`mailto:${address}`}
+      href={isClient ? `mailto:${address}` : undefined}
       onClick={handleClick}
-      aria-label={`${children}: email ${address}`}
-      title={address}
+      aria-label={isClient ? `${children}: email ${address}` : undefined}
+      title={isClient ? address : undefined}
     >
       {copied ? "Email copied!" : children}
     </a>
