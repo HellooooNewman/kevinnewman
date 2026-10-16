@@ -6,12 +6,13 @@ Angular version, rebuilt for real prerendered HTML, SEO, and mobile.
 
 ## Commands
 
-| Command          | What it does                                            |
-| ---------------- | ------------------------------------------------------- |
-| `npm run dev`    | Dev server at http://localhost:4300                     |
-| `npm run build`  | Static export to `out/` (deploy that folder)            |
-| `npm run images` | Pre-render WebP image sizes (`dev` and `build` run it)  |
-| `npm run lint`   | Lint                                                    |
+| Command             | What it does                                           |
+| ------------------- | ------------------------------------------------------ |
+| `npm run dev`       | Dev server at http://localhost:4301                    |
+| `npm run build`     | Static export to `out/` (deploy that folder)           |
+| `npm run images`    | Pre-render WebP image sizes (`dev` and `build` run it) |
+| `npm run lint`      | ESLint (Next.js core-web-vitals + TypeScript rules)    |
+| `npm run typecheck` | Generate Next's route types, then `tsc --noEmit`       |
 
 ## Where things live
 

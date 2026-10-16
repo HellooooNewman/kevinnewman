@@ -27,6 +27,8 @@ export default function SiteNav() {
     if (!isHome) return;
     const heroLogo = document.getElementById("hero-logo");
     if (!heroLogo) {
+      // Nothing to watch, so show the nav logo straight away
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPastHeroLogo(true);
       return;
     }
