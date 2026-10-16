@@ -155,7 +155,13 @@ export default function NowPreviewLink({
           }}
         >
           <div className={cx(styles.image, preview.logo && styles.imageLogo)}>
-            <Image src={preview.image} alt="" fill sizes="320px" />
+            <Image
+              src={preview.image}
+              alt=""
+              fill
+              sizes="320px"
+              unoptimized={preview.image.endsWith(".svg")}
+            />
           </div>
           <div className={styles.body}>
             <span className={styles.label}>{preview.label}</span>
