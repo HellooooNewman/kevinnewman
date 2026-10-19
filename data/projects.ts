@@ -205,6 +205,13 @@ export const projects: Project[] = [
       "Save your card as an image, six color schemes, dark mode, and a layout that works down to phone width",
       "Vitest unit tests, two-player Playwright end-to-end tests, and Docker images published to GHCR from CI",
     ],
+    links: [
+      {
+        label: "Quiz Show",
+        url: "https://quizshow.kevinnewman.ca/",
+        description: "Its sibling game, built on the same shared UI",
+      },
+    ],
     gallery: [
       {
         url: "/assets/projects/gallery/bingo0.jpeg",
@@ -233,6 +240,80 @@ export const projects: Project[] = [
       {
         url: "/assets/projects/gallery/bingo6.jpeg",
         alt: "Dark mode in yellow and purple color schemes, on desktop and at phone width",
+      },
+    ],
+    archived: false,
+  },
+  {
+    id: "19",
+    slug: "quiz-show",
+    badge: "Play it",
+    title: "Quiz Show",
+    thumbnail: "/assets/projects/quizshow.jpg",
+    mainImg: "/assets/projects/gallery/quizshow0.jpeg",
+    projectType: ["Web", "Game"],
+    projectUrl: "https://quizshow.kevinnewman.ca/",
+    workType: "Personal",
+    promote: true,
+    year: "2026",
+    roles: ["Designer", "Developer"],
+    shortBody:
+      "A Jeopardy-style quiz show for game nights and team socials: the host puts the board on a TV, players buzz in from their phones, and the server decides who was first.",
+    body: [
+      "Quiz Show is Buzzword Bingo's sibling, made for team socials and game nights with no accounts and nothing to install. The host creates a game and puts the board on a TV or a shared screen, and everyone joins on their phone by scanning a QR code or typing a five-letter code. Games delete themselves a week after their last play.",
+      "The two games now live in one npm-workspace monorepo and share a UI package: color schemes, dark mode, invite cards, avatars, settings, and the socket and API helpers. They look like one family, and each one links to the other.",
+      "It's React and Vite on the front end, with Express, Socket.IO and Prisma on Postgres behind it. Each game is one JSON document, changed by a pure rules engine under a per-game lock, so the server, not anyone's phone, decides who buzzed first. Every connection gets its own redacted snapshot: players never receive an answer before it's revealed, and only the host's view holds the clues ahead of time.",
+      "Hosts build the board as they go. They start from ready-made categories with real clues, then rewrite any clue or add categories, even mid-game. There are Daily Doubles, a double-value second round, and a final round with secret wagers, plus clue timers, an undo for a mistaken call, and a reaction-time warm-up game in the lobby while people join.",
+    ],
+    features: [
+      "Phones as buzzers, with server-decided buzz order, a queue for who answers next, and lockouts after a wrong answer",
+      "A big-screen view for the TV: a join QR code, buzz banners, round cards, the final reveal, and a podium",
+      "Host console with keyboard shortcuts, a thumb bar on phones, live scores, and undo",
+      "Ready-made categories that stay editable while the game runs; Daily Doubles, a double round, and a final round with wagers",
+      "Solo or team play, spectators who can jump in later, and a Fastest-finger warm-up in the lobby",
+      "Per-game title, colors, and icon; dark mode; elevator music by Kevin MacLeod (CC BY 4.0) and Web Audio sound effects",
+      "Shares a UI package with Buzzword Bingo in one monorepo, with screenshot tests guarding the shared look",
+      "Vitest unit and socket tests, multiplayer Playwright end-to-end tests, and Docker images for a self-hosted NAS",
+    ],
+    links: [
+      {
+        label: "Buzzword Bingo",
+        url: "https://bingo.kevinnewman.ca/",
+        description: "Its sibling game, built on the same shared UI",
+      },
+    ],
+    gallery: [
+      {
+        url: "/assets/projects/gallery/quizshow0.jpeg",
+        alt: "The big screen mid-game: the Friday Trivia board with six categories, the played clues cleared, and four players' scores underneath",
+      },
+      {
+        url: "/assets/projects/gallery/quizshow1.jpeg",
+        alt: "Big screen as Bob buzzes in first on a 200 clue, with Alice next in line",
+      },
+      {
+        url: "/assets/projects/gallery/quizshow2.jpeg",
+        alt: "Three players' phones at the same moment: Bob has the floor in dark mode, Alice is second in line, and Cara can still buzz",
+      },
+      {
+        url: "/assets/projects/gallery/quizshow3.jpeg",
+        alt: "Host console during a clue: the answer only the host can see, Right and Wrong buttons, the buzz order, and score adjusters",
+      },
+      {
+        url: "/assets/projects/gallery/quizshow4.jpeg",
+        alt: "Big-screen lobby with the join address, game code, and QR code, the players who've joined, and a round of the Fastest finger warm-up",
+      },
+      {
+        url: "/assets/projects/gallery/quizshow5.jpeg",
+        alt: "Board editor open beside the game, with each clue and answer editable by round and the played clues locked",
+      },
+      {
+        url: "/assets/projects/gallery/quizshow6.jpeg",
+        alt: "Final scores on a podium after the final round",
+      },
+      {
+        url: "/assets/projects/gallery/quizshow7.jpeg",
+        alt: "Landing page: join with a code, or host a game with a title, a color, and a ready-made board, with a link to Buzzword Bingo",
       },
     ],
     archived: false,
