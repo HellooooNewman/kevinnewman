@@ -82,7 +82,7 @@ export const projects: Project[] = [
   {
     id: "13",
     slug: "condopulse",
-    badge: "Free demo",
+    badge: "Early access",
     title: "CondoPulse",
     thumbnail: "/assets/projects/condopulse.jpg",
     mainImg: "/assets/projects/condopulse.jpg",
@@ -170,6 +170,83 @@ export const projects: Project[] = [
       {
         url: "/assets/projects/gallery/condopulse5.jpeg",
         alt: "CondoPulse mobile app status screen with asset uptime bars grouped by tower and tabs for status, incidents, reporting, and contacts",
+      },
+    ],
+    archived: false,
+  },
+  {
+    id: "20",
+    slug: "groundplan",
+    badge: "Early access",
+    title: "GroundPlan",
+    thumbnail: "/assets/projects/groundplan.jpg",
+    mainImg: "/assets/projects/gallery/groundplan0.jpeg",
+    projectType: ["Web", "3D"],
+    projectUrl: "https://bathroom.kevinnewman.ca/",
+    workType: "Personal",
+    promote: true,
+    year: "2025–2026",
+    roles: ["Designer", "Developer"],
+    shortBody:
+      "A 3D home planner in the browser: start a house from its outline, divide it into rooms over several floors, furnish it, and check the layout against the building code as you go.",
+    body: [
+      "GroundPlan started as BathLab, a planner for one bathroom, and grew into whole homes. Pick a shape, the floors and a size, and it builds the house in 3D: the walls, a stair up to each floor, windows, a front door and a roof. Divide it into rooms and furnish them yourself, or let it lay the rooms out off a hall. You can also start by renovating a bathroom, planning a kitchen, or tracing a floor plan from an image.",
+      "Every change is checked as you make it, against US (IRC / NEC) or Canadian (NBC / CEC) code and NKBA guidance. Clearance zones around toilets, tubs, showers and door swings are drawn on the floor. Mark where the drains, supply lines and outlets already are, and the checks say whether each fixture has a drain under it, water within reach, and GFCI protection where it's needed, each with the code section it comes from. The cost estimate turns those failures into rough-in work, next to products, materials and labour.",
+      "It's Vue 3, TypeScript and Three.js, built with Vite. Everything the UI needs lives in one reactive store that Three.js objects never enter, and the geometry and rules are pure, unit-tested modules. Accounts are optional: a Hono API with Better Auth and Postgres signs people in with Google, Microsoft or a passkey, syncs projects between devices, serves short share links with generated previews, and runs live review sessions over WebSockets. It all runs in Docker on my NAS.",
+      "GroundPlan is in early access. It's free with no account needed, and designs stay in your browser unless you sign in. It changes most days, and What's new in the planner lists each release.",
+    ],
+    features: [
+      "Plan a house: shape, floors, cladding and roof, then rooms off a hall, furnished or left open",
+      "3D cutaway views floor by floor, an outside view, a first-person walkthrough, and wall elevations",
+      "2D plan with wall thicknesses, dimensions, door swings and room areas, printable to PDF",
+      "Bathroom, kitchen and furniture catalog, with generated tile, stone, wood and paint finishes in real-world sizes",
+      "Code checks with citations, drawn on the floor as clearance zones, for plumbing and electrical too",
+      "Renovations: record the room as it is, mark each item Existing, New or Remove, and see what moving the plumbing costs",
+      "Cost estimate by type or by room, with labour, demolition, contingency and tax, and a CSV export",
+      "Design options to compare layouts, undo for everything, and a touch layout for phones and tablets",
+      "Optional accounts with cloud sync, passkeys, share links, and live review sessions with editing handover",
+      "Vitest unit tests, a Playwright end-to-end suite, and Docker images for a self-hosted NAS",
+    ],
+    links: [
+      {
+        label: "Start a house",
+        url: "https://bathroom.kevinnewman.ca/",
+        description: "The front page: pick a shape, floors and size, or open a finished example",
+      },
+      {
+        label: "Open the planner",
+        url: "https://bathroom.kevinnewman.ca/plan",
+        description: "Straight into the planner, starting from a sample bathroom",
+      },
+    ],
+    gallery: [
+      {
+        url: "/assets/projects/gallery/groundplan0.jpeg",
+        alt: "A two-storey family house's ground floor in the 3D cutaway: living room, dining room, the hall and stair, the kitchen and a bathroom",
+      },
+      {
+        url: "/assets/projects/gallery/groundplan1.jpeg",
+        alt: "The front page: pick the house's shape, floors and size, and its plan and a section draw themselves beside a 3D preview",
+      },
+      {
+        url: "/assets/projects/gallery/groundplan2.jpeg",
+        alt: "The ground floor in the 2D plan, with wall thicknesses, dimensions, door swings, furniture and each room's area",
+      },
+      {
+        url: "/assets/projects/gallery/groundplan3.jpeg",
+        alt: "The house from outside in red brick under a slate hip roof, with the finishes for the outside walls and the ground",
+      },
+      {
+        url: "/assets/projects/gallery/groundplan4.jpeg",
+        alt: "The Plan a house wizard's Outside step: front door, windows, cladding, roof shape, pitch and covering, beside the plan and a section",
+      },
+      {
+        url: "/assets/projects/gallery/groundplan5.jpeg",
+        alt: "A bathroom in 3D with its fixtures and soil stack, and a code check citing NEC 210.8(A)(1) for GFCI-protected outlets",
+      },
+      {
+        url: "/assets/projects/gallery/groundplan6.jpeg",
+        alt: "The cost estimate for the house: products, materials, labour, demolition, rough-in work and contingency",
       },
     ],
     archived: false,
