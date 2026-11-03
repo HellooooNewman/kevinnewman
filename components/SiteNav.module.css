@@ -42,19 +42,15 @@
   min-width: 0;
 }
 
+.menuToggle { display: none; }
+
 .links {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.25rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.links::-webkit-scrollbar {
-  display: none;
 }
 
 .links a {
@@ -79,13 +75,49 @@
 
 @media (max-width: 640px) {
   .inner {
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
   .logo {
     display: none;
   }
+  .menuToggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    margin-right: auto;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-bright);
+    border-radius: 8px;
+    background: var(--bg-raised);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .menuToggle:hover { border-color: var(--brand-blue-bright); }
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-bright);
+    padding: 0.5rem 1.25rem 1rem;
+    max-height: calc(100dvh - 5rem);
+    overflow-y: auto;
+    background: var(--bg);
+  }
+  .menu.menuOpen { display: block; }
+  .links { flex-direction: column; flex-wrap: nowrap; }
   .links a {
-    padding: 0.35rem 0.55rem;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
   }
 }
@@ -96,8 +128,5 @@
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
-  .links a {
-    padding: 0.35rem 0.45rem;
-    font-size: 0.875rem;
-  }
+  .menu { padding-inline: 0.75rem; }
 }

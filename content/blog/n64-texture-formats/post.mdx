@@ -1,0 +1,94 @@
+import { BannerGallery, MipmapGallery } from './ArticleFigures';
+import FormatExplorer from './FormatExplorer';
+import VertexColorDemo from './VertexColorDemo';
+import TextureRevisionComparison from './TextureRevisionComparison';
+import SceneComparisons from './SceneComparisons';
+
+A more detailed room does not always need bigger textures. In [Pandemonium](/projects/pandemonium/), our N64brew game-jam boss battle, small grayscale images get their color from the mesh, while palettes and separate layers handle other kinds of detail. **All texture artwork is by my teammate [BoxingBruin](https://github.com/Boxingbruin).**
+
+Choose a view and drag the divider to explore the room before and after the update. These captures also differ in camera position, geometry, and lighting.
+
+<SceneComparisons />
+
+## Small textures, tight budget
+
+The N64’s graphics hardware has **4 KiB of texture memory**, called TMEM. That is space for textures being used while drawing, rather than a limit on all the artwork in a game. The format determines how much information each texel—a texture pixel—needs.
+
+**I** stores intensity, **IA** adds independent transparency, **CI** looks up colors in a palette, and **RGBA** stores color and alpha directly. Fewer bits can leave room for more texels, at the cost of brightness levels, colors, or transparency precision.
+
+| Format | Bits / texel | What it stores |
+| :--- | ---: | :--- |
+| I4 / I8 | 4 / 8 | 16 / 256 brightness levels |
+| IA4 | 4 | 3 intensity bits + 1 alpha bit |
+| IA8 | 8 | 4 intensity bits + 4 alpha bits |
+| IA16 | 16 | 8 intensity bits + 8 alpha bits |
+| CI4 / CI8 | 4 / 8 | An index into a 16 / 256-color palette |
+| RGBA16 | 16 | 5 bits per RGB channel + 1 alpha bit |
+| RGBA32 | 32 | 8 bits each for red, green, blue, and alpha |
+
+These layouts follow [N64brew’s libdragon](https://github.com/n64brew/libdragon/blob/preview/include/surface.h).
+
+## Put detail in the texture, color in the vertices
+
+A grayscale stone texture can still produce a colored floor. The texture supplies fine detail; colors stored at the mesh’s vertices supply broader variation. The renderer blends those corner colors **across the entire triangle**, then multiplies the texture by that color:
+
+```text
+surface RGB = texture intensity × interpolated vertex RGB
+```
+
+Try changing the corner colors below. Set them all to white to reveal the original texture, or give them the same tint for an evenly colored surface. Different corner colors create a gradient; they do not just color the points.
+
+<VertexColorDemo />
+
+For **2 KiB of raw texels**, RGBA16 gives you 32 × 32 pixels, while I4 gives you 64 × 64: four times as many texels. Putting broad color changes in the vertices can preserve a larger grid for surface detail.
+
+Vertex colors do not increase the screen resolution or add texture pixels by themselves. Their gradients follow the mesh, and vertex data also costs memory. The original floor already used this technique; the revision keeps it.
+
+## What changed in the room?
+
+The floor is the clearest space saving. Its dimensions stay the same while I8 becomes I4, halving the packed texel data. The artwork also changes, so the visual difference includes more than format conversion.
+
+| Surface | Original → updated | Outcome |
+| :--- | :--- | :--- |
+| Stone floor | 64 × 64 I8 → I4 | 4 KiB → 2 KiB of texels |
+| Carpet border | 16 × 64 CI8 in both | Same 1 KiB base cost; revised artwork and added mipmaps |
+| Banner layers | Separate I4 background and IA4 ornament in the local version | Different jobs for brightness and transparency |
+
+The carpet’s smaller mip images are intended for distance sampling, where fine patterns can shimmer. They add memory rather than save it. The banner layers show another tradeoff: spending bits on independent alpha where a decorative cutout needs it. These choices serve different visual goals, rather than all being memory reductions.
+
+## Try the formats yourself
+
+Pick an image, then change its representation. Compare I4 with I8 for brightness precision, CI4 with CI8 for palette size, and IA4 with IA8 for transparency. **Texel alpha is always applied** here; the vertex-color demo above uses opaque output.
+
+<FormatExplorer />
+
+These are illustrative conversions. Choosing RGBA32 cannot restore detail absent from the source image, and the PNG’s file size does not tell you its packed N64 texture cost.
+
+<details>
+<summary>
+Technical notes and source textures
+</summary>
+
+### Palette storage and transparency
+
+With RGBA16 palette entries, CI4 needs up to 32 bytes of palette data and CI8 up to 512. Palette lookup reserves the **upper 2 KiB of TMEM**; indices use the lower half. Row padding, mipmaps, and other resident textures also affect what fits. See [libdragon’s TLUT documentation](https://github.com/n64brew/libdragon/blob/preview/include/rdpq_tex.h).
+
+I4 and I8 expose intensity as texel alpha too; IA stores alpha independently. Materials decide how that alpha affects the result. A 32-bit framebuffer is a separate choice from the input texture’s format.
+
+### Source comparisons
+
+The playground uses [original main-branch assets at commit d657844](https://github.com/Boxingbruin/Pandemonium/tree/d6578443ec1ca7634435b6881fe29bbd890bf1f9/assets/boss_room); updated assets are snapshots from the local working version. The original floor model specifies vertex colors and a texture-times-shade combiner. Its carpet material is already CI8 despite the PNG having no format suffix.
+
+<TextureRevisionComparison />
+
+The original IA8 banner cloth is unchanged. The local I4 background and IA4 ornament are separate assets, with different dimensions and purposes:
+
+<BannerGallery />
+
+The updated carpet’s three CI8 images contain 1,024, 256, and 64 bytes of packed texels. The two smaller images add **320 bytes** before palettes and padding. The local renderer shares the base palette across the chain so indices keep their meaning.
+
+<MipmapGallery />
+
+These asset sizes do not establish a frame-rate improvement. Explore the [game and making-of video](/projects/pandemonium/) for more context.
+
+</details>
