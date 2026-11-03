@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "Kevin Newman is a full stack developer in Canada with 10+ years of experience building web and mobile products, and a game jam enthusiast.",
+  alternates: { types: { 'application/rss+xml': `${SITE_URL}/feed.xml` } },
   keywords: [
     "Kevin Newman",
     "full stack developer",

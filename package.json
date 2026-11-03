@@ -6,6 +6,8 @@
     "node": "22.x"
   },
   "scripts": {
+    "blog:posters": "node --experimental-strip-types scripts/generate-n64-blog-posters.mjs",
+    "test:blog": "node --experimental-strip-types --test lib/blog-reading-time.test.mjs lib/blog-publication.test.mjs content/blog/n64-texture-formats/texture-math.test.mjs content/blog/n64-texture-formats/asset-sources.test.mjs",
     "dev": "npm run images && next dev -p 4301",
     "build": "npm run images && next build",
     "start": "next start -p 4301",
@@ -14,11 +16,22 @@
     "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.3.8",
     "next": "^16.3.8",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-mdx": "^3.1.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.2.0"
   },
   "devDependencies": {
+    "@types/mdx": "^2.0.14",
     "@types/node": "^26.1.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
