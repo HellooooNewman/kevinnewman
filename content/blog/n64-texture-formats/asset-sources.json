@@ -1,0 +1,108 @@
+{
+  "repository": "https://github.com/Boxingbruin/Pandemonium",
+  "branch": "main",
+  "commit": "d6578443ec1ca7634435b6881fe29bbd890bf1f9",
+  "commitDate": "2026-06-05T18:07:25Z",
+  "original": [
+    {
+      "file": "original/banner_bottom.ia8.png",
+      "sourcePath": "assets/boss_room/banner_bottom.ia8.png",
+      "sha256": "8d2f03ae1a38ddb1cd5137b319813dc9fee5f4cbf3d49f40b8c97a2feafacafc",
+      "width": 64,
+      "height": 64
+    },
+    {
+      "file": "original/carpet_border2.ia8.png",
+      "sourcePath": "assets/boss_room/carpet_border2.ia8.png",
+      "sha256": "6f81161d3804120b53b2fc561400b76e35ae3ddf0e74615db33d9e93848c5883",
+      "width": 16,
+      "height": 64
+    },
+    {
+      "file": "original/carpet_border3.png",
+      "sourcePath": "assets/boss_room/carpet_border3.png",
+      "sha256": "0576de90c8877bd6b538f5f78d7fd74117823e8438dba1fda1eb3f79cb755993",
+      "width": 16,
+      "height": 64
+    },
+    {
+      "file": "original/floor-corner2.i8.png",
+      "sourcePath": "assets/boss_room/floor-corner2.i8.png",
+      "sha256": "35ea1e7d6c605e12675fd99232ed5aef00063051e283cae5d88644e2c8da1ce2",
+      "width": 64,
+      "height": 64
+    },
+    {
+      "file": "original/floor2.i8.png",
+      "sourcePath": "assets/boss_room/floor2.i8.png",
+      "sha256": "9982a556329c4d004b8bd826360369e442f7767810f391d8c34ff794dd00d0dd",
+      "width": 64,
+      "height": 64
+    },
+    {
+      "file": "original/floor_ornate.i8.png",
+      "sourcePath": "assets/boss_room/floor_ornate.i8.png",
+      "sha256": "ac7d63bc985b403478cae5f8f4fea13aa0d2971729d1aeb01e05ab2fb776d74f",
+      "width": 64,
+      "height": 64
+    }
+  ],
+  "updated": [
+    {
+      "file": "updated/banner_bottom_bg6.i4.png",
+      "sourcePath": "assets/boss_room/banner_bottom_bg6.i4.png",
+      "sha256": "bd86842ba5ac61a14c09994c8ad2ddbd8b46b9007d7f12a27eabd28bd1dabdda",
+      "width": 32,
+      "height": 80
+    },
+    {
+      "file": "updated/banner_bottom_detail2.ia4.png",
+      "sourcePath": "assets/boss_room/banner_bottom_detail2.ia4.png",
+      "sha256": "697031454c3de8b476cc21fd90a0313da3cdad0fa11b83048846208ee4d475b5",
+      "width": 64,
+      "height": 128
+    },
+    {
+      "file": "updated/banner_bottom.ia8.png",
+      "sourcePath": "assets/boss_room/banner_bottom.ia8.png",
+      "sha256": "8d2f03ae1a38ddb1cd5137b319813dc9fee5f4cbf3d49f40b8c97a2feafacafc",
+      "width": 64,
+      "height": 64
+    },
+    {
+      "file": "updated/carpet_border8.ci8.png",
+      "sourcePath": "assets/boss_room/carpet_border8.ci8.png",
+      "sha256": "b4a6d4b86ca1ca3979df4f5bc364e2ce9764c65b9ab29b182b02238a9d932673",
+      "width": 16,
+      "height": 64
+    },
+    {
+      "file": "updated/carpet_border8-mip1.ci8.png",
+      "sourcePath": "assets/boss_room/carpet_border8-mip1.ci8.png",
+      "sha256": "27889f090fd895be4709ef2fb6c7fe3a0924079975f00d1d384d5da581e7812d",
+      "width": 8,
+      "height": 32
+    },
+    {
+      "file": "updated/carpet_border8-mip2.ci8.png",
+      "sourcePath": "assets/boss_room/carpet_border8-mip2.ci8.png",
+      "sha256": "da0da069480dee0217ad86b1f7216f19f368365e6cd38cda793551337f0a2971",
+      "width": 4,
+      "height": 16
+    },
+    {
+      "file": "updated/floor6.i4.png",
+      "sourcePath": "assets/boss_room/floor6.i4.png",
+      "sha256": "4b1a501e5b3905411973fa22084b91e41693577f6b0d659ef7ef158a24570a98",
+      "width": 64,
+      "height": 64
+    },
+    {
+      "file": "updated/statue_head2.i8.png",
+      "sourcePath": "assets/boss_room/statue_head2.i8.png",
+      "sha256": "86a12ee54507420c94320d8e34f3a3309e57aeb1b7a8589154167a306d9f783a",
+      "width": 32,
+      "height": 32
+    }
+  ]
+}

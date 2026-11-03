@@ -18,7 +18,9 @@ import styles from "./page.module.css";
 
 // The home page keeps the site-wide preview cards from the layout; it only
 // needs to name its canonical address.
-export const metadata: Metadata = { alternates: { canonical: "/" } };
+export const metadata: Metadata = {
+  alternates: { canonical: "/", types: { 'application/rss+xml': `${SITE_URL}/feed.xml` } },
+};
 
 // The AoE2 link preview fetches ladder stats at build time; this keeps the
 // page prerendered into the static export.
