@@ -5,7 +5,7 @@
 - Full Stack Developer · Remote · Canada
 - Core stack: TypeScript, React, React Native, Vue, Node.js, Laravel (PHP), PostgreSQL, GraphQL
 - Also works with: Angular, Flutter, Three.js, Babylon, Electron, Ionic, C/C++/C#, .NET, Docker, Unity, Blender
-- Currently: Software Engineer → Senior Software Engineer at Sonar Software (Jan 2021 – present), rewriting an ISP field-tech app in React Native
+- Currently: Software Developer → Senior Software Developer at Sonar Software (Jan 2021 – present), rewriting an ISP field-tech app in React Native
 - Contact: kevin [at] kevinnewman.ca
 - Résumé (PDF): https://www.kevinnewman.ca/assets/pdf/Kevin%20Newman%20%C2%B7%20Full%20Stack%20Developer.pdf
 
@@ -42,7 +42,7 @@
 
 ## Work history
 
-- Sonar Software — Software Engineer → Senior Software Engineer (Jan 2021 – present): Sole developer of the field-technician mobile app (Flutter → React Native), co-developer of payments and billing on the core web platform (SonarPay, flexible billing, white-label add-ons), and rebuilding the customer self-service portal.
+- Sonar Software — Software Developer → Senior Software Developer (Jan 2021 – present): Sole developer of the field-technician mobile app (Flutter → React Native), co-developer of payments and billing on the core web platform (SonarPay, flexible billing, white-label add-ons), and rebuilding the customer self-service portal.
 - Xello — Full Stack Web Developer (Jan 2019 – Jan 2021): Micro-frontend shell app, AngularJS → Angular migration, UK localization.
 - Wuzzals — Full Stack Web Developer, contract (Oct 2018 – Jan 2020): Laravel + Vue platform for a personalized children's-book company.
 - Trailerworks — Full Stack Web Developer, contract (Aug 2018 – Jan 2019): Marketing sites in React, Magento and Shopify stores.

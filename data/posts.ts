@@ -23,8 +23,8 @@ export interface BlogPost {
 // One entry per manually authored article. Demos and styles stay with the post.
 const posts: BlogPost[] = [{
   slug: 'n64-texture-formats',
-  title: 'Making N64 textures go further',
-  description: 'How Pandemonium combines compact N64 texture formats, vertex colors, and layered detail. Explore the room before and after, then try the formats yourself.',
+  title: 'What texture format should I use for N64 graphics?',
+  description: 'A brief overview of the texture formats available for N64 graphics, and how to choose between them.',
   date: '2026-11-03',
   published: false,
   tags: ['N64', 'Graphics', 'Interactive'],

@@ -127,7 +127,7 @@ export default async function Home() {
         name: intro.name,
         url: `${SITE_URL}/`,
         image: `${SITE_URL}/assets/icons/logo-image.png`,
-        jobTitle: "Senior Software Engineer",
+        jobTitle: "Senior Software Developer",
         description: intro.body[0],
         address: {
           "@type": "PostalAddress",

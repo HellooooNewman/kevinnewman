@@ -86,11 +86,19 @@ JavaScript. After changing the figure math or original textures, run
 conversion, palette limits, texture budgets, vertex-color interpolation, and
 the comparison assets’ provenance.
 
-The format playground and vertex demo use original-main textures downloaded
+The format-family samples use a generated 64 × 64 diagnostic pattern with
+a color gradient, one-pixel complementary color stripes, and an alpha fade.
+This makes palette limits and shared YUV chroma visible; RGBA32 is the reference.
+The playground includes this pattern alongside the game artwork.
+The vertex demo uses original-main textures downloaded
 from [Pandemonium commit d657844](https://github.com/Boxingbruin/Pandemonium/tree/d6578443ec1ca7634435b6881fe29bbd890bf1f9/assets/boss_room).
 Those unmodified files live in [original/](./public/assets/blog/pandemonium/original/).
 Read-only snapshots of the customized local game assets live separately in
 [updated/](./public/assets/blog/pandemonium/updated/), for the revision comparison.
+The playground uses the newer carpet border, banner ornament, and stone floor
+from these snapshots at their native PNG dimensions and color/alpha precision.
+Their N64 filename suffixes select game-build packing; each preview converts
+the full-precision source PNG directly rather than re-encoding another preview.
 The game checkout itself is not changed by this workflow.
 [asset-sources.json](./content/blog/n64-texture-formats/asset-sources.json)
 records the upstream commit, source paths, dimensions, and SHA-256 hashes of
@@ -110,3 +118,53 @@ To replace them, put `column-before.png`, `column-after.png`,
 screenshot edges and applies the same centered 4:3 crop without changing
 the lighting or colors. The regular build generates responsive WebP versions.
 Run `npm run blog:posters` afterward to refresh the RSS illustration.
+
+## Reusable model viewer
+
+[ModelViewer](./components/ModelViewer/ModelViewer.tsx) accepts `src`, `title`,
+`poster`, `posterAlt`, optional `caption`, and `rendering="gltf"` or `"n64"`.
+Use a small article wrapper like [ModelExample](./content/blog/n64-texture-formats/ModelExample.tsx)
+and register its static image in the post's `feedFigures`. Give the component a
+React `key` matching `src` when switching between models so each starts closed.
+Ordinary glTF materials use Three.js's loader; N64 exports use the separate
+[material adapter](./components/ModelViewer/n64-material.ts).
+
+The viewer imports Three.js, GLTFLoader, and OrbitControls only after the reader
+clicks **Explore in 3D**. It works with static hosting, renders on demand, caps
+pixel density at 2, and disposes GPU resources and image bitmaps on unmount.
+It supports left-drag orbiting, right-drag or WASD/arrow-key panning, touch
+gestures, zoom buttons, and reset. Keyboard controls apply while the canvas is
+focused; opening the viewer or clicking its canvas focuses it automatically.
+Loading or WebGL failures leave the poster visible with a retry button.
+
+The first model is an unmodified 52,188-byte local snapshot of the boss-room
+columns, with its embedded textures. [sources.json](./public/assets/blog/pandemonium/models/sources.json)
+records its SHA-256 and source path. The local game checkout is read only.
+The adapter reads Fast64 sampler formats (I8, I4, I4 here), rather than guessing
+from filenames. It supports static meshes, opaque texture × shade or shade-only
+combiners, optional second-cycle primitive tint, and I4/I8 intensity quantization.
+It matches Tiny3D's importer vertex-color gamma conversion and follows the
+exported N64 filter setting automatically: POINT uses nearest sampling and BILERP
+uses approximate three-point filtering. These columns use BILERP; readers are not
+asked to choose a filter. Unsupported N64 materials produce
+a clear error instead of silently falling back to a different appearance.
+This is an educational rendering subset: fog, dithering, fixed-point precision,
+TMEM uploads, mip selection, other combiners, and animated N64 meshes are not
+emulated. Standard glTF models can use the ordinary rendering path.
+
+Run `npm run test:viewer` for model provenance and material compatibility checks.
+Optional `textures` and `stats` props add an image reference strip above the
+canvas and a top-left triangle/texture-size overlay. The column example gets
+these from its GLB via `npm run blog:model-assets`: this extracts intensity
+previews at the exported format precision, counts triangles, calculates packed
+texel bytes, and regenerates the RSS illustration with the references included.
+The generator only reads the website snapshot, not the game checkout.
+
+Size labels use lowercase `b`, `kb`, `mb`, and larger units, with 1024-based
+steps. Use [formatBytes](./lib/format-bytes.mjs) for UI and generated figures.
+
+The model poster is a capture of the initial Combined view; after replacing the
+model or shader, recapture the viewer canvas after **Reset view**, then run
+`npm run blog:model-assets` to refresh its RSS fallback. The normal image build
+makes its responsive WebP variants; `blog:posters` generates the other article
+diagrams.

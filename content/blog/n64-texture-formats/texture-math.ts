@@ -7,7 +7,8 @@ export const formats = [
   { id: 'CI4', bits: 4, palette: 16, label: '4-bit index → 16-entry palette', detail: 'Each texel selects one of sixteen palette entries. This example generates an RGBA16 palette from the selected artwork.' },
   { id: 'CI8', bits: 8, palette: 256, label: '8-bit index → 256-entry palette', detail: 'Each texel selects one of up to 256 palette entries. Both CI modes reserve the upper half of TMEM for palette lookup.' },
   { id: 'RGBA16', bits: 16, label: '5 red + 5 green + 5 blue + 1 alpha', detail: 'Direct color, with 32 levels per RGB channel and binary alpha. No palette required.' },
-  { id: 'RGBA32', bits: 32, label: '8 bits each for red, green, blue, alpha', detail: 'Direct color and smooth alpha at four bytes per texel. More expensive than intensity and indexed formats.' },
+  { id: 'RGBA32', bits: 32, label: '8 bits each for red, green, blue, alpha', detail: 'Direct color and smooth alpha at 4 b per texel. More expensive than intensity and indexed formats.' },
+  { id: 'YUV16', bits: 16, label: '4:2:2 · shared color, separate brightness', detail: 'Each horizontal pair keeps two brightness samples but shares U and V color samples. Useful for video and photographic images; sharp color edges can bleed. No palette or alpha. This preview approximates BT.601 conversion; the RDP needs a dedicated YUV render mode.' },
 ] as const;
 
 export type FormatId = typeof formats[number]['id'];
@@ -77,7 +78,41 @@ function makePalette(pixels: Uint8ClampedArray, limit: number): Color[] {
   return palette;
 }
 
-export function convertTexture(pixels: Uint8ClampedArray, format: FormatId): { pixels: Uint8ClampedArray; palette: Color[] } {
+// Illustrative BT.601 TV-range conversion, not a bit-exact RDP simulation.
+// Average chroma within horizontal pairs; keep each pixel's luma separately.
+function convertYuv16(pixels: Uint8ClampedArray, width: number): Uint8ClampedArray {
+  const output = new Uint8ClampedArray(pixels.length);
+  const toYuv = (offset: number) => {
+    const r = pixels[offset], g = pixels[offset + 1], b = pixels[offset + 2];
+    return [
+      16 + (65.481 * r + 128.553 * g + 24.966 * b) / 255,
+      128 + (-37.797 * r - 74.203 * g + 112 * b) / 255,
+      128 + (112 * r - 93.786 * g - 18.214 * b) / 255,
+    ];
+  };
+  for (let row = 0; row < pixels.length; row += width * 4) {
+    const end = Math.min(row + width * 4, pixels.length);
+    for (let first = row; first < end; first += 8) {
+      const second = Math.min(first + 4, end - 4);
+      const a = toYuv(first), b = toYuv(second);
+      const u = Math.round((a[1] + b[1]) / 2) - 128;
+      const v = Math.round((a[2] + b[2]) / 2) - 128;
+      for (const [offset, value] of [[first, a[0]], [second, b[0]]]) {
+        const y = 1.164383 * (Math.round(value) - 16);
+        output.set([
+          Math.round(y + 1.596027 * v),
+          Math.round(y - 0.391762 * u - 0.812968 * v),
+          Math.round(y + 2.017232 * u),
+          255,
+        ], offset);
+      }
+    }
+  }
+  return output;
+}
+
+export function convertTexture(pixels: Uint8ClampedArray, format: FormatId, width = pixels.length / 4): { pixels: Uint8ClampedArray; palette: Color[] } {
+  if (format === 'YUV16') return { pixels: convertYuv16(pixels, width), palette: [] };
   const output = new Uint8ClampedArray(pixels.length);
   const indexed = format === 'CI4' || format === 'CI8';
   const palette = indexed ? makePalette(pixels, format === 'CI4' ? 16 : 256) : [];
@@ -146,8 +181,6 @@ export function renderVertexPanels(source: Uint8ClampedArray, width: number, hei
   return images;
 }
 
-export function formatBytes(bytes: number): string {
-  return bytes < 1024 ? `${bytes} B` : `${Number((bytes / 1024).toFixed(2))} KiB`;
-}
+export { formatBytes } from '../../../lib/format-bytes.mjs';
 
 export const defaultVertexColors: VertexColors = [[206, 164, 105], [145, 105, 87], [96, 115, 128], [198, 174, 133]];

@@ -1,0 +1,12 @@
+{
+  "models": [
+    {
+      "file": "columns.glb",
+      "source": "Local Pandemonium working copy (read-only snapshot)",
+      "sourcePath": "assets/boss_room/test-pillars-opt.glb",
+      "sha256": "4430af555ffd347061d2bd67f46f713abf151967c370d9cb5818b2467bfd0ff0",
+      "bytes": 52188,
+      "notes": "Unmodified GLB with embedded textures, vertex colors and Fast64 material extensions. Exported sampler data is authoritative; filename suffixes may differ."
+    }
+  ]
+}

@@ -5,6 +5,7 @@
 import sharp from 'sharp';
 import path from 'node:path';
 import { mkdir, stat } from 'node:fs/promises';
+import { formatBytes } from '../lib/format-bytes.mjs';
 
 const input = process.argv[2];
 if (!input) throw new Error('Provide the directory containing the six source screenshots.');
@@ -21,6 +22,6 @@ for (const name of ['column', 'window', 'carpet']) {
       .jpeg({ quality: 88, chromaSubsampling: '4:4:4', mozjpeg: true })
       .toFile(path.join(output, `${file}.jpg`));
     const { size } = await stat(path.join(output, `${file}.jpg`));
-    console.log(`${file}: 960 × 720, ${Math.round(size / 1024)} KiB`);
+    console.log(`${file}: 960 × 720, ${formatBytes(size)}`);
   }
 }

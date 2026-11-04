@@ -103,6 +103,13 @@
       "sha256": "86a12ee54507420c94320d8e34f3a3309e57aeb1b7a8589154167a306d9f783a",
       "width": 32,
       "height": 32
+    },
+    {
+      "file": "updated/banner_mid_detail2.ia4.png",
+      "sourcePath": "assets/boss_room/banner_mid_detail2.ia4.png",
+      "sha256": "8e1f275094d034e31fdba22cfb43f6b40ef72f592a4b154d50539d4450bbef1e",
+      "width": 64,
+      "height": 128
     }
   ]
 }

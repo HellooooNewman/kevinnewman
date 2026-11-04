@@ -1,32 +1,48 @@
-import { BannerGallery, MipmapGallery } from './ArticleFigures';
 import FormatExplorer from './FormatExplorer';
 import VertexColorDemo from './VertexColorDemo';
-import TextureRevisionComparison from './TextureRevisionComparison';
 import SceneComparisons from './SceneComparisons';
+import FormatFamilies from './FormatFamilies';
+import ModelExample from './ModelExample';
 
-A more detailed room does not always need bigger textures. In [Pandemonium](/projects/pandemonium/), our N64brew game-jam boss battle, small grayscale images get their color from the mesh, while palettes and separate layers handle other kinds of detail. **All texture artwork is by my teammate [BoxingBruin](https://github.com/Boxingbruin).**
-
-Choose a view and drag the divider to explore the room before and after the update. These captures also differ in camera position, geometry, and lighting.
+A more detailed room does not always need bigger textures. In [Pandemonium](/projects/pandemonium/), our N64brew game-jam boss battle, small grayscale images get their color from the mesh, while palettes and separate layers handle other kinds of detail. All Pandemonium textures were made by my teammate [BoxingBruin](https://github.com/Boxingbruin).
 
 <SceneComparisons />
 
 ## Small textures, tight budget
 
-The N64’s graphics hardware has **4 KiB of texture memory**, called TMEM. That is space for textures being used while drawing, rather than a limit on all the artwork in a game. The format determines how much information each texel—a texture pixel—needs.
+The N64’s graphics hardware has **4 kb of texture memory**, called TMEM. That is space for textures being used while drawing, rather than a limit on all the artwork in a game. The RDP can only sample texels already loaded there, so textures that exceed that space must be drawn in smaller sections, with new texture data loaded between draws.
 
-**I** stores intensity, **IA** adds independent transparency, **CI** looks up colors in a palette, and **RGBA** stores color and alpha directly. Fewer bits can leave room for more texels, at the cost of brightness levels, colors, or transparency precision.
+<FormatFamilies />
+
+Fewer bits can leave room for more texels, at the cost of brightness levels, colors, or transparency precision.
 
 | Format | Bits / texel | What it stores |
 | :--- | ---: | :--- |
-| I4 / I8 | 4 / 8 | 16 / 256 brightness levels |
+| I4 | 4 | 16 brightness levels |
+| I8 | 8 | 256 brightness levels |
 | IA4 | 4 | 3 intensity bits + 1 alpha bit |
 | IA8 | 8 | 4 intensity bits + 4 alpha bits |
 | IA16 | 16 | 8 intensity bits + 8 alpha bits |
-| CI4 / CI8 | 4 / 8 | An index into a 16 / 256-color palette |
+| CI4 | 4 | An index into a 16-color palette |
+| CI8 | 8 | An index into a 256-color palette |
 | RGBA16 | 16 | 5 bits per RGB channel + 1 alpha bit |
 | RGBA32 | 32 | 8 bits each for red, green, blue, and alpha |
+| YUV16 | 16 | Brightness per texel; U and V color samples shared by a horizontal pair; no alpha |
 
-These layouts follow [N64brew’s libdragon](https://github.com/n64brew/libdragon/blob/preview/include/surface.h).
+These layouts follow [libdragon’s texture-format definitions](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/surface.h#L105-L118).
+
+## Which format would I use?
+
+Start with how large the surface appears on screen, which colors it needs, and whether it needs transparency. Here are useful starting points:
+
+- **Stone floors, brick walls, and tinted cloth:** try **I4** with vertex colors for broad tinting. It leaves more room for texels. Move to **I8** when the 16 brightness levels in I4 produce visible banding or lose shading detail.
+- **Colorful surfaces and character textures:** try **CI4** when 16 palette entries capture the artwork, or **CI8** when it needs more colors. **RGBA16** is useful when a palette visibly damages the colors; it costs more texture memory but avoids choosing palette entries.
+- **Small props, pickups, and icons:** start with a small **CI4 or RGBA16** texture. A detailed mesh can still use a small texture if the object occupies only a few screen pixels. A close-up inspection view may justify a larger texture of the same format.
+- **Leaves, lettering, and banner ornaments:** **IA4** can handle grayscale cutouts with hard transparency. **RGBA16** or CI with an RGBA16 palette can do colored cutouts. Try **IA8** when grayscale edges need a softer alpha transition.
+- **Smoke, glows, and soft fades:** **IA8** is a compact starting point for grayscale effects that can be tinted. **IA16** gives finer brightness and alpha precision. Use **RGBA32** when independent full-color variation and smooth alpha justify 4 b per texel, especially on small effects.
+- **Video frames and photographic images:** consider **YUV16** when reduced horizontal color detail is acceptable. It has no alpha and uses [libdragon’s dedicated YUV conversion mode](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L346-L362).
+
+**Distance mainly changes the resolution you need.** A floor seen up close benefits from a larger texel grid; far away, smaller [mipmap levels](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L830-L856) can reduce shimmering. Mipmaps add storage, so budget for the levels that must be resident together. Choose the format for color and alpha needs, then choose texture dimensions and mipmaps for the viewing distance.
 
 ## Put detail in the texture, color in the vertices
 
@@ -36,59 +52,32 @@ A grayscale stone texture can still produce a colored floor. The texture supplie
 surface RGB = texture intensity × interpolated vertex RGB
 ```
 
-Try changing the corner colors below. Set them all to white to reveal the original texture, or give them the same tint for an evenly colored surface. Different corner colors create a gradient; they do not just color the points.
-
 <VertexColorDemo />
 
-For **2 KiB of raw texels**, RGBA16 gives you 32 × 32 pixels, while I4 gives you 64 × 64: four times as many texels. Putting broad color changes in the vertices can preserve a larger grid for surface detail.
+For **2 kb of raw texels**, RGBA16 gives you 32 × 32 pixels, while I4 gives you 64 × 64: four times as many texels. Putting broad color changes in the vertices can preserve a larger grid for surface detail.
 
 Vertex colors do not increase the screen resolution or add texture pixels by themselves. Their gradients follow the mesh, and vertex data also costs memory. The original floor already used this technique; the revision keeps it.
 
+<ModelExample />
+
 ## What changed in the room?
 
-The floor is the clearest space saving. Its dimensions stay the same while I8 becomes I4, halving the packed texel data. The artwork also changes, so the visual difference includes more than format conversion.
+The floor went from I8 to I4: 4 kb down to 2 kb, still at 64 × 64. The artwork also changes, so the visual difference includes more than format conversion.
 
 | Surface | Original → updated | Outcome |
 | :--- | :--- | :--- |
-| Stone floor | 64 × 64 I8 → I4 | 4 KiB → 2 KiB of texels |
-| Carpet border | 16 × 64 CI8 in both | Same 1 KiB base cost; revised artwork and added mipmaps |
+| Stone floor | 64 × 64 I8 → I4 | 4 kb → 2 kb of texels |
+| Carpet border | 16 × 64 CI8 in both | Same 1 kb base cost; revised artwork and added mipmaps |
 | Banner layers | Separate I4 background and IA4 ornament in the local version | Different jobs for brightness and transparency |
 
-The carpet’s smaller mip images are intended for distance sampling, where fine patterns can shimmer. They add memory rather than save it. The banner layers show another tradeoff: spending bits on independent alpha where a decorative cutout needs it. These choices serve different visual goals, rather than all being memory reductions.
+The carpet still uses CI8. Its mipmaps actually add memory, but help stop the fine pattern shimmering in the distance. The banner layers show another tradeoff, spending bits on independent alpha where a decorative cutout needs it. These choices serve different visual goals, rather than all being memory reductions.
 
 ## Try the formats yourself
 
-Pick an image, then change its representation. Compare I4 with I8 for brightness precision, CI4 with CI8 for palette size, and IA4 with IA8 for transparency. **Texel alpha is always applied** here; the vertex-color demo above uses opaque output.
+Pick an image, then change its representation. Compare I4 with I8 for brightness precision, CI4 with CI8 for palette size, IA4 with IA8 for transparency, and YUV16 with RGBA16 for shared color versus reduced channel precision. **Texel alpha is always applied where available**; YUV16 has none, and the vertex-color demo above uses opaque output.
 
 <FormatExplorer />
 
-These are illustrative conversions. Choosing RGBA32 cannot restore detail absent from the source image, and the PNG’s file size does not tell you its packed N64 texture cost.
+## Conclusion
 
-<details>
-<summary>
-Technical notes and source textures
-</summary>
-
-### Palette storage and transparency
-
-With RGBA16 palette entries, CI4 needs up to 32 bytes of palette data and CI8 up to 512. Palette lookup reserves the **upper 2 KiB of TMEM**; indices use the lower half. Row padding, mipmaps, and other resident textures also affect what fits. See [libdragon’s TLUT documentation](https://github.com/n64brew/libdragon/blob/preview/include/rdpq_tex.h).
-
-I4 and I8 expose intensity as texel alpha too; IA stores alpha independently. Materials decide how that alpha affects the result. A 32-bit framebuffer is a separate choice from the input texture’s format.
-
-### Source comparisons
-
-The playground uses [original main-branch assets at commit d657844](https://github.com/Boxingbruin/Pandemonium/tree/d6578443ec1ca7634435b6881fe29bbd890bf1f9/assets/boss_room); updated assets are snapshots from the local working version. The original floor model specifies vertex colors and a texture-times-shade combiner. Its carpet material is already CI8 despite the PNG having no format suffix.
-
-<TextureRevisionComparison />
-
-The original IA8 banner cloth is unchanged. The local I4 background and IA4 ornament are separate assets, with different dimensions and purposes:
-
-<BannerGallery />
-
-The updated carpet’s three CI8 images contain 1,024, 256, and 64 bytes of packed texels. The two smaller images add **320 bytes** before palettes and padding. The local renderer shares the base palette across the chain so indices keep their meaning.
-
-<MipmapGallery />
-
-These asset sizes do not establish a frame-rate improvement. Explore the [game and making-of video](/projects/pandemonium/) for more context.
-
-</details>
+The room ended up looking more detailed even though the floor uses half the texel data. I4 is enough for that floor because the mesh supplies the color. The banner ornament needs separate alpha, so it gets IA4. I’d spend more memory on a surface the player sees up close, then check whether it actually looks better in the room.

@@ -21,8 +21,9 @@
 .prose pre { background: var(--bg-raised); border: 1px solid var(--border); padding: 1.25rem; border-radius: 10px; overflow-x: auto; line-height: 1.7; }
 .prose pre code { padding: 0; background: transparent; font-size: 0.82rem; white-space: pre; }
 .prose :global(.article-table) { overflow-x: auto; margin-block: 2rem; }
-.prose table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.prose table { width: 100%; min-width: 32rem; border-collapse: collapse; font-size: 0.9rem; overflow-wrap: normal; }
 .prose :is(th,td) { text-align: left; padding: 0.8rem 1rem; border-bottom: 1px solid var(--border); }
+.prose :is(th,td):first-child { white-space: nowrap; }
 .prose :is(th,td)[align="right"] { text-align: right; }
 .prose th { background: var(--bg-raised); font-weight: 600; }
 .prose hr { border: 0; border-top: 1px solid var(--border); margin-block: 2.5rem; }
