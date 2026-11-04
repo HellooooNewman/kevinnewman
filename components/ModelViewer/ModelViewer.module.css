@@ -4,19 +4,19 @@
 .textureReference { min-width: 0; display: flex; flex-direction: column; gap: 0.25rem; text-align: center; }
 .textureReference strong { font-size: 0.8rem; }
 .textureReference > span { font-size: 0.75rem; color: var(--text-dim); }
-.textureImage { position: relative; height: 144px; margin-block: 0.4rem; background: #111827; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; }
+.textureImage { position: relative; height: 144px; margin-block: 0.4rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 5px; overflow: hidden; }
 .textureImage img { display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; border-radius: 0; }
-.stats { position: absolute; top: 0.75rem; left: 0.75rem; z-index: 2; display: flex; flex-direction: column; gap: 0.2rem; max-width: calc(100% - 1.5rem); padding: 0.5rem 0.65rem; border: 1px solid #ffffff33; border-radius: 5px; background: #0b101be6; color: #fff; font-size: 0.75rem; line-height: 1.5; pointer-events: none; }
-.stage { position: relative; height: clamp(300px, 55vw, 520px); background: radial-gradient(ellipse at center, #283248, #0b101b); isolation: isolate; }
+.stats { position: absolute; top: 0.75rem; left: 0.75rem; z-index: 2; display: flex; flex-direction: column; gap: 0.2rem; max-width: calc(100% - 1.5rem); padding: 0.5rem 0.65rem; border: 1px solid var(--border-bright); border-radius: 5px; background: var(--bg-raised); color: var(--text); font-size: 0.75rem; line-height: 1.5; pointer-events: none; }
+.stage { position: relative; height: clamp(300px, 55vw, 520px); background: radial-gradient(ellipse at center, var(--bg-raised), var(--bg)); isolation: isolate; }
 .poster { object-fit: contain; }
 .canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; }
-.canvas[data-ready="true"] { opacity: 1; background: #111827; touch-action: none; }
+.canvas[data-ready="true"] { opacity: 1; background: transparent; touch-action: none; }
 .stage:has(.canvas[data-ready="true"]) .poster { visibility: hidden; }
 .canvas:focus-visible { outline: 2px solid var(--brand-blue-bright); outline-offset: -3px; }
-.overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 1.25rem; background: #080d1655; text-align: center; }
-.overlay p { max-width: 36rem; color: #fff; padding: 0.75rem; background: #111827; border-radius: 6px; font-size: 0.85rem; }
+.overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 1.25rem; background: color-mix(in srgb, var(--bg) 30%, transparent); text-align: center; }
+.overlay p { max-width: 36rem; color: var(--text); padding: 0.75rem; background: var(--bg-card); border-radius: 6px; font-size: 0.85rem; }
 .viewer button { min-height: 44px; padding: 0.5rem 0.8rem; border: 1px solid var(--border-bright); border-radius: 6px; background: var(--bg-card); color: var(--text); font: inherit; font-size: 0.8rem; cursor: pointer; }
-.overlay button { color: #fff; background: #1d355d; border-color: #88aaff; font-size: 0.95rem; }
+.overlay button { color: var(--text); background: var(--bg-card); border-color: var(--brand-blue-bright); font-size: 0.95rem; }
 .viewer button:disabled { cursor: default; opacity: 0.5; }
 .viewer button[aria-pressed="true"] { border-color: var(--brand-blue-bright); color: var(--brand-blue-glow); box-shadow: inset 0 0 0 1px var(--brand-blue-bright); }
 .viewer button:focus-visible { outline: 2px solid var(--brand-blue-bright); outline-offset: 3px; }

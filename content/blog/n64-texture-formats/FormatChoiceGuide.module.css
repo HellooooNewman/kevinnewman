@@ -1,0 +1,17 @@
+.guide { max-width: 960px; margin: 2rem auto; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.card { min-width: 0; padding: 1.1rem; border: 1px solid var(--border-bright); border-radius: 10px; background: var(--bg-raised); }
+.card h3 { margin: 0 0 1rem !important; font-size: 1rem !important; line-height: 1.4 !important; letter-spacing: normal !important; }
+.samples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+.sample { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+.image { position: relative; height: 128px; overflow: hidden; border: 1px solid var(--border); border-radius: 5px; background-color: var(--bg-card); background-image: conic-gradient(var(--border-bright) 25%, transparent 0 50%, var(--border-bright) 0 75%, transparent 0); background-size: 16px 16px; }
+.image img { object-fit: contain; image-rendering: pixelated; border-radius: 0; }
+.sample strong { font-size: 0.75rem; line-height: 1.5; }
+.sample > span { color: var(--text-dim); font-size: 0.75rem; }
+.card p { margin: 0.9rem 0 0 !important; font-size: 0.85rem; line-height: 1.65; }
+.smallView { display: flex; align-items: center; gap: 1rem; margin-top: 0.75rem; color: var(--text-dim); font-size: 0.75rem; }
+.repeatNote { margin-top: 0.75rem; color: var(--text-dim); font-size: 0.7rem; line-height: 1.6; }
+.smallView img { display: block; flex: 0 0 12px; width: 12px; height: 12px; image-rendering: pixelated; border-radius: 0; }
+.guide figcaption { margin-top: 1rem; font-size: 0.75rem; line-height: 1.6; color: var(--text-dim); }
+@media (max-width: 700px) { .grid { grid-template-columns: 1fr; } .card { padding: 1rem; } }
+@media print { .card { break-inside: avoid; } }

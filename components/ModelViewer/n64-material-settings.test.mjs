@@ -24,6 +24,15 @@ test('the game model is an unmodified, self-contained snapshot with vertex color
   }
 });
 
+test('the model poster has a transparent backdrop and visible model pixels', async () => {
+  const poster = await readFile(new URL('columns-poster.png', root));
+  const metadata = await sharp(poster).metadata();
+  assert.equal(metadata.hasAlpha, true);
+  const { channels } = await sharp(poster).stats();
+  assert.equal(channels[3].min, 0);
+  assert.equal(channels[3].max, 255);
+});
+
 test('all exported column materials resolve to supported opaque intensity × vertex color', () => {
   const formats = [];
   for (const material of gltf.materials) {

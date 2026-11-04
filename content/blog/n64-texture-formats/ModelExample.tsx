@@ -10,7 +10,7 @@ export default function ModelExample() {
     title="Explore the boss-room columns"
     textures={reference.textures.map((texture) => ({ ...texture, src: `${assetRoot}/models/${texture.file}`, alt: `${texture.label} intensity texture used by the column model` }))}
     stats={reference.stats}
-    poster={`${assetRoot}/models/columns-poster.jpg`}
+    poster={`${assetRoot}/models/columns-poster.png`}
     posterAlt="Four textured boss-room columns, rendered from the game’s mesh with vertex colors"
   />;
 }

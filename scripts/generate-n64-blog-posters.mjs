@@ -4,6 +4,8 @@ import sharp from 'sharp';
 import path from 'node:path';
 import { writeFile } from 'node:fs/promises';
 import { familyDiagrams } from './format-family-diagrams.mjs';
+import { generateFormatChoices } from './format-choice-figures.mjs';
+import { generateCombinerFigures } from './combiner-figures.mjs';
 import { makeTextureTestPattern } from '../content/blog/n64-texture-formats/diagnostic-pattern.ts';
 import { formats, convertTexture, defaultVertexColors, formatBytes, renderVertexPanels, textureBudget } from '../content/blog/n64-texture-formats/texture-math.ts';
 import { bannerAssets, carpetAssets, diagnosticTexture, formatFamilies, revisionPairs, sceneComparisons, vertexTexture } from '../content/blog/n64-texture-formats/figures.ts';
@@ -145,4 +147,6 @@ familiesSvg += text(24, familiesFooter, 'Top: color gradient · middle: fine mag
 familiesSvg += text(24, familiesFooter + 22, 'Packed sizes include full CI palettes; headers, padding, mipmaps, compression excluded.', true);
 await sharp(background(768, familiesFooter + 44, familiesSvg)).composite(familiesLayers).png().toFile(path.join(root, 'format-families.png'));
 
-console.log(`Generated nine static illustrations, ${formatFamilies.length} SVG diagrams, and ${formatFamilies.length} texture samples for the Pandemonium texture article.`);
+await generateFormatChoices(root);
+await generateCombinerFigures(root);
+console.log(`Generated eleven static illustrations, ${formatFamilies.length} SVG diagrams, and format reference samples for the Pandemonium texture article.`);

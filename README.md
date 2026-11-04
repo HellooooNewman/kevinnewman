@@ -90,6 +90,12 @@ The format-family samples use a generated 64 × 64 diagnostic pattern with
 a color gradient, one-pixel complementary color stripes, and an alpha fade.
 This makes palette limits and shared YUV chroma visible; RGBA32 is the reference.
 The playground includes this pattern alongside the game artwork.
+The color-combiner demo uses normalized arithmetic for a small set of legal
+one- and two-cycle recipes. Its column recipe is checked against the exported
+model material; the alpha path and two-texture lerp have independent tests.
+`blog:posters` regenerates its 32 × 32 reference patches and static RSS image.
+The preview illustrates the combiner, not the complete RDP pipeline or fixed-point
+edge cases. Fog and framebuffer blending remain separate material operations.
 The vertex demo uses original-main textures downloaded
 from [Pandemonium commit d657844](https://github.com/Boxingbruin/Pandemonium/tree/d6578443ec1ca7634435b6881fe29bbd890bf1f9/assets/boss_room).
 Those unmodified files live in [original/](./public/assets/blog/pandemonium/original/).
@@ -163,7 +169,10 @@ The generator only reads the website snapshot, not the game checkout.
 Size labels use lowercase `b`, `kb`, `mb`, and larger units, with 1024-based
 steps. Use [formatBytes](./lib/format-bytes.mjs) for UI and generated figures.
 
-The model poster is a capture of the initial Combined view; after replacing the
+The model poster is a transparent PNG capture of the initial Combined view, so
+the CSS backdrop follows the theme before and after the model loads. The WebGL
+renderer clears to transparent and preserves the camera when switching themes.
+After replacing the
 model or shader, recapture the viewer canvas after **Reset view**, then run
 `npm run blog:model-assets` to refresh its RSS fallback. The normal image build
 makes its responsive WebP variants; `blog:posters` generates the other article
