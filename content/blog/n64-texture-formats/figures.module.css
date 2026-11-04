@@ -22,6 +22,15 @@
 .choiceButtons button:hover { color: var(--text); border-color: var(--brand-blue-bright); }
 .choiceButtons button[aria-pressed="true"] { color: var(--brand-blue-glow); border-color: var(--brand-blue-bright); box-shadow: inset 0 0 0 1px var(--brand-blue-bright); }
 .choiceButtons button:focus-visible { outline: 2px solid var(--brand-blue-bright); outline-offset: 3px; }
+.sizeGroup { width: 100%; }
+.sizeChoices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sizeChoices button { min-width: 0; text-align: left; }
+.sizeLabel { display: flex; justify-content: space-between; align-items: baseline; gap: 0.25rem; flex-wrap: wrap; }
+.sizeLabel > span { color: var(--text-dim); font-size: 0.7rem; font-weight: 400; }
+.sizeChoices strong { display: block; margin-top: 0.15rem; color: var(--text); font-size: 0.95rem; font-weight: 600; }
+.sizeTrack { display: block; height: 4px; margin-top: 0.6rem; background: var(--border); border-radius: 2px; overflow: hidden; }
+.sizeTrack > span { display: block; height: 100%; background: var(--brand-blue-bright); }
+.sizeNote { margin: 0.65rem 0 1.5rem !important; color: var(--text-dim); font-size: 0.75rem; line-height: 1.6; }
 .previews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
 .previews strong { display: block; font-size: 0.85rem; margin-bottom: 0.7rem; }
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.25rem 0; }
@@ -62,13 +71,35 @@
 .sceneStage img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 0; pointer-events: none; }
 .sceneLabels { position: absolute; top: 1rem; left: 1rem; right: 1rem; display: flex; justify-content: space-between; pointer-events: none; }
 .sceneLabels span { color: #fff; background: #101015d9; border: 1px solid #ffffff66; padding: 0.35rem 0.7rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
-.sceneDivider { position: absolute; inset-block: 0; width: 2px; transform: translateX(-50%); background: #fff; box-shadow: 0 0 5px #0009; pointer-events: none; }
-.sceneDivider span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid #fff; border-radius: 50%; background: #101015d9; color: #fff; font-size: 1.5rem; font-weight: 600; line-height: 1; white-space: pre; box-shadow: 0 2px 12px #0006; }
+.sceneDivider { position: absolute; inset-block: 0; width: 2px; transform: translateX(-50%); pointer-events: none; }
+.sceneDivider::before, .sceneDivider::after { content: ''; position: absolute; inset-inline: 0; background: #fff; box-shadow: 0 0 5px #0009; }
+.sceneDivider::before { top: 0; bottom: calc(50% + 22px); }
+.sceneDivider::after { top: calc(50% + 22px); bottom: 0; }
+.sceneDivider span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 44px; height: 44px; border: 2px solid #fff; border-radius: 50%; background: #101015d9; color: #fff; box-shadow: 0 2px 12px #0006; }
+.sceneDivider svg { display: block; }
 .sceneRange { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: ew-resize; }
 .sceneStage:has(.sceneRange:focus-visible) { outline: 3px solid var(--brand-blue-bright); outline-offset: -3px; }
 .sceneStage:has(.sceneRange:focus-visible) .sceneDivider span { outline: 3px solid var(--brand-blue-bright); outline-offset: 3px; }
 .sceneControls { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); }
+.familyFigure { max-width: 960px; margin: 2rem auto; }
+.familyGrid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+.familyCard { display: grid; grid-row: span 5; grid-template-rows: subgrid; gap: 0.6rem; min-width: 0; padding: 1rem; border: 1px solid var(--border-bright); border-radius: 10px; background: var(--bg-raised); }
+.familyLabel { min-height: 3.5rem; line-height: 1.4; }
+.familyLabel strong { display: block; font: 600 1.25rem/1.3 var(--font-mono); color: var(--brand-blue-glow); }
+.familyLabel span { display: block; margin-top: 0.2rem; font-size: 0.78rem; color: var(--text-dim); }
+.familyCard img { display: block; width: 100%; height: auto; max-width: 160px; margin: 0.5rem auto; border-radius: 0; }
+.familyCard p { margin: 0 !important; font-size: 0.82rem; line-height: 1.55; }
+.familyCard .familyHint { color: var(--text-dim); font-size: 0.75rem; }
+.familyTextureFrame { max-width: 160px; aspect-ratio: 1; margin: 0 auto; overflow: hidden; border: 1px solid var(--border); border-radius: 5px; background-color: var(--bg-card); background-image: conic-gradient(var(--border-bright) 25%, transparent 0 50%, var(--border-bright) 0 75%, transparent 0); background-size: 16px 16px; }
+.familyCard .familyTexture { width: 100%; height: 100%; max-width: none; margin: 0; image-rendering: pixelated; }
+.familySample > span { display: block; margin-top: 0.5rem; color: var(--text-dim); font-size: 0.7rem; text-align: center; }
+.familySample .familySize { margin-top: 0.25rem; color: var(--text); font-size: 0.82rem; font-weight: 600; }
+.familySample .familyPalette { margin-top: 0.25rem; font-size: 0.65rem; line-height: 1.5; }
+.familyFigure figcaption { margin-top: 1rem; color: var(--text-dim); font-size: 0.75rem; line-height: 1.6; text-align: center; }
 @media (max-width: 700px) {
+  .familyGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+  .familyCard { padding: 0.75rem; }
+  .familyCard:last-child { grid-column: 1 / -1; }
   .gallery { gap: 0.75rem; padding: 1rem; }
   .checker { height: 190px; }
   .checker :is(img,canvas) { height: 170px; }
@@ -77,11 +108,11 @@
   .stats > div { flex-direction: row; justify-content: space-between; align-items: baseline; }
   .explorer { padding: 1rem; }
   .previews { gap: 0.75rem; }
-  .vertexGallery { grid-template-columns: 1fr; }
-  .vertexGallery .asset { max-width: 320px; width: 100%; margin: 0 auto; }
+  .vertexGallery .asset { display: grid; grid-row: span 3; grid-template-rows: subgrid; gap: 0.25rem; }
   .sceneControls { padding: 1rem; }
 }
 @media (max-width: 420px) {
+  .vertexGallery { gap: 0.5rem; padding: 0.75rem; }
   .gallery:not(.vertexGallery) { gap: 0.5rem; }
   .gallery:not(.vertexGallery) .checker { height: 160px; }
   .gallery:not(.vertexGallery) .checker img { height: 140px; }

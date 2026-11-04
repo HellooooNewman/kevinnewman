@@ -50,6 +50,33 @@ test('CI texels are limited to 2 KiB, even when the logical palette is small', (
   assert.equal(textureBudget(64, 64, 'RGBA32').texels, 16384);
 });
 
+test('YUV16 shares horizontal chroma, preserves grayscale, and has no alpha or palette', () => {
+  const source = new Uint8ClampedArray([255,0,0,0, 0,0,255,255]);
+  const { pixels, palette } = convertTexture(source, 'YUV16', 2);
+  assert.deepEqual(palette, []);
+  assert.deepEqual([pixels[3], pixels[7]], [255, 255]);
+  // Red and blue share color: both acquire some of the neighboring channel.
+  assert.ok(pixels[2] > 100 && pixels[4] > 100);
+  const gray = new Uint8ClampedArray([48,48,48,0, 200,200,200,255]);
+  const result = convertTexture(gray, 'YUV16', 2).pixels;
+  for (const offset of [0, 4]) {
+    assert.equal(result[offset], result[offset + 1]);
+    assert.equal(result[offset], result[offset + 2]);
+    assert.ok(Math.abs(result[offset] - gray[offset]) <= 1);
+  }
+  assert.deepEqual(textureBudget(64, 64, 'YUV16'), { texels: 8192, paletteBytes: 0, capacity: 4096, fits: false });
+});
+
+test('YUV pairs never share color across row boundaries', () => {
+  const source = new Uint8ClampedArray([
+    255,0,0,255, 255,0,0,255, 255,0,0,255,
+    0,0,255,255, 0,0,255,255, 0,0,255,255,
+  ]);
+  const result = convertTexture(source, 'YUV16', 3).pixels;
+  assert.ok(result[8] > 250 && result[10] < 5);
+  assert.ok(result[12] < 5 && result[14] > 250);
+});
+
 test('vertex interpolation reaches all four corners and shares the diagonal', () => {
   const colors = [[255,0,0],[0,255,0],[0,0,255],[255,255,255]];
   for (const [u, v, expected] of [[0,0,colors[0]],[1,0,colors[1]],[0,1,colors[2]],[1,1,colors[3]]]) assert.deepEqual(interpolateVertexColor(colors, u, v), expected);

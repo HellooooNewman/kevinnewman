@@ -31,6 +31,6 @@ export default function TextureRevisionComparison() {
       )}</div>
       <p className={styles.budget} aria-live="polite">{pair.result}</p>
     </div>
-    <figcaption>Source PNGs shown at the same display scale. Main is pinned to commit d657844; updated images are snapshots from the local working version. The floor artwork and format both change. Palette bytes, row padding, filtering, lighting, and frame timing are outside this source-image comparison.</figcaption>
+    <figcaption>Source PNGs shown at the same display scale. Main is pinned to commit d657844; updated images are snapshots from the local working version. The floor artwork and format both change. Palette storage, row padding, filtering, lighting, and frame timing are outside this source-image comparison.</figcaption>
   </figure>;
 }

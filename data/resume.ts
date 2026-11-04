@@ -99,7 +99,7 @@ export const jobs: Job[] = [
     employer: "Sonar Software",
     employerLink: "https://sonar.software",
     logo: "/assets/company-logos/sonar.svg",
-    title: "Software Engineer → Senior Software Engineer",
+    title: "Software Developer → Senior Software Developer",
     employmentType: "Full-time",
     period: "Jan 2021 – Present",
     location: "Remote",

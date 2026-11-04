@@ -1,0 +1,39 @@
+{
+  "textures": [
+    {
+      "file": "columns-texture-0.png",
+      "label": "Shaft",
+      "imageIndex": 0,
+      "sourceSha256": "ed8253e2af89a1df52a0645a59b8df8c258e0b1adc4e0a63681182d310d1cb3c",
+      "width": 32,
+      "height": 128,
+      "format": "I8",
+      "texelBytes": 4096
+    },
+    {
+      "file": "columns-texture-1.png",
+      "label": "Base",
+      "imageIndex": 1,
+      "sourceSha256": "b98813ff4ef809f311dbc55becc34ed894d23bfb226bc4bfd3542e773b9e2d13",
+      "width": 32,
+      "height": 32,
+      "format": "I4",
+      "texelBytes": 512
+    },
+    {
+      "file": "columns-texture-2.png",
+      "label": "Transition",
+      "imageIndex": 2,
+      "sourceSha256": "0d5fb197d3e3bd94ae206818229c5778c878788bc21c184b9520c6f4bee7422f",
+      "width": 32,
+      "height": 124,
+      "format": "I4",
+      "texelBytes": 1984
+    }
+  ],
+  "stats": {
+    "triangles": 254,
+    "textureCount": 3,
+    "textureBytes": 6592
+  }
+}
