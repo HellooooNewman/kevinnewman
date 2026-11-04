@@ -3,12 +3,16 @@ import VertexColorDemo from './VertexColorDemo';
 import SceneComparisons from './SceneComparisons';
 import FormatFamilies from './FormatFamilies';
 import ModelExample from './ModelExample';
+import FormatChoiceGuide from './FormatChoiceGuide';
+import ColorCombinerDemo from './ColorCombinerDemo';
 
 A more detailed room does not always need bigger textures. In [Pandemonium](/projects/pandemonium/), our N64brew game-jam boss battle, small grayscale images get their color from the mesh, while palettes and separate layers handle other kinds of detail. All Pandemonium textures were made by my teammate [BoxingBruin](https://github.com/Boxingbruin).
 
 <SceneComparisons />
 
 ## Small textures, tight budget
+
+A **texel** (texture element) is one pixel in a texture, so a 64 × 64 texture contains 4,096 texels.
 
 The N64’s graphics hardware has **4 kb of texture memory**, called TMEM. That is space for textures being used while drawing, rather than a limit on all the artwork in a game. The RDP can only sample texels already loaded there, so textures that exceed that space must be drawn in smaller sections, with new texture data loaded between draws.
 
@@ -33,16 +37,13 @@ These layouts follow [libdragon’s texture-format definitions](https://github.c
 
 ## Which format would I use?
 
-Start with how large the surface appears on screen, which colors it needs, and whether it needs transparency. Here are useful starting points:
+I’d start with what the surface needs. Each pair below uses the same source, so you can see what changes when you spend more memory.
 
-- **Stone floors, brick walls, and tinted cloth:** try **I4** with vertex colors for broad tinting. It leaves more room for texels. Move to **I8** when the 16 brightness levels in I4 produce visible banding or lose shading detail.
-- **Colorful surfaces and character textures:** try **CI4** when 16 palette entries capture the artwork, or **CI8** when it needs more colors. **RGBA16** is useful when a palette visibly damages the colors; it costs more texture memory but avoids choosing palette entries.
-- **Small props, pickups, and icons:** start with a small **CI4 or RGBA16** texture. A detailed mesh can still use a small texture if the object occupies only a few screen pixels. A close-up inspection view may justify a larger texture of the same format.
-- **Leaves, lettering, and banner ornaments:** **IA4** can handle grayscale cutouts with hard transparency. **RGBA16** or CI with an RGBA16 palette can do colored cutouts. Try **IA8** when grayscale edges need a softer alpha transition.
-- **Smoke, glows, and soft fades:** **IA8** is a compact starting point for grayscale effects that can be tinted. **IA16** gives finer brightness and alpha precision. Use **RGBA32** when independent full-color variation and smooth alpha justify 4 b per texel, especially on small effects.
-- **Video frames and photographic images:** consider **YUV16** when reduced horizontal color detail is acceptable. It has no alpha and uses [libdragon’s dedicated YUV conversion mode](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L346-L362).
+<FormatChoiceGuide />
 
-**Distance mainly changes the resolution you need.** A floor seen up close benefits from a larger texel grid; far away, smaller [mipmap levels](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L830-L856) can reduce shimmering. Mipmaps add storage, so budget for the levels that must be resident together. Choose the format for color and alpha needs, then choose texture dimensions and mipmaps for the viewing distance.
+For **colored cutouts**, RGBA16 or CI with an RGBA16 palette gives you on/off alpha. **YUV16** is a separate case for video frames or photographs: it keeps brightness detail but shares color between neighboring texels, and has no alpha. It uses [libdragon’s dedicated YUV conversion mode](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L346-L362).
+
+For surfaces that recede into the distance, [mipmaps](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L830-L856) can reduce shimmering. They add storage; budget for the levels that need to be loaded together.
 
 ## Put detail in the texture, color in the vertices
 
@@ -57,6 +58,36 @@ surface RGB = texture intensity × interpolated vertex RGB
 For **2 kb of raw texels**, RGBA16 gives you 32 × 32 pixels, while I4 gives you 64 × 64: four times as many texels. Putting broad color changes in the vertices can preserve a larger grid for surface detail.
 
 Vertex colors do not increase the screen resolution or add texture pixels by themselves. Their gradients follow the mesh, and vertex data also costs memory. The original floor already used this technique; the revision keeps it.
+
+## How the color combiner builds the material
+
+The texture format tells us what is stored. The **color combiner** decides how those samples mix with the other inputs. Vertex colors only affect the result if the material’s formula uses them.
+
+Each cycle runs this formula separately for **RGB** and **alpha**:
+
+```text
+(A − B) × C + D
+```
+
+The letters are input slots, like the fields in Fast64. **Texture 0 / 1** are sampled textures. **Shade** is the color interpolated from the triangle’s vertices, including vertex lighting when enabled. **Primitive** and **Environment** are constant colors set by the material or drawing code; their names do not give them automatic lighting behavior. The available inputs depend on the slot. See [libdragon’s formula and input definitions](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_macros.h#L310-L410).
+
+<ColorCombinerDemo />
+
+The column material uses **two cycles**: texture × shade, then that result × primitive color. **Combined** means the previous cycle’s output. White primitive color leaves it unchanged. Both alpha formulas keep the surface opaque, so the intensity texture’s alpha does not make the stone transparent. A simpler material can finish in one cycle; two cycles do not mean drawing the model twice. [libdragon documents the second stage here](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_macros.h#L474-L495).
+
+The **two-texture blend** preset uses `(Texture 1 − Texture 0) × amount + Texture 0`. This is a lerp: amount 0 gives Texture 0, amount 1 gives Texture 1. It uses primitive alpha as the mix amount, then applies shade in cycle 2. Both textures must fit in TMEM together; these two 32 × 32 I4 patches use 1 kb in total.
+
+On an N64 model, the UVs select the texture samples and the vertex data supplies shade. Fast64 stores the combiner choices in the exported material, which the model pipeline must apply when drawing. Changing the PNG alone cannot change that formula. For the column settings, the equivalent libdragon configuration is:
+
+```c
+rdpq_mode_combiner(RDPQ_COMBINER2(
+    (TEX0, 0, SHADE, 0),       (0, 0, 0, 1),
+    (COMBINED, 0, PRIM, 0),   (0, 0, 0, COMBINED)
+));
+rdpq_set_prim_color(RGBA32(255, 255, 255, 255));
+```
+
+The combiner is only part of the material. **Lighting supplies shade before this step.** The later **blender** handles mixing with the framebuffer; alpha testing can discard cutout pixels. Standard fog also uses the blender, often borrowing shade alpha for depth, so it needs care alongside custom alpha formulas. See [libdragon’s notes on fog and the combiner](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L413-L467).
 
 <ModelExample />
 
@@ -73,8 +104,6 @@ The floor went from I8 to I4: 4 kb down to 2 kb, still at 64 × 64. The artwork 
 The carpet still uses CI8. Its mipmaps actually add memory, but help stop the fine pattern shimmering in the distance. The banner layers show another tradeoff, spending bits on independent alpha where a decorative cutout needs it. These choices serve different visual goals, rather than all being memory reductions.
 
 ## Try the formats yourself
-
-Pick an image, then change its representation. Compare I4 with I8 for brightness precision, CI4 with CI8 for palette size, IA4 with IA8 for transparency, and YUV16 with RGBA16 for shared color versus reduced channel precision. **Texel alpha is always applied where available**; YUV16 has none, and the vertex-color demo above uses opaque output.
 
 <FormatExplorer />
 

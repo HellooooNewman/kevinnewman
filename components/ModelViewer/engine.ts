@@ -93,7 +93,8 @@ export async function createViewer(canvas: HTMLCanvasElement, options: ViewerOpt
     keyLight.position.set(1, 2, 3);
     scene.add(keyLight);
     renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setClearColor(0x111827, 1);
+    // Let the themed CSS backdrop show through without reloading the model.
+    renderer.setClearColor(0x000000, 0);
     renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
     const camera = new PerspectiveCamera(40, 1, Math.max(radius / 1000, 0.001), radius * 100);
     controls = new OrbitControls(camera, canvas);

@@ -7,7 +7,7 @@
   },
   "scripts": {
     "blog:posters": "node --experimental-strip-types scripts/generate-n64-blog-posters.mjs",
-    "test:blog": "node --experimental-strip-types --test lib/blog-reading-time.test.mjs lib/blog-publication.test.mjs content/blog/n64-texture-formats/texture-math.test.mjs content/blog/n64-texture-formats/asset-sources.test.mjs",
+    "test:blog": "node --experimental-strip-types --test lib/blog-reading-time.test.mjs lib/blog-publication.test.mjs content/blog/n64-texture-formats/texture-math.test.mjs content/blog/n64-texture-formats/asset-sources.test.mjs content/blog/n64-texture-formats/combiner-math.test.mjs",
     "dev": "npm run images && next dev -p 4301",
     "build": "npm run images && next build",
     "start": "next start -p 4301",

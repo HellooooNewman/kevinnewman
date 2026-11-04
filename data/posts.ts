@@ -23,8 +23,8 @@ export interface BlogPost {
 // One entry per manually authored article. Demos and styles stay with the post.
 const posts: BlogPost[] = [{
   slug: 'n64-texture-formats',
-  title: 'What texture format should I use for N64 graphics?',
-  description: 'A brief overview of the texture formats available for N64 graphics, and how to choose between them.',
+  title: 'Texturing for the N64',
+  description: 'How texture formats, vertex colors, and the color combiner shape Pandemonium’s N64 boss room.',
   date: '2026-11-03',
   published: false,
   tags: ['N64', 'Graphics', 'Interactive'],

@@ -9,6 +9,7 @@ import remarkMdx from 'remark-mdx';
 import { visit } from 'unist-util-visit';
 import { articleFigures, bannerAssets, carpetAssets, formatSamples, revisionPairs, vertexTexture } from './figures.ts';
 import { textureBudget } from './texture-math.ts';
+import { formatChoices } from './format-choices.ts';
 
 const assets = new URL('../../../public/assets/blog/pandemonium/', import.meta.url);
 const manifest = JSON.parse(await readFile(new URL('./asset-sources.json', import.meta.url), 'utf8'));
@@ -47,4 +48,25 @@ test('every MDX figure has an existing RSS illustration even while the post is u
     const image = await readFile(new URL(`../../../public${figure.src}`, import.meta.url));
     assert.ok((await sharp(image).metadata()).width > 0, name);
   }
+});
+
+test('format-choice images show the advertised precision, alpha, and resolution', async () => {
+  const previews = new Map();
+  for (const choice of formatChoices) for (const sample of choice.samples) {
+    const { data, info } = await sharp(await readFile(new URL(sample.file, assets))).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    assert.deepEqual([info.width, info.height], [choice.id === 'color' ? 64 : sample.width, sample.height]);
+    const colors = new Set(), alpha = new Set();
+    for (let pixel = 0; pixel < data.length; pixel += 4) {
+      colors.add(`${data[pixel]},${data[pixel + 1]},${data[pixel + 2]}`);
+      alpha.add(data[pixel + 3]);
+    }
+    previews.set(sample.file, { colors, alpha });
+  }
+  assert.ok(previews.get('choice-stone-i4.png').colors.size <= 16);
+  assert.ok(previews.get('choice-stone-i8.png').colors.size > 16);
+  assert.ok(previews.get('choice-carpet-ci4.png').colors.size <= 16);
+  assert.ok(previews.get('choice-carpet-ci8.png').colors.size > 16);
+  assert.deepEqual([...previews.get('choice-glow-ia4.png').alpha].sort((a, b) => a - b), [0, 255]);
+  assert.ok(previews.get('choice-glow-ia8.png').alpha.size > 2);
+  assert.equal(textureBudget(64, 64, 'I4').texels / textureBudget(32, 32, 'I4').texels, 4);
 });

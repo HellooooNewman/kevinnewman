@@ -45,7 +45,7 @@ await writeFile(new URL('columns-reference.json', root), JSON.stringify({ textur
 // RSS shows the same references above the model without requiring WebGL.
 const width = 960;
 const headerHeight = 236;
-const poster = await sharp(await readFile(new URL('columns-poster.jpg', root))).resize({ width }).toBuffer();
+const poster = await sharp(await readFile(new URL('columns-poster.png', root))).resize({ width }).toBuffer();
 const posterInfo = await sharp(poster).metadata();
 const height = headerHeight + posterInfo.height;
 const layers = [];
