@@ -48,6 +48,9 @@ Session Replay in PostHog. Recording requests should also use
 
 ## Where things live
 
+- The footer's last-updated month and year, copyright year, and home page
+  `dateModified` metadata come from the build date in [the resume data](./data/resume.ts).
+  They use UTC and are baked into the static export on each build.
 - `data/resume.ts` - intro, "Right now" panel, skills, jobs, education
 - `data/projects.ts` - all projects (`promote: true` features them on the home page; first two become spotlights)
 - `app/` - routes (home, projects, project detail, game-jams, contact, legacy redirects)

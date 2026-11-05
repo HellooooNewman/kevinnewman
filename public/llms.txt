@@ -21,6 +21,7 @@
 
 - [Reality64](https://www.kevinnewman.ca/projects/reality64/): Cross-platform desktop editor and engine for making real Nintendo 64 games — author scenes, cutscenes, and UI on PC, then build a .z64 ROM. C++17, SDL3, Dear ImGui, libdragon + tiny3d. In development.
 - [CondoPulse](https://www.kevinnewman.ca/projects/condopulse/): Statuspage.io for condo buildings — tracks elevator uptime, amenity outages, and per-unit issues. Next.js 15, Drizzle/Postgres, Expo/React Native, deployed across Vercel, Neon, and Cloudflare. Live SaaS with a free demo.
+- [Canada Transit Atlas](https://www.kevinnewman.ca/projects/canada-transit-atlas/): Interactive atlas for transit enthusiasts exploring Canadian routes, stops, live vehicles, service changes, reliability, and network patterns. Built from agency GTFS schedules and realtime data. Live map at https://transit.kevinnewman.ca/map.
 - [Pandemonium](https://www.kevinnewman.ca/projects/pandemonium/): A souls-like boss-battle game for the Nintendo 64, built in C with libdragon for the 2025 N64brew Game Jam. Its making-of video has over a million views.
 - [E-Ink Image Converter](https://www.kevinnewman.ca/projects/e-ink-image-converter/): Browser-based tool that converts images into dithered BMP files for e-ink displays. Svelte 5, client-side, with a Three.js 3D frame viewer.
 - [Image Comparison Tool](https://www.kevinnewman.ca/projects/image-comparison-tool/): Web tool for visually comparing before-and-after images, with an MCP server for AI-driven workflows.

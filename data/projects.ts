@@ -175,6 +175,78 @@ export const projects: Project[] = [
     archived: false,
   },
   {
+    id: "21",
+    slug: "canada-transit-atlas",
+    badge: "Explore the map",
+    title: "Canada Transit Atlas",
+    thumbnail: "/assets/projects/canada-transit-atlas.jpg",
+    mainImg: "/assets/projects/gallery/canada-transit-atlas0.jpeg",
+    projectType: ["Web"],
+    projectUrl: "https://transit.kevinnewman.ca/map",
+    workType: "Personal",
+    promote: true,
+    year: "2026",
+    roles: ["Designer", "Developer"],
+    shortBody:
+      "An interactive atlas for transit enthusiasts: explore Canada's routes and stops, watch vehicles move, and dig into service changes, reliability, and the shape of transit networks.",
+    body: [
+      "Canada Transit Atlas is for people who can lose an afternoon following a railway line on a map. It brings public transit networks across Canada into one place, from city buses and streetcars to regional trains, intercity services, and ferries. Search for a route, stop, or place, then zoom in to see how the network fits together.",
+      "The map combines agency GTFS schedules with live vehicle positions where available. Vehicles without a live position can be shown where the timetable puts them, with scheduled and live data kept distinct. Layers reveal transit coverage and lines that are planned or under construction, while travel-time tools help explore where the network can take you.",
+      "There's plenty to explore beyond the map: a service-change feed tracks routes, stops, frequency, and operating hours; reliability views and report cards examine how service runs; a timelapse plays through a day of scheduled transit; and orientation diagrams reveal the street patterns that shape each network. Agency credits and data sources are linked throughout.",
+    ],
+    features: [
+      "Interactive map of routes and stops across Canadian transit agencies, with search for routes, stops, and places",
+      "Live vehicle positions where available, with a separate layer for vehicles positioned from the timetable",
+      "Transit heatmap, planned and under-construction lines, and travel-time exploration",
+      "Service-change history covering new and cut routes, stops, service days, frequency, and first and last trips",
+      "Reliability views and transit report cards",
+      "Day timelapse and network orientation diagrams for exploring service patterns",
+      "Open GTFS schedule and realtime data, with agency credits, source links, and feed-health reporting",
+    ],
+    links: [
+      {
+        label: "Browse agencies",
+        url: "https://transit.kevinnewman.ca/agencies",
+        description: "Explore the transit systems included in the atlas",
+      },
+      {
+        label: "Service changes",
+        url: "https://transit.kevinnewman.ca/changes",
+        description: "Follow changes to routes, stops, frequency, and operating hours",
+      },
+      {
+        label: "Reliability",
+        url: "https://transit.kevinnewman.ca/reliability",
+        description: "Explore how service performs against the timetable",
+      },
+      {
+        label: "Day timelapse",
+        url: "https://transit.kevinnewman.ca/day",
+        description: "Watch a day of scheduled transit unfold",
+      },
+      {
+        label: "Sources and credits",
+        url: "https://transit.kevinnewman.ca/sources",
+        description: "Agency data, licences, and feed health",
+      },
+    ],
+    gallery: [
+      {
+        url: "/assets/projects/gallery/canada-transit-atlas0.jpeg",
+        alt: "Canada Transit Atlas map showing transit routes across the Greater Toronto Area",
+      },
+      {
+        url: "/assets/projects/gallery/canada-transit-atlas1.jpeg",
+        alt: "Canada Transit Atlas service-change feed showing changes to routes, stops, and operating hours",
+      },
+      {
+        url: "/assets/projects/gallery/canada-transit-atlas2.jpeg",
+        alt: "Canada Transit Atlas network orientation diagrams comparing the direction of transit routes",
+      },
+    ],
+    archived: false,
+  },
+  {
     id: "20",
     slug: "groundplan",
     badge: "Early access",

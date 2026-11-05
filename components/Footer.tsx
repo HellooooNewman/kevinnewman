@@ -1,7 +1,7 @@
 import Starfield from "./Starfield";
 import SocialLinks from "./SocialLinks";
 import CampsiteScene from "./CampsiteScene";
-import { lastUpdated } from "@/data/resume";
+import { buildDate, lastUpdated } from "@/data/resume";
 import FooterParallax from "./FooterParallax";
 import { cx } from "@/lib/cx";
 import layout from "@/styles/layout.module.css";
@@ -20,7 +20,7 @@ export default function Footer() {
             Thanks for coming by. Have a nice day.
           </p>
           <p className={styles.meta}>
-            © {new Date().getFullYear()} Kevin Newman · Last updated {lastUpdated}
+            © {buildDate.getUTCFullYear()} Kevin Newman · Last updated {lastUpdated}
           </p>
           <div className={styles.social}>
             <SocialLinks />

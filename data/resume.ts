@@ -40,7 +40,13 @@ export const intro = {
   },
 };
 
-export const lastUpdated = "September 2026";
+// Server-rendered during the static export, so the date refreshes on every build.
+export const buildDate = new Date();
+export const lastUpdated = buildDate.toLocaleDateString("en-CA", {
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 // Two tiers: the curated stack I work in daily, then everything else.
 export const skills = {
