@@ -16,5 +16,8 @@ const nextConfig = {
   },
   trailingSlash: true,
 };
-const withMDX = createMDX({ options: { remarkPlugins: ['remark-gfm'] } });
+const withMDX = createMDX({ options: {
+  remarkPlugins: ['remark-gfm'],
+  rehypePlugins: [['rehype-highlight', { plainText: ['text', 'txt'] }]],
+} });
 export default withMDX(nextConfig);

@@ -26,20 +26,20 @@ export async function generateCombinerFigures(root) {
   const text = (x, y, value, font = 16) => `<text x="${x}" y="${y}" fill="#edf1fa" font-family="Arial,sans-serif" font-size="${font}">${value}</text>`;
   let svg = '<svg xmlns="http://www.w3.org/2000/svg" width="960" height="700"><defs><pattern id="checker" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#141a2e"/><path d="M0 0h8v8H0zM8 8h8v8H8z" fill="#303b55"/></pattern></defs><rect width="100%" height="100%" fill="#111827"/>';
   svg += text(24, 32, 'Color combiner: (A − B) × C + D', 22);
-  svg += text(24, 62, 'Column recipe: cycle 1 = Texture 0 × Shade; cycle 2 = Combined × Primitive. Alpha = 1.');
+  svg += text(24, 62, 'Column recipe: cycle 1 = Texture 0 × Shade. Cycle 2 = Combined × Primitive. Alpha = 1.');
   for (const [index, [name, pixels]] of [['Texture 0', texture0], ['Shade', shade], ['After cycle 1', columns.stages[0]], ['Final, white primitive', columns.stages[1]]].entries()) {
     const x = 24 + index * 234;
     svg += text(x, 100, name, 15);
     layers.push({ input: await png(pixels, 192).toBuffer(), left: x, top: 114 });
   }
   svg += text(24, 350, 'Two-texture lerp: (Texture 1 − Texture 0) × amount + Texture 0', 18);
-  svg += text(24, 378, 'At 50%, both textures contribute equally; the second cycle applies Shade.', 15);
+  svg += text(24, 378, 'At 50%, both textures contribute equally. The second cycle applies Shade.', 15);
   for (const [index, [name, pixels]] of [['Texture 0', texture0], ['Texture 1', texture1], ['50% mix, shaded', mix.stages[1]], ['IA8 with alpha', transparent.stages[0]]].entries()) {
     const x = 24 + index * 234;
     svg += text(x, 414, name, 15) + `<rect x="${x}" y="430" width="192" height="192" fill="url(#checker)"/>`;
     layers.push({ input: await png(pixels, 192).toBuffer(), left: x, top: 430 });
   }
   svg += text(24, 662, 'RGB and alpha have separate formulas. Transparency also needs blending or alpha testing.', 15);
-  svg += text(24, 686, 'Illustrative arithmetic on flat patches; not RDP fixed-point emulation.', 13) + '</svg>';
+  svg += text(24, 686, 'Illustrative arithmetic on flat patches. RDP fixed-point precision is not emulated.', 13) + '</svg>';
   await sharp(Buffer.from(svg)).composite(layers).png().toFile(path.join(root, 'color-combiner.png'));
 }

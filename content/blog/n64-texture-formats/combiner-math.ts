@@ -3,17 +3,17 @@ type Formula = readonly [Slot, Slot, Slot, Slot];
 type Cycle = { rgb: Formula; alpha: Formula; explanation: string };
 export type RecipeId = 'columns' | 'texture' | 'alpha' | 'lerp';
 export const combinerRecipes: { id: RecipeId; label: string; summary: string; cycles: Cycle[] }[] = [
-  { id: 'columns', label: 'Column material', summary: 'Two cycles, matching the column material: texture × shade, followed by a primitive tint. White leaves the first result unchanged. Alpha stays opaque.', cycles: [
+  { id: 'columns', label: 'Column material', summary: 'White primitive color leaves the first cycle’s result unchanged.', cycles: [
     { rgb: ['TEX0', '0', 'SHADE', '0'], alpha: ['0', '0', '0', '1'], explanation: 'Multiply texture color by interpolated vertex shading. Force alpha to 1.' },
     { rgb: ['COMBINED', '0', 'PRIM', '0'], alpha: ['0', '0', '0', 'COMBINED'], explanation: 'Tint the first result with primitive color. Keep its alpha.' },
   ] },
-  { id: 'texture', label: 'Texture only', summary: 'One cycle is enough to output the texture directly. Shade is never selected, so vertex colors and vertex lighting do not change this result.', cycles: [
+  { id: 'texture', label: 'Texture only', summary: 'Vertex colors and vertex lighting have no effect because Shade is not selected.', cycles: [
     { rgb: ['0', '0', '0', 'TEX0'], alpha: ['0', '0', '0', '1'], explanation: 'Take the texture color directly. Keep the surface opaque.' },
   ] },
-  { id: 'alpha', label: 'Use texture alpha', summary: 'A tinted IA8 patch with its own alpha. Its transparency is shown over the checkerboard using source-alpha blending; the combiner only supplies the color and alpha.', cycles: [
+  { id: 'alpha', label: 'Use texture alpha', summary: 'The combiner supplies color and alpha. Source-alpha blending then reveals the checkerboard through the transparent areas.', cycles: [
     { rgb: ['TEX0', '0', 'PRIM', '0'], alpha: ['0', '0', '0', 'TEX0'], explanation: 'Tint the texture. Pass its alpha through for the blender to use.' },
   ] },
-  { id: 'lerp', label: 'Blend two textures', summary: 'In two-cycle mode, the first stage mixes two textures using primitive alpha as the amount. The second applies vertex shading. Both 32 × 32 I4 textures together use 1 kb of texels.', cycles: [
+  { id: 'lerp', label: 'Blend two textures', summary: 'Primitive alpha sets the blend amount. Cycle 2 shades the mixture.', cycles: [
     { rgb: ['TEX1', 'TEX0', 'PRIM_ALPHA', 'TEX0'], alpha: ['0', '0', '0', '1'], explanation: 'At 0%, use Texture 0. At 100%, use Texture 1. In between, mix them.' },
     { rgb: ['COMBINED', '0', 'SHADE', '0'], alpha: ['0', '0', '0', 'COMBINED'], explanation: 'Multiply the mixed texture by vertex shading. Keep opaque alpha.' },
   ] },

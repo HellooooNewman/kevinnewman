@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { formatPostDate, getPublishedPosts } from '@/data/posts';
 import { pageMetadata } from '@/lib/seo';
 import { getPostReadMinutes } from '@/lib/blog-reading-time';
+import RssLink from '@/components/RssLink';
 import styles from './page.module.css';
 
 export const metadata = pageMetadata({
@@ -18,10 +19,11 @@ export default async function BlogPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <p className={styles.eyebrow}>Notes from the workshop</p>
-        <h1>Making things.<br /><span>Sharing the interesting bits.</span></h1>
-        <p className={styles.intro}>Experiments, small discoveries, and the stories behind my projects. Sometimes with something you can play with.</p>
-        <a className={styles.subscribe} href="/feed.xml">Subscribe via RSS <span aria-hidden="true">↗</span></a>
+        <div className={styles.titleRow}>
+          <h1>Focused Ramblings</h1>
+          <RssLink />
+        </div>
+        <p className={styles.intro}>Sometimes I have some good ideas.</p>
       </header>
       <div className={styles.list}>
         {posts.map((post) => (
@@ -35,7 +37,7 @@ export default async function BlogPage() {
             </div>
           </article>
         ))}
-        {posts.length === 0 && <p>The first post is on its way. You can already subscribe via RSS.</p>}
+        {posts.length === 0 && <p>The first post is on its way.</p>}
       </div>
     </div>
   );

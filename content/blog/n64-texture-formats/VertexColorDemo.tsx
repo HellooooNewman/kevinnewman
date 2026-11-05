@@ -39,7 +39,7 @@ export default function VertexColorDemo() {
         <canvas ref={(element) => { canvases.current[index] = element; }} width={256} height={256} role="img" aria-label={`${label}, shown on a quad made of two triangles`} hidden={!source} />
         {mesh && index > 0 && <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M4 4H252V252H4ZM252 4 4 252" />{[[5, 5], [251, 5], [5, 251], [251, 251]].map(([cx, cy], i) => <circle key={i} cx={cx} cy={cy} r={4} fill={hex(colors[i])} />)}</svg>}
       </div>
-      <span>{index === 0 ? 'Original main · 64 × 64 I8 · 4 kb' : index === 1 ? 'Four corner colors, smoothly interpolated' : 'Same texture dimensions. More color variation.'}</span>
+      <span>{index === 0 ? 'Original main · 64 × 64 I8 · 4kb' : index === 1 ? 'Four corner colors, smoothly interpolated' : 'Same texture dimensions. More color variation.'}</span>
     </div>)}</div>
     <div className={styles.colorControls}>{labels.map((label, index) => <label key={label} htmlFor={`${id}-${index}`}><input id={`${id}-${index}`} type="color" value={hex(colors[index])} onChange={(event) => changeColor(index, event.target.value)} />{label}</label>)}</div>
     <div className={styles.vertexActions}>

@@ -47,29 +47,27 @@ export default function FormatExplorer() {
       </div>
       <fieldset className={`${styles.choiceGroup} ${styles.sizeGroup}`} aria-describedby={`${id}-size-note`}>
         <legend>Compare packed sizes · {sample.width} × {sample.height}</legend>
-        <div className={`${styles.choiceButtons} ${styles.sizeChoices}`}>{sizes.map((entry) => <button key={entry.id} type="button" aria-pressed={format === entry.id} onClick={() => setFormat(entry.id)} title={`${entry.total.toLocaleString('en-US')} b, including a full palette for CI formats`}>
+        <div className={`${styles.choiceButtons} ${styles.sizeChoices}`}>{sizes.map((entry) => <button key={entry.id} type="button" aria-pressed={format === entry.id} onClick={() => setFormat(entry.id)} title={`${entry.total.toLocaleString('en-US')}b, including a full palette for CI formats`}>
           <span className={styles.sizeLabel}>{entry.id}<span>{entry.bits} bits</span></span>
           <strong>{formatBytes(entry.total)}</strong>
           <span className={styles.sizeTrack} aria-hidden="true"><span style={{ width: `${entry.total / largest * 100}%` }} /></span>
         </button>)}</div>
       </fieldset>
-      <p id={`${id}-size-note`} className={styles.sizeNote}>Texels + a full RGBA16 palette for CI. Excludes headers, padding, mipmaps, and compression; PNG file sizes differ.</p>
+      <p id={`${id}-size-note`} className={styles.sizeNote}>Texels + a full RGBA16 palette for CI. Excludes headers, padding, mipmaps, and compression. PNG file sizes differ.</p>
       <div className={styles.previews}>
         <div><strong>Source PNG · {sample.width} × {sample.height}</strong><div className={styles.checker}><img src={`${assetRoot}/${sample.file}`} width={sample.width} height={sample.height} alt={`${sample.label} texture`} /></div></div>
         <div><strong>{format} · {spec.label}</strong><div className={styles.checker}>
-          <img src={`${assetRoot}/${sample.file}`} width={sample.width} height={sample.height} alt="Original texture; enable JavaScript for the format comparison" hidden={!!converted} />
+          <img src={`${assetRoot}/${sample.file}`} width={sample.width} height={sample.height} alt="Original texture. Enable JavaScript for the format comparison" hidden={!!converted} />
           <canvas ref={canvas} width={sample.width} height={sample.height} role="img" aria-label={`${sample.label} converted to ${format}, ${format === 'YUV16' ? 'opaque with shared horizontal color samples' : 'using texel alpha'}`} hidden={!converted} />
         </div></div>
       </div>
       <div className={styles.stats} aria-live="polite" aria-atomic="true">
-        <div><span>Texel data</span><strong>{budget.texels.toLocaleString('en-US')} b</strong></div>
-        <div><span>Full palette</span><strong>{budget.paletteBytes ? `${budget.paletteBytes} b` : 'None'}</strong></div>
-        <div><span>Estimated packed size</span><strong>{(budget.texels + budget.paletteBytes).toLocaleString('en-US')} b</strong></div>
+        <div><span>Texel data</span><strong>{budget.texels.toLocaleString('en-US')}b</strong></div>
+        <div><span>Full palette</span><strong>{budget.paletteBytes ? `${budget.paletteBytes}b` : 'None'}</strong></div>
+        <div><span>Estimated packed size</span><strong>{(budget.texels + budget.paletteBytes).toLocaleString('en-US')}b</strong></div>
       </div>
       <p className={styles.explanation}>{spec.detail}</p>
       {converted && converted.palette.length > 0 && <div className={styles.swatches} aria-label={`Generated palette with ${converted.palette.length} entries`}>{converted.palette.map((color, i) => <span key={i} title={`RGBA ${color.join(', ')}`} style={{ backgroundColor: `rgba(${color[0]},${color[1]},${color[2]},${color[3] / 255})` }} />)}</div>}
-      <p className={styles.budget}>At {sample.width} × {sample.height}, {format} needs <strong>{formatBytes(budget.texels)}</strong> of texel data: {budget.fits ? 'it fits' : 'it exceeds'} the <strong>{formatBytes(budget.capacity)}</strong> available for texels{budget.paletteBytes ? ' when the upper 2 kb of TMEM is reserved for palette lookup' : ' in TMEM'}. This comparison assumes one tile, with no row padding, mipmaps, or other resident textures.</p>
     </div>
-    <figcaption>Illustrative conversions with texel alpha applied where available. CI uses generated RGBA16 palettes; YUV16 is opaque and approximates BT.601 4:2:2. Filtering, lighting, and blending can change the result on hardware.</figcaption>
   </figure>;
 }
