@@ -19,8 +19,9 @@ Angular version, rebuilt for real prerendered HTML, SEO, and mobile.
 [Client instrumentation](./instrumentation-client.ts) initializes PostHog using
 the existing reverse proxy at `https://d.kevinnewman.ca`. It captures the initial
 pageview, pageviews during client-side navigation, page leaves, and automatic
-click interactions. Session recording is disabled, and cookies are scoped to
-the current hostname so they do not share visitor identity with other projects.
+click interactions. Session recording is enabled and follows the project's
+PostHog replay settings. Cookies are scoped to the current hostname so they do
+not share visitor identity with other projects.
 
 Copy [the environment template](./.env.example) to `.env.local` and set
 `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` to this site's public project token (`phc_…`)
@@ -38,6 +39,12 @@ do not send analytics.
 After deploying, open the live site and navigate to another page. In browser
 DevTools, check that event requests go to `https://d.kevinnewman.ca` and succeed,
 then confirm the `$pageview` and `$autocapture` events in PostHog's live events.
+
+Enable session recording in the PostHog project's Replay settings as well; the
+client setting does not override recording disabled at the project level. To
+verify replay, interact with the live site for at least 10 seconds and check
+Session Replay in PostHog. Recording requests should also use
+`https://d.kevinnewman.ca`. Local development and preview domains remain excluded.
 
 ## Where things live
 

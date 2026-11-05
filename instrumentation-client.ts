@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "production" && isLiveSite && projectToken) {
       autocapture: true,
       person_profiles: "identified_only",
       cross_subdomain_cookie: false,
-      disable_session_recording: true,
+      disable_session_recording: false,
     });
   } catch (error) {
     console.warn("PostHog initialization failed", error);
