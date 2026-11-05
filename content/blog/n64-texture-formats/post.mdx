@@ -69,13 +69,26 @@ Each cycle runs this formula separately for **RGB** and **alpha**:
 (A − B) × C + D
 ```
 
-The letters are input slots, like the fields in Fast64. **Texture 0 / 1** are sampled textures. **Shade** is the color interpolated from the triangle’s vertices, including vertex lighting when enabled. **Primitive** and **Environment** are constant colors set by the material or drawing code; their names do not give them automatic lighting behavior. The available inputs depend on the slot. See [libdragon’s formula and input definitions](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_macros.h#L310-L410).
+The letters are input slots, like the fields in Fast64. Some of the inputs you can choose are:
+
+- **Texture 0 / 1:** Samples from the material’s first or second texture.
+- **Shade:** Color interpolated from the triangle’s vertices, including vertex lighting when enabled. This is how the mesh’s colors reach the combiner.
+- **Primitive:** A constant color set by the material or drawing code. The column example uses it as an overall tint.
+- **Environment:** Another constant color the formula can use. Despite the name, it does not automatically add environment lighting.
+
+The available inputs depend on the slot. See [libdragon’s formula and input definitions](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_macros.h#L310-L410).
 
 <ColorCombinerDemo />
 
 The column material uses **two cycles**: texture × shade, then that result × primitive color. **Combined** means the previous cycle’s output. White primitive color leaves it unchanged. Both alpha formulas keep the surface opaque, so the intensity texture’s alpha does not make the stone transparent. A simpler material can finish in one cycle; two cycles do not mean drawing the model twice. [libdragon documents the second stage here](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_macros.h#L474-L495).
 
-The **two-texture blend** preset uses `(Texture 1 − Texture 0) × amount + Texture 0`. This is a lerp: amount 0 gives Texture 0, amount 1 gives Texture 1. It uses primitive alpha as the mix amount, then applies shade in cycle 2. Both textures must fit in TMEM together; these two 32 × 32 I4 patches use 1 kb in total.
+The **two-texture blend** preset uses
+
+```c
+(Texture 1 − Texture 0) × amount + Texture 0
+```
+
+This is a lerp: amount 0 gives Texture 0, amount 1 gives Texture 1. It uses primitive alpha as the mix amount, then applies shade in cycle 2. Both textures must fit in TMEM together; these two 32 × 32 I4 patches use 1 kb in total.
 
 On an N64 model, the UVs select the texture samples and the vertex data supplies shade. Fast64 stores the combiner choices in the exported material, which the model pipeline must apply when drawing. Changing the PNG alone cannot change that formula. For the column settings, the equivalent libdragon configuration is:
 

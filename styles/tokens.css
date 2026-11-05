@@ -26,6 +26,11 @@
   --text-dim: #9aa5c4;
   --text-faint: #7a83a3;
   --link: #8fb0ff;
+  --code-comment: #85b991;
+  --code-keyword: #c5a6ff;
+  --code-string: #b5d28a;
+  --code-number: #eab782;
+  --code-type: #82cbd2;
 
   /* Shared alpine palette for the header horizon and footer landscape. */
   --alpine-distant: #305181;
@@ -72,6 +77,11 @@
   --text-dim: #4a5578;
   --text-faint: #657094;
   --link: #2e50a2;
+  --code-comment: #386344;
+  --code-keyword: #713db4;
+  --code-string: #486526;
+  --code-number: #9a4c16;
+  --code-type: #176770;
   --alpine-distant: #a6bdd7;
   --alpine-peak: #8fa9c8;
   --alpine-ridge: #6685a6;
@@ -102,6 +112,11 @@
     --text-dim: #333;
     --text-faint: #555;
     --link: #000;
+    --code-comment: #444;
+    --code-keyword: #000;
+    --code-string: #000;
+    --code-number: #000;
+    --code-type: #000;
     --brand-blue-glow: #333;
     color-scheme: light;
   }

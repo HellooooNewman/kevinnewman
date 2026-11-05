@@ -18,8 +18,11 @@ export default function FormatChoiceGuide() {
       })}</div>
       {choice.id === 'color' && <div className={styles.repeatNote}>One 16 × 64 tile, repeated across each preview.</div>}
       {choice.id === 'resolution' && <div className={styles.smallView}>
-        <span>Both drawn 12 pixels wide:</span>
-        {choice.samples.map((sample) => <Image key={sample.file} src={`${assetRoot}/${sample.file}`} alt={`${sample.width} × ${sample.height} source at a twelve-pixel screen footprint`} width={12} height={12} unoptimized />)}
+        <span>Both reduced to 12 × 12 screen pixels, enlarged 8×:</span>
+        <div className={styles.screenSamples}>{choice.samples.map((sample) => <div key={sample.file}>
+          <Image src={`${assetRoot}/${sample.file.replace('.png', '-screen.png')}`} alt={`${sample.width} × ${sample.height} source reduced to twelve by twelve pixels, then enlarged eight times for inspection`} width={96} height={96} unoptimized />
+          <span>{sample.width} × {sample.height} source</span>
+        </div>)}</div>
       </div>}
       <p>{choice.description}</p>
     </div>)}</div>

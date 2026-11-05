@@ -20,6 +20,12 @@
 .prose code { font-family: var(--font-mono); font-size: 0.83em; background: var(--bg-raised); padding: 0.16em 0.35em; border-radius: 4px; }
 .prose pre { background: var(--bg-raised); border: 1px solid var(--border); padding: 1.25rem; border-radius: 10px; overflow-x: auto; line-height: 1.7; }
 .prose pre code { padding: 0; background: transparent; font-size: 0.82rem; white-space: pre; }
+.prose pre :is(:global(.hljs-comment), :global(.hljs-quote)) { color: var(--code-comment); }
+.prose pre :is(:global(.hljs-keyword), :global(.hljs-selector-tag), :global(.hljs-meta)) { color: var(--code-keyword); }
+.prose pre :is(:global(.hljs-string), :global(.hljs-regexp), :global(.hljs-addition)) { color: var(--code-string); }
+.prose pre :is(:global(.hljs-number), :global(.hljs-literal), :global(.hljs-symbol), :global(.hljs-deletion)) { color: var(--code-number); }
+.prose pre :is(:global(.hljs-type), :global(.hljs-built_in), :global(.hljs-attr)) { color: var(--code-type); }
+.prose pre :is(:global(.hljs-title), :global(.hljs-name)) { color: var(--link); }
 .prose :global(.article-table) { overflow-x: auto; margin-block: 2rem; }
 .prose table { width: 100%; min-width: 32rem; border-collapse: collapse; font-size: 0.9rem; overflow-wrap: normal; }
 .prose :is(th,td) { text-align: left; padding: 0.8rem 1rem; border-bottom: 1px solid var(--border); }

@@ -68,8 +68,6 @@ export default function FormatExplorer() {
       </div>
       <p className={styles.explanation}>{spec.detail}</p>
       {converted && converted.palette.length > 0 && <div className={styles.swatches} aria-label={`Generated palette with ${converted.palette.length} entries`}>{converted.palette.map((color, i) => <span key={i} title={`RGBA ${color.join(', ')}`} style={{ backgroundColor: `rgba(${color[0]},${color[1]},${color[2]},${color[3] / 255})` }} />)}</div>}
-      <p className={styles.budget}>At {sample.width} × {sample.height}, {format} needs <strong>{formatBytes(budget.texels)}</strong> of texel data: {budget.fits ? 'it fits' : 'it exceeds'} the <strong>{formatBytes(budget.capacity)}</strong> available for texels{budget.paletteBytes ? ' when the upper 2 kb of TMEM is reserved for palette lookup' : ' in TMEM'}. This comparison assumes one tile, with no row padding, mipmaps, or other resident textures.</p>
     </div>
-    <figcaption>Illustrative conversions with texel alpha applied where available. CI uses generated RGBA16 palettes; YUV16 is opaque and approximates BT.601 4:2:2. Filtering, lighting, and blending can change the result on hardware.</figcaption>
   </figure>;
 }
