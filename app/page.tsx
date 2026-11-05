@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import JobCard from "@/components/JobCard";
 import RevealInit from "@/components/RevealInit";
 import NowPreviewLink, { type NowPreview } from "@/components/NowPreviewLink";
-import { intro, skills, jobs, education } from "@/data/resume";
+import { intro, skills, jobs, education, buildDate } from "@/data/resume";
 import { projects, type Project } from "@/data/projects";
 import { SITE_URL } from "@/lib/seo";
 import { fmtDate, fmtInt, fmtPct, getAoe2Summary, type Aoe2Summary } from "@/lib/aoe2";
@@ -118,7 +118,7 @@ export default async function Home() {
         url: `${SITE_URL}/`,
         name: "Kevin Newman · Full Stack Developer",
         description: intro.body[0],
-        dateModified: "2026-09-01",
+        dateModified: buildDate.toISOString(),
         mainEntity: { "@id": personId },
       },
       {
