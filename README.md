@@ -14,6 +14,31 @@ Angular version, rebuilt for real prerendered HTML, SEO, and mobile.
 | `npm run lint`      | ESLint (Next.js core-web-vitals + TypeScript rules)    |
 | `npm run typecheck` | Generate Next's route types, then `tsc --noEmit`       |
 
+## Analytics
+
+[Client instrumentation](./instrumentation-client.ts) initializes PostHog using
+the existing reverse proxy at `https://d.kevinnewman.ca`. It captures the initial
+pageview, pageviews during client-side navigation, page leaves, and automatic
+click interactions. Session recording is disabled, and cookies are scoped to
+the current hostname so they do not share visitor identity with other projects.
+
+Copy [the environment template](./.env.example) to `.env.local` and set
+`NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` to this site's public project token (`phc_…`)
+from PostHog project settings. Use a public project token, never a personal API
+key. Set `NEXT_PUBLIC_POSTHOG_UI_HOST` to `https://eu.posthog.com` for an EU project;
+the default is US Cloud. The reverse proxy must forward to the same region.
+
+Set these variables in the hosting provider's **build environment** as well.
+Next.js embeds public environment variables during `npm run build`, so changing
+them requires rebuilding and deploying the static export. Without a project
+token, tracking stays disabled. Tracking only runs in production builds served
+on `kevinnewman.ca` or `www.kevinnewman.ca`; local development and preview domains
+do not send analytics.
+
+After deploying, open the live site and navigate to another page. In browser
+DevTools, check that event requests go to `https://d.kevinnewman.ca` and succeed,
+then confirm the `$pageview` and `$autocapture` events in PostHog's live events.
+
 ## Where things live
 
 - `data/resume.ts` - intro, "Right now" panel, skills, jobs, education
