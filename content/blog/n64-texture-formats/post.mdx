@@ -47,7 +47,7 @@ For surfaces that recede into the distance, [mipmaps](https://github.com/n64brew
 
 ## Put detail in the texture, color in the vertices
 
-A grayscale stone texture can still produce a colored floor. The texture supplies fine detail; colors stored at the mesh’s vertices supply broader variation. The renderer blends those corner colors **across the entire triangle**, then multiplies the texture by that color:
+If you can get away with a simple color then this is definitely the way to go. A grayscale stone texture can still produce a colored floor. The texture supplies fine detail; colors stored at the mesh’s vertices supply broader variation. The renderer blends those corner colors **across the entire triangle**, then multiplies the texture by that color:
 
 ```text
 surface RGB = texture intensity × interpolated vertex RGB
@@ -122,4 +122,6 @@ The carpet still uses CI8. Its mipmaps actually add memory, but help stop the fi
 
 ## Conclusion
 
-The room ended up looking more detailed even though the floor uses half the texel data. I4 is enough for that floor because the mesh supplies the color. The banner ornament needs separate alpha, so it gets IA4. I’d spend more memory on a surface the player sees up close, then check whether it actually looks better in the room.
+The room ended up looking more detailed even though the floor uses half the texel data. I4 is enough for that floor because the mesh supplies the color. The banner ornament needs separate alpha, so it gets IA4.
+
+So this might all feel like overkill in optimizations but this allows us to have a more detailed room without using more memory. If we can save budget on the rom in textures we can use that budget for other things like more models, more textures, or even more levels. It all adds up in the end.

@@ -36,8 +36,23 @@ export default function ColorCombinerDemo() {
   const sourceName = (name: string) => names[name] ?? name;
   const formula = (slots: readonly string[]) => `(${sourceName(slots[0])} − ${sourceName(slots[1])}) × ${sourceName(slots[2])} + ${sourceName(slots[3])}`;
   const twoCycles = recipe.cycles.length === 2;
+  const slots = recipe.cycles.flatMap((cycle) => [...cycle.rgb, ...cycle.alpha]);
+  const textureCount = new Set(slots.filter((slot) => slot === 'TEX0' || slot === 'TEX1')).size;
+  const usesTextureAlpha = recipe.cycles.some((cycle) => cycle.alpha.includes('TEX0'));
+  const settings = [
+    { label: 'Cycles', value: String(recipe.cycles.length), detail: twoCycles ? 'Two-cycle mode' : 'One-cycle mode' },
+    { label: 'Textures', value: String(textureCount), detail: `${selected === 'alpha' ? 'IA8' : 'I4'} · 32 × 32${textureCount > 1 ? ' each' : ''}` },
+    { label: 'Vertex shade', value: slots.includes('SHADE') ? 'Used' : 'Unused', detail: slots.includes('SHADE') ? 'Interpolated vertex colors' : 'Ignored by this recipe' },
+    { label: 'Primitive', value: slots.includes('PRIM_ALPHA') ? 'Blend amount' : slots.includes('PRIM') ? 'Color tint' : 'Unused', detail: slots.includes('PRIM_ALPHA') ? `${blend}% toward Texture 1` : slots.includes('PRIM') ? tint.toUpperCase() : 'Not selected' },
+    { label: 'Output alpha', value: usesTextureAlpha ? 'Texture 0' : 'Opaque', detail: usesTextureAlpha ? 'Independent IA8 alpha' : 'Forced to 1' },
+    { label: 'Preview blending', value: usesTextureAlpha ? 'Source alpha' : 'Off', detail: usesTextureAlpha ? 'Applied after the combiner' : 'Opaque surface' },
+  ];
   return <figure id="color-combiner" className={styles.figure} aria-label="How the N64 color combiner mixes a material">
     <div className={styles.controls} role="group" aria-label="Combiner recipe">{combinerRecipes.map((entry) => <button type="button" key={entry.id} aria-pressed={entry.id === selected} onClick={() => { setSelected(entry.id); setTint(entry.id === 'alpha' ? '#e7ac63' : '#ffffff'); }}>{entry.label}</button>)}</div>
+    <dl className={styles.settings} aria-label="Material settings">{settings.map((setting) => <div key={setting.label}>
+      <dt>{setting.label}</dt>
+      <dd><strong>{setting.value}</strong><span>{setting.detail}</span></dd>
+    </div>)}</dl>
     <p className={styles.summary}>{recipe.summary}</p>
     <div className={styles.inputs}>
       {(selected === 'columns' || selected === 'alpha') && <label htmlFor={`${id}-tint`}>Primitive color <input id={`${id}-tint`} type="color" value={tint} onChange={(event) => setTint(event.target.value)} /></label>}
