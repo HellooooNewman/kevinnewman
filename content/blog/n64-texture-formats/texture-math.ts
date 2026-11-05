@@ -1,5 +1,5 @@
 export const formats = [
-  { id: 'I4', bits: 4, label: '16 intensity levels', detail: 'Four bits of brightness per texel. The sampled intensity also supplies texel alpha; it is not a separate channel.' },
+  { id: 'I4', bits: 4, label: '16 intensity levels', detail: 'Four bits of brightness per texel. Texel alpha uses that same intensity value.' },
   { id: 'I8', bits: 8, label: '256 intensity levels', detail: 'Eight bits of brightness. Smoother grayscale than I4, at twice the texel cost. Alpha follows intensity if the combiner uses it.' },
   { id: 'IA4', bits: 4, label: '3-bit intensity + 1-bit alpha', detail: 'Eight brightness levels and an independent on/off alpha value. Good for cutouts that can tolerate coarse shading.' },
   { id: 'IA8', bits: 8, label: '4-bit intensity + 4-bit alpha', detail: 'Sixteen brightness levels and sixteen alpha levels, sharing one byte. Softer transparent edges than IA4.' },
@@ -7,8 +7,8 @@ export const formats = [
   { id: 'CI4', bits: 4, palette: 16, label: '4-bit index → 16-entry palette', detail: 'Each texel selects one of sixteen palette entries. This example generates an RGBA16 palette from the selected artwork.' },
   { id: 'CI8', bits: 8, palette: 256, label: '8-bit index → 256-entry palette', detail: 'Each texel selects one of up to 256 palette entries. Both CI modes reserve the upper half of TMEM for palette lookup.' },
   { id: 'RGBA16', bits: 16, label: '5 red + 5 green + 5 blue + 1 alpha', detail: 'Direct color, with 32 levels per RGB channel and binary alpha. No palette required.' },
-  { id: 'RGBA32', bits: 32, label: '8 bits each for red, green, blue, alpha', detail: 'Direct color and smooth alpha at 4 b per texel. More expensive than intensity and indexed formats.' },
-  { id: 'YUV16', bits: 16, label: '4:2:2 · shared color, separate brightness', detail: 'Each horizontal pair keeps two brightness samples but shares U and V color samples. Useful for video and photographic images; sharp color edges can bleed. No palette or alpha. This preview approximates BT.601 conversion; the RDP needs a dedicated YUV render mode.' },
+  { id: 'RGBA32', bits: 32, label: '8 bits each for red, green, blue, alpha', detail: 'Direct color and smooth alpha at 4b per texel. More expensive than intensity and indexed formats.' },
+  { id: 'YUV16', bits: 16, label: '4:2:2 · shared color, separate brightness', detail: 'Each horizontal pair keeps two brightness samples but shares U and V color samples. Useful for video and photographic images, though sharp color edges can bleed. No palette or alpha. This preview approximates BT.601 conversion. The RDP needs a dedicated YUV render mode.' },
 ] as const;
 
 export type FormatId = typeof formats[number]['id'];

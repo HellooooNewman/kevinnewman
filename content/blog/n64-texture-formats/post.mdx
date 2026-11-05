@@ -6,15 +6,19 @@ import ModelExample from './ModelExample';
 import FormatChoiceGuide from './FormatChoiceGuide';
 import ColorCombinerDemo from './ColorCombinerDemo';
 
-A more detailed room does not always need bigger textures. In [Pandemonium](/projects/pandemonium/), our N64brew game-jam boss battle, small grayscale images get their color from the mesh, while palettes and separate layers handle other kinds of detail. All Pandemonium textures were made by my teammate [BoxingBruin](https://github.com/Boxingbruin).
+We built [Pandemonium](/projects/pandemonium/), our N64brew game-jam boss battle, with very little time for optimization. We didn’t get to check every texture’s size or format, and the room wasn’t textured as nicely as we wanted. There was lots of overdraw. Z fighting on the floor. Assets didn't make it into the final build. Usual game-jam chaos.
+
+Revisiting the scene gave us time to improve the artwork and look at what each surface actually needed. The stone floor went from I8 to I4: 4kb down to 2kb, still at 64 × 64. The mesh still supplies its color.
+
+All Pandemonium textures were made by my teammate [BoxingBruin](https://github.com/Boxingbruin).
 
 <SceneComparisons />
 
 ## Small textures, tight budget
 
-A **texel** (texture element) is one pixel in a texture, so a 64 × 64 texture contains 4,096 texels.
+A texel (texture element) is one pixel in a texture, so a 64 × 64 texture contains 4,096 texels.
 
-The N64’s graphics hardware has **4 kb of texture memory**, called TMEM. That is space for textures being used while drawing, rather than a limit on all the artwork in a game. The RDP can only sample texels already loaded there, so textures that exceed that space must be drawn in smaller sections, with new texture data loaded between draws.
+The N64’s graphics hardware has 4kb of texture memory, called TMEM. That is space for textures being used while drawing, rather than a limit on all the artwork in a game. The RDP can only sample texels already loaded there, so textures that exceed that space must be drawn in smaller sections, with new texture data loaded between draws.
 
 <FormatFamilies />
 
@@ -31,7 +35,7 @@ Fewer bits can leave room for more texels, at the cost of brightness levels, col
 | CI8 | 8 | An index into a 256-color palette |
 | RGBA16 | 16 | 5 bits per RGB channel + 1 alpha bit |
 | RGBA32 | 32 | 8 bits each for red, green, blue, and alpha |
-| YUV16 | 16 | Brightness per texel; U and V color samples shared by a horizontal pair; no alpha |
+| YUV16 | 16 | Brightness per texel, with U and V shared by a horizontal pair. No alpha |
 
 These layouts follow [libdragon’s texture-format definitions](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/surface.h#L105-L118).
 
@@ -41,13 +45,13 @@ I’d start with what the surface needs. Each pair below uses the same source, s
 
 <FormatChoiceGuide />
 
-For **colored cutouts**, RGBA16 or CI with an RGBA16 palette gives you on/off alpha. **YUV16** is a separate case for video frames or photographs: it keeps brightness detail but shares color between neighboring texels, and has no alpha. It uses [libdragon’s dedicated YUV conversion mode](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L346-L362).
+For colored cutouts, RGBA16 or CI with an RGBA16 palette gives you on/off alpha. YUV16 is a separate case for video frames or photographs: it keeps brightness detail but shares color between neighboring texels, and has no alpha. It uses [libdragon’s dedicated YUV conversion mode](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L346-L362).
 
-For surfaces that recede into the distance, [mipmaps](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L830-L856) can reduce shimmering. They add storage; budget for the levels that need to be loaded together.
+For surfaces that recede into the distance, [mipmaps](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L830-L856) can reduce shimmering. They add storage, so budget for the levels that need to be loaded together.
 
-## Put detail in the texture, color in the vertices
+## Vertex colors
 
-If you can get away with a simple color then this is definitely the way to go. A grayscale stone texture can still produce a colored floor. The texture supplies fine detail; colors stored at the mesh’s vertices supply broader variation. The renderer blends those corner colors **across the entire triangle**, then multiplies the texture by that color:
+If you can get away with a simple color then this is definitely the way to go. A grayscale stone texture can still produce a colored floor. The texture supplies fine detail. Colors stored at the mesh’s vertices supply broader variation. The renderer blends those corner colors across the entire triangle, then multiplies the texture by that color:
 
 ```text
 surface RGB = texture intensity × interpolated vertex RGB
@@ -55,15 +59,15 @@ surface RGB = texture intensity × interpolated vertex RGB
 
 <VertexColorDemo />
 
-For **2 kb of raw texels**, RGBA16 gives you 32 × 32 pixels, while I4 gives you 64 × 64: four times as many texels. Putting broad color changes in the vertices can preserve a larger grid for surface detail.
+For 2kb of raw texels, RGBA16 gives you 32 × 32 pixels, while I4 gives you 64 × 64: four times as many texels. Putting broad color changes in the vertices can preserve a larger grid for surface detail.
 
-Vertex colors do not increase the screen resolution or add texture pixels by themselves. Their gradients follow the mesh, and vertex data also costs memory. The original floor already used this technique; the revision keeps it.
+Vertex colors do not increase the screen resolution or add texture pixels by themselves. Their gradients follow the mesh, and vertex data also costs memory. The original floor already used this technique, and the revision keeps it.
 
 ## How the color combiner builds the material
 
-The texture format tells us what is stored. The **color combiner** decides how those samples mix with the other inputs. Vertex colors only affect the result if the material’s formula uses them.
+The texture format tells us what is stored. The color combiner decides how those samples mix with the other inputs. Vertex colors only affect the result if the material’s formula uses them.
 
-Each cycle runs this formula separately for **RGB** and **alpha**:
+Each cycle runs this formula separately for RGB and alpha:
 
 ```text
 (A − B) × C + D
@@ -71,24 +75,24 @@ Each cycle runs this formula separately for **RGB** and **alpha**:
 
 The letters are input slots, like the fields in Fast64. Some of the inputs you can choose are:
 
-- **Texture 0 / 1:** Samples from the material’s first or second texture.
-- **Shade:** Color interpolated from the triangle’s vertices, including vertex lighting when enabled. This is how the mesh’s colors reach the combiner.
-- **Primitive:** A constant color set by the material or drawing code. The column example uses it as an overall tint.
-- **Environment:** Another constant color the formula can use. Despite the name, it does not automatically add environment lighting.
+- **Texture 0 / 1:** Color and alpha sampled from the first or second texture.
+- **Shade:** Vertex color or lighting, blended across the triangle.
+- **Primitive:** A fixed color set by the material or drawing code. Here it tints the columns.
+- **Environment:** A second fixed color the formula can use.
 
 The available inputs depend on the slot. See [libdragon’s formula and input definitions](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_macros.h#L310-L410).
 
 <ColorCombinerDemo />
 
-The column material uses **two cycles**: texture × shade, then that result × primitive color. **Combined** means the previous cycle’s output. White primitive color leaves it unchanged. Both alpha formulas keep the surface opaque, so the intensity texture’s alpha does not make the stone transparent. A simpler material can finish in one cycle; two cycles do not mean drawing the model twice. [libdragon documents the second stage here](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_macros.h#L474-L495).
+In a two-cycle material, Combined is the first cycle’s output, used as an input to the second. See [libdragon’s documentation for the second cycle](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_macros.h#L474-L495).
 
-The **two-texture blend** preset uses
+The two-texture blend preset uses
 
 ```c
 (Texture 1 − Texture 0) × amount + Texture 0
 ```
 
-This is a lerp: amount 0 gives Texture 0, amount 1 gives Texture 1. It uses primitive alpha as the mix amount, then applies shade in cycle 2. Both textures must fit in TMEM together; these two 32 × 32 I4 patches use 1 kb in total.
+This is a lerp: amount 0 gives Texture 0, amount 1 gives Texture 1. It uses primitive alpha as the mix amount, then applies shade in cycle 2. Both textures must fit in TMEM together. These two 32 × 32 I4 patches use 1kb in total.
 
 On an N64 model, the UVs select the texture samples and the vertex data supplies shade. Fast64 stores the combiner choices in the exported material, which the model pipeline must apply when drawing. Changing the PNG alone cannot change that formula. For the column settings, the equivalent libdragon configuration is:
 
@@ -100,21 +104,21 @@ rdpq_mode_combiner(RDPQ_COMBINER2(
 rdpq_set_prim_color(RGBA32(255, 255, 255, 255));
 ```
 
-The combiner is only part of the material. **Lighting supplies shade before this step.** The later **blender** handles mixing with the framebuffer; alpha testing can discard cutout pixels. Standard fog also uses the blender, often borrowing shade alpha for depth, so it needs care alongside custom alpha formulas. See [libdragon’s notes on fog and the combiner](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L413-L467).
+The combiner is only part of the material. Lighting supplies shade before this step. The later blender handles mixing with the framebuffer. Alpha testing can discard cutout pixels. Standard fog also uses the blender, often borrowing shade alpha for depth, so it needs care alongside custom alpha formulas. See [libdragon’s notes on fog and the combiner](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/rdpq_mode.h#L413-L467).
 
 <ModelExample />
 
 ## What changed in the room?
 
-The floor went from I8 to I4: 4 kb down to 2 kb, still at 64 × 64. The artwork also changes, so the visual difference includes more than format conversion.
+The floor’s artwork also changed, so the before-and-after images show more than a format conversion.
 
 | Surface | Original → updated | Outcome |
 | :--- | :--- | :--- |
-| Stone floor | 64 × 64 I8 → I4 | 4 kb → 2 kb of texels |
-| Carpet border | 16 × 64 CI8 in both | Same 1 kb base cost; revised artwork and added mipmaps |
+| Stone floor | 64 × 64 I8 → I4 | 4kb → 2kb of texels |
+| Carpet border | 16 × 64 CI8 in both | Same 1kb base cost, with revised artwork and added mipmaps |
 | Banner layers | Separate I4 background and IA4 ornament in the local version | Different jobs for brightness and transparency |
 
-The carpet still uses CI8. Its mipmaps actually add memory, but help stop the fine pattern shimmering in the distance. The banner layers show another tradeoff, spending bits on independent alpha where a decorative cutout needs it. These choices serve different visual goals, rather than all being memory reductions.
+The carpet still uses CI8. Its mipmaps actually add memory, but help stop the fine pattern shimmering in the distance. The banner layers show another tradeoff, spending bits on independent alpha where a decorative cutout needs it.
 
 ## Try the formats yourself
 
@@ -122,6 +126,18 @@ The carpet still uses CI8. Its mipmaps actually add memory, but help stop the fi
 
 ## Conclusion
 
-The room ended up looking more detailed even though the floor uses half the texel data. I4 is enough for that floor because the mesh supplies the color. The banner ornament needs separate alpha, so it gets IA4.
+The floor saves 2kb. The updated room still has more texture data and geometry overall:
 
-So this might all feel like overkill in optimizations but this allows us to have a more detailed room without using more memory. If we can save budget on the rom in textures we can use that budget for other things like more models, more textures, or even more levels. It all adds up in the end.
+| Room assets | Original | Updated |
+| :--- | ---: | ---: |
+| Model files | 10 | 12 |
+| Triangles in those models | 1,316 | 2,321 |
+| Material slots across models | 32 | 72 |
+| Unique embedded textures | 18 | 51 |
+| Estimated packed embedded texels | 69kb | 131.56kb |
+
+Asset totals include room effects. Texel estimates exclude palettes, external mipmaps, padding, and headers.
+
+During the jam, getting the game finished took priority. Coming back gave us time to revisit choices like the floor’s format and bring the stonework and banners closer to how we wanted them to look.
+
+I hope this little deep dive into texture formats and the color combiner helps understand some of the finer details of Nintendo64 graphics.

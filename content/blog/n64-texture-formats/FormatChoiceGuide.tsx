@@ -26,6 +26,5 @@ export default function FormatChoiceGuide() {
       </div>}
       <p>{choice.description}</p>
     </div>)}</div>
-    <figcaption>Sizes are packed texels, plus a full RGBA16 palette for CI. The glow is generated; the stone and carpet use the game artwork. These are illustrative conversions.</figcaption>
   </figure>;
 }

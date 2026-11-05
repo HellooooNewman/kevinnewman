@@ -59,10 +59,10 @@ export default function ColorCombinerDemo() {
       {selected === 'lerp' && <label htmlFor={`${id}-blend`}>Texture 0 ← {blend}% → Texture 1<input id={`${id}-blend`} type="range" min={0} max={100} value={blend} onChange={(event) => setBlend(Number(event.target.value))} /></label>}
     </div>
     <div className={styles.cycles}>{recipe.cycles.map((cycle, index) => <div className={styles.cycle} key={`${selected}-${index}`}>
+      <p>{cycle.explanation}</p>
       <strong>Cycle {index + 1}{twoCycles ? '' : ' · final'}</strong>
       <div><span>RGB</span><code>{formula(cycle.rgb)}</code></div>
       <div><span>Alpha</span><code>{formula(cycle.alpha)}</code></div>
-      <p>{cycle.explanation}</p>
     </div>)}</div>
     <div className={styles.panels} style={{ gridTemplateColumns: `repeat(${twoCycles ? 4 : 2}, minmax(0, 1fr))` }}>
       <PixelPanel label={selected === 'alpha' ? 'Texture 0 · IA8' : 'Texture 0 · I4'} pixels={texture0?.pixels} fallback={selected === 'alpha' ? 'combiner-alpha.png' : 'combiner-texture0.png'} />
@@ -71,6 +71,6 @@ export default function ColorCombinerDemo() {
       {twoCycles && <PixelPanel label="After cycle 1" pixels={preview?.stages[0]} fallback="combiner-cycle1.png" />}
       <PixelPanel label="Final result" pixels={preview?.stages.at(-1)} fallback="combiner-result.png" />
     </div>
-    <figcaption>Flat-patch illustrations of the combiner math. The first recipe follows the column material in Fast64. This preview does not emulate RDP fixed-point precision, filtering, or fog.</figcaption>
+    <figcaption>This preview does not emulate RDP fixed-point precision, filtering, or fog.</figcaption>
   </figure>;
 }

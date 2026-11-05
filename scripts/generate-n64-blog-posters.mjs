@@ -57,7 +57,7 @@ for (let i = 0; i < 3; i++) {
   vertexSvg += text(24 + i * 248, 310, vertexNames[i]);
   if (i > 0) await sharp(await pixelPng(vertexImages[i], 256, 256, 256, 256)).png().toFile(path.join(root, i === 1 ? 'vertex-shading.png' : 'floor-vertex-color.png'));
 }
-vertexSvg += text(24, 344, 'Original main · 64 × 64 I8 · 4 kb · original texture with example vertex colors', true);
+vertexSvg += text(24, 344, 'Original main · 64 × 64 I8 · 4kb · original texture with example vertex colors', true);
 await sharp(background(768, 366, vertexSvg)).composite(vertexLayers).png().toFile(path.join(root, 'vertex-color-comparison.png'));
 
 async function gallery(name, title, files) {
@@ -134,7 +134,7 @@ for (const [index, family] of formatFamilies.entries()) {
   familiesSvg += text(x + 106, y + 352, `${family.sampleFormat} · ${comparison.width} × ${comparison.height}`, true);
   const size = textureBudget(comparison.width, comparison.height, family.sampleFormat);
   familiesSvg += text(x + 106, y + 374, `${formatBytes(size.texels + size.paletteBytes)} packed`, true);
-  if (size.paletteBytes) familiesSvg += text(x + 106, y + 394, `${formatBytes(size.texels)} + ${size.paletteBytes} b palette`, true);
+  if (size.paletteBytes) familiesSvg += text(x + 106, y + 394, `${formatBytes(size.texels)} + ${size.paletteBytes}b palette`, true);
   const lines = family.sampleHint.split(' ').reduce((result, word) => {
     if (result.length && result.at(-1).length + word.length < 44) result[result.length - 1] += ` ${word}`;
     else result.push(word);
@@ -144,7 +144,7 @@ for (const [index, family] of formatFamilies.entries()) {
 }
 const familiesFooter = 48 + Math.ceil(formatFamilies.length / 2) * familyRowHeight;
 familiesSvg += text(24, familiesFooter, 'Top: color gradient · middle: fine magenta/green stripes · bottom: alpha fade', true);
-familiesSvg += text(24, familiesFooter + 22, 'Packed sizes include full CI palettes; headers, padding, mipmaps, compression excluded.', true);
+familiesSvg += text(24, familiesFooter + 22, 'Packed sizes include full CI palettes. Headers, padding, mipmaps, compression excluded.', true);
 await sharp(background(768, familiesFooter + 44, familiesSvg)).composite(familiesLayers).png().toFile(path.join(root, 'format-families.png'));
 
 await generateFormatChoices(root);

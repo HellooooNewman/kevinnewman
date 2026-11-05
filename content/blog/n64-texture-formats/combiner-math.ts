@@ -10,10 +10,10 @@ export const combinerRecipes: { id: RecipeId; label: string; summary: string; cy
   { id: 'texture', label: 'Texture only', summary: 'Vertex colors and vertex lighting have no effect because Shade is not selected.', cycles: [
     { rgb: ['0', '0', '0', 'TEX0'], alpha: ['0', '0', '0', '1'], explanation: 'Take the texture color directly. Keep the surface opaque.' },
   ] },
-  { id: 'alpha', label: 'Use texture alpha', summary: 'The combiner supplies color and alpha; source-alpha blending then reveals the checkerboard through the transparent areas.', cycles: [
+  { id: 'alpha', label: 'Use texture alpha', summary: 'The combiner supplies color and alpha. Source-alpha blending then reveals the checkerboard through the transparent areas.', cycles: [
     { rgb: ['TEX0', '0', 'PRIM', '0'], alpha: ['0', '0', '0', 'TEX0'], explanation: 'Tint the texture. Pass its alpha through for the blender to use.' },
   ] },
-  { id: 'lerp', label: 'Blend two textures', summary: 'Primitive alpha sets the blend amount; cycle 2 shades the mixture.', cycles: [
+  { id: 'lerp', label: 'Blend two textures', summary: 'Primitive alpha sets the blend amount. Cycle 2 shades the mixture.', cycles: [
     { rgb: ['TEX1', 'TEX0', 'PRIM_ALPHA', 'TEX0'], alpha: ['0', '0', '0', '1'], explanation: 'At 0%, use Texture 0. At 100%, use Texture 1. In between, mix them.' },
     { rgb: ['COMBINED', '0', 'SHADE', '0'], alpha: ['0', '0', '0', 'COMBINED'], explanation: 'Multiply the mixed texture by vertex shading. Keep opaque alpha.' },
   ] },
