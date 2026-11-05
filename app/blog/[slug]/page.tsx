@@ -7,6 +7,7 @@ import { pageMetadata, SITE_URL } from '@/lib/seo';
 import { getPostReadMinutes } from '@/lib/blog-reading-time';
 import { isPostPublished } from '@/lib/blog-publication';
 import JsonLd from '@/components/JsonLd';
+import RssLink from '@/components/RssLink';
 import styles from './page.module.css';
 
 export const dynamicParams = false;
@@ -35,7 +36,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <article className={styles.article}>
       <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title, description: post.description, datePublished: post.date, dateModified: post.updated ?? post.date, url: `${SITE_URL}/blog/${slug}/`, mainEntityOfPage: `${SITE_URL}/blog/${slug}/`, author: { '@type': 'Person', name: 'Kevin Newman', url: SITE_URL } }} />
-      <div className={styles.topline}><Link href="/blog/">← All posts</Link><a href="/feed.xml">RSS ↗</a></div>
+      <div className={styles.topline}><Link href="/blog/">← All posts</Link><RssLink /></div>
       <header className={styles.header}>
         <div className={styles.tags}>{post.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
         <h1>{post.title}</h1>
@@ -45,7 +46,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <div className={styles.prose}><Content /></div>
       <footer className={styles.footer}>
         {project && <p>Behind the project <Link href={`/projects/${project.slug}/`}>{project.title} →</Link></p>}
-        <p>More experiments as they happen. <a href="/feed.xml">Follow via RSS ↗</a></p>
+        <p>More experiments as they happen. <RssLink /></p>
       </footer>
     </article>
   );
