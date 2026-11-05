@@ -10,6 +10,8 @@ next-env.d.ts
 *.tsbuildinfo
 
 # misc
+.env*
+!.env.example
 npm-debug.log*
 .DS_Store
 Thumbs.db
