@@ -19,10 +19,11 @@ export default async function BlogPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <p className={styles.eyebrow}>Notes from the workshop</p>
-        <h1>Making things.<br /><span>Sharing the interesting bits.</span></h1>
-        <p className={styles.intro}>Experiments, small discoveries, and the stories behind my projects. Sometimes with something you can play with.</p>
-        <div className={styles.subscribe}><RssLink /></div>
+        <div className={styles.titleRow}>
+          <h1>Focused Ramblings</h1>
+          <RssLink />
+        </div>
+        <p className={styles.intro}>Sometimes I have some good ideas.</p>
       </header>
       <div className={styles.list}>
         {posts.map((post) => (

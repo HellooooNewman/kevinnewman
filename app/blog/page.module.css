@@ -1,7 +1,8 @@
 .page { max-width: 1040px; margin: 0 auto; padding: clamp(3rem, 7vw, 6rem) 1.5rem 5rem; }
 .header { max-width: 760px; padding-bottom: 3.5rem; }
 .eyebrow { color: var(--brand-blue-glow); font-size: 0.95rem; font-weight: 600; margin: 0 0 1.5rem; }
-.header h1 { font-size: clamp(2.4rem, 5.4vw, 4.1rem); letter-spacing: -0.055em; line-height: 1.12; margin: 0 0 1.5rem; }
+.titleRow { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
+.header h1 { min-width: 0; font-size: clamp(2.4rem, 5.4vw, 4.1rem); letter-spacing: -0.055em; line-height: 1.12; margin: 0; }
 .header h1 span { color: var(--text-dim); }
 .intro { max-width: 610px; color: var(--text-dim); font-size: 1.13rem; }
 .subscribe { margin-top: 0.75rem; }
