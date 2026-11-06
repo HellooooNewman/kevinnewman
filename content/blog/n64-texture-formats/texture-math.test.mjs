@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { convertTexture, formats, textureBudget, interpolateVertexColor, renderVertexPanels } from './texture-math.ts';
+import { convertTexture, formats, textureBudget, interpolateVertexColor, renderVertexPanels, rowAlignment, tmemRowBytes, isPowerOfTwo } from './texture-math.ts';
 
 test('I formats share intensity with alpha; IA formats quantize independent alpha', () => {
   const pixels = new Uint8ClampedArray([128, 128, 128, 0, 128, 128, 128, 255]);
@@ -48,6 +48,23 @@ test('CI texels are limited to 2 KiB, even when the logical palette is small', (
   assert.equal(textureBudget(64, 64, 'I8').fits, true);
   assert.equal(textureBudget(32, 32, 'RGBA16').texels, textureBudget(64, 64, 'I4').texels);
   assert.equal(textureBudget(64, 64, 'RGBA32').texels, 16384);
+});
+
+test('row alignment follows libdragon TMEM pitch: 64-bit rows, split for RGBA32 and YUV16', () => {
+  const expected = { I4: 16, IA4: 16, CI4: 16, I8: 8, IA8: 8, CI8: 8, IA16: 4, RGBA16: 4, RGBA32: 4, YUV16: 8 };
+  for (const format of formats) assert.equal(rowAlignment(format.id), expected[format.id], format.id);
+  // Aligned widths need no padding; 40-wide I4 rows are 20b, padded to 24b.
+  for (const format of formats) assert.equal(tmemRowBytes(rowAlignment(format.id) * 3, format.id) * 8, rowAlignment(format.id) * 3 * format.bits, format.id);
+  assert.equal(tmemRowBytes(40, 'I4'), 24);
+  assert.equal(tmemRowBytes(40, 'I8'), 40);
+  assert.equal(tmemRowBytes(40, 'RGBA16'), 80);
+  assert.equal(tmemRowBytes(2, 'RGBA32'), 16);
+  assert.deepEqual(textureBudget(40, 48, 'RGBA16'), { texels: 3840, paletteBytes: 0, capacity: 4096, fits: true });
+});
+
+test('repeating needs power-of-two dimensions', () => {
+  for (const size of [1, 16, 32, 64, 128]) assert.equal(isPowerOfTwo(size), true, String(size));
+  for (const size of [0, 40, 48, 80, 124]) assert.equal(isPowerOfTwo(size), false, String(size));
 });
 
 test('YUV16 shares horizontal chroma, preserves grayscale, and has no alpha or palette', () => {

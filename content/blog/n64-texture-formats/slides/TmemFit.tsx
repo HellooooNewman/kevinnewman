@@ -2,25 +2,40 @@
 
 import { useState } from 'react';
 import { assetRoot } from '../figures';
-import { formatBytes, formats, textureBudget, type FormatId } from '../texture-math';
+import { formatBytes, formats, isPowerOfTwo, rowAlignment, textureBudget, tmemRowBytes, type FormatId } from '../texture-math';
 import styles from './slides.module.css';
 
 // YUV16 needs a dedicated render mode, so it stays out of this simple budget view.
 const choices = formats.filter((format) => format.id !== 'YUV16');
-const sizes = [[16, 16], [32, 32], [32, 64], [64, 64], [64, 128], [128, 128]] as const;
+const sizes = [[16, 16], [32, 32], [40, 48], [32, 64], [64, 64], [64, 128], [128, 128]] as const;
+const DEFAULT_SIZE = sizes.findIndex(([w, h]) => w === 64 && h === 64);
 const TMEM = 4096;
+
+function repeatLabel(width: number, height: number) {
+  const s = isPowerOfTwo(width), t = isPowerOfTwo(height);
+  if (s && t) return 'Can repeat and mirror on both axes';
+  if (s) return 'Can repeat horizontally only';
+  if (t) return 'Can repeat vertically only';
+  return 'Can’t repeat or mirror: not a power of two';
+}
 
 export default function TmemFit() {
   const [format, setFormat] = useState<FormatId>('RGBA16');
-  const [sizeIndex, setSizeIndex] = useState(3);
+  const [sizeIndex, setSizeIndex] = useState(DEFAULT_SIZE);
   const [width, height] = sizes[sizeIndex];
   const spec = formats.find((entry) => entry.id === format)!;
   const budget = textureBudget(width, height, format);
-  const rowBytes = width * spec.bits / 8;
+  // TMEM rows are padded to 64 bits, the same way libdragon uploads them.
+  const rawRow = Math.ceil(width * spec.bits / 8);
+  const rowBytes = tmemRowBytes(width, format);
+  const padded = rowBytes * height;
+  const aligned = width % rowAlignment(format) === 0;
+  const fits = padded <= budget.capacity;
   const rowsPerSection = Math.max(1, Math.floor(budget.capacity / rowBytes));
   const sections = Math.ceil(height / rowsPerSection);
   const indexed = budget.paletteBytes > 0;
-  const used = Math.min(budget.texels, budget.capacity);
+  const used = Math.min(padded, budget.capacity);
+  const repeats = isPowerOfTwo(width) && isPowerOfTwo(height);
   // Draw every size on one texel scale so 16 × 16 and 128 × 128 compare honestly.
   const scale = `calc(var(--tmem-texture) / 128)`;
 
@@ -48,7 +63,7 @@ export default function TmemFit() {
             <small>{budget.paletteBytes}b used</small>
           </div>}
           <div className={styles.tmemTexels} style={{ flexBasis: `${budget.capacity / TMEM * 100}%` }}>
-            <div style={{ height: `${used / budget.capacity * 100}%` }} data-full={budget.texels >= budget.capacity} />
+            <div style={{ height: `${used / budget.capacity * 100}%` }} data-full={padded >= budget.capacity} />
             <span>{formatBytes(used)} / {formatBytes(budget.capacity)}</span>
           </div>
         </div>
@@ -64,14 +79,20 @@ export default function TmemFit() {
       </div>
 
       <div className={styles.tmemVerdict} aria-live="polite">
-        <strong data-fits={budget.fits}>{budget.fits ? 'Fits in one load' : `${sections} sections`}</strong>
+        <strong data-fits={fits}>{fits ? 'Fits in one load' : `${sections} sections`}</strong>
         <p>{width} × {height} {format} = <b>{formatBytes(budget.texels)}</b> of texels{indexed ? <> + <b>{budget.paletteBytes}b</b> palette</> : null}.</p>
-        <p>{budget.fits
-          ? `${Math.round(budget.texels / budget.capacity * 100)}% of the space available for texels.`
+        <p>{fits
+          ? `${Math.round(padded / budget.capacity * 100)}% of the space available for texels.`
           : `Only ${rowsPerSection} rows fit at once, so the texture is drawn in sections, loading new texels between draws.`}</p>
+        <ul className={styles.tmemStatus}>
+          <li data-ok={aligned}>{aligned
+            ? `Rows line up: width is a multiple of ${rowAlignment(format)}`
+            : `Rows padded from ${rawRow}b to ${rowBytes}b, +${formatBytes(padded - budget.texels)} in TMEM`}</li>
+          <li data-ok={repeats}>{repeatLabel(width, height)}</li>
+        </ul>
         {indexed && <p className={styles.dim}>CI formats keep the palette in TMEM’s upper half, leaving 2kb for texels.</p>}
       </div>
     </div>
-    <p className={styles.footnote}>Illustrative. Ignores row padding, mipmaps, and materials that load two textures at once.</p>
+    <p className={styles.footnote}>Illustrative. Ignores mipmaps and materials that load two textures at once.</p>
   </div>;
 }

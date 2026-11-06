@@ -161,6 +161,28 @@ export function textureBudget(width: number, height: number, format: FormatId) {
   return { texels, paletteBytes: paletteEntries * 2, capacity, fits: texels <= capacity };
 }
 
+// RGBA32 and YUV16 split each texel across both halves of TMEM.
+const splitsTmem = (format: FormatId) => format === 'RGBA32' || format === 'YUV16';
+
+/** Width multiple that fills whole 64-bit TMEM rows, so libdragon adds no padding. */
+export function rowAlignment(format: FormatId): number {
+  const bits = formats.find((f) => f.id === format)!.bits;
+  return (splitsTmem(format) ? 128 : 64) / bits;
+}
+
+/** TMEM bytes per texture row, padded like libdragon's rdpq_tex: ROUND_UP(bytes >> split, 8) << split. */
+export function tmemRowBytes(width: number, format: FormatId): number {
+  const bits = formats.find((f) => f.id === format)!.bits;
+  const split = splitsTmem(format) ? 1 : 0;
+  const bytes = Math.ceil(width * bits / 8);
+  return Math.ceil((bytes >> split) / 8) * 8 << split;
+}
+
+/** Repeating or mirroring along an axis needs that dimension to be a power of two. */
+export function isPowerOfTwo(value: number): boolean {
+  return value > 0 && (value & (value - 1)) === 0;
+}
+
 export function interpolateVertexColor(colors: VertexColors, u: number, v: number): RGB {
   const weights = u + v <= 1 ? [1 - u - v, u, v, 0] : [0, 1 - v, 1 - u, u + v - 1];
   return [0, 1, 2].map((channel) => colors.reduce((sum, color, i) => sum + color[channel] * weights[i], 0)) as [number, number, number];

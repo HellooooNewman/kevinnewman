@@ -37,10 +37,16 @@ export async function generateFormatChoices(root) {
       let preview = pixels;
       let width = sample.width;
       if (choice.id === 'color') {
-        // Repeat one 16 × 64 carpet tile so the border is easier to inspect.
+        // Tile one 16 × 64 carpet tile the way the room's material does:
+        // repeated and mirrored on X, so every other copy is flipped.
         width = 64;
         preview = new Uint8ClampedArray(width * sample.height * 4);
-        for (let row = 0; row < sample.height; row++) for (let repeat = 0; repeat < 4; repeat++) preview.set(pixels.subarray(row * sample.width * 4, (row + 1) * sample.width * 4), (row * width + repeat * sample.width) * 4);
+        for (let row = 0; row < sample.height; row++) for (let x = 0; x < width; x++) {
+          const repeat = Math.floor(x / sample.width);
+          const offset = x % sample.width;
+          const source = repeat % 2 ? sample.width - 1 - offset : offset;
+          preview.set(pixels.subarray((row * sample.width + source) * 4, (row * sample.width + source + 1) * 4), (row * width + x) * 4);
+        }
       }
       const file = path.join(root, sample.file);
       await sharp(Buffer.from(preview), { raw: { width, height: sample.height, channels: 4 } }).png().toFile(file);
@@ -59,7 +65,7 @@ export async function generateFormatChoices(root) {
       }
     }
     if (choice.id === 'resolution') svg += text(x + 16, y + 268, 'Both reduced to 12 × 12 screen pixels, enlarged 8×:', 13);
-    if (choice.id === 'color') svg += text(x + 16, y + 268, 'One 16 × 64 tile, repeated across each preview.', 12);
+    if (choice.id === 'color') svg += text(x + 16, y + 268, 'One 16 × 64 tile, repeated and mirrored on X, as in the room.', 12);
     const lines = [];
     for (const word of choice.description.split(' ')) {
       if (lines.length && lines.at(-1).length + word.length < 52) lines[lines.length - 1] += ` ${word}`;

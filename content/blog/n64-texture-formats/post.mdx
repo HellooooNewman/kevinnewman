@@ -39,6 +39,27 @@ Fewer bits can leave room for more texels, at the cost of brightness levels, col
 
 These layouts follow [libdragon’s texture-format definitions](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/include/surface.h#L105-L118).
 
+## Texture dimensions
+
+BoxingBruin pointed out two rules about width and height that are easy to miss.
+
+To repeat or mirror a texture along an axis, that dimension must be a power of two: 16, 32, 64, and so on. [libdragon checks this](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/src/rdpq/rdpq_tex.c#L58-L70) separately for each axis.
+
+Any size that fits in TMEM can still be drawn once. Keep the width to these multiples so each row fills whole 64-bit rows of TMEM:
+
+| Formats | Width is a multiple of |
+| :--- | ---: |
+| I4, IA4, CI4 | 16 |
+| I8, IA8, CI8 | 8 |
+| IA16, RGBA16 | 4 |
+| RGBA32 | 4 |
+
+RGBA32 is split across both halves of TMEM, so it lines up at 4 texels rather than 2. [libdragon pads rows](https://github.com/n64brew/libdragon/blob/f26e1c16145e4d6ad7e391e1306513d684083c02/src/rdpq/rdpq_tex.c#L133-L137) that don’t line up, which wastes TMEM.
+
+A 40 × 48 RGBA16 texture is 3,840b. Its rows line up and it fits, but it can’t repeat, because neither 40 nor 48 is a power of two. As I4, each 40-texel row is 20b, padded to 24b.
+
+The room has examples. The carpet border is 16 × 64 CI8, and its material mirrors it horizontally, which the 16-texel width allows. The door crests and window frames are 48 × 80 IA8, and the column transition is 32 × 124 I4. Their rows line up, and none of them can repeat vertically.
+
 ## Which format would I use?
 
 I’d start with what the surface needs. Each pair below uses the same source, so you can see what changes when you spend more memory.
