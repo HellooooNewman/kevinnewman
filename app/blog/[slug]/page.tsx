@@ -41,7 +41,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className={styles.tags}>{post.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
         <h1>{post.title}</h1>
         <p className={styles.dek}>{post.description}</p>
-        <div className={styles.byline}><span>Kevin Newman</span><span aria-hidden="true">/</span><time dateTime={post.date}>{formatPostDate(post.date)}</time><span aria-hidden="true">/</span><span>{readMinutes} min read</span></div>
+        <div className={styles.byline}><span>Kevin Newman</span><span aria-hidden="true">/</span><time dateTime={post.date}>{formatPostDate(post.date)}</time><span aria-hidden="true">/</span><span>{readMinutes} min read</span>{post.loadSlides && <><span aria-hidden="true">/</span><Link href={`/blog/${slug}/slides/`}>View as slides</Link></>}</div>
       </header>
       <div className={styles.prose}><Content /></div>
       <footer className={styles.footer}>

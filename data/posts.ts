@@ -17,6 +17,8 @@ export interface BlogPost {
   /** Drafts are excluded from the static export entirely. */
   draft?: boolean;
   load: () => Promise<{ default: ComponentType }>;
+  /** Optional slide deck, served at /blog/<slug>/slides/. */
+  loadSlides?: () => Promise<{ default: ComponentType }>;
   feedFigures: Record<string, { src: string; alt: string; caption: string }>;
 }
 
@@ -25,11 +27,11 @@ const posts: BlogPost[] = [{
   slug: 'n64-texture-formats',
   title: 'Texturing for the N64',
   description: 'How texture formats, vertex colors, and the color combiner shape Pandemonium’s N64 boss room.',
-  date: '2026-11-03',
-  published: false,
+  date: '2026-11-06',
   tags: ['N64', 'Graphics', 'Interactive'],
   projectSlug: 'pandemonium',
   load: () => import('@/content/blog/n64-texture-formats/post.mdx'),
+  loadSlides: () => import('@/content/blog/n64-texture-formats/slides/Presentation'),
   feedFigures: articleFigures,
 }];
 
