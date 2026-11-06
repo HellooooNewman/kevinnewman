@@ -10,7 +10,7 @@ import ModelExample from '../ModelExample';
 import FormatExplorer from '../FormatExplorer';
 import { assetRoot, carpetAssets } from '../figures';
 import { formatChoices } from '../format-choices';
-import { formatBytes, formats, textureBudget } from '../texture-math';
+import { formatBytes, formats, rowAlignment, textureBudget } from '../texture-math';
 import TmemFit from './TmemFit';
 import SameBudget from './SameBudget';
 import s from './slides.module.css';
@@ -46,6 +46,18 @@ function BitsTable() {
       <td><span className={s.bitBar} style={{ width: `${format.bits / 32 * 100}%` }} /><span>{format.bits}</span></td>
       <td>{stores[format.id]}</td>
       <td>{formatBytes(textureBudget(64, 64, format.id).texels)}</td>
+    </tr>)}</tbody>
+  </table>;
+}
+
+/** Width multiples per bit depth. YUV16 needs its own render mode, so it is left out. */
+function AlignmentTable() {
+  const groups = [4, 8, 16, 32].map((bits) => formats.filter((format) => format.bits === bits && format.id !== 'YUV16'));
+  return <table className={s.align}>
+    <thead><tr><th scope="col">Formats</th><th scope="col">Width multiple</th></tr></thead>
+    <tbody>{groups.map((group) => <tr key={group[0].id}>
+      <th scope="row">{group.map((format) => format.id).join(' · ')}</th>
+      <td>{rowAlignment(group[0].id)}</td>
     </tr>)}</tbody>
   </table>;
 }
@@ -148,8 +160,29 @@ const slides: Slide[] = [
   },
   {
     id: 'tmem-fit', title: 'What fits in one load?', layout: 'demo',
-    notes: 'Pick a format and a size. 64 × 64 RGBA16 is 8kb: twice TMEM, so it has to be drawn in two sections.\n\nThe same 64 × 64 in I4 is 2kb and fits with room to spare.\n\nCI formats keep their palette in the upper half of TMEM, so the texels only get 2kb. CI8 at 64 × 64 no longer fits in one load.',
+    notes: 'Pick a format and a size. 64 × 64 RGBA16 is 8kb: twice TMEM, so it has to be drawn in two sections.\n\nThe same 64 × 64 in I4 is 2kb and fits with room to spare.\n\nCI formats keep their palette in the upper half of TMEM, so the texels only get 2kb. CI8 at 64 × 64 no longer fits in one load.\n\nThen try 40 × 48: RGBA16 lines up and fits but can’t repeat, while I4 rows get padded.',
     content: <Demo kicker="Try it" title="What fits in one load?"><TmemFit /></Demo>,
+  },
+  {
+    id: 'dimensions', title: 'Texture dimensions',
+    notes: 'Two rules BoxingBruin pointed out, both easy to miss.\n\nTo repeat or mirror along an axis, that dimension has to be a power of two. libdragon checks each axis separately, so the 32 × 124 column transition could repeat sideways but not vertically.\n\nAny size that fits in TMEM can still be drawn once. Keep widths to these multiples so each row fills whole 64-bit rows of TMEM. RGBA32 is split across both halves of TMEM, so it lines up at 4, not 2. libdragon pads rows that don’t line up, which wastes TMEM.\n\nA 40 × 48 RGBA16 texture is 3,840b. Its rows line up and it fits, but it can’t repeat. As I4, each 40-texel row is 20b, padded to 24b.',
+    content: <div className={s.stack}>
+      <p className={s.kicker}>Sizes that work</p>
+      <h2>Rows fill 64 bits. Repeats need powers of two.</h2>
+      <div className={s.cards}>
+        <div>
+          <strong>Row alignment</strong>
+          <AlignmentTable />
+          <p>Rows that don’t line up get padded in TMEM.</p>
+        </div>
+        <div>
+          <strong>Repeat and mirror</strong>
+          <p>Each axis that repeats or mirrors needs a power-of-two size: 16, 32, 64, and so on.</p>
+          <p className={s.example}><b>40 × 48 RGBA16 · 3,840b</b>Rows line up and it fits, but it can’t repeat.</p>
+          <p className={s.example}><b>32 × 124 I4 · column transition</b>Could repeat sideways, not vertically.</p>
+        </div>
+      </div>
+    </div>,
   },
   {
     id: 'families', title: 'Format families', layout: 'demo',

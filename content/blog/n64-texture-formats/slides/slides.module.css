@@ -32,6 +32,14 @@
 .cardArt { display: flex; align-items: flex-end; justify-content: center; gap: 0.75em; height: 6.5em; margin-bottom: 1em; padding: 0.6em; border-radius: 8px; background-color: var(--bg-card); background-image: conic-gradient(var(--border) 25%, transparent 0 50%, var(--border) 0 75%, transparent 0); background-size: 12px 12px; }
 .cardArt img { width: auto; height: 100%; image-rendering: pixelated; border-radius: 0; }
 .cards p { margin: 0.5em 0 0; color: var(--text-dim); font-size: 0.9em; line-height: 1.55; }
+.align { width: 100%; margin-top: 0.6em; border-collapse: collapse; font-size: 0.9em; }
+.align th, .align td { padding: 0.4em 0; border-bottom: 1px solid var(--border); text-align: left; }
+.align thead th { color: var(--text-dim); font-size: 0.7em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.align tbody th { color: var(--brand-blue-glow); font: 600 0.9em var(--font-mono); }
+.align td, .align thead th:last-child { text-align: right; }
+.align td { font: 600 1.15em var(--font-mono); color: var(--moon-yellow); }
+.cards .example { margin-top: 0.9em; padding-left: 0.8em; border-left: 3px solid var(--brand-blue-bright); }
+.example b { display: block; color: var(--text); font: 600 0.85em/1.6 var(--font-mono); }
 
 .split { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: clamp(1.5rem, 5vw, 5rem); width: 100%; max-width: 76rem; margin-inline: auto; }
 .huge { margin: 0.25em 0 0; font-size: 1.6em; color: var(--text-dim); }
@@ -150,6 +158,11 @@
 .tmemVerdict strong[data-fits="true"] { color: var(--code-string); }
 .tmemVerdict p { margin: 0 0 0.6em; font-size: 0.9em; line-height: 1.5; }
 .tmemVerdict b { font-family: var(--font-mono); }
+.tmemStatus { display: flex; flex-direction: column; gap: 0.35em; margin: 0.25em 0 0.75em; padding: 0; list-style: none; font-size: 0.8em; }
+.tmemStatus li { padding-left: 1.4em; text-indent: -1.4em; color: var(--text-dim); }
+.tmemStatus li::before { display: inline-block; width: 1.4em; text-indent: 0; font-weight: 700; }
+.tmemStatus li[data-ok="true"]::before { content: "✓"; color: var(--code-string); }
+.tmemStatus li[data-ok="false"]::before { content: "!"; color: var(--moon-yellow); }
 .footnote { margin: 1.25em 0 0; color: var(--text-faint); font-size: 0.65em; }
 
 /* ─── Room changes and totals ─── */
