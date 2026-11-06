@@ -1,0 +1,194 @@
+/* ─── Slide deck: a full-viewport layer over the site chrome ─── */
+
+.deck, .presenter {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, color-mix(in srgb, var(--brand-blue) 22%, transparent), transparent 70%),
+    var(--bg);
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 3px;
+  background: var(--brand-blue-bright);
+  transition: width 0.35s ease;
+}
+
+.stage { position: relative; min-height: 0; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  visibility: hidden;
+  translate: 3vw 0;
+  transition: opacity 0.35s ease, translate 0.35s ease, visibility 0s linear 0.35s;
+}
+.slide[data-state="past"] { translate: -3vw 0; }
+.slide[data-state="active"] {
+  opacity: 1;
+  visibility: visible;
+  translate: none;
+  transition: opacity 0.35s ease, translate 0.35s ease, visibility 0s;
+}
+
+/* Content sits in the middle when it fits and starts at the top when it
+   doesn't, so tall live demos scroll instead of being clipped. */
+.frame {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: 1480px;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 6vmin, 5rem) clamp(1rem, 6vw, 7rem);
+  font-size: clamp(1rem, 0.6rem + 1.15vmin, 1.55rem);
+  line-height: 1.5;
+}
+.frame > * { margin-block: auto; }
+.slide[data-layout="demo"] .frame { padding-block: clamp(1rem, 4vmin, 3rem); }
+.slide[data-layout="bleed"] .frame { max-width: none; padding: 0; }
+.fit { width: 100%; }
+.fitInner { transform-origin: top center; }
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  min-width: 0;
+  padding: 0.5rem clamp(0.75rem, 2vw, 1.5rem);
+  border-top: 1px solid var(--border);
+  background: var(--bg-raised);
+  font-size: 0.8rem;
+}
+.toolbar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border-bright);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.toolbar button:hover:not(:disabled) { border-color: var(--brand-blue-bright); }
+.toolbar button:disabled { opacity: 0.4; cursor: default; }
+.toolbar button[aria-pressed="true"] { color: var(--brand-blue-glow); border-color: var(--brand-blue-bright); }
+.toolbar svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* The site's theme toggle is a pill; square it up to match its neighbours. */
+.toolbar > .actions > button:not(.wide) { width: 40px; height: 40px; padding: 0.4rem; border-radius: 8px; }
+
+.back { flex: 0 0 auto; color: var(--text-dim); }
+.back:hover { color: var(--text); }
+
+.menu { position: relative; display: flex; align-items: center; flex: 0 1 26rem; min-width: 0; }
+.menu select {
+  appearance: none;
+  min-width: 0;
+  width: 100%;
+  min-height: 40px;
+  padding: 0.4rem 5rem 0.4rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--text);
+  font: inherit;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.menu select:hover { border-color: var(--border-bright); }
+.position {
+  position: absolute;
+  right: 0.75rem;
+  color: var(--text-dim);
+  font: 0.75rem var(--font-mono);
+  pointer-events: none;
+}
+
+.actions { display: flex; align-items: center; gap: 0.5rem; margin-left: auto; }
+.stepper { display: flex; gap: 0.35rem; }
+.stepper button { min-width: 48px; }
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ─── Presenter window ─── */
+
+.presenterBody {
+  overflow-y: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+.presenterHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-dim);
+  font: 0.8rem var(--font-mono);
+}
+.timer { display: flex; align-items: center; gap: 0.75rem; }
+.timer time { color: var(--text); font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+.timer button {
+  min-height: 36px;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border-bright);
+  border-radius: 6px;
+  background: var(--bg-card);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.presenterCount { margin: 2rem 0 0; color: var(--brand-blue-glow); font: 0.8rem var(--font-mono); }
+.presenterBody h1 { margin: 0.25rem 0 1.5rem; font-size: clamp(1.6rem, 4vw, 2.5rem); line-height: 1.2; letter-spacing: -0.02em; }
+.notes { max-width: 52rem; font-size: clamp(1.1rem, 2.2vw, 1.45rem); line-height: 1.6; }
+.notes p { margin: 0 0 1rem; }
+.upNext { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--text-dim); }
+.upNext strong { color: var(--text); }
+
+@media (max-width: 640px) {
+  .wide span { display: none; }
+  .wide { padding-inline: 0.4rem; }
+  .back { font-size: 0; }
+  .back span { font-size: 1rem; }
+  .menu { flex: 1 1 auto; }
+  .menu select { padding-right: 4.25rem; }
+  .actions { gap: 0.35rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide, .slide[data-state] { translate: none; }
+}
+
+/* Printing gives a handout: one slide per page, live demos fall back to
+   their own print styles. */
+@media print {
+  .deck { position: static; display: block; background: none; }
+  .toolbar, .progress { display: none; }
+  .slide { position: static; overflow: visible; opacity: 1; visibility: visible; translate: none; break-after: page; }
+  .frame { min-height: 0; }
+  .fit { height: auto !important; }
+  .fitInner { transform: none !important; }
+}
