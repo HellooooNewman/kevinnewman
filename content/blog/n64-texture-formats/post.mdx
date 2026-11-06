@@ -58,7 +58,7 @@ RGBA32 is split across both halves of TMEM, so it lines up at 4 texels rather th
 
 A 40 × 48 RGBA16 texture is 3,840b. Its rows line up and it fits, but it can’t repeat, because neither 40 nor 48 is a power of two. As I4, each 40-texel row is 20b, padded to 24b.
 
-The room has examples. The door crests and window frames are 48 × 80 IA8, and the column transition is 32 × 124 I4. Their rows line up, and none of them can repeat vertically.
+The room has examples. The carpet border is 16 × 64 CI8, and its material mirrors it horizontally, which the 16-texel width allows. The door crests and window frames are 48 × 80 IA8, and the column transition is 32 × 124 I4. Their rows line up, and none of them can repeat vertically.
 
 ## Which format would I use?
 

@@ -76,7 +76,7 @@ function ChoiceSlide({ index }: { index: number }) {
         <figcaption><strong>{sample.label}</strong><span>{formatBytes(cost.texels + cost.paletteBytes)}{cost.paletteBytes ? ' with palette' : ' of texels'}</span></figcaption>
       </figure>;
     })}</div>
-    {choice.id === 'color' && <p className={s.repeatNote}>One 16 × 64 tile, repeated across each preview.</p>}
+    {choice.id === 'color' && <p className={s.repeatNote}>One 16 × 64 tile, repeated and mirrored on X, as in the room.</p>}
     {choice.id === 'resolution' && <div className={s.screenSize}>
       <span>Both at 12 × 12 screen pixels:</span>
       {choice.samples.map((sample) => <figure key={sample.file}>
@@ -201,7 +201,7 @@ const slides: Slide[] = [
     id: `choice-${choice.id}`, title: choice.title, layout: 'demo',
     notes: [
       'I’d start with what the surface needs. Each pair uses the same source, so you can see what changes when you spend more memory.\n\nFor a tinted stone floor, I’d start with I4. I8 costs twice as much at the same dimensions, so only use it if the I4 brightness steps spoil the shading.',
-      'The carpet’s pattern needs color in the texture itself. CI4 has 16 palette entries and CI8 has 256.\n\nIf neither palette keeps the colors you need, try RGBA16, at 2 bytes per texel.',
+      'The carpet’s pattern needs color in the texture itself. CI4 has 16 palette entries and CI8 has 256.\n\nIf neither palette keeps the colors you need, try RGBA16, at 2 bytes per texel.\n\nThe previews tile the 16 × 64 border the way the room does: repeated and mirrored on X, which is where the diamond pattern comes from.',
       'IA4 works for a grayscale cutout, like a banner ornament. A glow needs the softer alpha of IA8, and IA16 adds more precision.\n\nFor an effect with its own changing colors and smooth alpha, use RGBA32.',
       'Up close, a larger texel grid can help. On a tiny pickup, that detail disappears.\n\nAt 12 × 12 screen pixels, the 32 × 32 and 64 × 64 versions look almost the same, but one costs four times as much. A detailed mesh doesn’t automatically need a large texture.',
     ][index],

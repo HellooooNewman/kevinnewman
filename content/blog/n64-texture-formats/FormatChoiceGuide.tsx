@@ -16,7 +16,7 @@ export default function FormatChoiceGuide() {
           <span>{formatBytes(cost.texels + cost.paletteBytes)}{cost.paletteBytes ? ' with palette' : ' texels'}</span>
         </div>;
       })}</div>
-      {choice.id === 'color' && <div className={styles.repeatNote}>One 16 × 64 tile, repeated across each preview.</div>}
+      {choice.id === 'color' && <div className={styles.repeatNote}>One 16 × 64 tile, repeated and mirrored on X, as in the room.</div>}
       {choice.id === 'resolution' && <div className={styles.smallView}>
         <span>Both reduced to 12 × 12 screen pixels, enlarged 8×:</span>
         <div className={styles.screenSamples}>{choice.samples.map((sample) => <div key={sample.file}>
