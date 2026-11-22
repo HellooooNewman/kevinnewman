@@ -1,4 +1,4 @@
-/* ─── Buttons: pill links and <button>s ─── */
+/* ─── Buttons: links and <button>s ─── */
 
 @layer primitives {
   .btn {
@@ -6,7 +6,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.65rem 1.35rem;
-    border-radius: 999px;
+    border-radius: 8px;
     border: 1px solid var(--border-bright);
     background: var(--bg-raised);
     color: var(--text);

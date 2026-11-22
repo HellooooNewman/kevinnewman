@@ -12,7 +12,6 @@ import { SITE_URL } from "@/lib/seo";
 import { fmtDate, fmtInt, fmtPct, getAoe2Summary, type Aoe2Summary } from "@/lib/aoe2";
 import { cx } from "@/lib/cx";
 import card from "@/styles/card.module.css";
-import chip from "@/styles/chip.module.css";
 import layout from "@/styles/layout.module.css";
 import styles from "./page.module.css";
 
@@ -69,19 +68,18 @@ function getNowPreview(href: string, aoe2: Aoe2Summary | null): NowPreview | und
   }
 }
 
-function ProjectCard({ p, large = false }: { p: Project; large?: boolean }) {
+// The home page shows these three in a single row; the résumé print view
+// still lists every promoted project.
+const HOME_PROJECTS = ["reality64", "canada-transit-atlas", "pandemonium"];
+
+function ProjectCard({ p }: { p: Project }) {
   return (
     <Link className={card.card} href={`/projects/${p.slug}/`}>
-      <div className={cx(card.media, large && styles.mediaWide)}>
-        <Image
-          src={p.thumbnail}
-          alt=""
-          fill
-          sizes={large ? "(max-width: 820px) 100vw, 50vw" : "(max-width: 720px) 100vw, 33vw"}
-        />
+      <div className={card.media}>
+        <Image src={p.thumbnail} alt="" fill sizes="(max-width: 820px) 100vw, 33vw" />
         {p.badge && <span className={card.badge}>{p.badge}</span>}
       </div>
-      <h3 className={cx(card.title, large && styles.titleLarge)}>{p.title}</h3>
+      <h3 className={card.title}>{p.title}</h3>
       <p className={card.summary}>{p.shortBody}</p>
     </Link>
   );
@@ -106,8 +104,7 @@ function linkify(text: string, aoe2: Aoe2Summary | null): React.ReactNode {
 export default async function Home() {
   const aoe2 = await getAoe2Summary();
   const featured = projects.filter((p) => p.promote);
-  const spotlight = featured.slice(0, 2);
-  const rest = featured.slice(2);
+  const homeProjects = HOME_PROJECTS.flatMap((slug) => projects.find((p) => p.slug === slug) ?? []);
   const personId = `${SITE_URL}/#kevin-newman`;
   const jsonLd = {
     "@context": "https://schema.org",
@@ -207,7 +204,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Featured projects - spotlights first */}
+      {/* Featured projects - three picks in one row */}
       {featured.length > 0 && (
         <section
           className={cx(layout.section, layout.container)}
@@ -219,18 +216,11 @@ export default async function Home() {
               View all →
             </Link>
           </h2>
-          <div className={cx(styles.spotlight, "no-print")}>
-            {spotlight.map((p) => (
-              <ProjectCard key={p.id} p={p} large />
+          <div className={cx(styles.projectRow, "no-print")}>
+            {homeProjects.map((p) => (
+              <ProjectCard key={p.id} p={p} />
             ))}
           </div>
-          {rest.length > 0 && (
-            <div className={cx(layout.grid, "no-print")}>
-              {rest.map((p) => (
-                <ProjectCard key={p.id} p={p} />
-              ))}
-            </div>
-          )}
           {/* Résumé view: the cards above collapse to one line per project */}
           <ul className={cx("print-only", styles.printProjects)}>
             {featured.map((p) => (
@@ -249,21 +239,17 @@ export default async function Home() {
         </h2>
         <div className={card.card}>
           <h3 className={styles.skillsTitle}>My core stack</h3>
-          <div className={styles.chipCloud}>
+          <ul className={cx(styles.skillList, styles.coreSkills)}>
             {skills.core.map((skill) => (
-              <span className={cx(chip.chip, chip.accent)} key={skill}>
-                {skill}
-              </span>
+              <li key={skill}>{skill}</li>
             ))}
-          </div>
+          </ul>
           <h3 className={styles.skillsSubtitle}>Also experienced with</h3>
-          <div className={styles.chipCloud}>
+          <ul className={styles.skillList}>
             {skills.also.map((skill) => (
-              <span className={chip.chip} key={skill}>
-                {skill}
-              </span>
+              <li key={skill}>{skill}</li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 

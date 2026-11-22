@@ -34,9 +34,11 @@
   content: "−";
 }
 
+/* Logo pinned to the top so the timeline dot (centred on it) lines up
+   however many lines the title wraps to */
 .id {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.85rem;
   min-width: 0;
 }
