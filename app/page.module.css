@@ -94,8 +94,8 @@
   content: "";
   position: absolute;
   left: calc(-1 * var(--tl-inset) + 2px);
-  /* card padding + half the 40px logo row, minus half the dot:
-     centers the dot on the collapsed summary */
+  /* card padding + half the 40px logo, minus half the dot: centers the
+     dot on the logo, which JobCard pins to the top of the summary */
   top: calc(var(--card-pad, 1.5rem) + 20px - 5px);
   width: 10px;
   height: 10px;
@@ -105,29 +105,55 @@
 
 /* ─── Projects ─── */
 
-.spotlight {
+/* Three picks in a single row, stacking on narrow screens */
+.projectRow {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
-  margin-bottom: 1.25rem;
+  grid-template-columns: 1fr;
 }
 
-.mediaWide {
-  aspect-ratio: 16 / 9;
-}
-
-.titleLarge {
-  font-size: 1.3rem;
+@media (min-width: 820px) {
+  .projectRow {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* ─── Skills ─── */
 
-.chipCloud {
-  --chip-pad: 0.3rem 0.8rem;
-  --chip-size: 0.85rem;
+/* Plain columns of names, each with a small square marker */
+.skillList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.4rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.skillList li {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.skillList li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--border-bright);
+  transform: translateY(-2px);
+}
+
+.coreSkills {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.coreSkills li::before {
+  background: var(--brand-blue-glow);
 }
 
 .skillsTitle {
@@ -158,7 +184,7 @@
     gap: 1.5rem;
   }
 
-  .spotlight {
+  .projectRow {
     gap: 1rem;
   }
 
@@ -170,10 +196,6 @@
 
 @media print {
   .introGrid {
-    display: block;
-  }
-
-  .spotlight {
     display: block;
   }
 
@@ -198,8 +220,27 @@
     margin-bottom: 0.15rem;
   }
 
-  /* Skills: one running line of comma-separated chips */
-  .chipCloud {
+  /* Skills: one running line of comma-separated names */
+  .skillList {
     display: block;
+    font-size: 1rem;
+  }
+
+  .skillList,
+  .coreSkills {
+    color: var(--text-dim) !important;
+    font-weight: 400;
+  }
+
+  .skillList li {
+    display: inline;
+  }
+
+  .skillList li::before {
+    content: none;
+  }
+
+  .skillList li:not(:last-child)::after {
+    content: ", ";
   }
 }
