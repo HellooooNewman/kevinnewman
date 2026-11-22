@@ -108,7 +108,8 @@ export default function GalleryLightbox({
             width={1600}
             height={1000}
             sizes="(max-width: 900px) 100vw, 860px"
-            preload
+            loading="eager"
+            fetchPriority="high"
             tabIndex={0}
             role="button"
             aria-label={`Enlarge image: ${images[0].alt}`}

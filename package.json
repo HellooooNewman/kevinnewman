@@ -20,11 +20,11 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.3.8",
-    "next": "^16.4.5",
-    "posthog-js": "^1.446.0",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
+    "@next/mdx": "^16.4.6",
+    "next": "^16.4.6",
+    "posthog-js": "^1.453.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "rehype-highlight": "^7.0.2",
     "rehype-stringify": "^10.0.1",
     "remark-gfm": "^4.0.1",
@@ -37,12 +37,12 @@
   },
   "devDependencies": {
     "@types/mdx": "^2.0.14",
-    "@types/node": "^26.1.0",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@types/three": "^0.187.0",
     "eslint": "^9.39.5",
-    "eslint-config-next": "^16.3.8",
+    "eslint-config-next": "^16.4.6",
     "sharp": "^0.35.5",
     "typescript": "^6.0.3"
   }

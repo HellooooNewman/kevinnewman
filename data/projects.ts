@@ -470,6 +470,7 @@ export const projects: Project[] = [
   {
     id: "12",
     slug: "pandemonium",
+    badge: "Play now!",
     title: "Pandemonium",
     thumbnail: "/assets/projects/pandemonium.jpg",
     mainImg: "/assets/projects/pandemonium.jpg",

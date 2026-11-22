@@ -216,7 +216,7 @@ export default async function Home() {
               View all →
             </Link>
           </h2>
-          <div className={cx(styles.projectRow, "no-print")}>
+          <div className={cx(styles.threeUp, "no-print")}>
             {homeProjects.map((p) => (
               <ProjectCard key={p.id} p={p} />
             ))}
@@ -258,7 +258,7 @@ export default async function Home() {
         <h2 className={layout.sectionTitle} id="edu-heading">
           Education
         </h2>
-        <div className={layout.grid}>
+        <div className={styles.threeUp}>
           {education.map((school) => (
             <div className={card.card} key={school.program}>
               <h3 className={styles.program}>{school.program}</h3>
