@@ -9,15 +9,18 @@ import layout from "@/styles/layout.module.css";
 export default function ProjectGrid({
   items,
   headingLevel = 2,
+  eager = 0,
 }: {
   items: Project[];
   /** Card titles sit one level below the heading above the grid. */
   headingLevel?: 2 | 3;
+  /** How many leading thumbnails sit above the fold and should load right away. */
+  eager?: number;
 }) {
   const Heading = headingLevel === 3 ? "h3" : "h2";
   return (
     <div className={layout.grid}>
-      {items.map((p) => (
+      {items.map((p, i) => (
         <Link className={card.card} href={`/projects/${p.slug}/`} key={p.id}>
           <div className={card.media}>
             <Image
@@ -25,6 +28,7 @@ export default function ProjectGrid({
               alt=""
               fill
               sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
+              loading={i < eager ? "eager" : undefined}
             />
           </div>
           <div className={chip.row}>

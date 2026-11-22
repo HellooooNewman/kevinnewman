@@ -105,15 +105,15 @@
 
 /* ─── Projects ─── */
 
-/* Three picks in a single row, stacking on narrow screens */
-.projectRow {
+/* Three cards in a single row, stacking on narrow screens */
+.threeUp {
   display: grid;
   gap: 1.25rem;
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 820px) {
-  .projectRow {
+  .threeUp {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -184,7 +184,7 @@
     gap: 1.5rem;
   }
 
-  .projectRow {
+  .threeUp {
     gap: 1rem;
   }
 
@@ -197,6 +197,16 @@
 @media print {
   .introGrid {
     display: block;
+  }
+
+  /* Education: one compact line per school */
+  .threeUp {
+    display: block;
+  }
+
+  .threeUp > * {
+    break-inside: avoid;
+    margin-bottom: 0.4rem;
   }
 
   /* Drop the constellation rail */

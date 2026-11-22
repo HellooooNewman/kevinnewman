@@ -26,7 +26,7 @@ export default function ProjectsPage() {
   return (
     <div className={cx(layout.section, layout.container)}>
       <h1 className={layout.sectionTitle}>Projects</h1>
-      <ProjectGrid items={current} />
+      <ProjectGrid items={current} eager={3} />
       <ArchivedProjects items={archived} />
     </div>
   );

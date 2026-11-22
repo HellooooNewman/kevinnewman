@@ -3,6 +3,8 @@ import { formatPostDate, getPublishedPosts } from '@/data/posts';
 import { pageMetadata } from '@/lib/seo';
 import { getPostReadMinutes } from '@/lib/blog-reading-time';
 import RssLink from '@/components/RssLink';
+import { cx } from '@/lib/cx';
+import chip from '@/styles/chip.module.css';
 import styles from './page.module.css';
 
 export const metadata = pageMetadata({
@@ -30,7 +32,7 @@ export default async function BlogPage() {
           <article className={styles.post} key={post.slug}>
             <div className={styles.meta}><time dateTime={post.date}>{formatPostDate(post.date)}</time><span>{post.readMinutes} min read</span></div>
             <div>
-              <div className={styles.tags}>{post.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              <div className={cx(chip.row, styles.tags)}>{post.tags.map((tag) => <span className={chip.chip} key={tag}>{tag}</span>)}</div>
               <h2><Link href={`/blog/${post.slug}/`}>{post.title}<span aria-hidden="true"> ↗</span></Link></h2>
               <p>{post.description}</p>
               <Link className={styles.read} href={`/blog/${post.slug}/`}>Read & explore <span aria-hidden="true">→</span></Link>

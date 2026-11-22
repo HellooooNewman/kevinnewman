@@ -45,3 +45,14 @@
   font-size: 0.9rem;
   color: var(--text-faint);
 }
+
+/* The stars only follow a mouse, and only at night */
+:global(:root[data-theme="light"]) .tip {
+  display: none;
+}
+
+@media (hover: none) {
+  .tip {
+    display: none;
+  }
+}

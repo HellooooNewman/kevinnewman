@@ -8,6 +8,8 @@ import { getPostReadMinutes } from '@/lib/blog-reading-time';
 import { isPostPublished } from '@/lib/blog-publication';
 import JsonLd from '@/components/JsonLd';
 import RssLink from '@/components/RssLink';
+import { cx } from '@/lib/cx';
+import chip from '@/styles/chip.module.css';
 import styles from './page.module.css';
 
 export const dynamicParams = false;
@@ -38,7 +40,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <JsonLd data={{ '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title, description: post.description, datePublished: post.date, dateModified: post.updated ?? post.date, url: `${SITE_URL}/blog/${slug}/`, mainEntityOfPage: `${SITE_URL}/blog/${slug}/`, author: { '@type': 'Person', name: 'Kevin Newman', url: SITE_URL } }} />
       <div className={styles.topline}><Link href="/blog/">← All posts</Link><RssLink /></div>
       <header className={styles.header}>
-        <div className={styles.tags}>{post.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+        <div className={cx(chip.row, styles.tags)}>{post.tags.map((tag) => <span className={chip.chip} key={tag}>{tag}</span>)}</div>
         <h1>{post.title}</h1>
         <p className={styles.dek}>{post.description}</p>
         <div className={styles.byline}><span>Kevin Newman</span><span aria-hidden="true">/</span><time dateTime={post.date}>{formatPostDate(post.date)}</time><span aria-hidden="true">/</span><span>{readMinutes} min read</span>{post.loadSlides && <><span aria-hidden="true">/</span><Link href={`/blog/${slug}/slides/`}>View as slides</Link></>}</div>

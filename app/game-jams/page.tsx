@@ -38,7 +38,7 @@ export default function GameJamsPage() {
       </div>
 
       <div className={layout.grid}>
-        {games.filter((g) => !g.hidden).map((g) => {
+        {games.filter((g) => !g.hidden).map((g, i) => {
           const isLocal = g.url.startsWith("/");
           const body = (
             <>
@@ -48,6 +48,8 @@ export default function GameJamsPage() {
                   alt=""
                   fill
                   sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                  // the first row is above the fold
+                  loading={i < 3 ? "eager" : undefined}
                 />
               </div>
               <div className={chip.row}>
